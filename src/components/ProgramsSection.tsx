@@ -136,21 +136,20 @@ export default function ProgramsSection() {
           </div>
 
           {/* Course cards — 3-column grid, compact */}
-          <div className="grid grid-cols-3 gap-2 mt-2">
+          <div className="grid grid-cols-3 gap-1.5 mt-1.5">
             {cards.map((c) => (
               <div key={c.name + c.badge}
                 className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm flex flex-col">
-                {/* Colored top strip */}
-                <div className="h-1 w-full" style={{ background: c.badgeColor }} />
-                <div className="flex-1 px-2 pt-2">
-                  <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full inline-block leading-tight"
+                <div className="h-[3px] w-full" style={{ background: c.badgeColor }} />
+                <div className="flex-1 px-2 pt-1.5">
+                  <span className="text-[7px] font-bold px-1.5 py-0.5 rounded-full inline-block leading-tight"
                     style={{ background: c.badgeBg, color: c.badgeColor }}>
                     {c.badge.replace('🎓 ', '')}
                   </span>
-                  <div className="font-black text-sm text-gray-900 mt-1 leading-tight">{c.name}</div>
+                  <div className="font-black text-sm text-gray-900 mt-0.5 leading-tight">{c.name}</div>
                 </div>
                 <a href={`/courses/${c.slug}`}
-                  className="block mx-2 mb-2 mt-1.5 py-1.5 text-center text-[10px] font-bold text-white rounded-lg"
+                  className="block mx-1.5 mb-1.5 mt-1 py-1.5 text-center text-[10px] font-bold text-white rounded-lg"
                   style={{ background: 'var(--navy)' }}>
                   Explore →
                 </a>
@@ -159,9 +158,9 @@ export default function ProgramsSection() {
           </div>
 
           {/* View All Courses button */}
-          <div className="flex justify-center mt-3">
+          <div className="flex justify-center mt-2 pb-1">
             <a href="/courses/offline"
-              className="flex items-center gap-1.5 px-6 py-2 rounded-full border-2 font-bold text-xs"
+              className="flex items-center gap-1.5 px-6 py-1.5 rounded-full border-2 font-bold text-xs"
               style={{ borderColor: 'var(--navy)', color: 'var(--navy)' }}>
               View All Courses →
             </a>
