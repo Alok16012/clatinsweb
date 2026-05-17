@@ -269,16 +269,16 @@ export default function HeroSection() {
 
       {/* ─── Mobile Hero ─────────────────────────────────────── */}
       <div className="md:hidden" style={{ background: '#f4f6fa' }}>
-        <div className="relative overflow-hidden mx-1 mt-1.5 rounded-2xl bg-white shadow-sm border border-gray-100">
+        <div className="relative overflow-hidden mx-1 mt-2 rounded-2xl bg-white shadow-sm border border-gray-100">
           <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-            <div className="px-3 pt-2.5 pb-0">
-              <div className="flex items-center gap-2.5">
-                {/* Avatar — compact */}
+            <div className="px-4 pt-4 pb-0">
+              <div className="flex items-start gap-3">
+                {/* Avatar */}
                 <div className="flex-shrink-0">
-                  <div className="relative w-12 h-12">
-                    <div className="absolute inset-0 rounded-full p-[2px]"
+                  <div className="relative w-16 h-16">
+                    <div className="absolute inset-0 rounded-full p-[2.5px]"
                       style={{ background: `linear-gradient(135deg, ${mobileSlides[current].gradFrom}, ${mobileSlides[current].gradTo})` }}>
-                      <div className="w-full h-full rounded-full flex items-center justify-center font-black text-sm text-white"
+                      <div className="w-full h-full rounded-full flex items-center justify-center font-black text-lg text-white"
                         style={{ background: `linear-gradient(135deg, ${mobileSlides[current].gradFrom}, ${mobileSlides[current].gradTo})` }}>
                         {mobileSlides[current].initials}
                       </div>
@@ -288,46 +288,46 @@ export default function HeroSection() {
 
                 {/* Name + subtitle */}
                 <div className="flex-1 min-w-0">
-                  <div className="font-black text-xs text-gray-900 tracking-wide leading-tight">{mobileSlides[current].name}</div>
-                  <div className="text-[10px] text-gray-500">{mobileSlides[current].title}</div>
-                  <div className="text-[10px] font-semibold" style={{ color: mobileSlides[current].gradFrom }}>
+                  <div className="font-black text-sm text-gray-900 tracking-wide">{mobileSlides[current].name}</div>
+                  <div className="text-[11px] text-gray-500 mt-0.5">{mobileSlides[current].title}</div>
+                  <div className="text-[11px] font-semibold mt-0.5" style={{ color: mobileSlides[current].gradFrom }}>
                     {mobileSlides[current].subtitle}
                   </div>
                 </div>
 
-                {/* Features — right column */}
-                <div className="flex-shrink-0 space-y-1">
+                {/* Features — right */}
+                <div className="flex-shrink-0 space-y-1.5">
                   {mobileSlides[current].features.map((f, fi) => (
-                    <div key={fi} className="flex items-center gap-1">
-                      <div className="w-4 h-4 rounded flex items-center justify-center flex-shrink-0"
+                    <div key={fi} className="flex items-center gap-1.5">
+                      <div className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
                         style={{ background: mobileSlides[current].featureBg }}>
-                        <span className="text-[9px]">{f.icon}</span>
+                        <span className="text-[11px]">{f.icon}</span>
                       </div>
-                      <span className="text-[9px] font-semibold text-gray-700 whitespace-nowrap">{f.text}</span>
+                      <span className="text-[10px] font-semibold text-gray-700 whitespace-nowrap">{f.text}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Tagline — single line */}
-              <p className="text-[10px] text-gray-500 mt-1.5 leading-snug line-clamp-1 pb-2">
+              {/* Tagline — 2 lines */}
+              <p className="text-[11px] text-gray-500 mt-2.5 leading-relaxed line-clamp-2 pb-3">
                 {mobileSlides[current].tagline}
               </p>
             </div>
 
             {/* Gradient bar */}
-            <div className="h-1 w-full"
+            <div className="h-1.5 w-full"
               style={{ background: `linear-gradient(90deg, ${mobileSlides[current].gradFrom}, ${mobileSlides[current].gradTo})` }} />
           </div>
 
           {/* Slide dots */}
-          <div className="flex justify-center gap-1.5 py-1.5 bg-white">
+          <div className="flex justify-center gap-1.5 py-2 bg-white">
             {mobileSlides.map((_, i) => (
               <button key={i} onClick={() => goTo(i)}
                 className="rounded-full transition-all"
                 style={{
-                  width: i === current ? '16px' : '5px',
-                  height: '5px',
+                  width: i === current ? '20px' : '6px',
+                  height: '6px',
                   background: i === current ? mobileSlides[current].gradFrom : '#d1d5db',
                 }} />
             ))}

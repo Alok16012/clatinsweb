@@ -121,11 +121,11 @@ export default function ProgramsSection() {
         {/* Mobile: Tab filters + 3-column grid */}
         <div className="md:hidden">
           {/* Tab pills */}
-          <div className="flex gap-1.5 overflow-x-auto pb-2 scrollbar-none -mx-1 px-1">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none -mx-1 px-1">
             {tabLabels.map((tab) => (
               <button key={tab}
                 onClick={() => setActiveTab(tab)}
-                className="flex-shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all"
+                className="flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold border transition-all"
                 style={activeTab === tab
                   ? { background: 'var(--navy)', color: 'white', borderColor: 'var(--navy)' }
                   : { background: 'white', color: '#374151', borderColor: '#e5e7eb' }
@@ -135,32 +135,39 @@ export default function ProgramsSection() {
             ))}
           </div>
 
-          {/* Course cards — 3-column grid, compact */}
-          <div className="grid grid-cols-3 gap-1.5 mt-1.5">
+          {/* Course cards — 3-column grid with icon */}
+          <div className="grid grid-cols-3 gap-2 mt-2">
             {cards.map((c) => (
               <div key={c.name + c.badge}
-                className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm flex flex-col">
-                <div className="h-[3px] w-full" style={{ background: c.badgeColor }} />
-                <div className="flex-1 px-2 pt-1.5">
-                  <span className="text-[7px] font-bold px-1.5 py-0.5 rounded-full inline-block leading-tight"
+                className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm flex flex-col">
+                {/* Badge */}
+                <div className="px-2 pt-2.5">
+                  <span className="text-[9px] font-bold px-2 py-0.5 rounded-full inline-block leading-tight"
                     style={{ background: c.badgeBg, color: c.badgeColor }}>
-                    {c.badge.replace('🎓 ', '')}
+                    {c.badge}
                   </span>
-                  <div className="font-black text-sm text-gray-900 mt-0.5 leading-tight">{c.name}</div>
                 </div>
+                {/* Graduation icon */}
+                <div className="flex justify-center py-3">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke={c.badgeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" stroke={c.badgeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="text-center font-black text-sm text-gray-900 pb-2 px-1 leading-tight">{c.name}</div>
                 <a href={`/courses/${c.slug}`}
-                  className="block mx-1.5 mb-1.5 mt-1 py-1.5 text-center text-[10px] font-bold text-white rounded-lg"
+                  className="block mx-2 mb-2.5 py-2 text-center text-[11px] font-bold text-white rounded-xl"
                   style={{ background: 'var(--navy)' }}>
-                  Explore →
+                  Explore Program
                 </a>
               </div>
             ))}
           </div>
 
           {/* View All Courses button */}
-          <div className="flex justify-center mt-2 pb-1">
+          <div className="flex justify-center mt-3 pb-2">
             <a href="/courses/offline"
-              className="flex items-center gap-1.5 px-6 py-1.5 rounded-full border-2 font-bold text-xs"
+              className="flex items-center gap-2 px-8 py-2.5 rounded-full border-2 font-bold text-sm"
               style={{ borderColor: 'var(--navy)', color: 'var(--navy)' }}>
               View All Courses →
             </a>
