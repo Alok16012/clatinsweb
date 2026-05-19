@@ -356,11 +356,11 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                     <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                       style={{ background: exam.color }}>🏛️</span>
                     <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>
-                      Participating Universities
+                      Participating Universities ({exam.nluList.length})
                     </h2>
                   </div>
                   <p className="text-gray-500 text-sm mb-5 ml-11">
-                    {exam.nluList.length} National Law Universities accepting {exam.code} scores for 2026 admission
+                    {exam.nluList.length} {exam.nluList.length === 1 ? 'institution' : 'institutions'} accepting {exam.code} scores for 2026 admission
                   </p>
                   <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                     <table className="w-full text-sm">
