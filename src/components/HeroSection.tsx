@@ -312,136 +312,88 @@ export default function HeroSection() {
       </div>
 
       {/* ─── Mobile Hero ─────────────────────────────────────── */}
-      <div className="md:hidden" style={{ background: '#0D1837' }}>
-        {/* Mobile heading */}
-        <div className="px-4 pt-6 pb-4">
-          <div
-            className="inline-flex items-center gap-2 mb-3 text-xs font-bold px-3 py-1.5 rounded-full"
-            style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}
-          >
-            {slide.pill}
+      <div className="md:hidden relative overflow-hidden" style={{ background: '#0D1837', minHeight: '100svh' }}>
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10" style={{ background: '#08BD80', transform: 'translate(30%, -30%)' }} />
+        <div className="absolute bottom-20 left-0 w-48 h-48 rounded-full opacity-5" style={{ background: '#08BD80', transform: 'translate(-30%, 0)' }} />
+
+        <div className="relative z-10 px-5 pt-8 pb-6 flex flex-col" style={{ minHeight: '100svh' }}>
+
+          {/* Top badge */}
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-[11px] font-bold px-3 py-1.5 rounded-full"
+              style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}>
+              🏛️ {slide.pill} 2026
+            </span>
+            <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.45)' }}>{slide.tag}</span>
           </div>
-          <h1
-            className={`font-extrabold text-white leading-tight transition-all duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
-            style={{ fontSize: '1.6rem' }}
-          >
-            {slide.heading}
-            <br />
-            <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.65)' }}>
-            {slide.sub}
-          </p>
-          <div className="mt-5 flex gap-3">
-            <a
-              href={slide.ctaLink}
-              className="flex-1 text-center py-3 rounded-xl font-bold text-white text-sm"
-              style={{ background: '#08BD80' }}
-            >
+
+          {/* Heading */}
+          <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
+            <h1 className="font-black text-white leading-tight" style={{ fontSize: '2rem', lineHeight: '1.15' }}>
+              {slide.heading}<br />
+              <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
+            </h1>
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '85%' }}>
+              {slide.sub}
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex gap-3 mt-6">
+            <a href={slide.ctaLink}
+              className="flex-1 text-center py-3.5 rounded-xl font-bold text-white text-sm shadow-lg"
+              style={{ background: '#08BD80' }}>
               {slide.cta} →
             </a>
-            <a
-              href="#demo"
-              className="flex-1 text-center py-3 rounded-xl font-semibold text-sm"
-              style={{ color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}
-            >
-              {slide.secondaryCta}
+            <a href="tel:8507700177"
+              className="flex items-center gap-2 px-4 py-3.5 rounded-xl font-semibold text-sm"
+              style={{ color: 'white', border: '1px solid rgba(255,255,255,0.25)' }}>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call
             </a>
           </div>
-        </div>
 
-        {/* Mobile stats row */}
-        <div className="grid grid-cols-4 gap-0 px-4 pb-4">
-          {heroStats.map((s, i) => (
-            <div key={s.label} className="flex items-center">
-              <div className="text-center flex-1">
-                <div className="text-sm font-black text-white">{s.val}</div>
-                <div className="text-[9px] mt-0.5 leading-tight" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                  {s.label}
+          {/* Stats strip */}
+          <div className="mt-6 grid grid-cols-4 gap-0 py-4 rounded-2xl"
+            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            {heroStats.map((s, i) => (
+              <div key={s.label} className="flex items-center">
+                <div className="flex-1 text-center">
+                  <div className="text-base font-black text-white">{s.val}</div>
+                  <div className="text-[9px] mt-0.5 leading-tight" style={{ color: 'rgba(255,255,255,0.45)' }}>{s.label}</div>
                 </div>
+                {i < heroStats.length - 1 && <div className="w-px h-7 flex-shrink-0" style={{ background: 'rgba(255,255,255,0.12)' }} />}
               </div>
-              {i < heroStats.length - 1 && (
-                <div className="w-px h-6" style={{ background: 'rgba(255,255,255,0.2)' }} />
-              )}
+            ))}
+          </div>
+
+          {/* Exam quick-pick cards */}
+          <div className="mt-6 flex-1">
+            <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Choose Your Exam</p>
+            <div className="grid grid-cols-3 gap-2">
+              {['CLAT', 'AILET', 'MH-CET', 'CUET', 'AIL-LET', 'LSAT'].map((exam) => (
+                <a key={exam} href={`/exams/${exam.toLowerCase().replace('-', '-')}`}
+                  className="flex items-center justify-center py-2.5 rounded-xl text-xs font-bold transition-all"
+                  style={{
+                    background: exam === slide.pill ? '#08BD80' : 'rgba(255,255,255,0.08)',
+                    color: exam === slide.pill ? 'white' : 'rgba(255,255,255,0.7)',
+                    border: `1px solid ${exam === slide.pill ? '#08BD80' : 'rgba(255,255,255,0.1)'}`,
+                  }}>
+                  {exam}
+                </a>
+              ))}
             </div>
-          ))}
-        </div>
-
-        {/* Slider cards */}
-        <div className="relative overflow-hidden mx-3 mb-3 rounded-2xl bg-white shadow-sm border border-gray-100">
-          <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-            <div className="px-4 pt-5 pb-0">
-              <div className="flex items-start gap-3">
-                {/* Avatar */}
-                <div className="flex-shrink-0">
-                  <div className="relative w-24 h-24">
-                    <div
-                      className="absolute inset-0 rounded-full p-0.5"
-                      style={{ background: 'linear-gradient(135deg, #08BD80, #0D1837)' }}
-                    >
-                      <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
-                        <div
-                          className="w-full h-full rounded-full flex items-center justify-center font-black text-2xl text-white"
-                          style={{ background: 'linear-gradient(135deg, #08BD80, #0D1837)' }}
-                        >
-                          {mobileSlides[current].initials}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Features */}
-                <div className="flex-1 space-y-2 pt-1">
-                  {mobileSlides[current].features.map((f, fi) => (
-                    <div key={fi} className="flex items-center gap-2">
-                      <div
-                        className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
-                        style={{ background: '#E6FAF4' }}
-                      >
-                        <span className="text-[11px]">{f.icon}</span>
-                      </div>
-                      <span className="text-[11px] font-semibold text-gray-700 leading-tight">
-                        {f.text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Info */}
-              <div className="mt-3">
-                <div className="font-black text-sm text-gray-900 tracking-wide">
-                  {mobileSlides[current].name}
-                </div>
-                <div className="text-[11px] text-gray-500 mt-0.5">{mobileSlides[current].title}</div>
-                <div className="text-[11px] font-medium mt-0.5" style={{ color: '#08BD80' }}>
-                  {mobileSlides[current].subtitle}
-                </div>
-              </div>
-
-              <p className="text-[11px] text-gray-500 mt-2 leading-relaxed pb-3">
-                {mobileSlides[current].tagline}
-              </p>
-            </div>
-
-            {/* Bottom bar */}
-            <div className="h-2 w-full" style={{ background: '#08BD80' }} />
           </div>
 
           {/* Slide dots */}
-          <div className="flex justify-center gap-1.5 py-2.5 bg-white">
-            {mobileSlides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className="rounded-full transition-all"
-                style={{
-                  width: i === current ? '20px' : '6px',
-                  height: '6px',
-                  background: i === current ? '#08BD80' : '#d1d5db',
-                }}
-              />
+          <div className="flex justify-center gap-1.5 mt-6">
+            {slides.map((_, i) => (
+              <button key={i} onClick={() => goTo(i)}
+                className="rounded-full transition-all duration-300"
+                style={{ width: i === current ? '24px' : '6px', height: '6px', background: i === current ? '#08BD80' : 'rgba(255,255,255,0.25)' }} />
             ))}
           </div>
         </div>

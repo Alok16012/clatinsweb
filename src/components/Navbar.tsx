@@ -39,7 +39,6 @@ const mobileNavItems = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openSub, setOpenSub] = useState<string | null>(null);
 
   return (
     <>
@@ -49,13 +48,10 @@ export default function Navbar() {
         style={{ background: 'white', borderBottom: '1px solid #E9EEF2', boxShadow: '0 1px 8px rgba(0,0,0,0.06)' }}
       >
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-
-          {/* Logo */}
           <a href="/" className="flex items-center flex-shrink-0">
             <img src="/logo.png" alt="CLATians" className="h-11 w-auto object-contain" />
           </a>
 
-          {/* Nav Links */}
           <ul className="flex items-center gap-0.5 flex-1 justify-center">
             {navLinks.map((link) => (
               <li key={link.label} className="relative group">
@@ -73,8 +69,6 @@ export default function Navbar() {
                     </svg>
                   )}
                 </a>
-
-                {/* Dropdown */}
                 {link.sub && (
                   <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 py-1">
                     {link.sub.map((s) => (
@@ -93,7 +87,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Right Actions */}
           <div className="flex items-center gap-2 flex-shrink-0">
             <a href="tel:8507700177"
               className="flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg transition-colors"
@@ -125,55 +118,69 @@ export default function Navbar() {
       </nav>
 
       {/* ─── Mobile Navbar ──────────────────────────────────── */}
-      <nav className="sticky top-0 z-50 md:hidden bg-white shadow-sm" style={{ borderBottom: '1px solid #E9EEF2' }}>
-        <div className="flex items-center justify-between px-4 h-14">
-          {/* Hamburger */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="p-1.5 rounded-lg" style={{ color: '#3C4852' }}>
-            {mobileOpen ? (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+      <nav className="sticky top-0 z-50 md:hidden bg-white" style={{ borderBottom: '1px solid #E9EEF2', boxShadow: '0 1px 6px rgba(0,0,0,0.07)' }}>
+        <div className="flex items-center justify-between px-3 h-14 gap-2">
 
-          {/* Logo center */}
-          <a href="/" className="absolute left-1/2 -translate-x-1/2">
-            <img src="/logo.png" alt="CLATians" className="h-9 w-auto object-contain" />
-          </a>
+          {/* Left: Hamburger + Logo together */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors"
+              style={{ color: '#3C4852', background: mobileOpen ? '#F0FDF9' : 'transparent' }}
+            >
+              {mobileOpen ? (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+            <a href="/">
+              <img src="/logo.png" alt="CLATians" className="h-8 w-auto object-contain" />
+            </a>
+          </div>
 
-          {/* Right CTA */}
-          <a href="/admission"
-            className="px-3 py-1.5 rounded-lg text-white text-xs font-bold"
-            style={{ background: '#f97316' }}>
-            Admission 2026
-          </a>
+          {/* Right: CTAs */}
+          <div className="flex items-center gap-2">
+            <a href="tel:8507700177"
+              className="flex items-center justify-center w-9 h-9 rounded-xl"
+              style={{ background: '#F0FDF9', color: '#08BD80' }}>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </a>
+            <a href="/admission"
+              className="px-3.5 py-2 rounded-xl text-white text-xs font-bold whitespace-nowrap"
+              style={{ background: '#f97316' }}>
+              Admission 2026
+            </a>
+          </div>
         </div>
 
         {/* Mobile Menu Drawer */}
         {mobileOpen && (
-          <div className="bg-white border-t shadow-lg" style={{ borderColor: '#E9EEF2' }}>
-            <div className="px-4 py-3 space-y-0.5">
+          <div className="absolute top-full left-0 right-0 bg-white shadow-xl border-t z-50" style={{ borderColor: '#E9EEF2' }}>
+            <div className="px-4 py-3 space-y-0.5 max-h-[80vh] overflow-y-auto">
               {navLinks.map((link) => (
                 <div key={link.label}>
                   <a href={link.href} onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between py-3 px-3 rounded-xl font-semibold text-sm transition-colors"
+                    className="flex items-center justify-between py-3 px-3 rounded-xl font-semibold text-sm"
                     style={{ color: '#3C4852' }}>
                     {link.label}
                     {link.sub && (
-                      <svg className="w-3.5 h-3.5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3.5 h-3.5 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     )}
                   </a>
                   {link.sub && (
-                    <div className="pl-4 pb-1 space-y-0.5">
+                    <div className="pl-4 pb-1 space-y-0.5 border-l-2 ml-5" style={{ borderColor: '#E6FAF4' }}>
                       {link.sub.map((s) => (
                         <a key={s.label} href={s.href} onClick={() => setMobileOpen(false)}
-                          className="block py-2 px-3 text-sm rounded-lg transition-colors"
+                          className="block py-2 px-3 text-sm rounded-lg"
                           style={{ color: '#7A8B94' }}>
                           {s.label}
                         </a>
@@ -182,14 +189,14 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <div className="pt-3 pb-1 flex gap-2 border-t mt-2" style={{ borderColor: '#E9EEF2' }}>
+              <div className="pt-3 pb-2 flex gap-2 border-t mt-2" style={{ borderColor: '#E9EEF2' }}>
                 <a href="/college-predictor" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center py-2.5 rounded-xl border-2 font-semibold text-sm transition-colors"
+                  className="flex-1 text-center py-3 rounded-xl border-2 font-bold text-sm"
                   style={{ borderColor: '#08BD80', color: '#08BD80' }}>
-                  College Predictor
+                  🔮 College Predictor
                 </a>
                 <a href="/admission" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center py-2.5 rounded-xl text-white font-semibold text-sm"
+                  className="flex-1 text-center py-3 rounded-xl text-white font-bold text-sm"
                   style={{ background: '#08BD80' }}>
                   Admission 2026
                 </a>
@@ -215,44 +222,20 @@ export default function Navbar() {
 }
 
 function HomeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>;
 }
 function BookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" /></svg>;
 }
 function GradIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>;
 }
 function MenuIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>;
 }
 function StudentsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>;
 }
 function LawIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>;
 }

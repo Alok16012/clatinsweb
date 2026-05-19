@@ -284,6 +284,31 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           </div>
         </div>
       </main>
+
+      {/* ── Mobile Sticky Enroll Bar ──────────────── */}
+      <div className="md:hidden fixed bottom-16 left-0 right-0 z-40 px-4 pb-2">
+        <div className="rounded-2xl shadow-2xl overflow-hidden flex items-center gap-3 px-4 py-3"
+          style={{ background: '#0D1837', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="flex-1 min-w-0">
+            <div className="text-white font-black text-base leading-none">{course.fee}</div>
+            <div className="text-[11px] mt-0.5" style={{ color: 'rgba(255,255,255,0.55)' }}>EMI: {course.emi}</div>
+          </div>
+          <a href="tel:8507700177"
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold"
+            style={{ background: 'rgba(255,255,255,0.12)', color: 'white' }}>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call
+          </a>
+          <a href="#enroll"
+            className="px-5 py-2.5 rounded-xl text-sm font-bold text-white"
+            style={{ background: '#08BD80' }}>
+            Enroll Now →
+          </a>
+        </div>
+      </div>
+
       <Footer />
     </>
   );
