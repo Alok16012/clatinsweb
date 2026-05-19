@@ -44,10 +44,10 @@ export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-12 md:py-20" style={{ background: '#F7F9FB' }}>
+    <section className="py-8 md:py-14" style={{ background: '#F7F9FB' }}>
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-14">
+        <div className="text-center mb-10 md:mb-10">
           <h2
             className="text-3xl mb-2"
             style={{ color: '#3C4852', fontWeight: 800 }}

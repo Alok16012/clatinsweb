@@ -215,7 +215,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                           </span>
                           <span className="text-[10px] text-gray-400">{rb.readTime}</span>
                         </div>
-                        <p className="text-xs font-semibold text-gray-800 leading-snug group-hover:text-cyan-700 transition-colors">
+                        <p className="text-xs font-semibold text-gray-800 leading-snug group-hover:text-green-700 transition-colors">
                           {rb.title}
                         </p>
                       </a>

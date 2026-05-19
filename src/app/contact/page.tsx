@@ -61,22 +61,22 @@ export default function ContactPage() {
                     <div>
                       <label className="block text-xs font-semibold text-gray-500 mb-1.5">Full Name *</label>
                       <input type="text" placeholder="Your name"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors" />
+                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors" />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-500 mb-1.5">Phone Number *</label>
                       <input type="tel" placeholder="10-digit mobile number"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors" />
+                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5">Email Address</label>
                     <input type="email" placeholder="your@email.com"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5">I am interested in</label>
-                    <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors bg-white text-gray-700">
+                    <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors bg-white text-gray-700">
                       <option>Select a program</option>
                       <option>Offline Course (Patna)</option>
                       <option>Online Course</option>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5">Target Exam</label>
-                    <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors bg-white text-gray-700">
+                    <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors bg-white text-gray-700">
                       <option>Select exam</option>
                       <option>CLAT 2026</option>
                       <option>AILET 2026</option>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5">Your Message</label>
                     <textarea rows={4} placeholder="Tell us about your preparation, doubts, or questions..."
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors resize-none" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors resize-none" />
                   </div>
                   <button type="submit"
                     className="w-full py-4 rounded-xl font-bold text-white text-sm transition-opacity hover:opacity-90"

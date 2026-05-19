@@ -209,7 +209,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                           className="flex flex-col gap-2 p-4 hover:bg-gray-50 transition-colors group">
                           <div className="flex items-start justify-between gap-2">
                             <div className="flex-1 min-w-0">
-                              <div className="font-bold text-sm text-gray-900 group-hover:text-cyan-700 transition-colors leading-tight">
+                              <div className="font-bold text-sm text-gray-900 group-hover:text-green-700 transition-colors leading-tight">
                                 {batch.name}
                               </div>
                               <div className="text-[11px] text-gray-400 mt-0.5">{batch.schedule}</div>

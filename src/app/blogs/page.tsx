@@ -63,7 +63,7 @@ export default function BlogsPage() {
                   </span>
                   <span className="text-xs text-gray-400">{blogs[0].readTime}</span>
                 </div>
-                <h2 className="text-xl md:text-2xl font-black text-gray-900 leading-tight group-hover:text-cyan-700 transition-colors">
+                <h2 className="text-xl md:text-2xl font-black text-gray-900 leading-tight group-hover:text-green-700 transition-colors">
                   {blogs[0].title}
                 </h2>
                 <p className="text-gray-500 text-sm mt-3 leading-relaxed">{blogs[0].excerpt}</p>
@@ -76,7 +76,7 @@ export default function BlogsPage() {
                     <div className="font-semibold text-xs text-gray-900">{blogs[0].author}</div>
                     <div className="text-xs text-gray-400">{blogs[0].date}</div>
                   </div>
-                  <span className="ml-auto text-sm font-semibold text-cyan-600 group-hover:gap-2 transition-all">
+                  <span className="ml-auto text-sm font-semibold text-green-600 group-hover:gap-2 transition-all">
                     Read More →
                   </span>
                 </div>
@@ -108,7 +108,7 @@ export default function BlogsPage() {
                     </span>
                     <span className="text-xs text-gray-400">{blog.readTime}</span>
                   </div>
-                  <h2 className="font-black text-gray-900 leading-snug group-hover:text-cyan-700 transition-colors">
+                  <h2 className="font-black text-gray-900 leading-snug group-hover:text-green-700 transition-colors">
                     {blog.title}
                   </h2>
                   <p className="text-gray-500 text-sm mt-2 leading-relaxed flex-1 line-clamp-3">

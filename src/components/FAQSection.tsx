@@ -32,7 +32,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-12 md:py-20" style={{ background: '#F7F9FB' }}>
+    <section className="py-8 md:py-14" style={{ background: '#F7F9FB' }}>
       <div className="max-w-3xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-10">

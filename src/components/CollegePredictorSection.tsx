@@ -1,10 +1,10 @@
 export default function CollegePredictorSection() {
   return (
-    <section id="predictor" className="py-12 md:py-20" style={{ background: '#FCFCFC' }}>
+    <section id="predictor" className="py-8 md:py-14" style={{ background: '#FCFCFC' }}>
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Unacademy-style CTA Banner: "Get subscription to start your preparation" */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 rounded-2xl px-8 py-8 mb-12 border"
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 rounded-2xl px-8 py-8 mb-8 border"
           style={{ background: 'white', borderColor: '#E9EEF2' }}>
           <div>
             <h2 className="text-2xl md:text-3xl font-extrabold leading-tight" style={{ color: '#3C4852' }}>

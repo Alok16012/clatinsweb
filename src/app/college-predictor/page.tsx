@@ -68,7 +68,7 @@ export default function CollegePredictorPage() {
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1.5">Expected CLAT Rank *</label>
-                <div className="flex items-center border border-gray-200 rounded-xl px-4 py-3 focus-within:border-cyan-400 transition-colors">
+                <div className="flex items-center border border-gray-200 rounded-xl px-4 py-3 focus-within:border-green-400 transition-colors">
                   <span className="text-gray-400 text-sm mr-2">#</span>
                   <input
                     type="number"
@@ -86,7 +86,7 @@ export default function CollegePredictorPage() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-cyan-400 transition-colors bg-white">
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-green-400 transition-colors bg-white">
                   {Object.keys(multipliers).map((c) => (
                     <option key={c}>{c}</option>
                   ))}

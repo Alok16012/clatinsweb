@@ -82,10 +82,10 @@ export default function ProgramsSection() {
   const cards = tabCourses[activeTab];
 
   return (
-    <section id="courses" className="pt-5 pb-8 md:py-20" style={{ background: '#FFFFFF' }}>
+    <section id="courses" className="pt-5 pb-8 md:py-14" style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header — desktop only */}
-        <div className="hidden md:block text-center mb-14">
+        <div className="hidden md:block text-center mb-8">
           <h2
             className="text-4xl font-extrabold"
             style={{ color: '#3C4852', fontWeight: 800 }}

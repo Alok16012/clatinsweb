@@ -21,7 +21,7 @@ const features = [
 
 export default function FeaturedServices() {
   return (
-    <section className="py-12 md:py-16" style={{ background: '#FCF8E7' }}>
+    <section className="py-8 md:py-14" style={{ background: '#FCF8E7' }}>
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Unacademy-style: 3 feature cards on cream bg */}

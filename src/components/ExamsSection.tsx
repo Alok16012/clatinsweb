@@ -65,10 +65,10 @@ export default function ExamsSection() {
   return (
     <>
       {/* ─── Desktop Exams Section ─────────────────────────── */}
-      <section id="exams" className="hidden md:block py-20" style={{ background: '#F7F9FB' }}>
+      <section id="exams" className="hidden md:block py-14" style={{ background: '#F7F9FB' }}>
         <div className="max-w-7xl mx-auto px-4">
           {/* Section header */}
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex items-end justify-between mb-8">
             <div>
               <h2
                 className="text-3xl font-extrabold mb-2"

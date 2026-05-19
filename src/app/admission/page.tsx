@@ -132,12 +132,12 @@ export default function AdmissionPage() {
                   <div key={f.label}>
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5">{f.label}</label>
                     <input type={f.type} placeholder={f.placeholder}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors" />
                   </div>
                 ))}
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 mb-1.5">Program Interested In *</label>
-                  <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors bg-white text-gray-700">
+                  <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors bg-white text-gray-700">
                     <option>Select program</option>
                     <option>Offline Course — ₹75,000</option>
                     <option>Online Course — ₹45,000</option>
@@ -147,7 +147,7 @@ export default function AdmissionPage() {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 mb-1.5">Current Class / Year</label>
-                  <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan-400 transition-colors bg-white text-gray-700">
+                  <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 transition-colors bg-white text-gray-700">
                     <option>Select</option>
                     <option>Class 11</option>
                     <option>Class 12</option>

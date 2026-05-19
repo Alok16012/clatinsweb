@@ -33,7 +33,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
         {/* ── Hero ───────────────────────────────────────── */}
         <div
           className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: `linear-gradient(135deg, #0a1e8a, #0050e0)` }}>
+          style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
           {/* Decorative circles */}
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
             style={{ background: '#fff' }} />
@@ -107,7 +107,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
         {/* ── Latest Updates Banner ────────────────────── */}
         {exam.latestUpdates && exam.latestUpdates.length > 0 && (
-          <div className="bg-blue-50 border-b border-blue-100 py-3 overflow-hidden">
+          <div className="py-3 overflow-hidden" style={{ background: '#E6FAF4', borderBottom: '1px solid #D1FAE5' }}>
             <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
               <span className="text-xs font-black px-2.5 py-1 rounded-full text-white flex-shrink-0"
                 style={{ background: exam.color }}>
@@ -116,7 +116,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
               <div className="flex gap-6 overflow-x-auto scrollbar-hide whitespace-nowrap text-sm text-gray-600">
                 {exam.latestUpdates.map((u, i) => (
                   <span key={i} className="flex-shrink-0">
-                    <span className="font-bold text-blue-700">{u.date}:</span> {u.update}
+                    <span className="font-bold" style={{ color: '#08BD80' }}>{u.date}:</span> {u.update}
                     {i < exam.latestUpdates!.length - 1 && <span className="mx-3 text-gray-300">|</span>}
                   </span>
                 ))}
@@ -181,7 +181,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                     </thead>
                     <tbody>
                       {exam.examPattern.map((row, i) => (
-                        <tr key={i} className={`border-t border-gray-50 hover:bg-blue-50/40 transition-colors ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                        <tr key={i} className={`border-t border-gray-50 hover:bg-gray-50 transition-colors ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
                           <td className="px-5 py-4 text-gray-400 font-bold text-xs">{String(i + 1).padStart(2, '0')}</td>
                           <td className="px-5 py-4 font-semibold text-gray-800">{row.section}</td>
                           <td className="px-5 py-4 text-center">
@@ -269,7 +269,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                     </thead>
                     <tbody>
                       {exam.importantDates.map((d, i) => (
-                        <tr key={i} className={`border-t border-gray-50 hover:bg-blue-50/30 transition-colors ${i % 2 === 0 ? '' : 'bg-gray-50/30'}`}>
+                        <tr key={i} className={`border-t border-gray-50 hover:bg-gray-50 transition-colors ${i % 2 === 0 ? '' : 'bg-gray-50/30'}`}>
                           <td className="px-5 py-4">
                             <div className="flex items-center gap-2">
                               <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: exam.color }} />
@@ -307,7 +307,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                       </thead>
                       <tbody>
                         {exam.applicationFee.map((row, i) => (
-                          <tr key={i} className={`border-t border-gray-50 hover:bg-blue-50/30 transition-colors ${i % 2 === 0 ? '' : 'bg-gray-50/30'}`}>
+                          <tr key={i} className={`border-t border-gray-50 hover:bg-gray-50 transition-colors ${i % 2 === 0 ? '' : 'bg-gray-50/30'}`}>
                             <td className="px-5 py-4 text-gray-700 font-medium">{row.category}</td>
                             <td className="px-5 py-4 text-right">
                               <span className="font-black text-xl" style={{ color: exam.color }}>{row.fee}</span>
@@ -374,7 +374,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                       </thead>
                       <tbody>
                         {exam.nluList.map((nlu, i) => (
-                          <tr key={i} className={`border-t border-gray-50 hover:bg-blue-50/40 transition-colors ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}`}>
+                          <tr key={i} className={`border-t border-gray-50 hover:bg-gray-50 transition-colors ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}`}>
                             <td className="px-5 py-3.5 text-gray-400 font-bold text-xs">{String(i + 1).padStart(2, '0')}</td>
                             <td className="px-5 py-3.5 font-semibold text-gray-800 leading-snug">
                               {nlu.name}
@@ -473,7 +473,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
               {/* CTA Banner */}
               <div className="rounded-2xl p-6 flex flex-col md:flex-row items-center gap-5"
-                style={{ background: `linear-gradient(135deg, #0a1e8a, #0050e0)` }}>
+                style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
                 <div className="flex-1 text-center md:text-left">
                   <h3 className="text-white font-black text-xl mb-1">Ready to Crack {exam.code} 2026?</h3>
                   <p className="text-white/70 text-sm">Join 15,000+ students who trusted CLATians for their law entrance preparation.</p>
@@ -485,7 +485,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                   </a>
                   <a href="/courses/online"
                     className="px-5 py-2.5 rounded-xl font-bold text-sm whitespace-nowrap"
-                    style={{ background: '#fff', color: '#0050e0' }}>
+                    style={{ background: '#fff', color: '#08BD80' }}>
                     Online Course →
                   </a>
                 </div>
@@ -564,13 +564,13 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
                 {/* College Predictor */}
                 <div className="rounded-2xl p-5"
-                  style={{ background: `linear-gradient(135deg, #0a1e8a, #0050e0)` }}>
+                  style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
                   <div className="text-3xl mb-2">🔮</div>
                   <h3 className="font-bold text-white text-sm mb-1">College Predictor</h3>
                   <p className="text-white/60 text-xs mb-3">Check your chances for all NLUs based on your {exam.code} rank.</p>
                   <a href="/college-predictor"
-                    className="block text-center py-2.5 rounded-xl font-bold text-white text-xs"
-                    style={{ background: 'var(--cyan)' }}>
+                    className="block text-center py-2.5 rounded-xl font-bold text-sm"
+                    style={{ background: '#fff', color: '#08BD80' }}>
                     Try Free Predictor
                   </a>
                 </div>

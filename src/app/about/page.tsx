@@ -123,7 +123,7 @@ export default function AboutPage() {
         {/* ── Hero ──────────────────────────────────────── */}
         <section
           className="relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #071560 0%, #0a1e8a 50%, #0038c8 100%)', minHeight: '70vh' }}>
+          style={{ background: 'linear-gradient(135deg, #0D1837 0%, #0D1837 60%, #08BD80 100%)', minHeight: '70vh' }}>
           {/* Decorative circles */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-5"
             style={{ background: 'radial-gradient(circle, #06b6d4, transparent)', transform: 'translate(30%, -30%)' }} />
@@ -337,7 +337,7 @@ export default function AboutPage() {
             {/* Desktop timeline */}
             <div className="hidden md:block relative">
               {/* Center line */}
-              <div className="absolute left-1/2 -translate-x-0.5 top-6 bottom-6 w-0.5 bg-gradient-to-b from-cyan-400 to-indigo-400 opacity-30" />
+              <div className="absolute left-1/2 -translate-x-0.5 top-6 bottom-6 w-0.5 bg-gradient-to-b from-green-400 to-green-200 opacity-30" />
 
               <div className="space-y-8">
                 {milestones.map((m, i) => (
@@ -425,7 +425,7 @@ export default function AboutPage() {
                       style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}99)` }}>
                       {t.avatar}
                     </div>
-                    <h3 className="font-black text-gray-900 group-hover:text-cyan-700 transition-colors">{t.name}</h3>
+                    <h3 className="font-black text-gray-900 group-hover:text-green-700 transition-colors">{t.name}</h3>
                     <p className="text-sm font-medium mt-1" style={{ color: t.color }}>{t.role}</p>
                     <div className="mt-3 pt-3 border-t border-gray-50 flex items-center justify-center gap-3 text-xs text-gray-400">
                       <span>🎓 {t.college}</span>
@@ -437,7 +437,7 @@ export default function AboutPage() {
             </div>
             <div className="text-center mt-8">
               <a href="/#faculty"
-                className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded-xl border-2 transition-all hover:bg-cyan-50"
+                className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded-xl border-2 transition-all hover:bg-green-50"
                 style={{ borderColor: 'var(--cyan)', color: 'var(--cyan)' }}>
                 View All 20+ Faculty Members →
               </a>
