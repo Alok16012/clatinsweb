@@ -49,7 +49,7 @@ export default function Navbar() {
         className="sticky top-0 z-50 shadow-sm border-b border-gray-100 hidden md:block"
       >
         {/* Top bar */}
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center group">
             <img src="/logo.png" alt="CLATians" className="h-10 w-auto object-contain" />
@@ -101,6 +101,28 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+
+      {/* ─── Sub Navigation Bar (Unacademy style) ─── */}
+      <div className="hidden md:block bg-white border-b border-gray-100 sticky top-[60px] z-40">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
+            {[
+              { label: 'Get Started', href: '#courses' },
+              { label: 'Courses', href: '/courses/offline' },
+              { label: 'Exams', href: '/exams/clat' },
+              { label: 'Mock Tests', href: '/courses/mock-tests' },
+              { label: 'Faculty', href: '#faculty' },
+              { label: 'Results', href: '/about' },
+              { label: 'About CLAT', href: '/exams/clat' },
+            ].map((item) => (
+              <a key={item.label} href={item.href}
+                className="flex-shrink-0 px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-all whitespace-nowrap">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ─── Mobile Navbar ──────────────────────────────────── */}
       <nav className="sticky top-0 z-50 md:hidden bg-white border-b border-gray-100 shadow-sm">

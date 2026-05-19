@@ -1,0 +1,1843 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Company Logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Company Logo" [ref=e9]
+          - button "NEET UG" [ref=e12] [cursor=pointer]:
+            - text: NEET UG
+            - img [ref=e13]
+        - generic [ref=e15]:
+          - generic [ref=e21]:
+            - img [ref=e22]
+            - textbox "Search courses, test series and educators" [ref=e25]
+          - generic [ref=e26]:
+            - link "call-us" [ref=e27] [cursor=pointer]:
+              - /url: tel:918585858585
+              - generic [ref=e28]:
+                - img [ref=e30]
+                - img "call-us" [ref=e31]
+            - generic [ref=e32]:
+              - paragraph [ref=e33]: Talk to our experts
+              - link "+91-8585858585" [ref=e34] [cursor=pointer]:
+                - /url: tel:918585858585
+                - paragraph [ref=e35]: +91-8585858585
+          - button "avatar" [ref=e37] [cursor=pointer]:
+            - img "avatar" [ref=e40]
+          - generic [ref=e42]:
+            - button "Log in" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Log in
+            - button "Join for free" [ref=e45] [cursor=pointer]:
+              - generic [ref=e46]: Join for free
+      - generic [ref=e52]:
+        - link "Get started" [ref=e53] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e54]: Get started
+        - link "Educators" [ref=e56] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e57]: Educators
+        - link "Batch" [ref=e59] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e60]: Batch
+        - link "Store" [ref=e62] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e63]: Store
+        - link "Subscription plan" [ref=e65] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e66]: Subscription plan
+        - link "Success stories" [ref=e68] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e69]: Success stories
+        - link "About exam" [ref=e71] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e72]: About exam
+    - generic [ref=e76]:
+      - generic [ref=e78]:
+        - button [ref=e79] [cursor=pointer]:
+          - img [ref=e80]
+        - generic [ref=e82]:
+          - link [ref=e85] [cursor=pointer]:
+            - /url: https://unacademy.com/goal/neet-ug/YOTUH/subscribe?plan_type=plus&referral_code=UNLOCK&lps=Free+Home+Page&lpss=Banner
+          - link [ref=e88] [cursor=pointer]:
+            - /url: https://unacademy.com/goal/neet-ug/YOTUH/subscribe?plan_type=plus&referral_code=UNLOCK&lps=Free+Home+Page&lpss=Banner
+          - link [ref=e91] [cursor=pointer]:
+            - /url: https://unacademy.com/goal/neet-ug/YOTUH/subscribe?plan_type=plus&referral_code=UNLOCK&lps=Free+Home+Page&lpss=Banner
+          - link [ref=e94] [cursor=pointer]:
+            - /url: https://unacademy.com/goal/neet-ug/YOTUH/subscribe?plan_type=plus&referral_code=UNLOCK&lps=Free+Home+Page&lpss=Banner
+          - link [ref=e97] [cursor=pointer]:
+            - /url: https://unacademy.com/test-series/all-india-mock-test-series-for-neet-2026/4S7U5SGJ?lps=Free+Home+Page&lpss=Banner
+          - link [ref=e100] [cursor=pointer]:
+            - /url: https://unacademy.com/goal/neet-ug/YOTUH/subscribe?plan_type=plus&referral_code=UNLOCK&lps=Free+Home+Page&lpss=Banner
+          - link [ref=e103] [cursor=pointer]:
+            - /url: https://unacademy.com/goal/neet-ug/YOTUH/subscribe?plan_type=plus&referral_code=UNLOCK&lps=Free+Home+Page&lpss=Banner
+        - button [ref=e104] [cursor=pointer]:
+          - img [ref=e105]
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - generic [ref=e117]:
+            - heading "Crack NEET UG with Unacademy" [level=1] [ref=e119]
+            - generic [ref=e120]:
+              - generic [ref=e121]: Over
+              - generic [ref=e122]: 10 crore
+              - generic [ref=e123]: learners trust us for online and offline coaching
+          - generic [ref=e125]:
+            - button "Try learning for free" [ref=e126] [cursor=pointer]:
+              - generic [ref=e127]: Try learning for free
+            - button "View subscription plans" [ref=e128] [cursor=pointer]:
+              - generic [ref=e129]: View subscription plans
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - generic [ref=e133] [cursor=pointer]:
+              - generic [ref=e135]:
+                - img [ref=e136]
+                - generic [ref=e140]:
+                  - heading "Live classes" [level=5] [ref=e141]
+                  - paragraph [ref=e142]: Watch free online coaching classes by our best educators.
+              - img [ref=e143]
+            - generic [ref=e146] [cursor=pointer]:
+              - generic [ref=e148]:
+                - img [ref=e149]
+                - generic [ref=e155]:
+                  - heading "Top educators" [level=5] [ref=e156]
+                  - paragraph [ref=e157]: Learn from some of the best educators in the country.
+              - img [ref=e158]
+            - generic [ref=e161] [cursor=pointer]:
+              - generic [ref=e163]:
+                - img [ref=e164]
+                - generic [ref=e170]:
+                  - heading "Batches" [level=5] [ref=e171]
+                  - paragraph [ref=e172]: Curated batches to simplify the learning journey for your goal.
+              - img [ref=e173]
+            - generic [ref=e176] [cursor=pointer]:
+              - generic [ref=e178]:
+                - img [ref=e179]
+                - generic [ref=e183]:
+                  - heading "Courses" [level=5] [ref=e184]
+                  - paragraph [ref=e185]: Learn every subject in detail from your favourite educator.
+              - img [ref=e186]
+          - generic [ref=e188]:
+            - generic [ref=e190] [cursor=pointer]:
+              - generic [ref=e192]:
+                - img [ref=e193]
+                - generic [ref=e199]:
+                  - heading "Playlist" [level=5] [ref=e200]
+                  - paragraph [ref=e201]: High quality lecture videos for the entire syllabus for all your subjects.
+              - img [ref=e202]
+            - generic [ref=e205] [cursor=pointer]:
+              - generic [ref=e207]:
+                - img [ref=e208]
+                - generic [ref=e212]:
+                  - heading "Practice" [level=5] [ref=e213]
+                  - paragraph [ref=e214]: Strengthen your exam preparation with adaptive practice tests.
+              - img [ref=e215]
+            - generic [ref=e218] [cursor=pointer]:
+              - generic [ref=e220]:
+                - img [ref=e221]
+                - generic [ref=e228]:
+                  - heading "Test series" [level=5] [ref=e229]
+                  - paragraph [ref=e230]: Evaluate and boost your exam preparation with test series.
+              - img [ref=e231]
+            - generic [ref=e234] [cursor=pointer]:
+              - generic [ref=e236]:
+                - img [ref=e237]
+                - generic [ref=e244]:
+                  - heading "Doubts & solutions" [level=5] [ref=e245]
+                  - paragraph [ref=e246]: Get quick and detailed solutions to clarify your doubts.
+              - img [ref=e247]
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - heading "Take a test for free and win up to 50% scholarship" [level=3] [ref=e253]
+          - generic [ref=e254]:
+            - generic [ref=e255]:
+              - img "dst-points" [ref=e256]
+              - paragraph [ref=e258]: Just 15 minutes
+            - generic [ref=e259]:
+              - img "dst-points" [ref=e260]
+              - paragraph [ref=e262]: 15 quick questions
+          - button "Attempt test now" [ref=e265] [cursor=pointer]:
+            - generic [ref=e266]: Attempt test now
+        - generic [ref=e267]:
+          - img "dst-trophy" [ref=e270]
+          - generic [ref=e271]:
+            - heading "Scholarships worth up to 50% subscription price to be won" [level=6] [ref=e276]
+            - heading [level=6]
+      - generic [ref=e279]:
+        - heading "Compete to unlock your rating" [level=3] [ref=e281]
+        - generic [ref=e282]:
+          - img [ref=e286]
+          - paragraph [ref=e402]: 984 learners competing
+        - generic [ref=e403]:
+          - button "Compete now" [ref=e404] [cursor=pointer]:
+            - generic [ref=e405]: Compete now
+          - button "Learn more" [ref=e406] [cursor=pointer]:
+            - generic [ref=e407]: Learn more
+      - generic [ref=e411]:
+        - heading "Watch free online classes" [level=3] [ref=e413]
+        - generic [ref=e414]:
+          - generic [ref=e415]:
+            - img [ref=e416]
+            - paragraph [ref=e419]: Chat live with educators
+          - generic [ref=e420]:
+            - img [ref=e421]
+            - paragraph [ref=e424]: Attempt interactive polls
+          - generic [ref=e425]:
+            - img [ref=e426]
+            - paragraph [ref=e429]: Get your doubts cleared
+        - generic [ref=e430]:
+          - img [ref=e434]
+          - heading "20.7K learners" [level=4] [ref=e551]
+          - paragraph [ref=e553]: watched a class today
+        - separator [ref=e555]
+        - generic [ref=e556]:
+          - generic [ref=e557]:
+            - button [disabled] [ref=e558]:
+              - img [ref=e559]
+            - button [ref=e561] [cursor=pointer]:
+              - img [ref=e562]
+          - generic [ref=e566]:
+            - generic [ref=e569]:
+              - generic [ref=e570] [cursor=pointer]:
+                - button [ref=e571]:
+                  - img [ref=e572]
+                - generic [ref=e575]: Live
+              - generic [ref=e576]:
+                - generic [ref=e577]:
+                  - generic [ref=e578]: Hinglish
+                  - paragraph [ref=e579]: Biology
+                - link "END GAME 2026 ⏳ The Neo-Darwin Series I Biology FST 🏆" [ref=e580] [cursor=pointer]:
+                  - /url: /class/end-game-2026-the-neo-darwin-series-i-biology-fst/2MA7CT08
+                  - heading "END GAME 2026 ⏳ The Neo-Darwin Series I Biology FST 🏆" [level=3] [ref=e582]
+                - link "Pranav Pundarik" [ref=e583] [cursor=pointer]:
+                  - /url: /@Pranav__
+                  - paragraph [ref=e585]: Pranav Pundarik
+                - paragraph [ref=e586]: Ended at 7:15 PM
+                - separator [ref=e587]
+                - paragraph [ref=e588]: 3.6K learners are watching
+            - generic [ref=e591]:
+              - generic [ref=e592] [cursor=pointer]:
+                - button [ref=e593]:
+                  - img [ref=e594]
+                - generic [ref=e597]: Live
+              - generic [ref=e598]:
+                - generic [ref=e599]:
+                  - generic [ref=e600]: Hinglish
+                  - paragraph [ref=e601]: Biology
+                - link "WARRIOR 27 II Cell :- The Unit Of Life [Part 12]" [ref=e602] [cursor=pointer]:
+                  - /url: /class/warrior-27-ii-cell-the-unit-of-life-part-12/6R6T5OJB
+                  - heading "WARRIOR 27 II Cell :- The Unit Of Life [Part 12]" [level=3] [ref=e604]
+                - link "Saumya Dwivedi" [ref=e605] [cursor=pointer]:
+                  - /url: /@SaumyaDwivedi085
+                  - paragraph [ref=e607]: Saumya Dwivedi
+                - paragraph [ref=e608]: Ends at 8:40 PM
+                - separator [ref=e609]
+                - paragraph [ref=e610]: 36 learners are watching
+            - generic [ref=e613]:
+              - button [ref=e615] [cursor=pointer]:
+                - img [ref=e616]
+              - generic [ref=e618]:
+                - generic [ref=e619]:
+                  - generic [ref=e620]: Hinglish
+                  - paragraph [ref=e621]: Biology
+                - link "RE-NEET - CBT 1" [ref=e622] [cursor=pointer]:
+                  - /url: /class/re-neet-cbt-1/LMV8M7WR
+                  - heading "RE-NEET - CBT 1" [level=3] [ref=e624]
+                - link "Seep Pahuja" [ref=e625] [cursor=pointer]:
+                  - /url: /@Seep.Pahuja
+                  - paragraph [ref=e627]: Seep Pahuja
+                - paragraph [ref=e628]: Ended on May 15
+                - separator [ref=e629]
+                - paragraph [ref=e630]: 28.3K learners watched
+            - generic [ref=e633]:
+              - button [ref=e635] [cursor=pointer]:
+                - img [ref=e636]
+              - generic [ref=e638]:
+                - generic [ref=e639]:
+                  - generic [ref=e640]: Hinglish
+                  - paragraph [ref=e641]: Biology
+                - link "END GAME 2026 ⏳ The Neo-Darwin Series I Biology FST 🏆" [ref=e642] [cursor=pointer]:
+                  - /url: /class/end-game-2026-the-neo-darwin-series-i-biology-fst/9RW85JAJ
+                  - heading "END GAME 2026 ⏳ The Neo-Darwin Series I Biology FST 🏆" [level=3] [ref=e644]
+                - link "Pranav Pundarik" [ref=e645] [cursor=pointer]:
+                  - /url: /@Pranav__
+                  - paragraph [ref=e647]: Pranav Pundarik
+                - paragraph [ref=e648]: Ended on May 14
+                - separator [ref=e649]
+                - paragraph [ref=e650]: 12.7K learners watched
+      - generic [ref=e652]:
+        - generic [ref=e653]:
+          - heading "Most engaging NEET UG classes of all time" [level=4] [ref=e655]
+          - generic [ref=e656]:
+            - button "SEE ALL" [ref=e657] [cursor=pointer]:
+              - generic [ref=e658]: SEE ALL
+            - button [disabled] [ref=e659]:
+              - img [ref=e660]
+            - button [ref=e662] [cursor=pointer]:
+              - img [ref=e663]
+        - generic [ref=e667]:
+          - generic [ref=e668]:
+            - 'generic "Mahapractice : Complete Physical Chemistry" [ref=e670] [cursor=pointer]':
+              - generic [ref=e674]:
+                - generic [ref=e676]:
+                  - img [ref=e677]
+                  - text: 7.6K
+                - button [ref=e681]:
+                  - img [ref=e682]
+              - generic [ref=e684]:
+                - generic [ref=e685]:
+                  - generic [ref=e686]: Hindi
+                  - generic [ref=e687]: Chemistry
+                - 'heading "Mahapractice : Complete Physical Chemistry" [level=5] [ref=e688]'
+                - generic "Nitesh Devnani" [ref=e689]:
+                  - link "Nitesh Devnani" [ref=e690]:
+                    - /url: /@niteshdevnani
+            - generic "END GAME 2026 ⏳ The Neo-Darwin Series I Biology FST 🏆" [ref=e692] [cursor=pointer]:
+              - generic [ref=e696]:
+                - generic [ref=e698]:
+                  - img [ref=e699]
+                  - text: 7.5K
+                - button [ref=e703]:
+                  - img [ref=e704]
+              - generic [ref=e706]:
+                - generic [ref=e707]:
+                  - generic [ref=e708]: Hinglish
+                  - generic [ref=e709]: Biology
+                - heading "END GAME 2026 ⏳ The Neo-Darwin Series I Biology FST 🏆" [level=5] [ref=e710]
+                - generic "Pranav Pundarik" [ref=e711]:
+                  - link "Pranav Pundarik" [ref=e712]:
+                    - /url: /@Pranav__
+            - generic "GOC Practice - ReNEET" [ref=e714] [cursor=pointer]:
+              - generic [ref=e718]:
+                - generic [ref=e720]:
+                  - img [ref=e721]
+                  - text: 6.8K
+                - button [ref=e725]:
+                  - img [ref=e726]
+              - generic [ref=e728]:
+                - generic [ref=e729]:
+                  - generic [ref=e730]: Hinglish
+                  - generic [ref=e731]: Chemistry
+                - heading "GOC Practice - ReNEET" [level=5] [ref=e732]
+                - generic "Akansha Karnwal" [ref=e733]:
+                  - link "Akansha Karnwal" [ref=e734]:
+                    - /url: /@BeProton
+            - 'generic "Revision ka Tandav: Complete Magnetic Physics A" [ref=e736] [cursor=pointer]':
+              - generic [ref=e740]:
+                - generic [ref=e742]:
+                  - img [ref=e743]
+                  - text: 6.3K
+                - button [ref=e747]:
+                  - img [ref=e748]
+              - generic [ref=e750]:
+                - generic [ref=e751]:
+                  - generic [ref=e752]: English
+                  - generic [ref=e753]: Physics
+                - 'heading "Revision ka Tandav: Complete Magnetic Physics A" [level=5] [ref=e754]'
+                - generic "Tamanna Chaudhary" [ref=e755]:
+                  - link "Tamanna Chaudhary" [ref=e756]:
+                    - /url: /@tamanna.chaudhary
+          - generic [ref=e757]:
+            - generic "Ranker Series on Complete IOC for NEET 2026 - Mock Test 26" [ref=e759] [cursor=pointer]:
+              - generic [ref=e763]:
+                - generic [ref=e765]:
+                  - img [ref=e766]
+                  - text: "610"
+                - button [ref=e770]:
+                  - img [ref=e771]
+              - generic [ref=e773]:
+                - generic [ref=e774]:
+                  - generic [ref=e775]: Hindi
+                  - generic [ref=e776]: Chemistry
+                - heading "Ranker Series on Complete IOC for NEET 2026 - Mock Test 26" [level=5] [ref=e777]
+                - generic "Ramesh Sharda" [ref=e778]:
+                  - link "Ramesh Sharda" [ref=e779]:
+                    - /url: /@rameshsharda20-8673
+            - 'generic "NEET-UG Final Countdown: Most Expected & PYQ [FULL SYLLABUS]" [ref=e781] [cursor=pointer]':
+              - generic [ref=e785]:
+                - generic [ref=e787]:
+                  - img [ref=e788]
+                  - text: "449"
+                - button [ref=e792]:
+                  - img [ref=e793]
+              - generic [ref=e795]:
+                - generic [ref=e796]:
+                  - generic [ref=e797]: Hinglish
+                  - generic [ref=e798]: Biology
+                - 'heading "NEET-UG Final Countdown: Most Expected & PYQ [FULL SYLLABUS]" [level=5] [ref=e799]'
+                - generic "Dr Amit Gupta" [ref=e800]:
+                  - link "Dr Amit Gupta" [ref=e801]:
+                    - /url: /@AGsir
+            - generic "Most Important Questions NEET Biology" [ref=e803] [cursor=pointer]:
+              - generic [ref=e807]:
+                - generic [ref=e809]:
+                  - img [ref=e810]
+                  - text: "81"
+                - button [ref=e814]:
+                  - img [ref=e815]
+              - generic [ref=e817]:
+                - generic [ref=e818]:
+                  - generic [ref=e819]: Hinglish
+                  - generic [ref=e820]: Biology
+                - heading "Most Important Questions NEET Biology" [level=5] [ref=e821]
+                - generic "Anurag Tiwari" [ref=e822]:
+                  - link "Anurag Tiwari" [ref=e823]:
+                    - /url: /@ATSir
+      - generic [ref=e824]:
+        - heading "Classes by NEET UG subjects" [level=4] [ref=e826]
+        - generic [ref=e827]:
+          - generic "Chemistry" [ref=e829] [cursor=pointer]:
+            - img [ref=e830]
+            - generic "Chemistry" [ref=e905]
+          - generic "Physics" [ref=e907] [cursor=pointer]:
+            - img [ref=e908]
+            - generic "Physics" [ref=e983]
+          - generic "Biology" [ref=e985] [cursor=pointer]:
+            - img [ref=e986]
+            - generic "Biology" [ref=e1061]
+          - generic "Crash Courses" [ref=e1063] [cursor=pointer]:
+            - img [ref=e1064]
+            - generic "Crash Courses" [ref=e1139]
+        - generic [ref=e1140]:
+          - generic "RENEET chemistry crash course series" [ref=e1141] [cursor=pointer]:
+            - button [ref=e1147]:
+              - img [ref=e1148]
+            - generic [ref=e1150]:
+              - generic [ref=e1151]:
+                - generic [ref=e1152]: Hinglish
+                - generic [ref=e1153]: Chemistry
+              - heading "RENEET chemistry crash course series" [level=5] [ref=e1154]
+              - generic "Aayushi Jain" [ref=e1155]:
+                - link "Aayushi Jain" [ref=e1156]:
+                  - /url: /@unacademy-user-FRFXGY4K6LDA
+          - generic "RENEET survival series" [ref=e1157] [cursor=pointer]:
+            - button [ref=e1163]:
+              - img [ref=e1164]
+            - generic [ref=e1166]:
+              - generic [ref=e1167]:
+                - generic [ref=e1168]: Hinglish
+                - generic [ref=e1169]: Chemistry
+              - heading "RENEET survival series" [level=5] [ref=e1170]
+              - generic "Aayushi Jain" [ref=e1171]:
+                - link "Aayushi Jain" [ref=e1172]:
+                  - /url: /@unacademy-user-FRFXGY4K6LDA
+          - generic "Mole Concept & Concentration Terms & Atomic Structure" [ref=e1173] [cursor=pointer]:
+            - button [ref=e1179]:
+              - img [ref=e1180]
+            - generic [ref=e1182]:
+              - generic [ref=e1183]:
+                - generic [ref=e1184]: Hinglish
+                - generic [ref=e1185]: Chemistry
+              - heading "Mole Concept & Concentration Terms & Atomic Structure" [level=5] [ref=e1186]
+              - generic "Shah Bhavik Gunvantlal" [ref=e1187]:
+                - link "Shah Bhavik Gunvantlal" [ref=e1188]:
+                  - /url: /@unacademy-user-805KSB40LMY3
+          - 'generic "NCERT Line-by-Line: Solutions | Complete Theory Session" [ref=e1189] [cursor=pointer]':
+            - button [ref=e1195]:
+              - img [ref=e1196]
+            - generic [ref=e1198]:
+              - generic [ref=e1199]:
+                - generic [ref=e1200]: Hinglish
+                - generic [ref=e1201]: Chemistry
+              - 'heading "NCERT Line-by-Line: Solutions | Complete Theory Session" [level=5] [ref=e1202]'
+              - generic "Ankita Sharma" [ref=e1203]:
+                - link "Ankita Sharma" [ref=e1204]:
+                  - /url: /@ankusharma9718-4643
+          - generic "Ranker Series on P Block - Class XII For RE NEET - UG 2026" [ref=e1205] [cursor=pointer]:
+            - button [ref=e1211]:
+              - img [ref=e1212]
+            - generic [ref=e1214]:
+              - generic [ref=e1215]:
+                - generic [ref=e1216]: Hindi
+                - generic [ref=e1217]: Chemistry
+              - heading "Ranker Series on P Block - Class XII For RE NEET - UG 2026" [level=5] [ref=e1218]
+              - generic "Ramesh Sharda" [ref=e1219]:
+                - link "Ramesh Sharda" [ref=e1220]:
+                  - /url: /@rameshsharda20-8673
+          - generic "Complete Organic Chemistry Topic wise Practice -03 | RE-NEET" [ref=e1221] [cursor=pointer]:
+            - button [ref=e1227]:
+              - img [ref=e1228]
+            - generic [ref=e1230]:
+              - generic [ref=e1231]:
+                - generic [ref=e1232]: Hinglish
+                - generic [ref=e1233]: Chemistry
+              - heading "Complete Organic Chemistry Topic wise Practice -03 | RE-NEET" [level=5] [ref=e1234]
+              - generic "Murtaza Kutty" [ref=e1235]:
+                - link "Murtaza Kutty" [ref=e1236]:
+                  - /url: /@unacademy-user-VJSI732WW7OH
+          - generic "JEE ADVANCED 2026 MCQs of IOC For RE NEET - UG 2026" [ref=e1237] [cursor=pointer]:
+            - button [ref=e1243]:
+              - img [ref=e1244]
+            - generic [ref=e1246]:
+              - generic [ref=e1247]:
+                - generic [ref=e1248]: Hindi
+                - generic [ref=e1249]: Chemistry
+              - heading "JEE ADVANCED 2026 MCQs of IOC For RE NEET - UG 2026" [level=5] [ref=e1250]
+              - generic "Ramesh Sharda" [ref=e1251]:
+                - link "Ramesh Sharda" [ref=e1252]:
+                  - /url: /@rameshsharda20-8673
+          - generic "ACiDophile Series ReNEET 2026 (Nomenclature and Isomerism)" [ref=e1253] [cursor=pointer]:
+            - button [ref=e1259]:
+              - img [ref=e1260]
+            - generic [ref=e1262]:
+              - generic [ref=e1263]:
+                - generic [ref=e1264]: Hinglish
+                - generic [ref=e1265]: Chemistry
+              - heading "ACiDophile Series ReNEET 2026 (Nomenclature and Isomerism)" [level=5] [ref=e1266]
+              - generic "Ajit Chandra Divedi (ACiD Sir)" [ref=e1267]:
+                - link "Ajit Chandra Divedi (ACiD Sir)" [ref=e1268]:
+                  - /url: /@unacademy-user-6FD86UPN1X5U
+        - button "See more in Chemistry" [ref=e1270] [cursor=pointer]:
+          - generic [ref=e1271]: See more in Chemistry
+      - separator [ref=e1272]
+      - generic [ref=e1273]:
+        - heading "India's top educators to learn from" [level=3] [ref=e1275]
+        - generic [ref=e1276]:
+          - generic [ref=e1277]:
+            - img [ref=e1278]
+            - paragraph [ref=e1281]: Proven history of delivering results
+          - generic [ref=e1282]:
+            - img [ref=e1283]
+            - paragraph [ref=e1286]: Mentored past rankers
+          - generic [ref=e1287]:
+            - img [ref=e1288]
+            - paragraph [ref=e1291]: Unique style of teaching
+        - generic [ref=e1292]:
+          - link "icon class MASTER Akansha Karnwal AKansha Karnwal is a Top Chemistry Educator . She has Done her Msc( Chemistry) from Hansraj College , DU 132M Watch Mins 121K Followers View Profile" [ref=e1294] [cursor=pointer]:
+            - /url: /@BeProton
+            - generic [ref=e1296]:
+              - generic [ref=e1297]:
+                - img "icon" [ref=e1298]
+                - img "class" [ref=e1300]
+              - generic [ref=e1302]:
+                - img [ref=e1303]
+                - generic [ref=e1307]:
+                  - img [ref=e1308]
+                  - generic [ref=e1319]: MASTER
+            - generic [ref=e1320]:
+              - generic [ref=e1321]:
+                - generic [ref=e1322]:
+                  - generic [ref=e1323]: Akansha Karnwal
+                  - generic [ref=e1324]: AKansha Karnwal is a Top Chemistry Educator . She has Done her Msc( Chemistry) from Hansraj College , DU
+                - generic [ref=e1325]:
+                  - generic [ref=e1326]:
+                    - generic [ref=e1327]: 132M
+                    - generic [ref=e1328]: Watch Mins
+                  - generic [ref=e1329]:
+                    - generic [ref=e1330]: 121K
+                    - generic [ref=e1331]: Followers
+              - link "View Profile" [ref=e1333]:
+                - /url: /@BeProton
+                - generic [ref=e1334]: View Profile
+                - img [ref=e1335]
+          - link "icon class MASTER Prateek Jain 0% Tricks, 100% Concepts I make People fall in Love with Physics & The Physicist. Produced AIR 10, AIR 44 etc in NEET & JEE in recent years 569M Watch Mins 183K Followers View Profile" [ref=e1338] [cursor=pointer]:
+            - /url: /@physicsbyprateekjain
+            - generic [ref=e1340]:
+              - generic [ref=e1341]:
+                - img "icon" [ref=e1342]
+                - img "class" [ref=e1344]
+              - generic [ref=e1346]:
+                - img [ref=e1347]
+                - generic [ref=e1351]:
+                  - img [ref=e1352]
+                  - generic [ref=e1363]: MASTER
+            - generic [ref=e1364]:
+              - generic [ref=e1365]:
+                - generic [ref=e1366]:
+                  - generic [ref=e1367]: Prateek Jain
+                  - generic [ref=e1368]: 0% Tricks, 100% Concepts I make People fall in Love with Physics & The Physicist. Produced AIR 10, AIR 44 etc in NEET & JEE in recent years
+                - generic [ref=e1369]:
+                  - generic [ref=e1370]:
+                    - generic [ref=e1371]: 569M
+                    - generic [ref=e1372]: Watch Mins
+                  - generic [ref=e1373]:
+                    - generic [ref=e1374]: 183K
+                    - generic [ref=e1375]: Followers
+              - link "View Profile" [ref=e1377]:
+                - /url: /@physicsbyprateekjain
+                - generic [ref=e1378]: View Profile
+                - img [ref=e1379]
+          - link "icon class MASTER Seep Pahuja 314M Watch Mins 287K Followers View Profile" [ref=e1382] [cursor=pointer]:
+            - /url: /@Seep.Pahuja
+            - generic [ref=e1384]:
+              - generic [ref=e1385]:
+                - img "icon" [ref=e1386]
+                - img "class" [ref=e1388]
+              - generic [ref=e1390]:
+                - img [ref=e1391]
+                - generic [ref=e1395]:
+                  - img [ref=e1396]
+                  - generic [ref=e1407]: MASTER
+            - generic [ref=e1408]:
+              - generic [ref=e1409]:
+                - generic [ref=e1411]: Seep Pahuja
+                - generic [ref=e1412]:
+                  - generic [ref=e1413]:
+                    - generic [ref=e1414]: 314M
+                    - generic [ref=e1415]: Watch Mins
+                  - generic [ref=e1416]:
+                    - generic [ref=e1417]: 287K
+                    - generic [ref=e1418]: Followers
+              - link "View Profile" [ref=e1420]:
+                - /url: /@Seep.Pahuja
+                - generic [ref=e1421]: View Profile
+                - img [ref=e1422]
+          - link "icon class MASTER Anupam Upadhayay 108M Watch Mins 26K Followers View Profile" [ref=e1425] [cursor=pointer]:
+            - /url: /@AnupamUpadhayay
+            - generic [ref=e1427]:
+              - generic [ref=e1428]:
+                - img "icon" [ref=e1429]
+                - img "class" [ref=e1431]
+              - generic [ref=e1433]:
+                - img [ref=e1434]
+                - generic [ref=e1438]:
+                  - img [ref=e1439]
+                  - generic [ref=e1450]: MASTER
+            - generic [ref=e1451]:
+              - generic [ref=e1452]:
+                - generic [ref=e1454]: Anupam Upadhayay
+                - generic [ref=e1455]:
+                  - generic [ref=e1456]:
+                    - generic [ref=e1457]: 108M
+                    - generic [ref=e1458]: Watch Mins
+                  - generic [ref=e1459]:
+                    - generic [ref=e1460]: 26K
+                    - generic [ref=e1461]: Followers
+              - link "View Profile" [ref=e1463]:
+                - /url: /@AnupamUpadhayay
+                - generic [ref=e1464]: View Profile
+                - img [ref=e1465]
+        - button "View all educators" [ref=e1468] [cursor=pointer]:
+          - generic [ref=e1469]: View all educators
+      - generic [ref=e1470]:
+        - generic [ref=e1471]:
+          - heading "Refer friends to win Amazon vouchers and Plus Subscription" [level=3] [ref=e1472]
+          - heading "For every successful referral win up to ₹2,500. Also, get 1 month plus subscription once" [level=5] [ref=e1473]
+          - button "Refer a friend" [ref=e1474] [cursor=pointer]
+        - img "referral" [ref=e1477]
+      - generic [ref=e1478]:
+        - generic [ref=e1480]:
+          - heading "Get subscription to start your preparation" [level=2] [ref=e1482]
+          - button "View subscription plans" [ref=e1483] [cursor=pointer]:
+            - generic [ref=e1484]: View subscription plans
+        - separator [ref=e1485]
+        - generic [ref=e1486]:
+          - generic [ref=e1487]:
+            - heading "Crack NEET UG with our full-syllabus batches" [level=4] [ref=e1488]
+            - generic [ref=e1489]:
+              - generic [ref=e1490]:
+                - img [ref=e1491]
+                - paragraph [ref=e1494]: Best for full syllabus preparation
+              - generic [ref=e1495]:
+                - img [ref=e1496]
+                - paragraph [ref=e1499]: Live & recorded online classes
+              - generic [ref=e1500]:
+                - img [ref=e1501]
+                - paragraph [ref=e1504]: Curated by best educators
+          - generic [ref=e1505]:
+            - generic [ref=e1506]:
+              - heading "Recommended batches for you" [level=4] [ref=e1508]
+              - generic [ref=e1509]:
+                - button "SEE ALL" [ref=e1510] [cursor=pointer]:
+                  - generic [ref=e1511]: SEE ALL
+                - button [disabled] [ref=e1512]:
+                  - img [ref=e1513]
+                - button [ref=e1515] [cursor=pointer]:
+                  - img [ref=e1516]
+            - generic [ref=e1520]:
+              - generic [ref=e1521]:
+                - generic [ref=e1523] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1528]
+                  - generic [ref=e1529]:
+                    - generic [ref=e1531]:
+                      - generic [ref=e1532]: Hinglish
+                      - generic [ref=e1533]: Full Syllabus
+                    - heading "Phoenix 2.0 Batch for NEET UG 2027 by Team Warriors" [level=5] [ref=e1535]
+                    - generic [ref=e1536]:
+                      - img [ref=e1537]
+                      - paragraph [ref=e1539]: Starts tomorrow · 20 May 2026
+                    - generic [ref=e1540]:
+                      - img [ref=e1541]
+                      - paragraph [ref=e1544]: Morning & evening classes
+                    - generic [ref=e1545]:
+                      - img [ref=e1546]
+                      - paragraph [ref=e1549]: Pranav Pundarik, Dr Amit Gupta, Ramesh Sharda and 4 more
+                - generic [ref=e1551] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1556]
+                  - generic [ref=e1557]:
+                    - generic [ref=e1559]:
+                      - generic [ref=e1560]: Hinglish
+                      - generic [ref=e1561]: Full Syllabus
+                    - heading "Phoenix 2.0 Batch for NEET UG 2027 by Team Legends" [level=5] [ref=e1563]
+                    - generic [ref=e1564]:
+                      - img [ref=e1565]
+                      - paragraph [ref=e1567]: Starts tomorrow · 20 May 2026
+                    - generic [ref=e1568]:
+                      - img [ref=e1569]
+                      - paragraph [ref=e1572]: Morning & evening classes
+                    - generic [ref=e1573]:
+                      - img [ref=e1574]
+                      - paragraph [ref=e1577]: Prateek Jain, Seep Pahuja, Ajay Mishra (Akm) and 3 more
+                - generic [ref=e1579] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1584]
+                  - generic [ref=e1585]:
+                    - generic [ref=e1587]:
+                      - generic [ref=e1588]: Hinglish
+                      - generic [ref=e1589]: Full Syllabus
+                    - heading "Phoenix 2.0 Batch for NEET UG 2027 by Team GNT" [level=5] [ref=e1591]
+                    - generic [ref=e1592]:
+                      - img [ref=e1593]
+                      - paragraph [ref=e1595]: Starts on 20 Jun 2026
+                    - generic [ref=e1596]:
+                      - img [ref=e1597]
+                      - paragraph [ref=e1600]: Morning & evening classes
+                    - generic [ref=e1601]:
+                      - img [ref=e1602]
+                      - paragraph [ref=e1605]: Tamanna Chaudhary, Nitesh Devnani, Garima Goel and 1 more
+                - generic [ref=e1607] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1612]
+                  - generic [ref=e1613]:
+                    - generic [ref=e1615]:
+                      - generic [ref=e1616]: English
+                      - generic [ref=e1617]: Full Syllabus
+                    - heading "Phoenix 2.0 Batch for NEET UG 2027 by Team Avengers" [level=5] [ref=e1619]
+                    - generic [ref=e1620]:
+                      - img [ref=e1621]
+                      - paragraph [ref=e1623]: Starts on 30 Jun 2026
+                    - generic [ref=e1624]:
+                      - img [ref=e1625]
+                      - paragraph [ref=e1628]: Morning & evening classes
+                    - generic [ref=e1629]:
+                      - img [ref=e1630]
+                      - paragraph [ref=e1633]: Tina chopra, Kar Khursheed Aalam, Wassim Ahmad Bhat and 2 more
+              - generic [ref=e1634]:
+                - generic [ref=e1636] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1641]
+                  - generic [ref=e1642]:
+                    - generic [ref=e1644]:
+                      - generic [ref=e1645]: Urdu
+                      - generic [ref=e1646]: Full Syllabus
+                    - heading "Phoenix 2.0 Batch for NEET UG 2027 by Team Avengers J & K" [level=5] [ref=e1648]
+                    - generic [ref=e1649]:
+                      - img [ref=e1650]
+                      - paragraph [ref=e1652]: Starts on 30 Jun 2026
+                    - generic [ref=e1653]:
+                      - img [ref=e1654]
+                      - paragraph [ref=e1657]: Morning & evening classes
+                    - generic [ref=e1658]:
+                      - img [ref=e1659]
+                      - paragraph [ref=e1662]: Kar Khursheed Aalam, Asrar Rasheed Wani, Wassim Ahmad Bhat and 3 more
+                - generic [ref=e1664] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1669]
+                  - generic [ref=e1670]:
+                    - generic [ref=e1672]:
+                      - generic [ref=e1673]: Hinglish
+                      - generic [ref=e1674]: Full Syllabus
+                    - heading "Nexus 2.0 Batch for NEET UG 2027 by Team Titans" [level=5] [ref=e1676]
+                    - generic [ref=e1677]:
+                      - img [ref=e1678]
+                      - paragraph [ref=e1680]: Started on 1 May 2026
+                    - generic [ref=e1681]:
+                      - img [ref=e1682]
+                      - paragraph [ref=e1684]: Evening classes
+                    - generic [ref=e1685]:
+                      - img [ref=e1686]
+                      - paragraph [ref=e1689]: Dr S K Singh, Seep Pahuja, Anupam Upadhayay and 4 more
+                - generic [ref=e1691] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1696]
+                  - generic [ref=e1697]:
+                    - generic [ref=e1699]:
+                      - generic [ref=e1700]: Hinglish
+                      - generic [ref=e1701]: Full Syllabus
+                    - heading "Nimbus Top Ranker Pro Batch for NEET UG 2028" [level=5] [ref=e1703]
+                    - generic [ref=e1704]:
+                      - img [ref=e1705]
+                      - paragraph [ref=e1707]: Started on 30 Apr 2026
+                    - generic [ref=e1708]:
+                      - img [ref=e1709]
+                      - paragraph [ref=e1711]: Afternoon classes
+                    - generic [ref=e1712]:
+                      - img [ref=e1713]
+                      - paragraph [ref=e1716]: Pranav Pundarik, Ramesh Sharda, Seep Pahuja and 3 more
+                - generic [ref=e1718] [cursor=pointer]:
+                  - img "Thumbnail" [ref=e1723]
+                  - generic [ref=e1724]:
+                    - generic [ref=e1726]:
+                      - generic [ref=e1727]: Hinglish
+                      - generic [ref=e1728]: Full Syllabus
+                    - heading "Nimbus Pro Batch for NEET UG 2028 by Team Super Six" [level=5] [ref=e1730]
+                    - generic [ref=e1731]:
+                      - img [ref=e1732]
+                      - paragraph [ref=e1734]: Started on 30 Apr 2026
+                    - generic [ref=e1735]:
+                      - img [ref=e1736]
+                      - paragraph [ref=e1738]: Afternoon classes
+                    - generic [ref=e1739]:
+                      - img [ref=e1740]
+                      - paragraph [ref=e1743]: Pranav Pundarik, Prateek Jain, Dr Amit Gupta and 4 more
+        - separator [ref=e1744]
+        - generic [ref=e1745]:
+          - heading "Explore subject-wise courses" [level=3] [ref=e1747]
+          - generic [ref=e1748]:
+            - generic [ref=e1749]:
+              - img [ref=e1750]
+              - paragraph [ref=e1753]: Best for NEET UG online coaching
+            - generic [ref=e1754]:
+              - img [ref=e1755]
+              - paragraph [ref=e1758]: Learn a subject from your favourite educator
+          - generic [ref=e1759]:
+            - generic [ref=e1760]:
+              - heading "Upcoming courses" [level=4] [ref=e1762]
+              - generic [ref=e1763]:
+                - button "SEE ALL" [ref=e1764] [cursor=pointer]:
+                  - generic [ref=e1765]: SEE ALL
+                - button [disabled] [ref=e1766]:
+                  - img [ref=e1767]
+                - button [ref=e1769] [cursor=pointer]:
+                  - img [ref=e1770]
+            - generic [ref=e1774]:
+              - generic [ref=e1775]:
+                - generic "Bridge Course on Biology 2027" [ref=e1777] [cursor=pointer]:
+                  - generic [ref=e1780]:
+                    - generic "infosection":
+                      - generic "infocontainer":
+                        - generic "left"
+                    - generic:
+                      - generic "right"
+                  - generic [ref=e1782]:
+                    - generic [ref=e1783]:
+                      - generic [ref=e1784]: Hinglish
+                      - generic [ref=e1785]: Biology
+                    - heading "Bridge Course on Biology 2027" [level=5] [ref=e1786]
+                    - generic "Pranav Pundarik" [ref=e1787]:
+                      - link "Pranav Pundarik" [ref=e1788]:
+                        - /url: /@Pranav__
+                    - generic "Starts on 20th May" [ref=e1789]
+                - generic "Details Course Of Physics" [ref=e1791] [cursor=pointer]:
+                  - generic [ref=e1794]:
+                    - generic "infosection":
+                      - generic "infocontainer":
+                        - generic "left"
+                    - generic:
+                      - generic "right"
+                  - generic [ref=e1796]:
+                    - generic [ref=e1797]:
+                      - generic [ref=e1798]: Hinglish
+                      - generic [ref=e1799]: Physics
+                    - heading "Details Course Of Physics" [level=5] [ref=e1800]
+                    - generic "Anupam Upadhayay" [ref=e1801]:
+                      - link "Anupam Upadhayay" [ref=e1802]:
+                        - /url: /@AnupamUpadhayay
+                    - generic "Starts on 20th May" [ref=e1803]
+                - generic "Detailed Course on Cell – NEET UG 2027" [ref=e1805] [cursor=pointer]:
+                  - generic [ref=e1808]:
+                    - generic "infosection":
+                      - generic "infocontainer":
+                        - generic "left"
+                    - generic:
+                      - generic "right"
+                  - generic [ref=e1810]:
+                    - generic [ref=e1811]:
+                      - generic [ref=e1812]: Hinglish
+                      - generic [ref=e1813]: Biology
+                    - heading "Detailed Course on Cell – NEET UG 2027" [level=5] [ref=e1814]
+                    - generic "Seep Pahuja" [ref=e1815]:
+                      - link "Seep Pahuja" [ref=e1816]:
+                        - /url: /@Seep.Pahuja
+                    - generic "Starts on 1st Jun" [ref=e1817]
+                - generic "Orientation Course of Physics" [ref=e1819] [cursor=pointer]:
+                  - generic [ref=e1822]:
+                    - generic "infosection":
+                      - generic "infocontainer":
+                        - generic "left"
+                    - generic:
+                      - generic "right"
+                  - generic [ref=e1824]:
+                    - generic [ref=e1825]:
+                      - generic [ref=e1826]: Hinglish
+                      - generic [ref=e1827]: Physics
+                    - heading "Orientation Course of Physics" [level=5] [ref=e1828]
+                    - generic "Prateek Jain" [ref=e1829]:
+                      - link "Prateek Jain" [ref=e1830]:
+                        - /url: /@physicsbyprateekjain
+                    - generic "Starts on 20th May" [ref=e1831]
+              - generic [ref=e1832]:
+                - generic "Detail Course on Basics Concepts of Chemistry" [ref=e1834] [cursor=pointer]:
+                  - generic [ref=e1837]:
+                    - generic "infosection":
+                      - generic "infocontainer":
+                        - generic "left"
+                    - generic:
+                      - generic "right"
+                  - generic [ref=e1839]:
+                    - generic [ref=e1840]:
+                      - generic [ref=e1841]: Hinglish
+                      - generic [ref=e1842]: Chemistry
+                    - heading "Detail Course on Basics Concepts of Chemistry" [level=5] [ref=e1843]
+                    - generic "Akansha Karnwal" [ref=e1844]:
+                      - link "Akansha Karnwal" [ref=e1845]:
+                        - /url: /@BeProton
+                    - generic "Starts on 21st May" [ref=e1846]
+                - generic "Details Course Of Organic Chemistry" [ref=e1848] [cursor=pointer]:
+                  - generic [ref=e1851]:
+                    - generic "infosection":
+                      - generic "infocontainer":
+                        - generic "left"
+                    - generic:
+                      - generic "right"
+                  - generic [ref=e1853]:
+                    - generic [ref=e1854]:
+                      - generic [ref=e1855]: Hinglish
+                      - generic [ref=e1856]: Chemistry
+                    - heading "Details Course Of Organic Chemistry" [level=5] [ref=e1857]
+                    - generic "Ajit Chandra Divedi (ACiD Sir)" [ref=e1858]:
+                      - link "Ajit Chandra Divedi (ACiD Sir)" [ref=e1859]:
+                        - /url: /@unacademy-user-6FD86UPN1X5U
+                    - generic "Starts on 24th May" [ref=e1860]
+      - generic [ref=e1862]:
+        - generic [ref=e1864]:
+          - img [ref=e1866]
+          - img "all-about-exam" [ref=e1867]
+        - heading "All about NEET UG" [level=3] [ref=e1868]
+        - paragraph [ref=e1869]: Start your NEET UG preparation with Unacademy, India’s leading online learning platform.
+        - generic [ref=e1870]:
+          - link "What is NEET?" [ref=e1872] [cursor=pointer]:
+            - /url: /
+            - heading "What is NEET?" [level=6] [ref=e1874]
+            - img [ref=e1875]
+          - link "NEET Eligibility Criteria" [ref=e1878] [cursor=pointer]:
+            - /url: /
+            - heading "NEET Eligibility Criteria" [level=6] [ref=e1880]
+            - img [ref=e1881]
+          - link "NEET Syllabus and Study Plan" [ref=e1884] [cursor=pointer]:
+            - /url: /
+            - heading "NEET Syllabus and Study Plan" [level=6] [ref=e1886]
+            - img [ref=e1887]
+          - link "Frequently Asked Questions" [ref=e1890] [cursor=pointer]:
+            - /url: /
+            - heading "Frequently Asked Questions" [level=6] [ref=e1892]
+            - img [ref=e1893]
+        - generic [ref=e1895]:
+          - img [ref=e1897] [cursor=pointer]
+          - generic [ref=e1899]:
+            - generic [ref=e1900]:
+              - heading "What is NEET?" [level=2] [ref=e1901]
+              - paragraph [ref=e1902]: National Eligibility cum Entrance Test (NEET) is administered by the National Testing Agency (NTA) for admission to MBBS, BDS, BSMS, BHMS and BUMS courses offered by both government and private institutions in India. NEET is one of India’s most important medical entrance exams for UG admissions. The offline examination is conducted in 11 languages, including English and Hindi. Those who wish to apply for NEET need to register on NTA’s official website to access the application form.
+              - paragraph [ref=e1903]:
+                - strong [ref=e1904]:
+                  - text: "Check here:"
+                  - link "NEET UG Rank Predictor" [ref=e1905] [cursor=pointer]:
+                    - /url: https://unadmin.in/neet-rank-predictor.php
+            - generic [ref=e1906]:
+              - heading "NEET Eligibility Criteria" [level=2] [ref=e1907]
+              - paragraph [ref=e1908]: "NTA releases NEET admission guidelines for aspiring medical candidates. The NTA decides NEET eligibility criteria in accordance with the Indian Medical Council Act of 1956 and the Dentists Act of 1948. To appear for NEET, one must meet the criteria mentioned in the table below:"
+              - table [ref=e1909]:
+                - rowgroup [ref=e1910]:
+                  - row "Required Criteria Details" [ref=e1911]:
+                    - columnheader "Required Criteria" [ref=e1912]
+                    - columnheader "Details" [ref=e1913]
+                - rowgroup [ref=e1914]:
+                  - row "Age limit • The minimum age limit is 17 years old as of 31 Dec of the exam year. No upper age limit." [ref=e1915]:
+                    - cell "Age limit" [ref=e1916]
+                    - cell "• The minimum age limit is 17 years old as of 31 Dec of the exam year. No upper age limit." [ref=e1917]:
+                      - list [ref=e1918]:
+                        - listitem [ref=e1919]: • The minimum age limit is 17 years old as of 31 Dec of the exam year. No upper age limit.
+                  - row "Qualifying examination • Learners should have passed Class 12 from a recognised board with Biology/Biotechnology, Physics, Chemistry, and English as main subjects" [ref=e1920]:
+                    - cell "Qualifying examination" [ref=e1921]
+                    - cell "• Learners should have passed Class 12 from a recognised board with Biology/Biotechnology, Physics, Chemistry, and English as main subjects" [ref=e1922]:
+                      - list [ref=e1923]:
+                        - listitem [ref=e1924]: • Learners should have passed Class 12 from a recognised board with Biology/Biotechnology, Physics, Chemistry, and English as main subjects
+                  - row "Qualifying marks • For the General category, Learners need to score at least 50% in the qualifying exam • For SC/ST/OBC, Learners need to score at least 40% in the qualifying examination • For the General category applying under PWD Quota, Learners need to score at least 45% in the qualifying examination" [ref=e1925]:
+                    - cell "Qualifying marks" [ref=e1926]
+                    - cell "• For the General category, Learners need to score at least 50% in the qualifying exam • For SC/ST/OBC, Learners need to score at least 40% in the qualifying examination • For the General category applying under PWD Quota, Learners need to score at least 45% in the qualifying examination" [ref=e1927]:
+                      - list [ref=e1928]:
+                        - listitem [ref=e1929]: • For the General category, Learners need to score at least 50% in the qualifying exam
+                        - listitem [ref=e1930]: • For SC/ST/OBC, Learners need to score at least 40% in the qualifying examination
+                        - listitem [ref=e1931]: • For the General category applying under PWD Quota, Learners need to score at least 45% in the qualifying examination
+                  - row "Number of attempts • There is no limit to the number of attempts" [ref=e1932]:
+                    - cell "Number of attempts" [ref=e1933]
+                    - cell "• There is no limit to the number of attempts" [ref=e1934]:
+                      - list [ref=e1935]:
+                        - listitem [ref=e1936]: • There is no limit to the number of attempts
+                  - row "J&K/Ladakh residents • Ineligible to apply for seats in the 15% All India Quota unless they fill a self-declaration form stating that they wish to participate in the counselling and will forgo the home state counselling • Such candidates can only apply for Deemed Universities, AFMC and ESIC seats" [ref=e1937]:
+                    - cell "J&K/Ladakh residents" [ref=e1938]
+                    - cell "• Ineligible to apply for seats in the 15% All India Quota unless they fill a self-declaration form stating that they wish to participate in the counselling and will forgo the home state counselling • Such candidates can only apply for Deemed Universities, AFMC and ESIC seats" [ref=e1939]:
+                      - list [ref=e1940]:
+                        - listitem [ref=e1941]: • Ineligible to apply for seats in the 15% All India Quota unless they fill a self-declaration form stating that they wish to participate in the counselling and will forgo the home state counselling
+                        - listitem [ref=e1942]: • Such candidates can only apply for Deemed Universities, AFMC and ESIC seats
+                  - row "Deemed Universities • 85% seats of DU will be allotted to candidates who have completed Class 10 and 12 from Delhi" [ref=e1943]:
+                    - cell "Deemed Universities" [ref=e1944]
+                    - cell "• 85% seats of DU will be allotted to candidates who have completed Class 10 and 12 from Delhi" [ref=e1945]:
+                      - list [ref=e1946]:
+                        - listitem [ref=e1947]: • 85% seats of DU will be allotted to candidates who have completed Class 10 and 12 from Delhi
+                  - row "State quota seats • Counselling for 85% of the seats in all government colleges of the states/union territories will be conducted by the respective state authorities" [ref=e1948]:
+                    - cell "State quota seats" [ref=e1949]
+                    - cell "• Counselling for 85% of the seats in all government colleges of the states/union territories will be conducted by the respective state authorities" [ref=e1950]:
+                      - list [ref=e1951]:
+                        - listitem [ref=e1952]: • Counselling for 85% of the seats in all government colleges of the states/union territories will be conducted by the respective state authorities
+                  - row "For State/Central/Deemed/ AFMC/ESIC seats • Indian Nationals, Foreign Nationals aspirants, OCIs, PIOs, and NRIs can apply for these seats • Foreign nationals need to confirm their eligibility before applying" [ref=e1953]:
+                    - cell "For State/Central/Deemed/ AFMC/ESIC seats" [ref=e1954]
+                    - cell "• Indian Nationals, Foreign Nationals aspirants, OCIs, PIOs, and NRIs can apply for these seats • Foreign nationals need to confirm their eligibility before applying" [ref=e1955]:
+                      - list [ref=e1956]:
+                        - listitem [ref=e1957]: • Indian Nationals, Foreign Nationals aspirants, OCIs, PIOs, and NRIs can apply for these seats
+                        - listitem [ref=e1958]: • Foreign nationals need to confirm their eligibility before applying
+              - heading "NEET Important Dates" [level=2] [ref=e1959]
+              - table [ref=e1960]:
+                - rowgroup [ref=e1961]:
+                  - row "Process Date" [ref=e1962]:
+                    - columnheader "Process" [ref=e1963]
+                    - columnheader "Date" [ref=e1964]
+                - rowgroup [ref=e1965]:
+                  - row "Application form release date February (Expected)" [ref=e1966]:
+                    - cell "Application form release date" [ref=e1967]
+                    - cell "February (Expected)" [ref=e1968]:
+                      - paragraph [ref=e1969]: February (Expected)
+                  - row "Last date of Application form submission March (Expected)" [ref=e1970]:
+                    - cell "Last date of Application form submission" [ref=e1971]
+                    - cell "March (Expected)" [ref=e1972]:
+                      - paragraph [ref=e1973]: March (Expected)
+                  - row "NEET Correction window March" [ref=e1974]:
+                    - cell "NEET Correction window" [ref=e1975]
+                    - cell "March" [ref=e1976]:
+                      - paragraph [ref=e1977]: March
+                  - row "Admit card release date April" [ref=e1978]:
+                    - cell "Admit card release date" [ref=e1979]
+                    - cell "April" [ref=e1980]:
+                      - paragraph [ref=e1981]: April
+                  - row "NEET exam date May" [ref=e1982]:
+                    - cell "NEET exam date" [ref=e1983]
+                    - cell "May" [ref=e1984]:
+                      - paragraph [ref=e1985]: May
+                  - row "NEET results announcement June" [ref=e1986]:
+                    - cell "NEET results announcement" [ref=e1987]
+                    - cell "June" [ref=e1988]:
+                      - paragraph [ref=e1989]: June
+            - paragraph [ref=e1990]:
+              - text: "Also check:"
+              - link "All India Mock Tests for NEET UG" [ref=e1991] [cursor=pointer]:
+                - /url: https://unacademy.com/scholarship/neetug-aimt-2025
+            - generic [ref=e1992]:
+              - heading "NEET Admit Card" [level=2] [ref=e1993]
+              - paragraph [ref=e1994]: The NEET Admit Card will be released on 1st week of May on the official website of the National Testing Agency (NTA). The students are requested to visit the NTA-NEET website to download the admit card. The admit card will not be emailed or sent by post to the students. They have to reach the exam center along with the admit card or else the candidate will not be allowed to appear for the examination. In case, there is a difficulty in downloading the admit cards, students can reach out to Helpline number or email the concern to the officials at NTA.
+              - heading "NEET Syllabus" [level=2] [ref=e1995]
+              - paragraph [ref=e1996]: The candidates who are appearing in the NEET examination should have a thorough knowledge of the syllabus. For better preparation, the candidates should keep an eye on the syllabus, its topics, weightage, and importance. Try not to leave any topic from the NEET syllabus. NEET syllabus consists of three main subjects - Physics, Chemistry and Biology. The entire syllabus is divided into two parts, i.e., the topics covered in Physics, Chemistry, and Biology in Class 11 and Class 12.
+              - heading "NEET Physics Syllabus" [level=3] [ref=e1997]
+              - paragraph [ref=e1998]: The candidates usually take Physics a bit tough in the exam. So here we have provided NEET physics syllabus for the reference of the students who are appearing for the exam.
+              - table [ref=e2000]:
+                - rowgroup [ref=e2001]:
+                  - row "Class 11 Class 12" [ref=e2002]:
+                    - cell "Class 11" [ref=e2003]:
+                      - paragraph [ref=e2004]:
+                        - strong [ref=e2005]: Class 11
+                    - cell "Class 12" [ref=e2006]:
+                      - paragraph [ref=e2007]:
+                        - strong [ref=e2008]: Class 12
+                  - row "Physical world and measurement Electrostatics" [ref=e2009]:
+                    - cell "Physical world and measurement" [ref=e2010]:
+                      - paragraph [ref=e2011]: Physical world and measurement
+                    - cell "Electrostatics" [ref=e2012]:
+                      - paragraph [ref=e2013]: Electrostatics
+                  - row "Kinematics Current Electricity" [ref=e2014]:
+                    - cell "Kinematics" [ref=e2015]:
+                      - paragraph [ref=e2016]: Kinematics
+                    - cell "Current Electricity" [ref=e2017]:
+                      - paragraph [ref=e2018]: Current Electricity
+                  - row "Laws of Motion Magnetic Effects of Current and Magnetism" [ref=e2019]:
+                    - cell "Laws of Motion" [ref=e2020]:
+                      - paragraph [ref=e2021]: Laws of Motion
+                    - cell "Magnetic Effects of Current and Magnetism" [ref=e2022]:
+                      - paragraph [ref=e2023]: Magnetic Effects of Current and Magnetism
+                  - row "Work, Energy and Power Electromagnetic Induction and Alternating Currents" [ref=e2024]:
+                    - cell "Work, Energy and Power" [ref=e2025]:
+                      - paragraph [ref=e2026]: Work, Energy and Power
+                    - cell "Electromagnetic Induction and Alternating Currents" [ref=e2027]:
+                      - paragraph [ref=e2028]: Electromagnetic Induction and Alternating Currents
+                  - row "Motion of System of Particles and Rigid Body Electromagnetic Waves" [ref=e2029]:
+                    - cell "Motion of System of Particles and Rigid Body" [ref=e2030]:
+                      - paragraph [ref=e2031]: Motion of System of Particles and Rigid Body
+                    - cell "Electromagnetic Waves" [ref=e2032]:
+                      - paragraph [ref=e2033]: Electromagnetic Waves
+                  - row "Gravitation Optics" [ref=e2034]:
+                    - cell "Gravitation" [ref=e2035]:
+                      - paragraph [ref=e2036]: Gravitation
+                    - cell "Optics" [ref=e2037]:
+                      - paragraph [ref=e2038]: Optics
+                  - row "Properties of Bulk Matter Dual Nature of Matter and Radiation" [ref=e2039]:
+                    - cell "Properties of Bulk Matter" [ref=e2040]:
+                      - paragraph [ref=e2041]: Properties of Bulk Matter
+                    - cell "Dual Nature of Matter and Radiation" [ref=e2042]:
+                      - paragraph [ref=e2043]: Dual Nature of Matter and Radiation
+                  - row "Thermodynamics, Oscillations and Waves Atoms and Nuclei" [ref=e2044]:
+                    - cell "Thermodynamics, Oscillations and Waves" [ref=e2045]:
+                      - paragraph [ref=e2046]: Thermodynamics, Oscillations and Waves
+                    - cell "Atoms and Nuclei" [ref=e2047]:
+                      - paragraph [ref=e2048]: Atoms and Nuclei
+                  - row "Behaviour of Perfect Gas and Kinetic Theory Electronic Devices" [ref=e2049]:
+                    - cell "Behaviour of Perfect Gas and Kinetic Theory" [ref=e2050]:
+                      - paragraph [ref=e2051]: Behaviour of Perfect Gas and Kinetic Theory
+                    - cell "Electronic Devices" [ref=e2052]:
+                      - paragraph [ref=e2053]: Electronic Devices
+            - generic [ref=e2054]:
+              - paragraph [ref=e2055]: "Check more:"
+              - list [ref=e2056]:
+                - listitem [ref=e2057]:
+                  - link "NEET Physics Notes" [ref=e2058] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/physics-notes/
+                - listitem [ref=e2059]:
+                  - link "NEET Physics Mind Maps" [ref=e2060] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/mind-maps/physics/
+                - listitem [ref=e2061]:
+                  - link "NEET Preparation Tips" [ref=e2062] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/neet-preparation/
+                - listitem [ref=e2063]:
+                  - link "Time Table for NEET Preparation" [ref=e2064] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/time-table-for-neet-preparation/
+                - listitem [ref=e2065]:
+                  - link "NEET Test Series" [ref=e2066] [cursor=pointer]:
+                    - /url: https://unacademy.com/goal/neet-ug/YOTUH/test-series
+                - listitem [ref=e2067]:
+                  - link "NEET Syllabus" [ref=e2068] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/notification/syllabus/
+                - listitem [ref=e2069]:
+                  - link "NEET Preparation Tips" [ref=e2070] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/neet-preparation-tips/
+              - heading "NEET Chemistry Syllabus" [level=3] [ref=e2071]
+              - paragraph [ref=e2072]: In the NEET exam, the Chemistry section is considered to be the scoring one among all three. Most of the questions are direct and NCERT-based. Usually, NEET chemistry syllabus takes less time to prepare and the questions are easy to understand. Check the below-provided table for the same -
+              - table [ref=e2074]:
+                - rowgroup [ref=e2075]:
+                  - row "Class 11 Class 12" [ref=e2076]:
+                    - cell "Class 11" [ref=e2077]:
+                      - paragraph [ref=e2078]:
+                        - strong [ref=e2079]: Class 11
+                    - cell "Class 12" [ref=e2080]:
+                      - paragraph [ref=e2081]:
+                        - strong [ref=e2082]: Class 12
+                  - row "Some Basic Concepts of Chemistry Solid State" [ref=e2083]:
+                    - cell "Some Basic Concepts of Chemistry" [ref=e2084]:
+                      - paragraph [ref=e2085]: Some Basic Concepts of Chemistry
+                    - cell "Solid State" [ref=e2086]:
+                      - paragraph [ref=e2087]: Solid State
+                  - row "Structure of Atom Solutions" [ref=e2088]:
+                    - cell "Structure of Atom" [ref=e2089]:
+                      - paragraph [ref=e2090]: Structure of Atom
+                    - cell "Solutions" [ref=e2091]:
+                      - paragraph [ref=e2092]: Solutions
+                  - row "Classification of Elements and Periodicity in Properties Electrochemistry" [ref=e2093]:
+                    - cell "Classification of Elements and Periodicity in Properties" [ref=e2094]:
+                      - paragraph [ref=e2095]: Classification of Elements and Periodicity in Properties
+                    - cell "Electrochemistry" [ref=e2096]:
+                      - paragraph [ref=e2097]: Electrochemistry
+                  - row "Chemical Bonding and Molecular Structure Chemical Kinetics" [ref=e2098]:
+                    - cell "Chemical Bonding and Molecular Structure" [ref=e2099]:
+                      - paragraph [ref=e2100]: Chemical Bonding and Molecular Structure
+                    - cell "Chemical Kinetics" [ref=e2101]:
+                      - paragraph [ref=e2102]: Chemical Kinetics
+                  - 'row "States of Matter: Gases and Liquids Surface Chemistry" [ref=e2103]':
+                    - 'cell "States of Matter: Gases and Liquids" [ref=e2104]':
+                      - paragraph [ref=e2105]: "States of Matter: Gases and Liquids"
+                    - cell "Surface Chemistry" [ref=e2106]:
+                      - paragraph [ref=e2107]: Surface Chemistry
+                  - row "Thermodynamics General Principles and Processes of Isolation of Elements" [ref=e2108]:
+                    - cell "Thermodynamics" [ref=e2109]:
+                      - paragraph [ref=e2110]: Thermodynamics
+                    - cell "General Principles and Processes of Isolation of Elements" [ref=e2111]:
+                      - paragraph [ref=e2112]: General Principles and Processes of Isolation of Elements
+                  - row "Equilibrium p-Block Elements" [ref=e2113]:
+                    - cell "Equilibrium" [ref=e2114]:
+                      - paragraph [ref=e2115]: Equilibrium
+                    - cell "p-Block Elements" [ref=e2116]:
+                      - paragraph [ref=e2117]: p-Block Elements
+                  - row "Redox Reactions d and f Block Elements" [ref=e2118]:
+                    - cell "Redox Reactions" [ref=e2119]:
+                      - paragraph [ref=e2120]: Redox Reactions
+                    - cell "d and f Block Elements" [ref=e2121]:
+                      - paragraph [ref=e2122]: d and f Block Elements
+                  - row "Hydrogen Coordination Compounds" [ref=e2123]:
+                    - cell "Hydrogen" [ref=e2124]:
+                      - paragraph [ref=e2125]: Hydrogen
+                    - cell "Coordination Compounds" [ref=e2126]:
+                      - paragraph [ref=e2127]: Coordination Compounds
+                  - row "s-Block Element (Alkali and Alkaline earth metals) Haloalkanes and Haloarenes" [ref=e2128]:
+                    - cell "s-Block Element (Alkali and Alkaline earth metals)" [ref=e2129]:
+                      - paragraph [ref=e2130]: s-Block Element (Alkali and Alkaline earth metals)
+                    - cell "Haloalkanes and Haloarenes" [ref=e2131]:
+                      - paragraph [ref=e2132]: Haloalkanes and Haloarenes
+                  - row "Some p-Block Elements Alcohols, Phenols and Ethers" [ref=e2133]:
+                    - cell "Some p-Block Elements" [ref=e2134]:
+                      - paragraph [ref=e2135]: Some p-Block Elements
+                    - cell "Alcohols, Phenols and Ethers" [ref=e2136]:
+                      - paragraph [ref=e2137]: Alcohols, Phenols and Ethers
+                  - row "Organic Chemistry- Some Basic Principles and Techniques Aldehydes, Ketones and Carboxylic Acids" [ref=e2138]:
+                    - cell "Organic Chemistry- Some Basic Principles and Techniques" [ref=e2139]:
+                      - paragraph [ref=e2140]: Organic Chemistry- Some Basic Principles and Techniques
+                    - cell "Aldehydes, Ketones and Carboxylic Acids" [ref=e2141]:
+                      - paragraph [ref=e2142]: Aldehydes, Ketones and Carboxylic Acids
+                  - row "Hydrocarbons Organic Compounds Containing Nitrogen" [ref=e2143]:
+                    - cell "Hydrocarbons" [ref=e2144]:
+                      - paragraph [ref=e2145]: Hydrocarbons
+                    - cell "Organic Compounds Containing Nitrogen" [ref=e2146]:
+                      - paragraph [ref=e2147]: Organic Compounds Containing Nitrogen
+                  - row "Environmental Chemistry Biomolecules, Polymers and Chemistry in Everyday Life" [ref=e2148]:
+                    - cell "Environmental Chemistry" [ref=e2149]:
+                      - paragraph [ref=e2150]: Environmental Chemistry
+                    - cell "Biomolecules, Polymers and Chemistry in Everyday Life" [ref=e2151]:
+                      - paragraph [ref=e2152]: Biomolecules, Polymers and Chemistry in Everyday Life
+            - generic [ref=e2153]:
+              - paragraph [ref=e2154]: "Check more:"
+              - list [ref=e2155]:
+                - listitem [ref=e2156]:
+                  - link "NEET Chemistry Notes" [ref=e2157] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/chemistry-notes/
+                - listitem [ref=e2158]:
+                  - link "NEET Chemistry Mind Maps" [ref=e2159] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/mind-maps/chemistry/
+                - listitem [ref=e2160]:
+                  - link "NEET Photo Size" [ref=e2161] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/postcard-size-photo-for-neet/
+              - heading "NEET Biology Syllabus" [level=3] [ref=e2162]
+              - paragraph [ref=e2163]: NEET Biology consists of the Zoology and Botany. This is the reason, why the candidates need to cover it because it is one of the vast syllabus for the NEET preparation. The topics covered under NEET Biology Syllabus are as follows -
+              - table [ref=e2165]:
+                - rowgroup [ref=e2166]:
+                  - row "Class 11 Class 12" [ref=e2167]:
+                    - cell "Class 11" [ref=e2168]:
+                      - paragraph [ref=e2169]:
+                        - strong [ref=e2170]: Class 11
+                    - cell "Class 12" [ref=e2171]:
+                      - paragraph [ref=e2172]:
+                        - strong [ref=e2173]: Class 12
+                  - row "Diversity in Living World Reproduction" [ref=e2174]:
+                    - cell "Diversity in Living World" [ref=e2175]:
+                      - paragraph [ref=e2176]: Diversity in Living World
+                    - cell "Reproduction" [ref=e2177]:
+                      - paragraph [ref=e2178]: Reproduction
+                  - row "Structural Organization in Animals and Plants Genetics and Evolution" [ref=e2179]:
+                    - cell "Structural Organization in Animals and Plants" [ref=e2180]:
+                      - paragraph [ref=e2181]: Structural Organization in Animals and Plants
+                    - cell "Genetics and Evolution" [ref=e2182]:
+                      - paragraph [ref=e2183]: Genetics and Evolution
+                  - row "Cell Structure and Function Biology and Human Welfare" [ref=e2184]:
+                    - cell "Cell Structure and Function" [ref=e2185]:
+                      - paragraph [ref=e2186]: Cell Structure and Function
+                    - cell "Biology and Human Welfare" [ref=e2187]:
+                      - paragraph [ref=e2188]: Biology and Human Welfare
+                  - row "Plant Physiology Biotechnology and Its Applications" [ref=e2189]:
+                    - cell "Plant Physiology" [ref=e2190]:
+                      - paragraph [ref=e2191]: Plant Physiology
+                    - cell "Biotechnology and Its Applications" [ref=e2192]:
+                      - paragraph [ref=e2193]: Biotechnology and Its Applications
+                  - row "Human Physiology Ecology and Environment" [ref=e2194]:
+                    - cell "Human Physiology" [ref=e2195]:
+                      - paragraph [ref=e2196]: Human Physiology
+                    - cell "Ecology and Environment" [ref=e2197]:
+                      - paragraph [ref=e2198]: Ecology and Environment
+              - paragraph [ref=e2199]: "Check more:"
+              - list [ref=e2200]:
+                - listitem [ref=e2201]:
+                  - link "Molecular Basis of Inheritance NEET Questions" [ref=e2202] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/molecular-basis-of-inheritance-neet-questions/
+                - listitem [ref=e2203]:
+                  - link "Morphology of Flowering Plants NEET Questions" [ref=e2204] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/morphology-of-flowering-plants-neet-questions/
+                - listitem [ref=e2205]:
+                  - link "Body Fluids and Circulation NEET Questions" [ref=e2206] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/body-fluids-and-circulation-neet-questions/
+                - listitem [ref=e2207]:
+                  - link "Plant Kingdom NEET Questions" [ref=e2208] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/plant-kingdom-neet-questions/
+                - listitem [ref=e2209]:
+                  - link "Human Reproduction NEET Questions" [ref=e2210] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/human-reproduction-neet-questions/
+                - listitem [ref=e2211]:
+                  - link "Digestion and Absorption NEET MCQ" [ref=e2212] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/digestion-and-absorption-neet-mcq/
+                - listitem [ref=e2213]:
+                  - link "Breathing and Exchange of Gases NEET Questions" [ref=e2214] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/breathing-and-exchange-of-gases-neet-questions/
+                - listitem [ref=e2215]:
+                  - link "Living World NEET Questions" [ref=e2216] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/living-world-neet-questions/
+                - listitem [ref=e2217]:
+                  - link "NEET Biology Notes" [ref=e2218] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/biology-notes/
+                - listitem [ref=e2219]:
+                  - link "NEET Biology Mind Maps" [ref=e2220] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/mind-maps/biology/
+                - listitem [ref=e2221]:
+                  - link "NEET Total Marks" [ref=e2222] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/notification/exam-pattern/
+                - listitem [ref=e2223]:
+                  - link "How Many Attempts for NEET?" [ref=e2224] [cursor=pointer]:
+                    - /url: https://unacademy.com/content/neet-ug/how-many-attempts-for-neet/
+              - paragraph [ref=e2225]: A chapter-wise list of the syllabus is created under each subject to help learners identify the important topics and prepare for the examination. Along with NCERT books, Learners can attend Interactive Live Classes on Unacademy for NEET preparation.
+              - heading "NEET exam pattern" [level=2] [ref=e2226]
+              - paragraph [ref=e2227]: NEET exam pattern has been released for all the eligible candidates. According to the latest update for the NEET exam pattern, the duration of the exam will be of 180 minutes from 2:00 PM to 5:00 PM (IST) and will be uniform for all the candidates. The total of 180 questions will be asked in the NEET examination.
+              - table [ref=e2229]:
+                - rowgroup [ref=e2230]:
+                  - row "Particulars Details" [ref=e2231]:
+                    - cell "Particulars" [ref=e2232]:
+                      - paragraph [ref=e2233]:
+                        - strong [ref=e2234]: Particulars
+                    - cell "Details" [ref=e2235]:
+                      - paragraph [ref=e2236]:
+                        - strong [ref=e2237]: Details
+                  - row "NEET Exam Date 1st Sunday of May" [ref=e2238]:
+                    - cell "NEET Exam Date" [ref=e2239]:
+                      - paragraph [ref=e2240]: NEET Exam Date
+                    - cell "1st Sunday of May" [ref=e2241]:
+                      - paragraph [ref=e2242]: 1st Sunday of May
+                  - row "NEET Question Paper Mode Pen and Paper-based. candidates are given an OMR sheet to mark the answers with a black or blue ballpoint pen" [ref=e2243]:
+                    - cell "NEET Question Paper Mode" [ref=e2244]:
+                      - paragraph [ref=e2245]: NEET Question Paper Mode
+                    - cell "Pen and Paper-based. candidates are given an OMR sheet to mark the answers with a black or blue ballpoint pen" [ref=e2246]:
+                      - paragraph [ref=e2247]: Pen and Paper-based. candidates are given an OMR sheet to mark the answers with a black or blue ballpoint pen
+                  - row "NEET exam duration 3 hours" [ref=e2248]:
+                    - cell "NEET exam duration" [ref=e2249]:
+                      - paragraph [ref=e2250]: NEET exam duration
+                    - cell "3 hours" [ref=e2251]:
+                      - paragraph [ref=e2252]: 3 hours
+                  - row "NEET exam language English, Hindi, Assamese, Bengali, Gujarati, Marathi, Tamil, Telugu, Oriya, Malayalam, Kannada, Punjabi and Urdu" [ref=e2253]:
+                    - cell "NEET exam language" [ref=e2254]:
+                      - paragraph [ref=e2255]: NEET exam language
+                    - cell "English, Hindi, Assamese, Bengali, Gujarati, Marathi, Tamil, Telugu, Oriya, Malayalam, Kannada, Punjabi and Urdu" [ref=e2256]:
+                      - paragraph [ref=e2257]: English, Hindi, Assamese, Bengali, Gujarati, Marathi, Tamil, Telugu, Oriya, Malayalam, Kannada, Punjabi and Urdu
+                  - row "Question Paper Type Multiple Choice Questions" [ref=e2258]:
+                    - cell "Question Paper Type" [ref=e2259]:
+                      - paragraph [ref=e2260]: Question Paper Type
+                    - cell "Multiple Choice Questions" [ref=e2261]:
+                      - paragraph [ref=e2262]: Multiple Choice Questions
+                  - row "Total marks in NEET 720 Marks" [ref=e2263]:
+                    - cell "Total marks in NEET" [ref=e2264]:
+                      - paragraph [ref=e2265]: Total marks in NEET
+                    - cell "720 Marks" [ref=e2266]:
+                      - paragraph [ref=e2267]: 720 Marks
+                  - row "NEET Marking Scheme • 4 marks will be awarded for every correct answer • 1 mark will be deducted for each wrong answer • No marks for unanswered questions" [ref=e2268]:
+                    - cell "NEET Marking Scheme" [ref=e2269]:
+                      - paragraph [ref=e2270]: NEET Marking Scheme
+                    - cell "• 4 marks will be awarded for every correct answer • 1 mark will be deducted for each wrong answer • No marks for unanswered questions" [ref=e2271]:
+                      - list [ref=e2272]:
+                        - listitem [ref=e2273]:
+                          - text: •
+                          - paragraph [ref=e2274]: 4 marks will be awarded for every correct answer
+                        - listitem [ref=e2275]:
+                          - text: •
+                          - paragraph [ref=e2276]: 1 mark will be deducted for each wrong answer
+                        - listitem [ref=e2277]:
+                          - text: •
+                          - paragraph [ref=e2278]: No marks for unanswered questions
+              - heading "NEET Previous years' question papers" [level=2] [ref=e2279]
+              - paragraph [ref=e2280]:
+                - text: The candidates who are appearing for the NEET exam should be well-aware of the the question paper pattern and syllabus. Solving NEET Previous Year’s Papers will help the candidates to score well in the exam, because with the help of it, they can get the fair idea about the question level, paper pattern, and syllabus. Here on this page, the candidates can check the NEET Previous Year Papers pdf and download the same. Practicing
+                - link "NEET question papers" [ref=e2281] [cursor=pointer]:
+                  - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/
+                - text: of the last 5-10 years will boost-up the preparation level of the candidates.
+              - strong [ref=e2282]: "Download NEET previous year question papers:"
+            - generic [ref=e2283]:
+              - table [ref=e2285]:
+                - rowgroup [ref=e2286]:
+                  - row "NEET 2022 Question Paper NEET 2021 Question Paper" [ref=e2287]:
+                    - cell "NEET 2022 Question Paper" [ref=e2288]:
+                      - paragraph [ref=e2289]:
+                        - link "NEET 2022 Question Paper" [ref=e2290] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/neet-2022-question-paper/
+                    - cell "NEET 2021 Question Paper" [ref=e2291]:
+                      - paragraph [ref=e2292]:
+                        - link "NEET 2021 Question Paper" [ref=e2293] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-question-paper-2021/
+                  - row "NEET 2020 Question Paper NEET 2014 Question Paper" [ref=e2294]:
+                    - cell "NEET 2020 Question Paper" [ref=e2295]:
+                      - paragraph [ref=e2296]:
+                        - link "NEET 2020 Question Paper" [ref=e2297] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2020-question-paper/
+                    - cell "NEET 2014 Question Paper" [ref=e2298]:
+                      - paragraph [ref=e2299]:
+                        - link "NEET 2014 Question Paper" [ref=e2300] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2014-question-paper/
+                  - row "NEET 2019 Question Paper NEET 2013 Question Paper" [ref=e2301]:
+                    - cell "NEET 2019 Question Paper" [ref=e2302]:
+                      - paragraph [ref=e2303]:
+                        - link "NEET 2019 Question Paper" [ref=e2304] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2019-question-paper/
+                    - cell "NEET 2013 Question Paper" [ref=e2305]:
+                      - paragraph [ref=e2306]:
+                        - link "NEET 2013 Question Paper" [ref=e2307] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2013-question-paper/
+                  - row "NEET 2016 Question Paper NEET 2012 Question Paper" [ref=e2308]:
+                    - cell "NEET 2016 Question Paper" [ref=e2309]:
+                      - paragraph [ref=e2310]:
+                        - link "NEET 2016 Question Paper" [ref=e2311] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2016-question-paper/
+                    - cell "NEET 2012 Question Paper" [ref=e2312]:
+                      - paragraph [ref=e2313]:
+                        - link "NEET 2012 Question Paper" [ref=e2314] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2012-question-paper/
+                  - row "NEET 2015 Question Paper NEET 2011 Question Paper" [ref=e2315]:
+                    - cell "NEET 2015 Question Paper" [ref=e2316]:
+                      - paragraph [ref=e2317]:
+                        - link "NEET 2015 Question Paper" [ref=e2318] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2015-question-paper/
+                    - cell "NEET 2011 Question Paper" [ref=e2319]:
+                      - paragraph [ref=e2320]:
+                        - link "NEET 2011 Question Paper" [ref=e2321] [cursor=pointer]:
+                          - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2011-question-paper/
+              - heading "Benefits of Solving NEET Question Papers" [level=3] [ref=e2322]
+              - list [ref=e2323]:
+                - listitem [ref=e2324]:
+                  - paragraph [ref=e2325]: It will improve your time management skills so that you can solve the paper in a given time interval. Time management is necessary for students if they want to crack the exam with good marks.
+                - listitem [ref=e2326]:
+                  - paragraph [ref=e2327]: Do frequent performance analysis and check the graph of your progress. Make sure you give more time to your weaker areas rather than the stronger ones.
+                - listitem [ref=e2328]:
+                  - paragraph [ref=e2329]: Understand the NEET UG exam pattern thoroughly with the help of NEET papers. These papers will help you to get the proper analysis of the questions asked in the exam.
+              - paragraph [ref=e2330]
+              - heading "Study Plan for NEET" [level=2] [ref=e2331]
+              - paragraph [ref=e2332]: A Learner needs to divide their time according to the weightage of different topics and balance the time table to cover the entire syllabus. Opting for NEET Live Classes on Unacademy is quite helpful. The online learning platform provides the necessary study material, previous years’ solved question papers and mock tests that help learners excel in the examination.
+              - paragraph [ref=e2333]: "Here is a detailed study plan to prepare for NEET:"
+              - paragraph [ref=e2334]:
+                - strong [ref=e2335]: "Check the syllabus:"
+                - text: Go through NEET syllabus and make a list of the important topics based on their difficulty level and weightage. Assign specific time for each subject. It will help you dedicate sufficient time to every topic.
+              - paragraph [ref=e2336]:
+                - strong [ref=e2337]: "Prepare a time table:"
+                - text: Segregate the topics based on their weightage and difficulty level. Focus on achieving small goals. It will boost your confidence and further prepare you to achieve big goals.
+              - paragraph [ref=e2338]:
+                - strong [ref=e2339]: "Set goals:"
+                - text: Set an aim to answer a specific number of questions correctly in each subject. Answer only those questions about which you are 100% sure to avoid negative marks.
+              - paragraph [ref=e2340]:
+                - strong [ref=e2341]: "Join Live Classes:"
+                - text: Apart from self-learning, Live Classes on Unacademy can be of great help in preparing for the exam. Learners must devote 3-4 hours daily to Live Classes to gain in-depth knowledge of the subjects, identify their weak points, and score well in the exam.
+              - paragraph [ref=e2342]:
+                - strong [ref=e2343]: "Notes are important:"
+                - text: Make notes for each topic. It will help you understand the topics better. Also, notes are helpful for last-minute preparation and revision before the exam.
+              - paragraph [ref=e2344]:
+                - strong [ref=e2345]: "Stick to the plan:"
+                - text: Stick to the study plan and track the progress. It helps Learners gauge if the study plan is effective or there’s a need to change at the initial stage to achieve better results.
+              - paragraph [ref=e2346]:
+                - strong [ref=e2347]: "Practise regularly:"
+                - text: Regular practise can enhance a Learner’s chances to clear the exam. Once the syllabus is complete, assess the progress by solving previous year's question papers and mock tests. It will also help increase speed and rational thinking of the Learner.
+              - paragraph [ref=e2348]:
+                - strong [ref=e2349]: "Revision is a must:"
+                - text: Revise the important formulas, questions and notes to gain more knowledge and make sure you are aligned with your goal.
+              - heading "How to select the right guidance?" [level=2] [ref=e2350]
+              - paragraph [ref=e2351]: Right guidance is crucial for the preparation of NEET. The journey starts by getting acquainted with the syllabus and preparing a study plan. Turn to Top Educators for help as they can provide proper guidance to the Learners when preparing for the exams. Unacademy, India’s largest online learning platform offers unlimited access to Live Classes that helps Learners get a better understanding of various concepts of Physics, Chemistry and Biology for NEET preparation.
+              - paragraph [ref=e2352]: "Here are some important factors to consider when selecting Online Classes for NEET preparation:"
+              - paragraph [ref=e2353]:
+                - strong [ref=e2354]: "Check the faculty:"
+                - text: Before enrolling for Live Classes for NEET, it is essential to check whether the faculty is experienced. Unacademy offers unlimited access to Interactive Live Classes conducted by Top Educators along with doubt clearing sessions, mock tests and comprehensive study material.
+              - paragraph [ref=e2355]:
+                - strong [ref=e2356]: "Track the success record:"
+                - text: Check the success rate of the online learning platform you are planning to join. Track the scores of Learners from previous batches. It is a good indicator in judging the success rate and also helps you in making your decision.
+              - heading "Mantras for cracking NEET" [level=2] [ref=e2357]
+              - paragraph [ref=e2358]: "There is a long journey from reading a success story to becoming a success story. With patience, perseverance, and regular practice, one can achieve the goal of scoring high marks in NEET. Learners need to adopt effective strategies to cope with the fear of the exam. Here are a few more tips that can be of tremendous help:"
+              - paragraph [ref=e2359]:
+                - strong [ref=e2360]: "Start early:"
+                - text: Start preparing two years before you appear for the NEET exam. It will give you enough time to study and revise all the important topics.
+              - paragraph [ref=e2361]:
+                - strong [ref=e2362]: "Dedicate time to self-learning:"
+                - text: Apart from school hours and Live Classes, dedicate a reasonable amount of time to self-learning. Regular revision of what is being taught in Live Classes will help you prepare effectively for the exam.
+              - paragraph [ref=e2363]:
+                - strong [ref=e2364]: "Identify your strengths and weaknesses:"
+                - text: It will give you clarity and help you work on weaknesses till they become your strengths. Identify the topics and subjects that are difficult. Allot more time on those topics and focus mainly on them.
+              - paragraph [ref=e2365]:
+                - strong [ref=e2366]: "Choose the right books and reference material:"
+                - text: Apart from NCERT books, solve previous years’ question papers, take mock tests from time to time, and participate in online test series.
+              - paragraph [ref=e2367]:
+                - strong [ref=e2368]: "Make your own strategy:"
+                - text: Make your own strategy for NEET preparation. Analyse what works for you. Identify your strong and weak points. A preparation technique will give you clarity of thought and increase your chances of success.
+              - paragraph [ref=e2369]:
+                - strong [ref=e2370]: "Devise a strategy for exam day:"
+                - text: It is normal to feel stressed on the day of the exam. Stay calm and don’t let your fear ruin your preparation. Read the question paper carefully. Divide the time to attempt each section. Do not waste unnecessary time on questions you can’t solve in 1 or 2 attempts. Don’t forget to cross-check your answers at the end.
+            - generic [ref=e2371]:
+              - heading "Frequently Asked Questions" [level=2] [ref=e2372]:
+                - strong [ref=e2373]: Frequently Asked Questions
+              - list [ref=e2374]:
+                - listitem [ref=e2375]:
+                  - strong [ref=e2376]: How difficult is the NEET exam?
+                  - text: NEET is a challenging exam because of tough competition and limited seats in colleges. However, it is possible to crack difficult exams with dedication, effort and streamlined preparation.
+                - listitem [ref=e2377]:
+                  - strong [ref=e2378]: How to prepare for NEET in six months?
+                  - text: To prepare for NEET in six months, you will have to familiarise yourself with the syllabus, choose the best study material, create a study schedule, complete mock tests, and attempt online test series.
+                - listitem [ref=e2379]:
+                  - strong [ref=e2380]: Which language options are available in NEET ?
+                  - text: NEET Question Papers are available in 11 languages – English, Hindi, Gujarati, Tamil, Assamese, Telugu, Kannada, Urdu, Bengali, Marathi, and Odia.
+                - listitem [ref=e2381]:
+                  - strong [ref=e2382]: Are NCERT books enough to prepare and qualify for NEET?
+                  - text: No, NCERT books aren’t enough to qualify NEET. To crack the examination and score a good rank, one must prepare from other books, attempt mock tests and solve previous years’ question papers.
+                - listitem [ref=e2383]:
+                  - strong [ref=e2384]: Can I use a calculator during the NEET exam?
+                  - text: No, the use of a calculator is not allowed in the NEET exam.
+                - listitem [ref=e2385]:
+                  - strong [ref=e2386]: What is a good percentile for NEET ?
+                  - text: The NEET exam percentile requirement for the General category is 50 and reserved category is 40.
+                - listitem [ref=e2387]:
+                  - strong [ref=e2388]: How many times can an aspirant appear for NEET?
+                  - text: There is no restriction on the number of attempts in NEET.
+                - listitem [ref=e2389]:
+                  - strong [ref=e2390]: What is the mode of the NEET exam?
+                  - text: NEET is a pen-paper test, wherein the candidate must fill the OMR sheets with answers.
+                - listitem [ref=e2391]:
+                  - strong [ref=e2392]: Can I appear for the NEET exam if there is one year gap between Class 11 and Class 12?
+                  - text: Yes, you can appear for the NEET exam with one year gap.
+                - listitem [ref=e2393]:
+                  - strong [ref=e2394]: Can Open school candidates also apply for NEET?
+                  - text: Candidates passing 10+2 from private or open schools can appear for NEET. However, they are subject to the outcome of Special Leave Petitions/Appeals filed by the Medical Council of India.
+                - listitem [ref=e2395]:
+                  - strong [ref=e2396]: How to prepare for NEET at home without coaching?
+                  - list [ref=e2397]:
+                    - listitem [ref=e2398]:
+                      - strong [ref=e2399]: Creating a schedule
+                      - text: is the first step. From tomorrow, record the time you will wake up and go to bed. Other than your waking and sleeping hours, avoid setting any other time. Create a preliminary timetable and keep it private. Ensure that the schedule is updated every hour. Maintain daily updates and occasionally check at your journal. After going through it, you will recognise all of its flaws and inadequacies.
+                    - listitem [ref=e2400]:
+                      - text: The second step you need to do is
+                      - strong [ref=e2401]: create a list of every chapter on your syllabus
+                      - text: . Make a thorough list of all of these chapters, whether they are from chemistry, biology, or physics. The hardest chapters should now be highlighted so that you can work on them. This is when you make a mistake because most pupils try to skip these chapters. Make sure you don't commit this error once more. Bind these chapters first, and only straightforward ones will remain. Now that you're wondering how to read these challenging chapters, the answer is to visualise the simplest chapters in each of the three areas. Do you recall how you discovered and comprehended those? Use the same technique to read even the difficult ones.
+                    - listitem [ref=e2402]:
+                      - strong [ref=e2403]: Joining a reputable test series
+                      - text: is the next and most crucial step. Unacademy offers a number of free examinations if you cannot afford to pay. Check your preparation by sitting through each of these. There are also a number of thrilling prizes that you could win.
+                    - listitem [ref=e2404]:
+                      - text: It is impossible to prepare everything at once when you first start. Here, the maxim
+                      - strong [ref=e2405]: "\"study less but study well\""
+                      - text: is crucial. If you're short on time, there's no need to study everything but do your best to be thorough when you do.
+                    - listitem [ref=e2406]:
+                      - text: Consider
+                      - strong [ref=e2407]: taking your first test;
+                      - text: chances are good that 60–70% of your curriculum will have been covered. You might finish 80–90% of the material on the syllabus the next time when you take the second or third test. The cycle continues until you fully understand each topic and are secure in your understanding of it. Tick off each chapter as you finish it (after editing). It will not only help you get ready for the test, but it will also give you more confidence.
+            - heading "More on NEET UG Preparation here:" [level=3] [ref=e2408]
+            - table [ref=e2410]:
+              - rowgroup [ref=e2411]:
+                - row "NEET UG Notifications NEET UG Study Material Important Concepts" [ref=e2412]:
+                  - cell "NEET UG Notifications" [ref=e2413]:
+                    - paragraph [ref=e2414]:
+                      - strong [ref=e2415]: NEET UG Notifications
+                  - cell "NEET UG Study Material" [ref=e2416]:
+                    - paragraph [ref=e2417]:
+                      - strong [ref=e2418]: NEET UG Study Material
+                  - cell "Important Concepts" [ref=e2419]:
+                    - paragraph [ref=e2420]:
+                      - strong [ref=e2421]: Important Concepts
+                - row "NEET UG Eligibility NEET Chemistry Plant Cell" [ref=e2422]:
+                  - cell "NEET UG Eligibility" [ref=e2423]:
+                    - paragraph [ref=e2424]:
+                      - link "NEET UG Eligibility" [ref=e2425] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/notification/eligibility/
+                  - cell "NEET Chemistry" [ref=e2426]:
+                    - paragraph [ref=e2427]:
+                      - link "NEET Chemistry" [ref=e2428] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/chemistry/
+                  - cell "Plant Cell" [ref=e2429]:
+                    - paragraph [ref=e2430]:
+                      - link "Plant Cell" [ref=e2431] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/biology/plant-cell/
+                - row "NEET Exam Pattern NEET Physics Ecosystem" [ref=e2432]:
+                  - cell "NEET Exam Pattern" [ref=e2433]:
+                    - paragraph [ref=e2434]:
+                      - link "NEET Exam Pattern" [ref=e2435] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/notification/exam-pattern/
+                  - cell "NEET Physics" [ref=e2436]:
+                    - paragraph [ref=e2437]:
+                      - link "NEET Physics" [ref=e2438] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/physics/
+                  - cell "Ecosystem" [ref=e2439]:
+                    - paragraph [ref=e2440]:
+                      - link "Ecosystem" [ref=e2441] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/biology/ecosystem/
+                - row "NEET Preparation Books NEET Biology Young’s modulus" [ref=e2442]:
+                  - cell "NEET Preparation Books" [ref=e2443]:
+                    - paragraph [ref=e2444]:
+                      - link "NEET Preparation Books" [ref=e2445] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-preparation-books-download/
+                  - cell "NEET Biology" [ref=e2446]:
+                    - paragraph [ref=e2447]:
+                      - link "NEET Biology" [ref=e2448] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/biology/
+                  - cell "Young’s modulus" [ref=e2449]:
+                    - paragraph [ref=e2450]:
+                      - link "Young’s modulus" [ref=e2451] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/physics/youngs-modulus/
+                - row "NEET Marking Scheme NEET Exam Tips Velocity" [ref=e2452]:
+                  - cell "NEET Marking Scheme" [ref=e2453]:
+                    - paragraph [ref=e2454]:
+                      - link "NEET Marking Scheme" [ref=e2455] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/notification/marking-scheme/
+                  - cell "NEET Exam Tips" [ref=e2456]:
+                    - paragraph [ref=e2457]:
+                      - link "NEET Exam Tips" [ref=e2458] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/
+                  - cell "Velocity" [ref=e2459]:
+                    - paragraph [ref=e2460]:
+                      - link "Velocity" [ref=e2461] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/physics/velocity/
+                - row "NEET Hall Ticket Difference between Kingdom Fungi" [ref=e2462]:
+                  - cell "NEET Hall Ticket" [ref=e2463]:
+                    - paragraph [ref=e2464]:
+                      - link "NEET Hall Ticket" [ref=e2465] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/notification/hall-ticket-download/
+                  - cell "Difference between" [ref=e2466]:
+                    - paragraph [ref=e2467]:
+                      - link "Difference between" [ref=e2468] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/difference-between/
+                  - cell "Kingdom Fungi" [ref=e2469]:
+                    - paragraph [ref=e2470]:
+                      - link "Kingdom Fungi" [ref=e2471] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/biology/kingdom-fungi/
+                - row "NEET Results Full Forms Layers of Atmosphere" [ref=e2472]:
+                  - cell "NEET Results" [ref=e2473]:
+                    - paragraph [ref=e2474]:
+                      - link "NEET Results" [ref=e2475] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/notification/results/
+                  - cell "Full Forms" [ref=e2476]:
+                    - paragraph [ref=e2477]:
+                      - link "Full Forms" [ref=e2478] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/
+                  - cell "Layers of Atmosphere" [ref=e2479]:
+                    - paragraph [ref=e2480]:
+                      - link "Layers of Atmosphere" [ref=e2481] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/study-material/physics/layers-of-atmosphere/
+            - paragraph [ref=e2482]:
+              - strong [ref=e2483]: "Popular Full Forms:"
+            - table [ref=e2485]:
+              - rowgroup [ref=e2486]:
+                - row "NEET Full Form DNA Full Form BMI Full Form BDS Full Form" [ref=e2487]:
+                  - cell "NEET Full Form" [ref=e2488]:
+                    - paragraph [ref=e2489]:
+                      - link "NEET Full Form" [ref=e2490] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/neet-full-form/
+                  - cell "DNA Full Form" [ref=e2491]:
+                    - paragraph [ref=e2492]:
+                      - link "DNA Full Form" [ref=e2493] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/dna-full-form/
+                  - cell "BMI Full Form" [ref=e2494]:
+                    - paragraph [ref=e2495]:
+                      - link "BMI Full Form" [ref=e2496] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/bmi-full-form/
+                  - cell "BDS Full Form" [ref=e2497]:
+                    - paragraph [ref=e2498]:
+                      - link "BDS Full Form" [ref=e2499] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/bds/
+                - row "MBBS Full Form RBC Full Form AIDS Full Form BAMS Full Form" [ref=e2500]:
+                  - cell "MBBS Full Form" [ref=e2501]:
+                    - paragraph [ref=e2502]:
+                      - link "MBBS Full Form" [ref=e2503] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/mbbs/
+                  - cell "RBC Full Form" [ref=e2504]:
+                    - paragraph [ref=e2505]:
+                      - link "RBC Full Form" [ref=e2506] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/rbc/
+                  - cell "AIDS Full Form" [ref=e2507]:
+                    - paragraph [ref=e2508]:
+                      - link "AIDS Full Form" [ref=e2509] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/aids-full-form/
+                  - cell "BAMS Full Form" [ref=e2510]:
+                    - paragraph [ref=e2511]:
+                      - link "BAMS Full Form" [ref=e2512] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/bams/
+                - row "AYUSH Full Form IVF Full Form ATP Full Form ADP Full Form" [ref=e2513]:
+                  - cell "AYUSH Full Form" [ref=e2514]:
+                    - paragraph [ref=e2515]:
+                      - link "AYUSH Full Form" [ref=e2516] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/ayush-full-form/
+                  - cell "IVF Full Form" [ref=e2517]:
+                    - paragraph [ref=e2518]:
+                      - link "IVF Full Form" [ref=e2519] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/in-vitro-fertilisation/
+                  - cell "ATP Full Form" [ref=e2520]:
+                    - paragraph [ref=e2521]:
+                      - link "ATP Full Form" [ref=e2522] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/adenosine-triphosphate-atp/
+                  - cell "ADP Full Form" [ref=e2523]:
+                    - paragraph [ref=e2524]:
+                      - link "ADP Full Form" [ref=e2525] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/full-forms/adp-full-form/
+            - paragraph [ref=e2526]:
+              - strong [ref=e2527]: "NEET UG Preparation Tips:"
+            - table [ref=e2529]:
+              - rowgroup [ref=e2530]:
+                - row "How to Score 180 in NEET Chemistry? How to Score 350 in NEET Biology?" [ref=e2531]:
+                  - cell "How to Score 180 in NEET Chemistry?" [ref=e2532]:
+                    - paragraph [ref=e2533]:
+                      - link "How to Score 180 in NEET Chemistry?" [ref=e2534] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/how-to-score-180-in-neet-chemistry/
+                  - cell "How to Score 350 in NEET Biology?" [ref=e2535]:
+                    - paragraph [ref=e2536]:
+                      - link "How to Score 350 in NEET Biology?" [ref=e2537] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/how-to-score-350-in-neet-biology/
+                - row "How to Clear NEET in First Attempt? How to Score 180 in NEET Physics?" [ref=e2538]:
+                  - cell "How to Clear NEET in First Attempt?" [ref=e2539]:
+                    - paragraph [ref=e2540]:
+                      - link "How to Clear NEET in First Attempt?" [ref=e2541] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/how-to-clear-neet-in-first-attempt/
+                  - cell "How to Score 180 in NEET Physics?" [ref=e2542]:
+                    - paragraph [ref=e2543]:
+                      - link "How to Score 180 in NEET Physics?" [ref=e2544] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/how-to-score-180-in-neet-physics/
+                - row "Revision Techniques For Effective NEET Preparation Tips to Master Organic Chemistry" [ref=e2545]:
+                  - cell "Revision Techniques For Effective NEET Preparation" [ref=e2546]:
+                    - paragraph [ref=e2547]:
+                      - link "Revision Techniques For Effective NEET Preparation" [ref=e2548] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/revision-techniques-for-effective-neet-preparation/
+                  - cell "Tips to Master Organic Chemistry" [ref=e2549]:
+                    - paragraph [ref=e2550]:
+                      - link "Tips to Master Organic Chemistry" [ref=e2551] [cursor=pointer]:
+                        - /url: https://unacademy.com/content/neet-ug/exam-tips/tips-to-master-organic-chemistry/
+            - paragraph [ref=e2552]:
+              - strong [ref=e2553]: "Important Links:"
+            - table [ref=e2554]:
+              - rowgroup [ref=e2555]:
+                - row "How Many Hours to Study for NEET Best NEET Online Coaching App" [ref=e2556]:
+                  - cell "How Many Hours to Study for NEET" [ref=e2557]:
+                    - link "How Many Hours to Study for NEET" [ref=e2558] [cursor=pointer]:
+                      - /url: https://unacademy.com/content/neet-ug/how-many-hours-to-study-for-neet/
+                  - cell "Best NEET Online Coaching App" [ref=e2559]:
+                    - link "Best NEET Online Coaching App" [ref=e2560] [cursor=pointer]:
+                      - /url: https://unacademy.com/goal/neet-ug/YOTUH/classes
+                - row "NEET Preparation Tips by Toppers NEET Rank Predictor" [ref=e2561]:
+                  - cell "NEET Preparation Tips by Toppers" [ref=e2562]:
+                    - link "NEET Preparation Tips by Toppers" [ref=e2563] [cursor=pointer]:
+                      - /url: https://unacademy.com/content/neet-ug/neet-preparation-tips-by-toppers/
+                  - cell "NEET Rank Predictor" [ref=e2564]:
+                    - link "NEET Rank Predictor" [ref=e2565] [cursor=pointer]:
+                      - /url: https://unadmin.in/neet-rank-predictor.php
+                - row "How to Prepare for NEET From Class 11 NEET 2018 Question Paper" [ref=e2566]:
+                  - cell "How to Prepare for NEET From Class 11" [ref=e2567]:
+                    - link "How to Prepare for NEET From Class 11" [ref=e2568] [cursor=pointer]:
+                      - /url: https://unacademy.com/content/neet-ug/how-to-prepare-for-neet-from-class-11/
+                  - cell "NEET 2018 Question Paper" [ref=e2569]:
+                    - link "NEET 2018 Question Paper" [ref=e2570] [cursor=pointer]:
+                      - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-2018-question-paper/
+                - row "Handwritten NEET Notes NEET 2021 Question Paper With Solutions" [ref=e2571]:
+                  - cell "Handwritten NEET Notes" [ref=e2572]:
+                    - link "Handwritten NEET Notes" [ref=e2573] [cursor=pointer]:
+                      - /url: https://unacademy.com/content/neet-ug/neet-notes/
+                  - cell "NEET 2021 Question Paper With Solutions" [ref=e2574]:
+                    - link "NEET 2021 Question Paper With Solutions" [ref=e2575] [cursor=pointer]:
+                      - /url: https://unacademy.com/content/neet-ug/notification/neet-ug-question-paper/neet-ug-question-paper-2021/
+            - paragraph [ref=e2576]:
+              - strong
+            - paragraph [ref=e2577]
+    - contentinfo [ref=e2579]:
+      - generic [ref=e2580]:
+        - generic [ref=e2581]:
+          - generic [ref=e2582]:
+            - img "Unacademy Logo" [ref=e2583]
+            - generic [ref=e2584]: Unacademy is democratising education, making it accessible to all. Join the revolution, learn on India's largest learning platform.
+            - generic [ref=e2585]:
+              - link [ref=e2586] [cursor=pointer]:
+                - /url: https://apps.apple.com/in/app/unacademy-learning-app/id1342565069?referrer%3Dutm_source%253DFooter%2526utm_medium%253DWebApp%2526utm_campaign%253DFooter%2526
+                - img [ref=e2587]
+              - link [ref=e2613] [cursor=pointer]:
+                - /url: https://play.google.com/store/apps/details?id=com.unacademyapp&referrer=utm_source%3DFooter%26utm_medium%3DWebApp%26utm_campaign%3DFooter%26
+                - img [ref=e2614]
+          - separator [ref=e2625]
+          - generic [ref=e2626]:
+            - heading "Reach out to us" [level=5] [ref=e2627]
+            - paragraph [ref=e2628]: Get your questions answered about learning with Unacademy.
+            - link "Call +91 8585858585" [ref=e2629] [cursor=pointer]:
+              - /url: tel:+91 8585858585
+              - heading "Call" [level=5] [ref=e2630]:
+                - img [ref=e2631]
+                - text: Call
+              - generic [ref=e2634]: +91 8585858585
+        - generic [ref=e2635]:
+          - generic [ref=e2636]:
+            - heading "Company" [level=5] [ref=e2637]
+            - link "About Us" [ref=e2639] [cursor=pointer]:
+              - /url: /about
+            - link "Shikshodaya" [ref=e2641] [cursor=pointer]:
+              - /url: /shikshodaya
+            - link "Careers" [ref=e2643] [cursor=pointer]:
+              - /url: /careers
+            - link "Blogs" [ref=e2645] [cursor=pointer]:
+              - /url: https://blog.unacademy.com
+            - link "Privacy policy" [ref=e2647] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms and conditions" [ref=e2649] [cursor=pointer]:
+              - /url: /terms
+          - generic [ref=e2650]:
+            - heading "Help & support" [level=5] [ref=e2651]
+            - link "User Guidelines" [ref=e2653] [cursor=pointer]:
+              - /url: /guidelines
+            - link "Site Map" [ref=e2655] [cursor=pointer]:
+              - /url: /sitemap
+            - link "Refund Policy" [ref=e2657] [cursor=pointer]:
+              - /url: /refund-policy
+            - link "Takedown Policy" [ref=e2659] [cursor=pointer]:
+              - /url: /takedown-policy
+            - link "Grievance Redressal" [ref=e2661] [cursor=pointer]:
+              - /url: /ugrc
+          - generic [ref=e2662]:
+            - heading "Company" [level=5] [ref=e2663]
+            - link "Learner app Learner app" [ref=e2665] [cursor=pointer]:
+              - /url: https://unacademy.onelink.me/vSdS/054lnfro
+              - generic [ref=e2666]:
+                - img [ref=e2668]
+                - img "Learner app" [ref=e2669]
+              - text: Learner app
+            - link "Educator app Educator app" [ref=e2671] [cursor=pointer]:
+              - /url: https://apps.apple.com/in/app/unacademy-educator-app/id1156375099?referrer%3Dutm_source%253DFooter%2526utm_medium%253DWebApp%2526utm_campaign%253DFooter%2526
+              - generic [ref=e2672]:
+                - img [ref=e2674]
+                - img "Educator app" [ref=e2675]
+              - text: Educator app
+            - link "Parent app Parent app" [ref=e2677] [cursor=pointer]:
+              - /url: https://play.google.com/store/apps/details?id=com.unacademy.unacademyparentapp
+              - generic [ref=e2678]:
+                - img [ref=e2680]
+                - img "Parent app" [ref=e2681]
+              - text: Parent app
+          - generic [ref=e2682]:
+            - heading "Popular goals" [level=5] [ref=e2683]
+            - link "IIT JEE" [ref=e2685] [cursor=pointer]:
+              - /url: /goal/jee-main-and-advanced-preparation/TMUVD
+            - link "UPSC" [ref=e2687] [cursor=pointer]:
+              - /url: /goal/upsc-civil-services-examination-ias-preparation/KSCGY
+            - link "SSC" [ref=e2689] [cursor=pointer]:
+              - /url: /goal/ssc-exams-non-technical/VLEMN
+            - link "CSIR UGC NET" [ref=e2691] [cursor=pointer]:
+              - /url: /goal/csir-ugc-net/BIZXQ
+            - link "NEET UG" [ref=e2693] [cursor=pointer]:
+              - /url: /goal/neet-ug/YOTUH
+          - generic [ref=e2694]:
+            - heading "Study material" [level=5] [ref=e2695]
+            - link "UPSC Study Material" [ref=e2697] [cursor=pointer]:
+              - /url: /content/upsc/study-material
+            - link "NEET UG Study Material" [ref=e2699] [cursor=pointer]:
+              - /url: /content/neet-ug/study-material
+            - link "CA Foundation Study Material" [ref=e2701] [cursor=pointer]:
+              - /url: /content/ca-foundation/study-material
+            - link "JEE Study Material" [ref=e2703] [cursor=pointer]:
+              - /url: /content/jee/study-material
+            - link "SSC Study Material" [ref=e2705] [cursor=pointer]:
+              - /url: /content/ssc/study-material
+      - separator [ref=e2706]
+      - generic [ref=e2707]:
+        - generic [ref=e2709]: © 2026 Sorting Hat Technologies Pvt Ltd
+        - generic [ref=e2710]:
+          - link [ref=e2711] [cursor=pointer]:
+            - /url: https://www.facebook.com/unacademy/
+            - img [ref=e2712]
+          - link [ref=e2714] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCABe2FgVNv2hgBeMu2mySVg
+            - img [ref=e2715]
+          - link [ref=e2717] [cursor=pointer]:
+            - /url: https://twitter.com/unacademy
+            - img [ref=e2718]
+          - link [ref=e2720] [cursor=pointer]:
+            - /url: https://www.instagram.com/unacademy/
+            - img [ref=e2721]
+          - link [ref=e2723] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/unacademy
+            - img [ref=e2724]
+    - generic [ref=e2727] [cursor=pointer]:
+      - img [ref=e2729]
+      - img "ttu" [ref=e2730]
+    - link "Icon Ai Doubts" [ref=e2732] [cursor=pointer]:
+      - /url: /goal/neet-ug/YOTUH/doubts-and-solutions/unacademy-ai
+      - img "Icon" [ref=e2733]
+      - generic [ref=e2734]: Ai Doubts
+  - alert [ref=e2735]
+  - tooltip "Preparing for NEET UG? Add it to your goals and receive personalised course recommendations Add NEET UG" [ref=e2736]:
+    - generic [ref=e2738]:
+      - generic [ref=e2739]:
+        - heading "Preparing for NEET UG?" [level=6] [ref=e2740]
+        - img [ref=e2742] [cursor=pointer]
+      - paragraph [ref=e2744]: Add it to your goals and receive personalised course recommendations
+      - generic [ref=e2745] [cursor=pointer]:
+        - img [ref=e2747]
+        - text: Add NEET UG

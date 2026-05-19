@@ -1,20 +1,22 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import './globals.css';
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
+});
 
 export const metadata: Metadata = {
-  title: "CLATians – Best CLAT Coaching | AILET | MH-CET | CUET Preparation",
-  description: "CLATians – Your trusted institute for CLAT, AILET, MH-CET, and CUET law entrance preparation. Expert guidance by NLU Alumni. 5000+ success stories.",
-  keywords: "CLAT coaching, AILET preparation, law entrance exam, NLU, CLATians Patna",
+  title: 'CLATians — Best CLAT Coaching in Patna | Bihar',
+  description: 'India\'s leading CLAT coaching institute. Expert faculty, real mock tests, 15,000+ students mentored. Join CLATians for CLAT 2026 preparation.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col">{children}</body>
+    <html lang="en" className={plusJakarta.variable}>
+      <body className={plusJakarta.className}>{children}</body>
     </html>
   );
 }

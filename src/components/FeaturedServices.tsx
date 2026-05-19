@@ -1,110 +1,110 @@
-const services = [
+const features = [
   {
-    icon: '🏫',
-    count: '100+',
-    title: 'Online University Options',
-    desc: 'Find Top Ranked Online Universities',
-    sub: 'UGC-approved universities verified by CLATians for premium legal education.',
-    cta: 'View Universities',
-    color: '#06b6d4',
-    bg: 'from-[#e0f9ff] to-[#f0fdff]',
+    icon: '📚',
+    title: 'Live & Recorded Classes',
+    desc: 'Daily live classes by expert faculty + 600+ hours of recorded lectures accessible 24/7 on the app.',
+    link: '/courses/online',
   },
   {
-    icon: '📊',
-    count: '500+',
-    title: 'Course Options Available',
-    desc: 'Compare & Choose The Best Courses',
-    sub: 'Detailed comparison of all law courses — fees, rankings, placements, and more.',
-    cta: 'Compare Courses',
-    color: '#818cf8',
-    bg: 'from-[#eef2ff] to-[#f5f7ff]',
+    icon: '📝',
+    title: 'Full-Length Mock Tests',
+    desc: 'Attempt up to 40 CLAT mock tests simulating real exam conditions with AI-powered performance analytics.',
+    link: '/courses/mock-tests',
   },
   {
-    icon: '👨‍💼',
-    count: '500+',
-    title: 'Expert Counsellors',
-    desc: 'Get Free Expert Counselling Today',
-    sub: 'Connect with NLU alumni and legal professionals for personalized guidance.',
-    cta: 'Book Free Session',
-    color: '#34d399',
-    bg: 'from-[#ecfdf5] to-[#f5fffe]',
+    icon: '💬',
+    title: 'Doubt Clearing Sessions',
+    desc: 'Daily offline doubt sessions at our Patna center and weekly live doubt clearing for online students.',
+    link: '/courses/offline',
   },
 ];
 
 export default function FeaturedServices() {
   return (
-    <section className="py-12 md:py-20" style={{ background: 'var(--bg)' }}>
+    <section className="py-12 md:py-16" style={{ background: '#FCF8E7' }}>
       <div className="max-w-7xl mx-auto px-4">
-        {/* Section header */}
-        <div className="text-center mb-10 md:mb-14">
-          <span className="chip mb-3">Our Services</span>
-          <h2 className="section-title">Everything You Need to Succeed</h2>
-          <p className="section-subtitle max-w-lg mx-auto">
-            From university search to expert counselling — CLATians is your all-in-one law entrance platform.
-          </p>
-        </div>
 
-        {/* Desktop: 3-col grid */}
-        <div className="hidden md:grid grid-cols-3 gap-6">
-          {services.map((s) => (
-            <div key={s.title}
-              className={`bg-gradient-to-br ${s.bg} rounded-2xl border border-gray-100 p-8 card-hover flex flex-col`}>
-              <div className="flex items-center justify-between mb-6">
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl bg-white shadow-sm">
-                  {s.icon}
-                </div>
-                <span className="text-4xl font-black" style={{ color: s.color }}>{s.count}</span>
+        {/* Unacademy-style: 3 feature cards on cream bg */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {features.map((f) => (
+            <div key={f.title}
+              className="bg-white rounded-xl p-6 border"
+              style={{ borderColor: '#E9EEF2' }}>
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4"
+                style={{ background: '#E6FAF4' }}>
+                {f.icon}
               </div>
-              <h3 className="font-black text-xl text-gray-900">{s.title}</h3>
-              <p className="font-semibold mt-1" style={{ color: s.color }}>{s.desc}</p>
-              <p className="text-sm text-gray-500 mt-3 leading-relaxed flex-1">{s.sub}</p>
-              <a href="#" className="mt-6 inline-flex items-center gap-2 font-semibold text-sm transition-all hover:gap-3"
-                style={{ color: s.color }}>
-                {s.cta} <span>→</span>
+              <h3 className="font-bold text-base mb-2" style={{ color: '#3C4852' }}>{f.title}</h3>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: '#7A8B94' }}>{f.desc}</p>
+              <a href={f.link}
+                className="text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all"
+                style={{ color: '#08BD80' }}>
+                Learn more →
               </a>
             </div>
           ))}
         </div>
 
-        {/* Mobile: stacked cards (clatians.com style) */}
-        <div className="md:hidden space-y-4">
-          {services.map((s) => (
-            <div key={s.title}
-              className={`bg-gradient-to-r ${s.bg} rounded-xl border border-gray-100 p-5 flex items-center gap-4`}>
-              <div className="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center text-3xl flex-shrink-0">
-                {s.icon}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-gray-900 text-sm">{s.title}</h3>
-                  <span className="text-lg font-black ml-2 flex-shrink-0" style={{ color: s.color }}>{s.count}</span>
-                </div>
-                <p className="text-xs font-semibold mt-0.5" style={{ color: s.color }}>{s.desc}</p>
-                <a href="#" className="text-xs font-semibold mt-1.5 inline-block" style={{ color: s.color }}>
-                  {s.cta} →
-                </a>
-              </div>
-            </div>
-          ))}
+        {/* Mobile: stack vertically */}
+        <div className="md:hidden space-y-4 mt-0">
+          {/* shown above via grid on mobile too — hidden md:grid already handles */}
         </div>
 
-        {/* Partner Universities banner */}
-        <div
-          className="mt-10 md:mt-16 rounded-2xl p-6 md:p-10 text-center"
-          style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
-          <p className="text-white/60 text-sm mb-2">Our Partner Universities</p>
-          <h3 className="text-2xl md:text-3xl font-black text-white">
-            UGC-approved Universities, verified by CLATians
-          </h3>
-          <p className="text-white/70 mt-2 text-sm md:text-base">
-            For premium legal education across India
-          </p>
-          <a href="#"
-            className="mt-6 inline-block px-8 py-3 rounded-xl font-bold text-white text-sm"
-            style={{ background: 'var(--cyan)' }}>
-            VIEW ALL UNIVERSITIES →
-          </a>
+        {/* App download banner — Unacademy style */}
+        <div className="mt-10 rounded-2xl border overflow-hidden flex flex-col md:flex-row items-center"
+          style={{ borderColor: '#E9EEF2', background: 'white' }}>
+          <div className="flex-1 p-8 md:p-10">
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#08BD80' }}>
+              Online Preparation
+            </p>
+            <h3 className="text-2xl md:text-3xl font-extrabold mb-4" style={{ color: '#3C4852' }}>
+              Study anytime, anywhere
+            </h3>
+            <ul className="space-y-2.5 mb-7">
+              {[
+                'Interactive live classes with real faculty',
+                'Mock tests and practice questions',
+                'High-quality notes & PDF material',
+                'Daily doubt solving on WhatsApp',
+              ].map(item => (
+                <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#5a6a75' }}>
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0"
+                    style={{ background: '#08BD80' }}>✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="flex gap-3 flex-wrap">
+              <a href="/courses/online"
+                className="px-6 py-3 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90"
+                style={{ background: '#08BD80' }}>
+                Start Online Course →
+              </a>
+              <a href="tel:8507700177"
+                className="px-6 py-3 rounded-lg font-bold text-sm border transition-colors hover:bg-gray-50"
+                style={{ borderColor: '#E9EEF2', color: '#3C4852' }}>
+                📞 Call Us
+              </a>
+            </div>
+          </div>
+          <div className="w-full md:w-72 p-8 flex flex-col items-center justify-center"
+            style={{ background: '#F7F9FB' }}>
+            <div className="text-6xl mb-4">📱</div>
+            <p className="font-bold text-center text-sm mb-1" style={{ color: '#3C4852' }}>CLATians App</p>
+            <p className="text-xs text-center mb-4" style={{ color: '#7A8B94' }}>Download for iOS & Android</p>
+            <div className="flex flex-col gap-2 w-full">
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg justify-center"
+                style={{ background: '#3C4852' }}>
+                <span className="text-white text-sm">🍎</span>
+                <span className="text-white text-xs font-bold">App Store</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg justify-center"
+                style={{ background: '#3C4852' }}>
+                <span className="text-white text-sm">▶</span>
+                <span className="text-white text-xs font-bold">Google Play</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
