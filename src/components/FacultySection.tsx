@@ -18,6 +18,7 @@ const faculty = [
     students: '15,000+',
     experience: '15 yrs',
     avatar: 'AK',
+    photo: 'https://api.dicebear.com/7.x/lorelei/svg?seed=AKSingh&backgroundColor=fce7f3',
     tags: ['CLAT Expert', 'Constitutional Law', 'Director'],
     slug: 'ak-singh',
   },
@@ -29,6 +30,7 @@ const faculty = [
     students: '5,000+',
     experience: '10 yrs',
     avatar: 'PS',
+    photo: 'https://api.dicebear.com/7.x/lorelei/svg?seed=PriyaSingh&backgroundColor=e0f2fe',
     tags: ['English', 'Comprehension', 'Vocabulary'],
     slug: 'priya-singh',
   },
@@ -40,6 +42,7 @@ const faculty = [
     students: '4,500+',
     experience: '8 yrs',
     avatar: 'AS',
+    photo: 'https://api.dicebear.com/7.x/lorelei/svg?seed=AmitSharma&backgroundColor=dcfce7',
     tags: ['Logical Reasoning', 'Quant', 'Data Interpretation'],
     slug: 'amit-sharma',
   },
@@ -51,6 +54,7 @@ const faculty = [
     students: '6,000+',
     experience: '9 yrs',
     avatar: 'RV',
+    photo: 'https://api.dicebear.com/7.x/lorelei/svg?seed=RahulVerma&backgroundColor=fef3c7',
     tags: ['Current Affairs', 'GK', 'Legal News'],
     slug: 'rahul-verma',
   },
@@ -87,13 +91,12 @@ function DesktopCard({ f, idx }: { f: FacultyMember; idx: number }) {
         className="flex flex-col items-center justify-center gap-2 px-4 py-5 flex-shrink-0"
         style={{ width: '30%', background: avatarBg }}
       >
-        {/* Avatar circle */}
-        <div
-          className="w-20 h-20 rounded-full flex items-center justify-center font-black text-xl flex-shrink-0"
-          style={{ background: 'rgba(255,255,255,0.75)', color: '#3C4852', boxShadow: '0 1px 4px rgba(0,0,0,0.08)' }}
-        >
-          {f.avatar}
-        </div>
+        {/* Avatar image */}
+        <img
+          src={f.photo}
+          alt={f.name}
+          className="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm"
+        />
         {/* Rating */}
         <StarRating rating={f.rating} />
         {/* Student count */}
@@ -149,13 +152,13 @@ function MobileCard({ f, idx }: { f: FacultyMember; idx: number }) {
       className="flex-shrink-0 w-40 bg-white rounded-xl p-4 flex flex-col items-center text-center"
       style={{ border: '1px solid #E9EEF2', textDecoration: 'none' }}
     >
-      {/* Avatar */}
-      <div
-        className="w-16 h-16 rounded-full flex items-center justify-center font-black text-base mb-2.5"
-        style={{ background: avatarBg, color: '#3C4852', boxShadow: '0 1px 4px rgba(0,0,0,0.07)' }}
-      >
-        {f.avatar}
-      </div>
+      {/* Avatar image */}
+      <img
+        src={f.photo}
+        alt={f.name}
+        className="w-16 h-16 rounded-full object-cover mb-2.5"
+        style={{ background: avatarBg }}
+      />
       <div className="font-bold text-xs mb-0.5 leading-snug" style={{ color: '#3C4852' }}>
         {f.name}
       </div>

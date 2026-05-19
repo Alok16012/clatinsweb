@@ -1,88 +1,83 @@
 const stats = [
-  {
-    value: '5000+',
-    label: 'Success Stories',
-    desc: 'Students placed in top NLUs',
-    feature: 'Proven track record',
-  },
-  {
-    value: 'Top NLU',
-    label: 'Selections',
-    desc: 'NLSIU, NLU Delhi, NALSAR & more',
-    feature: 'Prestigious placements',
-  },
-  {
-    value: '20+',
-    label: 'Expert Faculty',
-    desc: 'NLU Alumni & Advocates',
-    feature: 'Experienced mentors',
-  },
-  {
-    value: '4.9★',
-    label: 'Student Trust',
-    desc: 'Average rating by our students',
-    feature: 'Consistently rated',
-  },
+  { icon: '🏆', value: '5000+', label: 'NLU Selections', desc: 'Students in top NLUs' },
+  { icon: '🎓', value: '15+', label: 'Years Excellence', desc: 'Since 2010' },
+  { icon: '👨‍🏫', value: '25+', label: 'Expert Faculty', desc: 'NLU Alumni & Advocates' },
+  { icon: '⭐', value: '4.9/5', label: 'Student Rating', desc: 'Consistently rated' },
 ];
 
 const mobileStats = [
-  { value: '15000+', label: 'SUCCESS STORIES' },
-  { value: 'Top', label: 'NLU SELECTIONS' },
-  { value: '23+', label: 'EXPERT FACULTY' },
-  { value: '4.9/5 ★', label: 'STUDENT TRUST' },
+  { icon: '🏆', value: '5000+', label: 'NLU SELECTIONS' },
+  { icon: '🎓', value: '15+', label: 'YEARS EXCELLENCE' },
+  { icon: '👨‍🏫', value: '25+', label: 'EXPERT FACULTY' },
+  { icon: '⭐', value: '4.9/5', label: 'STUDENT RATING' },
 ];
 
 export default function StatsSection() {
   return (
-    <section className="py-10 md:py-16" style={{ background: '#FCF8E7' }}>
+    <section className="py-6 md:py-10" style={{ background: '#FCF8E7' }}>
       <div className="max-w-7xl mx-auto px-4">
-        {/* Desktop: horizontal row */}
-        <div className="hidden md:grid grid-cols-4 gap-6">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center px-6 py-8"
-              style={{ background: 'transparent' }}
-            >
-              <div
-                className="text-4xl font-black leading-none"
-                style={{ color: '#08BD80' }}
-              >
-                {stat.value}
+        {/* Eyebrow text */}
+        <p
+          className="text-center text-xs font-semibold tracking-wide mb-4 hidden md:block"
+          style={{ color: '#08BD80' }}
+        >
+          Trusted by students across India
+        </p>
+
+        {/* Desktop: 4 stats in a single row with dividers */}
+        <div className="hidden md:flex items-center justify-center">
+          {stats.map((stat, i) => (
+            <div key={stat.label} className="flex items-center">
+              <div className="flex flex-col items-center text-center px-8 py-2">
+                {/* Icon circle */}
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center mb-2 text-lg"
+                  style={{ background: '#08BD80' }}
+                >
+                  {stat.icon}
+                </div>
+                {/* Value */}
+                <div
+                  className="text-3xl font-black leading-none"
+                  style={{ color: '#08BD80' }}
+                >
+                  {stat.value}
+                </div>
+                {/* Label */}
+                <div
+                  className="font-bold text-sm mt-1"
+                  style={{ color: '#3C4852' }}
+                >
+                  {stat.label}
+                </div>
+                {/* Description */}
+                <div className="text-xs text-gray-500 mt-0.5">{stat.desc}</div>
               </div>
-              <div
-                className="font-bold text-base mt-2"
-                style={{ color: '#3C4852' }}
-              >
-                ✓ {stat.label}
-              </div>
-              <div className="text-sm text-gray-500 mt-1">{stat.desc}</div>
-              <div
-                className="text-xs font-semibold mt-2"
-                style={{ color: '#08BD80' }}
-              >
-                {stat.feature}
-              </div>
+              {/* Vertical divider — skip after last item */}
+              {i < stats.length - 1 && (
+                <span className="text-gray-300 text-2xl select-none">|</span>
+              )}
             </div>
           ))}
         </div>
 
-        {/* Mobile: single row equal boxes */}
+        {/* Mobile: 4-col grid */}
         <div className="md:hidden grid grid-cols-4 gap-2">
           {mobileStats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-xl flex flex-col items-center justify-center text-center py-4 px-1"
+              className="rounded-xl flex flex-col items-center justify-center text-center py-3 px-1"
               style={{ background: 'rgba(255,255,255,0.7)' }}
             >
+              <div className="text-base mb-0.5">{stat.icon}</div>
               <div
-                className="text-lg font-black leading-none"
+                className="text-sm font-black leading-none"
                 style={{ color: '#08BD80' }}
               >
                 {stat.value}
               </div>
               <div
-                className="text-[9px] font-bold mt-1.5 tracking-wide leading-tight"
+                className="text-[8px] font-bold mt-1 tracking-wide leading-tight"
                 style={{ color: '#3C4852' }}
               >
                 {stat.label}
