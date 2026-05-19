@@ -8,7 +8,7 @@ const navLinks = [
     sub: [
       { label: 'Offline Course', href: '/courses/offline' },
       { label: 'Online Course', href: '/courses/online' },
-      { label: 'Mentorship', href: '/courses/mentorship' },
+      { label: 'OLET Program', href: '/courses/mentorship' },
       { label: 'Mock Tests', href: '/courses/mock-tests' },
     ],
   },
@@ -17,7 +17,7 @@ const navLinks = [
     sub: [
       { label: 'CLAT', href: '/exams/clat' },
       { label: 'AILET', href: '/exams/ailet' },
-      { label: 'MH-CET Law', href: '/exams/mh-cet' },
+      { label: 'MH-CET Law', href: '/exams/mh-cet-law' },
       { label: 'CUET', href: '/exams/cuet' },
       { label: 'AIL-LET', href: '/exams/ail-let' },
       { label: 'LSAT India', href: '/exams/lsat' },
@@ -45,16 +45,14 @@ export default function Navbar() {
     <>
       {/* ─── Desktop Navbar ─────────────────────────────────── */}
       <nav
-        style={{ background: 'var(--navy)' }}
-        className="sticky top-0 z-50 shadow-lg hidden md:block"
+        style={{ background: 'white' }}
+        className="sticky top-0 z-50 shadow-sm border-b border-gray-100 hidden md:block"
       >
         {/* Top bar */}
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center group">
-            <div className="bg-white rounded-xl px-2 py-1">
-              <img src="/logo.png" alt="CLATians" className="h-10 w-auto object-contain" />
-            </div>
+            <img src="/logo.png" alt="CLATians" className="h-10 w-auto object-contain" />
           </a>
 
           {/* Nav Links */}
@@ -63,7 +61,7 @@ export default function Navbar() {
               <li key={link.label} className="relative group">
                 <a
                   href={link.href}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-md hover:bg-white/10 transition-all"
+                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-700 rounded-md hover:bg-blue-50 transition-all"
                   onClick={() => setOpenSub(openSub === link.label ? null : link.label)}
                 >
                   {link.label}
@@ -76,7 +74,7 @@ export default function Navbar() {
                 {link.sub && (
                   <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                     {link.sub.map((s) => (
-                      <a key={s.label} href={s.href} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 first:rounded-t-xl last:rounded-b-xl transition-colors">
+                      <a key={s.label} href={s.href} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 first:rounded-t-xl last:rounded-b-xl transition-colors">
                         {s.label}
                       </a>
                     ))}
@@ -88,16 +86,16 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            <a href="tel:8507700177" className="flex items-center gap-1.5 text-white/80 hover:text-white text-sm font-medium transition-colors">
+            <a href="tel:8507700177" className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               8507700177
             </a>
-            <a href="/college-predictor" className="text-sm font-semibold px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-all">
+            <a href="/college-predictor" className="text-sm font-semibold px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">
               College Predictor
             </a>
-            <a href="/admission" style={{ background: 'var(--cyan)' }} className="text-sm font-semibold px-4 py-2 rounded-lg text-white hover:opacity-90 transition-opacity shadow-md">
+            <a href="/admission" style={{ background: '#f97316' }} className="text-sm font-semibold px-4 py-2 rounded-lg text-white hover:opacity-90 transition-opacity shadow-md">
               Admission 2026
             </a>
           </div>

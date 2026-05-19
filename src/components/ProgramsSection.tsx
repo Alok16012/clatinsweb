@@ -8,8 +8,8 @@ const programs = [
     desc: 'Attend live classes at our Patna center. Direct interaction with faculty, structured timetable, and peer learning environment.',
     features: ['Live Classes', 'Study Material', 'Doubt Sessions', 'Mock Tests'],
     cta: 'View Schedule',
-    color: '#06b6d4',
-    bg: '#e0f9ff',
+    color: '#0050e0',
+    bg: '#e8eeff',
   },
   {
     icon: '💻',
@@ -17,8 +17,8 @@ const programs = [
     desc: 'Study from anywhere with recorded & live online classes. Full access to study material, tests, and mentor support.',
     features: ['Recorded Lectures', 'Live Doubt Sessions', 'Digital Notes', 'Mock Tests'],
     cta: 'Enroll Online',
-    color: '#818cf8',
-    bg: '#eef2ff',
+    color: '#0050e0',
+    bg: '#e8eeff',
     badge: 'Most Popular',
   },
   {
@@ -27,8 +27,8 @@ const programs = [
     desc: 'One-on-one mentorship from NLU toppers and advocates. Personalized study plan tailored to your strengths.',
     features: ['1-on-1 Sessions', 'Custom Study Plan', 'NLU Mentor', 'Interview Prep'],
     cta: 'Book Mentor',
-    color: '#34d399',
-    bg: '#ecfdf5',
+    color: '#0050e0',
+    bg: '#e8eeff',
   },
   {
     icon: '📝',
@@ -36,8 +36,8 @@ const programs = [
     desc: 'Full-length mock tests simulating actual CLAT/AILET exam patterns. Detailed analytics and rank predictions.',
     features: ['150+ Mock Tests', 'AI Analytics', 'Rank Predictor', 'Solutions PDF'],
     cta: 'Try Free Mock',
-    color: '#fb923c',
-    bg: '#fff7ed',
+    color: '#0050e0',
+    bg: '#e8eeff',
   },
 ];
 
@@ -108,7 +108,7 @@ export default function ProgramsSection() {
                     </li>
                   ))}
                 </ul>
-                <a href="#admission"
+                <a href={p.title === 'Offline Course' ? '/courses/offline' : p.title === 'Online Course' ? '/courses/online' : p.title === 'Mentorship' ? '/courses/mentorship' : '/courses/mock-tests'}
                   className="mt-5 block text-center py-2.5 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
                   style={{ background: p.bg, color: p.color }}>
                   {p.cta} →

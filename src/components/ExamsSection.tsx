@@ -1,63 +1,69 @@
 const exams = [
   {
     code: 'CLAT',
+    slug: 'clat',
     name: 'Common Law Admission Test',
-    tagline: 'Gateway to top NLUs!',
+    tagline: 'Gateway to top 23 NLUs!',
     icon: '🏛️',
-    color: '#06b6d4',
-    bg: '#e0f9ff',
+    color: '#0050e0',
+    bg: '#e8eeff',
     seats: '2700+ seats',
     nlus: '23 NLUs',
   },
   {
     code: 'AILET',
+    slug: 'ailet',
     name: 'All India Law Entrance Test',
     tagline: 'Path to NLU Delhi.',
     icon: '⚖️',
-    color: '#818cf8',
-    bg: '#eef2ff',
+    color: '#0050e0',
+    bg: '#e8eeff',
     seats: '110 seats',
     nlus: 'NLU Delhi',
   },
   {
     code: 'MH-CET',
+    slug: 'mh-cet-law',
     name: 'Maharashtra CET Law',
-    tagline: 'Top colleges in MH.',
+    tagline: 'Top MH law colleges.',
     icon: '📍',
-    color: '#34d399',
-    bg: '#ecfdf5',
+    color: '#0050e0',
+    bg: '#e8eeff',
     seats: '5000+ seats',
-    nlus: 'All MH Colleges',
+    nlus: '25+ MH Colleges',
   },
   {
     code: 'CUET',
-    name: 'Common University Entrance Test',
-    tagline: 'Top Universities.',
+    slug: 'cuet',
+    name: 'Common University Entrance',
+    tagline: '200+ universities.',
     icon: '🎓',
-    color: '#fb923c',
-    bg: '#fff7ed',
+    color: '#0050e0',
+    bg: '#e8eeff',
     seats: '3000+ seats',
     nlus: 'Central Universities',
   },
   {
     code: 'AIL-LET',
+    slug: 'ail-let',
     name: 'Army Institute of Law Entrance',
     tagline: 'Army Institute of Law.',
     icon: '🎖️',
-    color: '#f43f5e',
-    bg: '#fff1f2',
+    color: '#0050e0',
+    bg: '#e8eeff',
     seats: '120 seats',
     nlus: 'AIL Mohali',
   },
   {
     code: 'LSAT',
+    slug: 'lsat',
     name: 'Law School Admission Test',
-    tagline: 'Global law schools.',
+    tagline: '85+ private law schools.',
     icon: '🌐',
-    color: '#a855f7',
-    bg: '#faf5ff',
-    seats: 'Multiple seats',
-    nlus: 'Global Schools',
+    color: '#0050e0',
+    bg: '#e8eeff',
+    seats: '2000+ seats',
+    nlus: '85+ Private Universities',
   },
 ];
 
@@ -76,7 +82,7 @@ export default function ExamsSection() {
           </div>
           <div className="grid grid-cols-3 gap-5">
             {exams.map((exam) => (
-              <a key={exam.code} href={`/exams/${exam.code.toLowerCase()}`}
+              <a key={exam.code} href={`/exams/${exam.slug}`}
                 className="group bg-white border border-gray-100 rounded-2xl p-6 card-hover flex flex-col gap-4">
                 <div className="flex items-start justify-between">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style={{ background: exam.bg }}>
@@ -87,7 +93,7 @@ export default function ExamsSection() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 group-hover:text-cyan-700 transition-colors">{exam.name}</h3>
+                  <h3 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{exam.name}</h3>
                   <p className="text-sm mt-1 font-medium" style={{ color: exam.color }}>{exam.tagline}</p>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-gray-400 border-t border-gray-50 pt-3 mt-auto">
@@ -101,10 +107,17 @@ export default function ExamsSection() {
               </a>
             ))}
           </div>
+          <div className="text-center mt-10">
+            <a href="/exams/clat"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 font-bold text-sm"
+              style={{ borderColor: '#0050e0', color: '#0050e0' }}>
+              View All Exams →
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* ─── Mobile Exams Section (clatians.com dark style) ── */}
+      {/* ─── Mobile Exams Section ── */}
       <section className="md:hidden py-6 px-4"
         style={{ background: 'var(--navy)' }}>
         {/* Header row */}
@@ -127,7 +140,7 @@ export default function ExamsSection() {
         {/* Exam cards — 3-col grid */}
         <div className="grid grid-cols-3 gap-2.5">
           {exams.map((exam) => (
-            <a key={exam.code} href={`/exams/${exam.code.toLowerCase()}`}
+            <a key={exam.code} href={`/exams/${exam.slug}`}
               className="bg-white rounded-2xl p-3 flex flex-col items-center text-center">
               <div className="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-2"
                 style={{ background: exam.bg }}>
