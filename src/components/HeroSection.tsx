@@ -237,58 +237,44 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: Exam selector card */}
-          <div className="flex-1 max-w-sm">
-            <div
-              className="rounded-2xl p-6"
-              style={{
-                background: 'rgba(255,255,255,0.07)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.15)',
-              }}
-            >
-              <h3 className="text-white font-bold text-lg mb-4">Choose Your Exam</h3>
-              <div className="space-y-2.5">
+          {/* Right: Topper Showcase + compact Exam Selector */}
+          <div className="flex-1 max-w-sm space-y-3">
+            {/* Topper Results Card */}
+            <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-white font-bold text-sm">🏆 Recent Toppers</h3>
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.3)' }}>CLAT 2024</span>
+              </div>
+              {[
+                { name: 'Aman Deep Singh', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
+                { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR', avatar: 'PS', color: '#ec4899' },
+                { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi (AILET)', avatar: 'RG', color: '#f59e0b' },
+                { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR', avatar: 'KR', color: '#f97316' },
+              ].map((t) => (
+                <div key={t.name} className="flex items-center gap-3 py-2.5 border-b last:border-0" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0" style={{ background: t.color }}>{t.avatar}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-white text-xs font-bold truncate">{t.name}</div>
+                    <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{t.college}</div>
+                  </div>
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded-full flex-shrink-0" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}>{t.rank}</span>
+                </div>
+              ))}
+            </div>
+            {/* Exam Selector compact */}
+            <div className="rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Prepare For</p>
+              <div className="grid grid-cols-3 gap-1.5">
                 {examPills.map((exam) => (
-                  <a
-                    key={exam}
-                    href="#exams"
-                    className="flex items-center justify-between px-4 py-3 rounded-xl cursor-pointer group transition-all hover:scale-[1.02]"
-                    style={{
-                      background:
-                        exam === slides[current].pill
-                          ? '#08BD80'
-                          : 'rgba(255,255,255,0.08)',
-                      border: `1px solid ${
-                        exam === slides[current].pill
-                          ? '#08BD80'
-                          : 'rgba(255,255,255,0.1)'
-                      }`,
-                    }}
-                  >
-                    <span className="text-white font-semibold text-sm">{exam}</span>
-                    <svg
-                      className="w-4 h-4 text-white/60 group-hover:text-white transition-colors"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                  <a key={exam} href={`/exams/${exam.toLowerCase().replace(' law','').replace('-law','')}`}
+                    className="text-center py-2 rounded-lg text-[11px] font-bold transition-all"
+                    style={{ background: exam === slides[current].pill ? '#08BD80' : 'rgba(255,255,255,0.08)', color: 'white', border: `1px solid ${exam === slides[current].pill ? '#08BD80' : 'rgba(255,255,255,0.1)'}` }}>
+                    {exam}
                   </a>
                 ))}
               </div>
-              <a
-                href="#admission"
-                className="mt-4 block text-center py-3 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-all"
-                style={{ background: '#08BD80' }}
-              >
-                Get Free Counselling
+              <a href="/admission" className="mt-3 block text-center py-2.5 rounded-xl font-bold text-white text-xs hover:opacity-90 transition-all" style={{ background: '#08BD80' }}>
+                Get Free Counselling →
               </a>
             </div>
           </div>

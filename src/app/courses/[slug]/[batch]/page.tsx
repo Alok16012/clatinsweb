@@ -173,6 +173,40 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 </div>
               </section>
 
+              {/* Student Reviews */}
+              <section>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>What Students Say About This Batch</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    { name: 'Sumit Kumar', batch: '2024 batch', avatar: 'SK', color: '#6366f1', stars: 5, text: 'This batch completely transformed my preparation. Small batch size means A.K. Sir knows every student personally. Highly recommend!' },
+                    { name: 'Pooja Singh', batch: '2024 batch', avatar: 'PS', color: '#ec4899', stars: 5, text: 'The schedule is intense but absolutely worth it. Mock tests every week keep you sharp. Cleared CLAT in the first attempt.' },
+                    { name: 'Rahul Jha', batch: '2023 batch', avatar: 'RJ', color: '#f59e0b', stars: 5, text: 'Faculty is extremely supportive. Doubt sessions are very productive. Materials provided are comprehensive and exam-focused.' },
+                    { name: 'Ananya Das', batch: '2024 batch', avatar: 'AD', color: '#14b8a6', stars: 5, text: 'I traveled from Kolkata for offline classes — worth every bit. The peer group here is also amazing, we studied together and all cleared.' },
+                  ].map((r) => (
+                    <div
+                      key={r.name}
+                      className="bg-white border border-gray-100 rounded-2xl p-5"
+                      style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.05)' }}
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                          style={{ background: r.color }}
+                        >
+                          {r.avatar}
+                        </div>
+                        <div>
+                          <div className="font-bold text-sm" style={{ color: '#0D1837' }}>{r.name}</div>
+                          <div className="text-xs" style={{ color: '#9CA3AF' }}>{r.batch}</div>
+                        </div>
+                      </div>
+                      <div className="text-sm mb-2" style={{ color: '#f59e0b' }}>{'⭐'.repeat(r.stars)}</div>
+                      <p className="text-sm leading-relaxed" style={{ color: 'rgba(0,0,0,0.75)' }}>{r.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
               {/* Batch details table */}
               <section>
                 <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Batch Details</h2>
