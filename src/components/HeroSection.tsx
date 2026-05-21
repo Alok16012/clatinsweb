@@ -170,9 +170,9 @@ export default function HeroSection() {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-20 flex items-center gap-16 relative z-10">
+        <div className="w-full px-8 md:px-16 py-20 flex items-center gap-10 relative z-10">
           {/* Left Content */}
-          <div className="flex-1 max-w-xl">
+          <div className="flex-1">
             {/* Exam pill */}
             <div className="inline-flex items-center gap-2 mb-6">
               <span
@@ -238,7 +238,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Topper Showcase + compact Exam Selector */}
-          <div className="flex-1 max-w-sm space-y-3">
+          <div className="w-[380px] flex-shrink-0 space-y-3">
             {/* Topper Results Card */}
             <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <div className="flex items-center justify-between mb-4">

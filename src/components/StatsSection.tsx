@@ -1,91 +1,150 @@
+'use client';
+import { useState, useEffect, useRef } from 'react';
+
 const stats = [
-  { icon: '🏆', value: '5000+', label: 'NLU Selections', desc: 'Students in top NLUs' },
-  { icon: '🎓', value: '15+', label: 'Years Excellence', desc: 'Since 2010' },
-  { icon: '👨‍🏫', value: '25+', label: 'Expert Faculty', desc: 'NLU Alumni & Advocates' },
-  { icon: '⭐', value: '4.9/5', label: 'Student Rating', desc: 'Consistently rated' },
+  {
+    num: 15000, suffix: '+', label: 'Success Stories',
+    icon: '🏆', color: '#2563eb', bg: 'linear-gradient(135deg,#eff6ff,#dbeafe)',
+    border: '#bfdbfe',
+  },
+  {
+    num: 23, suffix: ' NLUs', label: 'Top NLU Access',
+    icon: '🏛️', color: '#ea580c', bg: 'linear-gradient(135deg,#fff7ed,#fed7aa)',
+    border: '#fdba74',
+  },
+  {
+    num: 25, suffix: '+', label: 'Expert Faculty',
+    icon: '👨‍🏫', color: '#16a34a', bg: 'linear-gradient(135deg,#f0fdf4,#bbf7d0)',
+    border: '#86efac',
+  },
+  {
+    num: 4.9, suffix: '/5', label: 'Student Trust',
+    icon: '⭐', color: '#ca8a04', bg: 'linear-gradient(135deg,#fefce8,#fef08a)',
+    border: '#fde047', isDecimal: true,
+  },
 ];
 
-const mobileStats = [
-  { icon: '🏆', value: '5000+', label: 'NLU SELECTIONS' },
-  { icon: '🎓', value: '15+', label: 'YEARS EXCELLENCE' },
-  { icon: '👨‍🏫', value: '25+', label: 'EXPERT FACULTY' },
-  { icon: '⭐', value: '4.9/5', label: 'STUDENT RATING' },
-];
+function useReveal(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function AnimNum({ target, suffix, active, isDecimal }: { target: number; suffix: string; active: boolean; isDecimal?: boolean }) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    const dur = 1600;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      const cur = e * target;
+      setVal(isDecimal ? parseFloat(cur.toFixed(1)) : Math.floor(cur));
+      if (p < 1) requestAnimationFrame(tick); else setVal(target);
+    };
+    requestAnimationFrame(tick);
+  }, [active, target, isDecimal]);
+  return <>{isDecimal ? val.toFixed(1) : val.toLocaleString()}{suffix}</>;
+}
 
 export default function StatsSection() {
+  const { ref, visible } = useReveal(0.15);
+
   return (
-    <section className="py-6 md:py-10" style={{ background: '#FCF8E7' }}>
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Eyebrow text */}
-        <p
-          className="text-center text-xs font-semibold tracking-wide mb-4 hidden md:block"
-          style={{ color: '#08BD80' }}
-        >
-          Trusted by students across India
-        </p>
+    <>
+      <style>{`
+        @keyframes popIn{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+        @keyframes countGlow{0%,100%{text-shadow:none}50%{text-shadow:0 0 20px currentColor}}
+      `}</style>
 
-        {/* Desktop: 4 stats in a single row with dividers */}
-        <div className="hidden md:flex items-center justify-center">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className="flex items-center">
-              <div className="flex flex-col items-center text-center px-8 py-2">
-                {/* Icon circle */}
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center mb-2 text-lg"
-                  style={{ background: '#08BD80' }}
-                >
-                  {stat.icon}
+      <section style={{ background: '#FCF8E7', padding: '28px 0 32px' }}>
+        <div ref={ref} className="max-w-7xl mx-auto px-4 md:px-10">
+
+          {/* Desktop — 4 horizontal cards */}
+          <div className="hidden md:grid" style={{ gridTemplateColumns: 'repeat(4,1fr)', gap: '14px' }}>
+            {stats.map((s, i) => (
+              <div key={s.label} style={{
+                background: s.bg,
+                border: `1.5px solid ${s.border}`,
+                borderRadius: '20px',
+                padding: '24px 22px',
+                opacity: visible ? 1 : 0,
+                animation: visible ? `popIn .5s ease ${i * 0.1}s both` : 'none',
+                boxShadow: `0 4px 20px ${s.color}18`,
+                position: 'relative', overflow: 'hidden',
+              }}>
+                {/* Bg icon watermark */}
+                <div style={{
+                  position: 'absolute', right: '-8px', bottom: '-8px',
+                  fontSize: '64px', opacity: 0.12, lineHeight: 1,
+                  userSelect: 'none', pointerEvents: 'none',
+                }}>
+                  {s.icon}
                 </div>
-                {/* Value */}
-                <div
-                  className="text-3xl font-black leading-none"
-                  style={{ color: '#08BD80' }}
-                >
-                  {stat.value}
+
+                {/* Icon badge */}
+                <div style={{
+                  width: '40px', height: '40px', borderRadius: '12px',
+                  background: 'rgba(255,255,255,0.7)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '20px', marginBottom: '14px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                }}>
+                  {s.icon}
                 </div>
+
+                {/* Number */}
+                <div style={{
+                  fontSize: '38px', fontWeight: 900, lineHeight: 1,
+                  color: s.color, marginBottom: '6px',
+                  fontVariantNumeric: 'tabular-nums',
+                }}>
+                  <AnimNum target={s.num} suffix={s.suffix} active={visible} isDecimal={s.isDecimal} />
+                </div>
+
                 {/* Label */}
-                <div
-                  className="font-bold text-sm mt-1"
-                  style={{ color: '#3C4852' }}
-                >
-                  {stat.label}
+                <div style={{
+                  color: '#374151', fontWeight: 700, fontSize: '13px',
+                  textTransform: 'uppercase', letterSpacing: '0.05em',
+                }}>
+                  {s.label}
                 </div>
-                {/* Description */}
-                <div className="text-xs text-gray-500 mt-0.5">{stat.desc}</div>
               </div>
-              {/* Vertical divider — skip after last item */}
-              {i < stats.length - 1 && (
-                <span className="text-gray-300 text-2xl select-none">|</span>
-              )}
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Mobile: 4-col grid */}
-        <div className="md:hidden grid grid-cols-4 gap-2">
-          {mobileStats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-xl flex flex-col items-center justify-center text-center py-3 px-1"
-              style={{ background: 'rgba(255,255,255,0.7)' }}
-            >
-              <div className="text-base mb-0.5">{stat.icon}</div>
-              <div
-                className="text-sm font-black leading-none"
-                style={{ color: '#08BD80' }}
-              >
-                {stat.value}
+          {/* Mobile — 2×2 grid */}
+          <div className="md:hidden grid grid-cols-2 gap-3">
+            {stats.map((s, i) => (
+              <div key={s.label} style={{
+                background: s.bg, border: `1.5px solid ${s.border}`,
+                borderRadius: '16px', padding: '16px 14px',
+                opacity: visible ? 1 : 0,
+                animation: visible ? `popIn .45s ease ${i * 0.08}s both` : 'none',
+                position: 'relative', overflow: 'hidden',
+              }}>
+                <div style={{ position: 'absolute', right: '-4px', bottom: '-4px', fontSize: '48px', opacity: 0.1, lineHeight: 1, pointerEvents: 'none' }}>{s.icon}</div>
+                <div style={{ fontSize: '22px', marginBottom: '8px' }}>{s.icon}</div>
+                <div style={{ fontSize: '28px', fontWeight: 900, lineHeight: 1, color: s.color, marginBottom: '4px' }}>
+                  <AnimNum target={s.num} suffix={s.suffix} active={visible} isDecimal={s.isDecimal} />
+                </div>
+                <div style={{ color: '#374151', fontWeight: 700, fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{s.label}</div>
               </div>
-              <div
-                className="text-[8px] font-bold mt-1 tracking-wide leading-tight"
-                style={{ color: '#3C4852' }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

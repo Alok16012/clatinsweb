@@ -6,13 +6,10 @@ const navLinks = [
   {
     label: 'Courses', href: '/courses',
     sub: [
-      { label: '🏛️ CLAT Coaching', href: '/courses/clat' },
-      { label: '⚖️ CLAT + AILET', href: '/courses/clat-ailet' },
-      { label: '🎓 CUET-UG Law', href: '/courses/cuet-ug' },
-      { label: '🎯 OLET Program', href: '/courses/olet' },
-      { label: '💻 Online CLAT', href: '/courses/clat-online' },
-      { label: '⚡ Booster Course', href: '/courses/booster' },
-      { label: '📝 Mock Tests', href: '/courses/mock-tests' },
+      { label: '🏫 Offline Course', href: '/courses?cat=offline' },
+      { label: '💻 Online Course', href: '/courses?cat=online' },
+      { label: '🎯 Mentorship', href: '/courses?cat=mentorship' },
+      { label: '📝 Mock Tests', href: '/courses?cat=mock' },
     ],
   },
   {

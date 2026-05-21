@@ -1,196 +1,278 @@
+'use client';
+import { useState, useEffect, useRef } from 'react';
+
 const exams = [
   {
     code: 'CLAT',
     slug: 'clat',
     name: 'Common Law Admission Test',
-    tagline: 'Gateway to top 23 NLUs!',
+    tagline: 'Gateway to top 23 NLUs',
     icon: '🏛️',
-    iconBg: '#EEF4FF',
-    seats: '2700+ seats',
+    color: '#0f3460',
+    accent: '#08BD80',
+    seats: '2,700+',
     colleges: '23 NLUs',
+    difficulty: 85,
+    applicants: '70,000+',
+    date: 'Dec 2025',
   },
   {
     code: 'AILET',
     slug: 'ailet',
     name: 'All India Law Entrance Test',
-    tagline: 'Path to NLU Delhi.',
+    tagline: 'Path to NLU Delhi',
     icon: '⚖️',
-    iconBg: '#FFF4E6',
-    seats: '110 seats',
+    color: '#7c2d12',
+    accent: '#f97316',
+    seats: '110',
     colleges: 'NLU Delhi',
+    difficulty: 95,
+    applicants: '25,000+',
+    date: 'Dec 2025',
   },
   {
     code: 'MH-CET',
     slug: 'mh-cet-law',
     name: 'Maharashtra CET Law',
-    tagline: 'Top MH law colleges.',
+    tagline: 'Top MH law colleges',
     icon: '📍',
-    iconBg: '#FFF0F0',
-    seats: '5000+ seats',
-    colleges: '25+ MH Colleges',
+    color: '#7c1d2c',
+    accent: '#ec4899',
+    seats: '5,000+',
+    colleges: '25+ Colleges',
+    difficulty: 65,
+    applicants: '40,000+',
+    date: 'Mar 2026',
   },
   {
     code: 'CUET',
     slug: 'cuet',
     name: 'Common University Entrance',
-    tagline: '200+ universities.',
+    tagline: '200+ universities',
     icon: '🎓',
-    iconBg: '#F0FFF8',
-    seats: '3000+ seats',
-    colleges: 'Central Universities',
+    color: '#065f46',
+    accent: '#34d399',
+    seats: '3,000+',
+    colleges: 'Central Univs.',
+    difficulty: 70,
+    applicants: '14 lakh+',
+    date: 'May 2026',
   },
   {
     code: 'AIL-LET',
     slug: 'ail-let',
     name: 'Army Institute of Law Entrance',
-    tagline: 'Army Institute of Law.',
+    tagline: 'Army Institute of Law',
     icon: '🎖️',
-    iconBg: '#F5F0FF',
-    seats: '120 seats',
+    color: '#1e3a5f',
+    accent: '#3b82f6',
+    seats: '120',
     colleges: 'AIL Mohali',
+    difficulty: 80,
+    applicants: '8,000+',
+    date: 'Jan 2026',
   },
   {
     code: 'LSAT',
     slug: 'lsat',
     name: 'Law School Admission Test',
-    tagline: '85+ private law schools.',
+    tagline: '85+ private law schools',
     icon: '🌐',
-    iconBg: '#F0F9FF',
-    seats: '2000+ seats',
-    colleges: '85+ Private Universities',
+    color: '#4c1d95',
+    accent: '#8b5cf6',
+    seats: '2,000+',
+    colleges: '85+ Colleges',
+    difficulty: 75,
+    applicants: '30,000+',
+    date: 'Jan 2026',
   },
 ];
 
+function useReveal(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function DifficultyBar({ pct, color }: { pct: number; color: string }) {
+  const [w, setW] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setTimeout(() => setW(pct), 200); obs.disconnect(); }
+    }, { threshold: 0.5 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [pct]);
+  return (
+    <div ref={ref} style={{ background: '#F3F4F6', borderRadius: '99px', height: '5px', overflow: 'hidden' }}>
+      <div style={{ height: '100%', width: `${w}%`, background: color, borderRadius: '99px', transition: 'width 1s ease' }} />
+    </div>
+  );
+}
+
 export default function ExamsSection() {
+  const [hovered, setHovered] = useState<string | null>(null);
+  const { ref, visible } = useReveal(0.1);
+
   return (
     <>
-      {/* ─── Desktop Exams Section ─────────────────────────── */}
-      <section id="exams" className="hidden md:block py-14" style={{ background: '#F7F9FB' }}>
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Section header */}
-          <div className="flex items-end justify-between mb-8">
+      <style>{`
+        @keyframes floatIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        .exam-icon-float{animation:floatIcon 3s ease-in-out infinite}
+        @keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+      `}</style>
+
+      {/* ── DESKTOP ─────────────────────────────────────────── */}
+      <section id="exams" className="hidden md:block" style={{ background: '#0D1837', padding: '72px 0', position: 'relative', overflow: 'hidden' }}>
+        {/* BG orbs */}
+        <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '320px', height: '320px', borderRadius: '50%', background: '#08BD80', opacity: 0.05, filter: 'blur(60px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-40px', left: '-40px', width: '240px', height: '240px', borderRadius: '50%', background: '#3b82f6', opacity: 0.06, filter: 'blur(50px)', pointerEvents: 'none' }} />
+        {/* Grid overlay */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04, backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
+          {/* Header */}
+          <div ref={ref} style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: 'opacity .6s ease, transform .6s ease' }}>
             <div>
-              <h2
-                className="text-3xl font-extrabold mb-2"
-                style={{ color: '#3C4852', fontWeight: 800 }}
-              >
-                Law Entrance Exams
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(8,189,128,0.12)', border: '1px solid rgba(8,189,128,0.25)' }}>
+                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#08BD80' }} />
+                <span style={{ color: '#08BD80', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Law Entrance Exams</span>
+              </div>
+              <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 38px)', lineHeight: 1.2, marginBottom: '6px' }}>
+                Expert Coaching for<br />
+                <span style={{ background: 'linear-gradient(90deg,#08BD80,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Every Major Law Exam</span>
               </h2>
-              <p className="text-base" style={{ color: '#7A8B94' }}>
-                Expert coaching for all major law entrances
-              </p>
+              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px' }}>Pick your exam — we have a specialist batch ready for you.</p>
             </div>
-            <a
-              href="/exams/clat"
-              className="see-all flex items-center gap-1 flex-shrink-0 mb-1"
-            >
-              SEE ALL EXAMS →
+            <a href="/exams/clat" style={{ color: '#08BD80', fontWeight: 700, fontSize: '13px', textDecoration: 'none', border: '1px solid rgba(8,189,128,0.3)', padding: '8px 18px', borderRadius: '10px', flexShrink: 0, marginBottom: '4px', transition: 'all .2s' }}>
+              See All Exams →
             </a>
           </div>
 
-          {/* 3-col × 2-row grid */}
-          <div className="grid grid-cols-3 gap-5">
-            {exams.map((exam) => (
-              <a
-                key={exam.code}
-                href={`/exams/${exam.slug}`}
-                className="group bg-white rounded-xl p-6 card-hover flex flex-col gap-4"
-                style={{ border: '1px solid #E9EEF2', borderRadius: '12px' }}
-              >
-                {/* Icon + badge row */}
-                <div className="flex items-start justify-between">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                    style={{ background: exam.iconBg }}
-                  >
-                    {exam.icon}
+          {/* Exam cards grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+            {exams.map((exam, i) => {
+              const isHov = hovered === exam.code;
+              return (
+                <a
+                  key={exam.code}
+                  href={`/exams/${exam.slug}`}
+                  onMouseEnter={() => setHovered(exam.code)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    display: 'block', textDecoration: 'none',
+                    background: isHov ? `linear-gradient(135deg, ${exam.color}ee, ${exam.color}aa)` : 'rgba(255,255,255,0.05)',
+                    border: `1.5px solid ${isHov ? exam.accent + '66' : 'rgba(255,255,255,0.08)'}`,
+                    borderRadius: '18px', padding: '20px',
+                    transition: 'all .25s ease',
+                    boxShadow: isHov ? `0 8px 32px ${exam.color}55` : 'none',
+                    transform: isHov ? 'translateY(-4px)' : 'none',
+                    opacity: visible ? 1 : 0,
+                    animationDelay: `${i * 0.08}s`,
+                    backdropFilter: 'blur(8px)',
+                  }}
+                >
+                  {/* Top row */}
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '14px' }}>
+                    <div style={{
+                      width: '52px', height: '52px', borderRadius: '14px',
+                      background: isHov ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px',
+                      ...(isHov ? { animation: 'floatIcon 2s ease-in-out infinite' } : {}),
+                    }}>
+                      {exam.icon}
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ background: isHov ? exam.accent : 'rgba(255,255,255,0.1)', color: isHov ? 'white' : 'rgba(255,255,255,0.7)', fontSize: '11px', fontWeight: 800, padding: '4px 10px', borderRadius: '99px', display: 'inline-block', transition: 'all .2s' }}>
+                        {exam.code}
+                      </div>
+                      <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', marginTop: '4px' }}>📅 {exam.date}</div>
+                    </div>
                   </div>
-                  <span
-                    className="text-xs font-bold px-2.5 py-1 rounded-full"
-                    style={{ background: '#E6FAF4', color: '#08BD80' }}
-                  >
-                    {exam.code}
-                  </span>
-                </div>
 
-                {/* Name + tagline */}
-                <div>
-                  <h3
-                    className="font-bold text-sm leading-snug"
-                    style={{ color: '#3C4852' }}
-                  >
-                    {exam.name}
-                  </h3>
-                  <p className="text-sm mt-1 font-medium" style={{ color: '#08BD80' }}>
-                    {exam.tagline}
-                  </p>
-                </div>
+                  {/* Name */}
+                  <div style={{ color: 'white', fontWeight: 800, fontSize: '15px', lineHeight: 1.3, marginBottom: '4px' }}>{exam.name}</div>
+                  <div style={{ color: exam.accent, fontWeight: 600, fontSize: '12px', marginBottom: '14px' }}>{exam.tagline}</div>
 
-                {/* Seats / colleges row */}
-                <div
-                  className="flex items-center gap-3 text-xs border-t pt-3 mt-auto"
-                  style={{ color: '#9CA3AF', borderColor: '#E9EEF2' }}
-                >
-                  <span>🪑 {exam.seats}</span>
-                  <span>·</span>
-                  <span>📍 {exam.colleges}</span>
-                </div>
+                  {/* Infographic stats */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '14px' }}>
+                    {[
+                      { label: 'Seats', val: exam.seats, icon: '🪑' },
+                      { label: 'Colleges', val: exam.colleges, icon: '🏛️' },
+                      { label: 'Applicants', val: exam.applicants, icon: '👥' },
+                      { label: 'Difficulty', val: `${exam.difficulty}%`, icon: '📊' },
+                    ].map(s => (
+                      <div key={s.label} style={{ background: 'rgba(255,255,255,0.06)', borderRadius: '10px', padding: '8px 10px' }}>
+                        <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '2px' }}>{s.icon} {s.label}</div>
+                        <div style={{ color: 'white', fontWeight: 800, fontSize: '12px' }}>{s.val}</div>
+                      </div>
+                    ))}
+                  </div>
 
-                {/* CTA */}
-                <div
-                  className="flex items-center gap-1 text-sm font-semibold"
-                  style={{ color: '#08BD80' }}
-                >
-                  Prepare Now{' '}
-                  <span className="group-hover:translate-x-1 transition-transform inline-block">
-                    →
-                  </span>
-                </div>
-              </a>
-            ))}
+                  {/* Difficulty bar */}
+                  <div style={{ marginBottom: '14px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                      <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', fontWeight: 600 }}>Competition Level</span>
+                      <span style={{ color: exam.accent, fontSize: '10px', fontWeight: 700 }}>{exam.difficulty}%</span>
+                    </div>
+                    <DifficultyBar pct={exam.difficulty} color={exam.accent} />
+                  </div>
+
+                  {/* CTA */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span style={{ color: exam.accent, fontWeight: 700, fontSize: '13px' }}>Prepare Now</span>
+                    <div style={{
+                      width: '28px', height: '28px', borderRadius: '50%',
+                      background: isHov ? exam.accent : 'rgba(255,255,255,0.08)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: 'white', fontSize: '13px', fontWeight: 700,
+                      transition: 'all .2s',
+                      transform: isHov ? 'translateX(3px)' : 'none',
+                    }}>→</div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ─── Mobile Exams Section ─────────────────────────── */}
-      <section className="md:hidden py-6 px-4" style={{ background: '#0D1837' }}>
-        {/* Header row */}
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <span
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white mb-2"
-              style={{ background: '#f97316' }}
-            >
-              🏛 LAW ENTRANCE
-            </span>
-            <h2 className="text-xl font-black text-white leading-tight">Choose Your Exam</h2>
-            <p className="text-white/60 text-xs mt-1">Expert coaching for every law entrance</p>
+      {/* ── MOBILE ──────────────────────────────────────────── */}
+      <section className="md:hidden" style={{ background: '#0D1837', padding: '32px 16px' }}>
+        <div style={{ marginBottom: '20px' }}>
+          <span style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', fontSize: '10px', fontWeight: 700, padding: '5px 12px', borderRadius: '99px', display: 'inline-block', marginBottom: '8px', border: '1px solid rgba(8,189,128,0.25)' }}>
+            LAW ENTRANCE EXAMS
+          </span>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+            <h2 style={{ color: 'white', fontWeight: 900, fontSize: '22px', lineHeight: 1.25 }}>Choose<br />Your Exam</h2>
+            <a href="/exams/clat" style={{ color: '#08BD80', fontWeight: 700, fontSize: '12px', textDecoration: 'none' }}>All Exams →</a>
           </div>
-          <a
-            href="/exams/clat"
-            className="text-xs font-bold flex items-center gap-1 mt-8 flex-shrink-0"
-            style={{ color: '#f97316' }}
-          >
-            View All →
-          </a>
         </div>
 
-        {/* 3-col grid */}
-        <div className="grid grid-cols-3 gap-2.5">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
           {exams.map((exam) => (
-            <a
-              key={exam.code}
-              href={`/exams/${exam.slug}`}
-              className="bg-white rounded-2xl p-3 flex flex-col items-center text-center"
-            >
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-2"
-                style={{ background: exam.iconBg }}
-              >
+            <a key={exam.code} href={`/exams/${exam.slug}`}
+              style={{
+                background: 'rgba(255,255,255,0.06)', borderRadius: '16px', padding: '14px 10px',
+                textDecoration: 'none', textAlign: 'center', border: `1px solid rgba(255,255,255,0.08)`,
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px',
+              }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${exam.color}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
                 {exam.icon}
               </div>
-              <div className="font-black text-xs text-gray-900 leading-tight">{exam.code}</div>
-              <div className="text-[10px] text-gray-500 mt-0.5 leading-tight">{exam.tagline}</div>
+              <div style={{ color: exam.accent, fontWeight: 800, fontSize: '13px' }}>{exam.code}</div>
+              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', lineHeight: 1.3 }}>{exam.tagline}</div>
+              <div style={{ background: exam.accent + '22', color: exam.accent, fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '99px', marginTop: '2px' }}>
+                {exam.seats} seats
+              </div>
             </a>
           ))}
         </div>
