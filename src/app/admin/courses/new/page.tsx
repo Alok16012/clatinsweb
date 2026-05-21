@@ -6,6 +6,7 @@ import type { Course } from '@/data/courses';
 const emptyCourse: Course = {
   slug: '',
   title: '',
+  category: 'offline',
   icon: '📚',
   color: '#08BD80',
   bg: '#E6FAF4',

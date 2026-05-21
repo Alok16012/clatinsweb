@@ -3,12 +3,12 @@ import { useState } from 'react';
 
 const programs = [
   {
-    icon: '🏫',
+    icon: '🏛️',
     title: 'Offline Course',
     desc: 'Attend live classes at our Patna center. Direct interaction with faculty, structured timetable, and peer learning environment.',
     features: ['Live Classes', 'Study Material', 'Doubt Sessions', 'Mock Tests'],
     cta: 'View Schedule',
-    href: '/courses/offline',
+    href: '/courses/clat',
   },
   {
     icon: '💻',
@@ -16,7 +16,7 @@ const programs = [
     desc: 'Study from anywhere with recorded & live online classes. Full access to study material, tests, and mentor support.',
     features: ['Recorded Lectures', 'Live Doubt Sessions', 'Digital Notes', 'Mock Tests'],
     cta: 'Enroll Online',
-    href: '/courses/online',
+    href: '/courses/clat-online',
     badge: 'Most Popular',
   },
   {
@@ -25,7 +25,7 @@ const programs = [
     desc: 'One-on-one mentorship from NLU toppers and advocates. Personalized study plan tailored to your strengths.',
     features: ['1-on-1 Sessions', 'Custom Study Plan', 'NLU Mentor', 'Interview Prep'],
     cta: 'Book Mentor',
-    href: '/courses/mentorship',
+    href: '/courses',
   },
   {
     icon: '📝',
@@ -42,36 +42,24 @@ const tabCourses: Record<
   { badge: string; badgeColor: string; badgeBg: string; name: string; slug: string }[]
 > = {
   'Offline Course': [
-    { badge: '🎓 Your Path to Top NLUs', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'offline' },
-    { badge: '🎓 Path to NLU Delhi', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'AILET', slug: 'offline' },
-    { badge: '🎓 Top MH Colleges', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'MH-CET', slug: 'offline' },
+    { badge: '🎓 Your Path to Top NLUs', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'clat' },
+    { badge: '🎓 CLAT + NLU Delhi', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT+AILET', slug: 'clat-ailet' },
+    { badge: '🎓 Central Universities', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CUET-UG', slug: 'cuet-ug' },
   ],
   'Online Course': [
-    { badge: '🎓 Early Edge for CUET', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CUET-UG', slug: 'online' },
-    { badge: '🎓 Gateway to NLUs', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'online' },
-    { badge: '🎓 Global Law Schools', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'LSAT', slug: 'online' },
+    { badge: '🎓 Study From Anywhere', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'Online CLAT', slug: 'clat-online' },
+    { badge: '🎓 Global Law Schools', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'LSAT India', slug: 'lsat' },
+    { badge: '🎓 Last 45 Days Boost', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'Booster', slug: 'booster' },
   ],
   Mentorship: [
-    { badge: '🎓 1-on-1 CLAT Prep', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'mentorship' },
-    { badge: '🎓 NLU Delhi Focus', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'AILET', slug: 'mentorship' },
-    {
-      badge: '🎓 All Exams Covered',
-      badgeColor: '#08BD80',
-      badgeBg: '#E6FAF4',
-      name: 'All Exams',
-      slug: 'mentorship',
-    },
+    { badge: '🎓 1-on-1 CLAT Prep', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'clat' },
+    { badge: '🎓 NLU Delhi Focus', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'AILET', slug: 'clat-ailet' },
+    { badge: '🎓 All Exams Covered', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'All Exams', slug: 'olet' },
   ],
   'Mock Tests': [
     { badge: '🎓 CLAT Mock Series', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'mock-tests' },
-    { badge: '🎓 AILET Mock Series', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'AILET', slug: 'mock-tests' },
-    {
-      badge: '🎓 MH-CET Mock Tests',
-      badgeColor: '#08BD80',
-      badgeBg: '#E6FAF4',
-      name: 'MH-CET',
-      slug: 'mock-tests',
-    },
+    { badge: '🎓 10 Mocks Starter', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: '10 Mocks', slug: 'mock-tests' },
+    { badge: '🎓 40 Mocks Ultimate', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: '40 Mocks', slug: 'mock-tests' },
   ],
 };
 
@@ -239,7 +227,7 @@ export default function ProgramsSection() {
           {/* View All Courses */}
           <div className="flex justify-center mt-4">
             <a
-              href="/courses/offline"
+              href="/courses"
               className="flex items-center gap-2 px-8 py-3 rounded-full border-2 font-bold text-sm uppercase tracking-wide"
               style={{ borderColor: '#08BD80', color: '#08BD80' }}
             >

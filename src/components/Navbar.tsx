@@ -4,11 +4,14 @@ import { useState } from 'react';
 const navLinks = [
   { label: 'Home', href: '/' },
   {
-    label: 'Courses', href: '/courses/offline',
+    label: 'Courses', href: '/courses',
     sub: [
-      { label: '🏫 Offline Course', href: '/courses/offline' },
-      { label: '💻 Online Course', href: '/courses/online' },
-      { label: '🎯 OLET Program', href: '/courses/mentorship' },
+      { label: '🏛️ CLAT Coaching', href: '/courses/clat' },
+      { label: '⚖️ CLAT + AILET', href: '/courses/clat-ailet' },
+      { label: '🎓 CUET-UG Law', href: '/courses/cuet-ug' },
+      { label: '🎯 OLET Program', href: '/courses/olet' },
+      { label: '💻 Online CLAT', href: '/courses/clat-online' },
+      { label: '⚡ Booster Course', href: '/courses/booster' },
       { label: '📝 Mock Tests', href: '/courses/mock-tests' },
     ],
   },
@@ -30,7 +33,7 @@ const navLinks = [
 
 const mobileNavItems = [
   { label: 'Home', href: '/', icon: <HomeIcon /> },
-  { label: 'Courses', href: '/courses/offline', icon: <BookIcon /> },
+  { label: 'Courses', href: '/courses', icon: <BookIcon /> },
   { label: 'Admission', href: '/admission', icon: <GradIcon /> },
   { label: 'Students', href: '/about', icon: <StudentsIcon /> },
   { label: 'Law Exams', href: '/exams/clat', icon: <LawIcon /> },

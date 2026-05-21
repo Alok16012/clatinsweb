@@ -1,6 +1,7 @@
 export interface Batch {
   slug: string;
   courseSlug: string;
+  category: 'offline' | 'online' | 'mock';
   name: string;
   exam: string;
   batchCode: string;
@@ -25,7 +26,8 @@ export const batches: Batch[] = [
   // ── OFFLINE BATCHES ─────────────────────────────────────────
   {
     slug: 'clat-2027-foundation',
-    courseSlug: 'offline',
+    courseSlug: 'clat',
+    category: 'offline',
     name: 'Foundation Batch for CLAT-2027',
     exam: 'CLAT',
     batchCode: 'OFF-CLAT-F27',
@@ -63,7 +65,8 @@ export const batches: Batch[] = [
   },
   {
     slug: 'clat-2027-target',
-    courseSlug: 'offline',
+    courseSlug: 'clat',
+    category: 'offline',
     name: 'Target Batch for CLAT-2027',
     exam: 'CLAT',
     batchCode: 'OFF-CLAT-T27',
@@ -101,7 +104,8 @@ export const batches: Batch[] = [
   },
   {
     slug: 'clat-ailet-2026-offline',
-    courseSlug: 'offline',
+    courseSlug: 'clat-ailet',
+    category: 'offline',
     name: 'Target for CLAT & AILET-2026',
     exam: 'CLAT + AILET',
     batchCode: 'OFF-CLAT-AILET-26',
@@ -139,7 +143,8 @@ export const batches: Batch[] = [
   },
   {
     slug: 'olet-2026',
-    courseSlug: 'mentorship',
+    courseSlug: 'olet',
+    category: 'offline',
     name: 'Target OLET-2026',
     exam: 'AILET · CUET-LAW · MH-CET · LSAT · AIL-LET',
     batchCode: 'OFF-OLET-26',
@@ -177,7 +182,8 @@ export const batches: Batch[] = [
   },
   {
     slug: 'cuet-law-2026',
-    courseSlug: 'mentorship',
+    courseSlug: 'cuet-ug',
+    category: 'offline',
     name: 'Target Batch for CUET-2026',
     exam: 'CUET-LAW',
     batchCode: 'OFF-CUET-26',
@@ -217,7 +223,8 @@ export const batches: Batch[] = [
   // ── ONLINE BATCHES ──────────────────────────────────────────
   {
     slug: 'clat-2026-online',
-    courseSlug: 'online',
+    courseSlug: 'clat-online',
+    category: 'online',
     name: 'Target Batch for CLAT-2026',
     exam: 'CLAT',
     batchCode: 'ONL-CLAT-26',
@@ -255,7 +262,8 @@ export const batches: Batch[] = [
   },
   {
     slug: 'clat-ailet-2026-online',
-    courseSlug: 'online',
+    courseSlug: 'clat-ailet',
+    category: 'online',
     name: 'Target CLAT & AILET-2026',
     exam: 'CLAT + AILET',
     batchCode: 'ONL-CLAT-AILET-26',
@@ -296,6 +304,7 @@ export const batches: Batch[] = [
   {
     slug: 'clat-mock-10',
     courseSlug: 'mock-tests',
+    category: 'mock',
     name: 'CLAT Mock Test Series — 10 Mocks',
     exam: 'CLAT 2026',
     batchCode: 'MOCK-CLAT-10',
@@ -334,6 +343,7 @@ export const batches: Batch[] = [
   {
     slug: 'clat-mock-20',
     courseSlug: 'mock-tests',
+    category: 'mock',
     name: 'CLAT Mock Test Series — 20 Mocks',
     exam: 'CLAT 2026',
     batchCode: 'MOCK-CLAT-20',
@@ -372,6 +382,7 @@ export const batches: Batch[] = [
   {
     slug: 'clat-mock-40',
     courseSlug: 'mock-tests',
+    category: 'mock',
     name: 'CLAT Mock Test Series — 40 Mocks',
     exam: 'CLAT 2026',
     batchCode: 'MOCK-CLAT-40',

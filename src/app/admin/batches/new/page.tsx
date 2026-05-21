@@ -5,7 +5,8 @@ import type { Batch } from '@/data/batches';
 
 const emptyBatch: Batch = {
   slug: '',
-  courseSlug: 'offline',
+  courseSlug: 'clat',
+  category: 'offline',
   name: '',
   exam: 'CLAT',
   batchCode: '',
