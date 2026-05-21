@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -29,16 +29,20 @@ const navLinks = [
 ];
 
 const mobileNavItems = [
-  { label: 'Home', href: '/', icon: <HomeIcon /> },
-  { label: 'Courses', href: '/courses', icon: <BookIcon /> },
-  { label: 'Admission', href: '/admission', icon: <GradIcon /> },
-  { label: 'Students', href: '/about', icon: <StudentsIcon /> },
-  { label: 'Law Exams', href: '/exams/clat', icon: <LawIcon /> },
-  { label: 'More', href: '/about', icon: <MenuIcon /> },
+  { label: 'Home', href: '/', icon: <HomeIcon />, match: (p: string) => p === '/', color: '#06b6d4' },
+  { label: 'Courses', href: '/courses', icon: <BookIcon />, match: (p: string) => p.startsWith('/courses'), color: '#8b5cf6' },
+  { label: 'Exams', href: '/exams/clat', icon: <LawIcon />, match: (p: string) => p.startsWith('/exams'), color: '#f59e0b' },
+  { label: 'Admission', href: '/admission', icon: <GradIcon />, match: (p: string) => p.startsWith('/admission'), color: '#f97316' },
+  { label: 'More', href: '/about', icon: <MenuIcon />, match: (p: string) => p.startsWith('/about') || p.startsWith('/blogs') || p.startsWith('/faculty'), color: '#ec4899' },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [pathname, setPathname] = useState('/');
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
 
   return (
     <>
@@ -117,88 +121,84 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ─── Mobile Navbar ──────────────────────────────────── */}
-      <nav className="sticky top-0 z-50 md:hidden bg-white" style={{ borderBottom: '1px solid #E9EEF2', boxShadow: '0 1px 6px rgba(0,0,0,0.07)' }}>
-        <div className="flex items-center justify-between px-3 h-14 gap-2">
-
-          {/* Left: Hamburger + Logo together */}
-          <div className="flex items-center gap-2">
+      {/* ─── Mobile App Top Bar ─────────────────────────────── */}
+      <nav className="sticky top-0 z-50 md:hidden" style={{ background: '#0D1837' }}>
+        <div className="flex items-center justify-between px-4 h-14">
+          {/* Left: Hamburger + Logo */}
+          <div className="flex items-center gap-2.5">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors"
-              style={{ color: '#3C4852', background: mobileOpen ? '#F0FDF9' : 'transparent' }}
+              className="w-9 h-9 flex items-center justify-center rounded-xl flex-shrink-0"
+              style={{ background: mobileOpen ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)', color: 'white' }}
+              aria-label="Menu"
             >
               {mobileOpen ? (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
-            <a href="/">
-              <img src="/logo.png" alt="CLATians" className="h-8 w-auto object-contain" />
+            <a href="/" className="flex items-center">
+              <img src="/logo.png" alt="CLATians" className="h-7 w-auto object-contain brightness-0 invert" />
             </a>
           </div>
 
-          {/* Right: CTAs */}
+          {/* Right actions */}
           <div className="flex items-center gap-2">
+            {/* Call button */}
             <a href="tel:8507700177"
-              className="flex items-center justify-center w-9 h-9 rounded-xl"
-              style={{ background: '#F0FDF9', color: '#08BD80' }}>
+              className="w-9 h-9 flex items-center justify-center rounded-xl"
+              style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
             </a>
-            <a href="/admission"
-              className="px-3.5 py-2 rounded-xl text-white text-xs font-bold whitespace-nowrap"
-              style={{ background: '#f97316' }}>
-              Admission 2026
+            {/* College Predictor CTA */}
+            <a href="/college-predictor"
+              className="px-3 py-2 rounded-xl text-white text-xs font-black whitespace-nowrap flex items-center gap-1"
+              style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}>
+              🔮 Predictor
             </a>
           </div>
         </div>
 
-        {/* Mobile Menu Drawer */}
+        {/* Search / Menu Drawer */}
         {mobileOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white shadow-xl border-t z-50" style={{ borderColor: '#E9EEF2' }}>
-            <div className="px-4 py-3 space-y-0.5 max-h-[80vh] overflow-y-auto">
-              {navLinks.map((link) => (
-                <div key={link.label}>
-                  <a href={link.href} onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between py-3 px-3 rounded-xl font-semibold text-sm"
-                    style={{ color: '#3C4852' }}>
+          <div className="absolute top-full left-0 right-0 z-50" style={{ background: '#0D1837', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+            {/* Search bar */}
+            <div className="px-4 py-3">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-2xl" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <svg className="w-4 h-4 flex-shrink-0" style={{ color: 'rgba(255,255,255,0.4)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  autoFocus
+                  type="text"
+                  placeholder="Search courses, exams..."
+                  className="flex-1 bg-transparent outline-none text-sm"
+                  style={{ color: 'white' }}
+                />
+              </div>
+            </div>
+            {/* Quick links */}
+            <div className="px-4 pb-4">
+              <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Quick Links</p>
+              <div className="grid grid-cols-2 gap-2">
+                {navLinks.map((link) => (
+                  <a key={link.label} href={link.href} onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold"
+                    style={{ background: 'rgba(255,255,255,0.07)', color: 'rgba(255,255,255,0.85)' }}>
                     {link.label}
-                    {link.sub && (
-                      <svg className="w-3.5 h-3.5 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    )}
                   </a>
-                  {link.sub && (
-                    <div className="pl-4 pb-1 space-y-0.5 border-l-2 ml-5" style={{ borderColor: '#E6FAF4' }}>
-                      {link.sub.map((s) => (
-                        <a key={s.label} href={s.href} onClick={() => setMobileOpen(false)}
-                          className="block py-2 px-3 text-sm rounded-lg"
-                          style={{ color: '#7A8B94' }}>
-                          {s.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="pt-3 pb-2 flex gap-2 border-t mt-2" style={{ borderColor: '#E9EEF2' }}>
+                ))}
                 <a href="/college-predictor" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center py-3 rounded-xl border-2 font-bold text-sm"
-                  style={{ borderColor: '#08BD80', color: '#08BD80' }}>
-                  🔮 College Predictor
-                </a>
-                <a href="/admission" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center py-3 rounded-xl text-white font-bold text-sm"
-                  style={{ background: '#08BD80' }}>
-                  Admission 2026
+                  className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold col-span-2"
+                  style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.25)' }}>
+                  🔮 College Predictor — Free Tool
                 </a>
               </div>
             </div>
@@ -208,14 +208,26 @@ export default function Navbar() {
 
       {/* ─── Mobile Bottom Navigation ───────────────────────── */}
       <div className="mobile-bottom-nav md:hidden">
-        {mobileNavItems.map((item) => (
-          <a key={item.label} href={item.href}
-            className="flex flex-col items-center gap-0.5 py-1 flex-1 transition-colors"
-            style={{ color: '#9CA3AF' }}>
-            <span className="w-5 h-5">{item.icon}</span>
-            <span className="text-[9px] font-semibold leading-tight">{item.label}</span>
-          </a>
-        ))}
+        {mobileNavItems.map((item) => {
+          const isActive = item.match(pathname);
+          return (
+            <a key={item.label} href={item.href}
+              className="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-all relative">
+              {isActive && (
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full"
+                  style={{ background: item.color }} />
+              )}
+              <span className="nav-icon w-5 h-5 transition-colors"
+                style={{ color: isActive ? item.color : '#9CA3AF' }}>
+                {item.icon}
+              </span>
+              <span className="nav-label text-[10px] font-bold leading-tight transition-colors"
+                style={{ color: isActive ? item.color : '#9CA3AF' }}>
+                {item.label}
+              </span>
+            </a>
+          );
+        })}
       </div>
     </>
   );
@@ -232,9 +244,6 @@ function GradIcon() {
 }
 function MenuIcon() {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>;
-}
-function StudentsIcon() {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>;
 }
 function LawIcon() {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>;

@@ -32,7 +32,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
       <main className="pb-20 md:pb-0">
 
         {/* ── Hero ──────────────────────────────────── */}
-        <div className="relative overflow-hidden py-14 md:py-20"
+        <div className="relative overflow-hidden py-10 md:py-20"
           style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-10"
             style={{ background: f.color }} />
@@ -83,7 +83,32 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
+        {/* Mobile: quick-action strip + other faculty scroll */}
+        <div className="md:hidden px-4 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E9EEF2' }}>
+          <div className="flex gap-3 mb-3">
+            <a href="tel:8507700177"
+              style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: 'white', textDecoration: 'none', background: f.color }}>
+              📞 Book Session
+            </a>
+            <a href="/courses/mentorship"
+              style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: f.color, textDecoration: 'none', background: 'white', border: `1.5px solid ${f.color}` }}>
+              Mentorship →
+            </a>
+          </div>
+          {otherFaculty.length > 0 && (
+            <div style={{ overflowX: 'auto', display: 'flex', gap: '10px', paddingBottom: '2px' }} className="scrollbar-none">
+              {otherFaculty.map((m) => (
+                <a key={m.slug} href={`/faculty/${m.slug}`}
+                  style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '99px', background: 'white', border: '1.5px solid #E9EEF2', textDecoration: 'none' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '8px', background: m.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '10px', fontWeight: 800 }}>{m.avatar}</div>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#0D1837', whiteSpace: 'nowrap' }}>{m.name.split(' ').slice(-1)[0]}</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-14">
           <div className="grid md:grid-cols-3 gap-8">
 
             {/* ── Main ─────────────────────────────── */}
@@ -158,8 +183,8 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
               </section>
             </div>
 
-            {/* ── Sidebar ──────────────────────────── */}
-            <aside>
+            {/* ── Sidebar — desktop only ───────────── */}
+            <aside className="hidden md:block">
               <div className="sticky top-20 space-y-5">
 
                 {/* Book Session */}

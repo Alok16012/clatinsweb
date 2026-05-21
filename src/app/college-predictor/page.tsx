@@ -45,7 +45,7 @@ export default function CollegePredictorPage() {
       <main className="pb-20 md:pb-0">
 
         {/* Hero */}
-        <div className="relative overflow-hidden py-14 md:py-20"
+        <div className="relative overflow-hidden py-10 md:py-20"
           style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10" style={{ background: '#06b6d4' }} />
           <div className="max-w-4xl mx-auto px-4 text-center">

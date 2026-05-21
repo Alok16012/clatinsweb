@@ -16,9 +16,13 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <StatsSection />
-      <section style={{ background: '#F8FAFC', padding: '48px 0 44px' }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-10">
-          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+
+      {/* Courses section */}
+      <section style={{ background: '#F8FAFC' }} className="py-6 md:py-12">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Desktop header */}
+          <div className="hidden md:block text-center mb-7 px-10">
             <span style={{ background: '#E6FAF4', color: '#08BD80', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px' }}>
               OUR PROGRAMS
             </span>
@@ -29,13 +33,32 @@ export default function Home() {
               Offline, Online, Mentorship, or Mock Tests — find the right program for your CLAT journey.
             </p>
           </div>
-          <CourseTabsSection />
+
+          {/* Mobile header */}
+          <div className="md:hidden flex items-center justify-between px-4 mb-2">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#08BD80' }} />
+                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#08BD80' }}>Our Programs</span>
+              </div>
+              <h2 className="font-black" style={{ color: '#0D1837', fontSize: '20px', lineHeight: 1.2 }}>Courses for You</h2>
+            </div>
+            <a href="/courses" className="text-xs font-bold" style={{ color: '#08BD80' }}>See All →</a>
+          </div>
+
+          <div className="md:px-10">
+            <CourseTabsSection />
+          </div>
         </div>
       </section>
+
       <ExamsSection />
       <FeaturedServices />
       <TestimonialsSection />
+
+      {/* Faculty section */}
       <FacultySection />
+
       <FAQSection />
       <CollegePredictorSection />
       <Footer />

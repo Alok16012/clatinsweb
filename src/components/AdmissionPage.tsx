@@ -271,8 +271,8 @@ export default function AdmissionPage() {
           background: 'linear-gradient(135deg, #060d1f 0%, #0D1837 50%, #0f3460 100%)',
           position: 'relative',
           overflow: 'hidden',
-          paddingTop: '72px',
-          paddingBottom: '72px',
+          paddingTop: '40px',
+          paddingBottom: '40px',
         }}
       >
         {/* Animated orbs */}
@@ -282,19 +282,15 @@ export default function AdmissionPage() {
 
         <div
           ref={heroReveal.ref}
-          className="max-w-7xl mx-auto px-4 md:px-10"
+          className="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-center"
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            gap: '40px',
-            alignItems: 'center',
             opacity: heroReveal.visible ? 1 : 0,
             transform: heroReveal.visible ? 'translateY(0)' : 'translateY(30px)',
             transition: 'opacity 0.6s ease, transform 0.6s ease',
           }}
         >
           {/* Left 3 cols */}
-          <div style={{ gridColumn: 'span 3' }}>
+          <div className="md:col-span-3">
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               background: 'rgba(8,189,128,0.15)', border: '1px solid rgba(8,189,128,0.3)',
@@ -333,40 +329,22 @@ export default function AdmissionPage() {
             </div>
 
             {/* CTAs */}
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <a
-                href="tel:8507700177"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '8px',
-                  background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '15px',
-                  padding: '14px 28px', borderRadius: '12px', textDecoration: 'none',
-                  boxShadow: '0 4px 20px rgba(8,189,128,0.4)',
-                  transition: 'transform .2s ease, box-shadow .2s ease',
-                }}
-              >
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href="tel:8507700177"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px 24px', borderRadius: '12px', textDecoration: 'none', boxShadow: '0 4px 20px rgba(8,189,128,0.4)' }}>
                 📞 Call Now — 8507700177
               </a>
-              <a
-                href="https://wa.me/918507700177"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '8px',
-                  background: '#075E54', color: 'white', fontWeight: 700, fontSize: '15px',
-                  padding: '14px 28px', borderRadius: '12px', textDecoration: 'none',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  transition: 'transform .2s ease',
-                }}
-              >
+              <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#075E54', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px 24px', borderRadius: '12px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.2)' }}>
                 💬 WhatsApp Us
               </a>
             </div>
           </div>
 
-          {/* Right 2 cols — Recent Enrollments card */}
+          {/* Right 2 cols — Recent Enrollments card (desktop only) */}
           <div
+            className="hidden md:block md:col-span-2"
             style={{
-              gridColumn: 'span 2',
               background: 'rgba(255,255,255,0.05)',
               backdropFilter: 'blur(20px)',
               border: '1.5px solid rgba(255,255,255,0.12)',
@@ -463,7 +441,7 @@ export default function AdmissionPage() {
       </section>
 
       {/* ── HOW TO APPLY ── */}
-      <section style={{ background: 'white', padding: '72px 0' }}>
+      <section style={{ background: 'white' }} className="py-10 md:py-[72px]">
         <div className="max-w-7xl mx-auto px-4 md:px-10">
           <div
             ref={stepsReveal.ref}
@@ -535,7 +513,7 @@ export default function AdmissionPage() {
       </section>
 
       {/* ── FORM + TRUST SIDEBAR ── */}
-      <section style={{ background: '#F8FAFC', padding: '72px 0' }} id="form">
+      <section style={{ background: '#F8FAFC' }} className="py-10 md:py-[72px]" id="form">
         <div className="max-w-7xl mx-auto px-4 md:px-10">
           <div
             ref={formReveal.ref}

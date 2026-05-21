@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const testimonials = [
   { name: 'Aman Deep Singh', rank: 'AIR 23', college: 'NLU Delhi', year: 'CLAT 2024', avatar: 'AD', color: '#6366f1', quote: "CLATians gave me the structure, mentors, and mock tests I needed. A.K. Sir's teaching of legal reasoning is absolutely unmatched.", stars: 5 },
@@ -12,238 +12,201 @@ const testimonials = [
   { name: 'Riya Bose', rank: 'AIR 203', college: 'CNLU Patna', year: 'CLAT 2024', avatar: 'RB', color: '#ef4444', quote: 'As a girl from a small family, fees were a concern. CLATians offered scholarship which made it possible. Extremely grateful for the support.', stars: 5 },
 ];
 
+const row1 = testimonials.slice(0, 4);
+const row2 = testimonials.slice(4, 8);
+
 const rankBadges = [
-  { label: 'AIR 1–50', count: '47 students', bg: '#fef3c7', color: '#92400e' },
-  { label: 'AIR 51–100', count: '112 students', bg: '#dcfce7', color: '#166534' },
-  { label: 'AIR 101–500', count: '389 students', bg: '#e0f2fe', color: '#0369a1' },
-  { label: 'NLU Selections', count: '1,000+', bg: '#ede9fe', color: '#5b21b6' },
+  { label: 'AIR 1–50', count: '47 students', bg: '#fef3c7', color: '#92400e', icon: '🥇' },
+  { label: 'AIR 51–100', count: '112 students', bg: '#dcfce7', color: '#166534', icon: '🥈' },
+  { label: 'AIR 101–500', count: '389 students', bg: '#e0f2fe', color: '#0369a1', icon: '🥉' },
+  { label: 'NLU Selections', count: '1,000+', bg: '#ede9fe', color: '#5b21b6', icon: '🏛️' },
 ];
 
+function useReveal(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
+    obs.observe(el); return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function TestiCard({ t }: { t: typeof testimonials[number] }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: 'white',
+        border: `1.5px solid ${hov ? t.color + '44' : '#F0F0F0'}`,
+        borderRadius: '18px', padding: '20px',
+        width: '280px', flexShrink: 0,
+        boxShadow: hov ? `0 12px 32px ${t.color}22` : '0 2px 8px rgba(0,0,0,0.05)',
+        transform: hov ? 'translateY(-4px)' : 'none',
+        transition: 'all .25s ease',
+        position: 'relative', overflow: 'hidden',
+      }}
+    >
+      {/* Accent top bar */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg,${t.color},${t.color}88)`, borderRadius: '18px 18px 0 0' }} />
+
+      {/* Top row */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px', marginTop: '4px' }}>
+        <div style={{ color: t.color, fontSize: '36px', fontWeight: 900, lineHeight: 1, fontFamily: 'Georgia, serif' }}>"</div>
+        <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 10px', borderRadius: '99px', background: t.color + '18', color: t.color }}>{t.college}</span>
+      </div>
+
+      {/* Stars */}
+      <div style={{ color: '#f59e0b', fontSize: '12px', marginBottom: '8px' }}>{'★'.repeat(t.stars)}</div>
+
+      {/* Quote */}
+      <p style={{ color: '#374151', fontSize: '12px', lineHeight: 1.65, marginBottom: '14px', flex: 1 }}>{t.quote}</p>
+
+      {/* Footer */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderTop: '1px solid #F3F4F6', paddingTop: '12px' }}>
+        <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: '12px', flexShrink: 0 }}>{t.avatar}</div>
+        <div>
+          <div style={{ color: '#0D1837', fontWeight: 700, fontSize: '12px' }}>{t.name}</div>
+          <div style={{ color: t.color, fontWeight: 700, fontSize: '10px' }}>{t.rank} · {t.year}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MarqueeRow({ cards, reverse }: { cards: typeof testimonials; reverse?: boolean }) {
+  const doubled = [...cards, ...cards];
+  return (
+    <div style={{ overflow: 'hidden', maskImage: 'linear-gradient(90deg,transparent,black 80px,black calc(100% - 80px),transparent)', WebkitMaskImage: 'linear-gradient(90deg,transparent,black 80px,black calc(100% - 80px),transparent)' }}>
+      <div style={{
+        display: 'flex', gap: '14px',
+        animation: `marquee${reverse ? 'Rev' : ''} 30s linear infinite`,
+        width: 'max-content',
+      }}>
+        {doubled.map((t, i) => <TestiCard key={`${t.name}-${i}`} t={t} />)}
+      </div>
+    </div>
+  );
+}
+
 export default function TestimonialsSection() {
+  const { ref, visible } = useReveal(0.1);
   const [active, setActive] = useState(0);
 
   return (
-    <section style={{ background: '#F7F9FB' }} className="py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-4">
+    <>
+      <style>{`
+        @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        @keyframes marqueeRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+      `}</style>
 
-        {/* ── Header ── */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-black mb-2" style={{ color: '#0D1837' }}>
-            15,000+ Students Trust CLATians
+      <section style={{ background: '#0D1837', padding: '52px 0 48px', overflow: 'hidden' }}>
+        {/* Header */}
+        <div ref={ref} className="max-w-7xl mx-auto px-4 md:px-10" style={{
+          textAlign: 'center', marginBottom: '36px',
+          opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)',
+          transition: 'opacity .6s ease, transform .6s ease',
+        }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '12px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(8,189,128,0.1)', border: '1px solid rgba(8,189,128,0.25)' }}>
+            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#08BD80', display: 'inline-block' }} />
+            <span style={{ color: '#08BD80', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Student Success</span>
+          </div>
+          <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px,3vw,40px)', lineHeight: 1.15, marginBottom: '8px' }}>
+            15,000+ Students<br />
+            <span style={{ background: 'linear-gradient(90deg,#08BD80,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Trust CLATians</span>
           </h2>
-          <p className="text-base mb-5" style={{ color: '#7A8B94' }}>
-            Real students, real NLU selections. Their success is our greatest achievement.
-          </p>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', marginBottom: '20px' }}>Real students, real NLU selections. Their success is our greatest achievement.</p>
 
-          {/* Count badges */}
-          <div className="flex flex-wrap justify-center gap-3">
-            {rankBadges.map((b) => (
-              <div
-                key={b.label}
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold"
-                style={{ background: b.bg, color: b.color }}
-              >
+          {/* Rank badges */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}>
+            {rankBadges.map((b, i) => (
+              <div key={b.label} style={{
+                display: 'flex', alignItems: 'center', gap: '8px',
+                padding: '8px 16px', borderRadius: '99px',
+                background: b.bg, color: b.color,
+                fontSize: '12px', fontWeight: 700,
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'none' : 'translateY(10px)',
+                transition: `opacity .5s ease ${0.2 + i * 0.08}s, transform .5s ease ${0.2 + i * 0.08}s`,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              }}>
+                <span>{b.icon}</span>
                 <span>{b.label}</span>
-                <span className="opacity-70">·</span>
+                <span style={{ opacity: 0.5 }}>·</span>
                 <span>{b.count}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* ── Desktop: 4-column grid ── */}
-        <div className="hidden md:grid grid-cols-4 gap-5 mb-8">
-          {testimonials.map((t) => (
-            <TestimonialCard key={t.name} t={t} />
-          ))}
+        {/* Desktop marquee */}
+        <div className="hidden md:flex flex-col gap-4">
+          <MarqueeRow cards={row1} />
+          <MarqueeRow cards={row2} reverse />
         </div>
 
-        {/* ── Mobile: Swipeable slider ── */}
+        {/* Mobile — App-style review cards */}
         <div className="md:hidden">
-          {/* Card */}
-          <div
-            className="bg-white rounded-2xl p-5 mb-5"
-            style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
-          >
-            {/* College badge top-right + quote mark */}
-            <div className="flex items-start justify-between mb-2">
-              <div
-                className="text-5xl font-black leading-none -mt-2"
-                style={{ color: '#08BD80' }}
-              >
-                &ldquo;
-              </div>
-              <span
-                className="text-[10px] font-bold px-2.5 py-1 rounded-full ml-2 flex-shrink-0"
-                style={{ background: testimonials[active].color + '20', color: testimonials[active].color }}
-              >
-                {testimonials[active].college}
-              </span>
-            </div>
-
-            {/* Stars */}
-            <div className="text-base mb-2" style={{ color: '#f59e0b' }}>
-              {'⭐'.repeat(testimonials[active].stars)}
-            </div>
-
-            {/* Quote */}
-            <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(0,0,0,0.80)' }}>
-              {testimonials[active].quote}
-            </p>
-
-            {/* Avatar + info */}
-            <div className="flex items-center gap-3">
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                style={{ background: testimonials[active].color }}
-              >
-                {testimonials[active].avatar}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-sm" style={{ color: '#0D1837' }}>
-                  {testimonials[active].name}
-                </div>
-                <div className="text-xs" style={{ color: '#08BD80', fontWeight: 600 }}>
-                  {testimonials[active].rank} · {testimonials[active].year}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mb-6">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className="rounded-full transition-all duration-200"
-                style={{
-                  width: i === active ? '24px' : '8px',
-                  height: '8px',
-                  background: i === active ? '#08BD80' : '#d1d5db',
-                }}
-                aria-label={`Testimonial ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Mini list for navigation */}
-          <div className="space-y-2">
+          {/* Horizontal scroll cards */}
+          <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', padding: '4px 16px 16px', scrollbarWidth: 'none' }}>
             {testimonials.map((t, i) => (
-              <button
-                key={t.name}
+              <div key={t.name}
                 onClick={() => setActive(i)}
-                className="w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-150"
                 style={{
-                  borderColor: i === active ? '#08BD80' : '#E9EEF2',
-                  background: i === active ? '#E6FAF4' : 'white',
-                }}
-              >
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
-                  style={{ background: t.color }}
-                >
-                  {t.avatar}
+                  flexShrink: 0, width: '260px',
+                  background: 'white', borderRadius: '20px', padding: '18px',
+                  border: `2px solid ${active === i ? t.color + '55' : '#F0F0F0'}`,
+                  boxShadow: active === i ? `0 8px 24px ${t.color}22` : '0 2px 12px rgba(0,0,0,0.06)',
+                  transition: 'all .25s ease',
+                  position: 'relative', overflow: 'hidden', cursor: 'pointer',
+                }}>
+                {/* Accent bar */}
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg,${t.color},${t.color}66)` }} />
+
+                {/* Top */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', marginTop: '4px' }}>
+                  <div style={{ color: '#f59e0b', fontSize: '13px' }}>{'★'.repeat(t.stars)}</div>
+                  <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '99px', background: t.color + '18', color: t.color }}>{t.college}</span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-xs" style={{ color: '#0D1837' }}>{t.name}</div>
-                  <div className="text-[10px]" style={{ color: '#9CA3AF' }}>{t.college}</div>
+
+                {/* Quote */}
+                <p style={{ color: '#374151', fontSize: '12px', lineHeight: 1.6, marginBottom: '14px' }}>{t.quote.length > 110 ? t.quote.slice(0, 110) + '...' : t.quote}</p>
+
+                {/* Footer */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderTop: '1px solid #F3F4F6', paddingTop: '12px' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: '12px', flexShrink: 0 }}>{t.avatar}</div>
+                  <div>
+                    <div style={{ color: '#0D1837', fontWeight: 700, fontSize: '12px' }}>{t.name}</div>
+                    <div style={{ color: t.color, fontWeight: 700, fontSize: '10px' }}>{t.rank} · {t.year}</div>
+                  </div>
                 </div>
-                <span
-                  className="text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0"
-                  style={{ background: '#E6FAF4', color: '#08BD80' }}
-                >
-                  {t.rank}
-                </span>
-              </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Dot indicators */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '4px' }}>
+            {testimonials.map((_, i) => (
+              <button key={i} onClick={() => setActive(i)} style={{ width: i === active ? '20px' : '6px', height: '6px', borderRadius: '99px', background: i === active ? '#08BD80' : 'rgba(255,255,255,0.3)', border: 'none', cursor: 'pointer', transition: 'all .2s', padding: 0 }} />
             ))}
           </div>
         </div>
 
-        {/* ── Green Stats Bar ── */}
-        <div
-          className="mt-8 rounded-2xl px-6 py-4 flex flex-wrap justify-center items-center gap-4 md:gap-8 text-center"
-          style={{ background: 'linear-gradient(90deg, #06a865, #08BD80)' }}
-        >
-          {[
-            '1000+ NLU Selections',
-            '23+ NLUs Covered',
-            '15+ Years Track Record',
-          ].map((stat, i) => (
-            <div key={stat} className="flex items-center gap-4 md:gap-8">
-              <span className="text-white font-bold text-sm md:text-base">{stat}</span>
-              {i < 2 && (
-                <span className="text-white/40 hidden md:inline">|</span>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-type Testimonial = (typeof testimonials)[number];
-
-function TestimonialCard({ t }: { t: Testimonial }) {
-  return (
-    <div
-      className="bg-white flex flex-col relative"
-      style={{
-        borderRadius: '16px',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
-        padding: '20px',
-      }}
-    >
-      {/* Achievement badge top-right */}
-      <div
-        className="absolute top-4 right-4 text-[10px] font-bold px-2.5 py-1 rounded-full"
-        style={{ background: t.color + '20', color: t.color }}
-      >
-        {t.college}
-      </div>
-
-      {/* Large green quote mark */}
-      <div
-        className="text-5xl font-black leading-none -mt-1 mb-1"
-        style={{ color: '#08BD80' }}
-      >
-        &ldquo;
-      </div>
-
-      {/* Stars */}
-      <div className="text-sm mb-2" style={{ color: '#f59e0b' }}>
-        {'⭐'.repeat(t.stars)}
-      </div>
-
-      {/* Quote text */}
-      <p
-        className="text-xs leading-relaxed mb-4 flex-1"
-        style={{ color: 'rgba(0,0,0,0.78)' }}
-      >
-        {t.quote}
-      </p>
-
-      {/* Footer: avatar + info */}
-      <div className="flex items-center gap-2 mt-auto">
-        <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
-          style={{ background: t.color }}
-        >
-          {t.avatar}
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="font-bold text-xs leading-tight" style={{ color: '#0D1837' }}>
-            {t.name}
-          </div>
-          <div className="text-[10px] font-semibold" style={{ color: '#08BD80' }}>
-            {t.rank}
-          </div>
-          <div className="text-[10px]" style={{ color: '#9CA3AF' }}>
-            {t.year}
+        {/* Stats bar */}
+        <div className="max-w-7xl mx-auto px-4 md:px-10 mt-10">
+          <div style={{ background: 'linear-gradient(90deg,#06a865,#08BD80)', borderRadius: '16px', padding: '16px 28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+            {['1000+ NLU Selections', '23+ NLUs Covered', '15+ Years Track Record'].map((stat, i, arr) => (
+              <div key={stat} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span style={{ color: 'white', fontWeight: 700, fontSize: '14px' }}>{stat}</span>
+                {i < arr.length - 1 && <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '18px' }}>|</span>}
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

@@ -87,8 +87,8 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 </div>
               </div>
 
-              {/* Right: Info Card */}
-              <div className="w-full md:w-64 bg-white/10 backdrop-blur rounded-2xl border border-white/20 p-5 flex-shrink-0">
+              {/* Right: Info Card — desktop only */}
+              <div className="hidden md:flex w-full md:w-64 bg-white/10 backdrop-blur rounded-2xl border border-white/20 p-5 flex-shrink-0 flex-col">
                 <h3 className="text-white font-bold text-sm mb-3 opacity-70 uppercase tracking-wide">Exam Info</h3>
                 {[
                   { label: 'Total Marks', value: String(exam.marks), icon: '📊' },
@@ -126,7 +126,31 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
           </div>
         )}
 
-        <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
+        {/* Mobile: quick enroll strip */}
+        <div className="md:hidden px-4 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E9EEF2' }}>
+          <div className="flex gap-3">
+            <a href="/courses/offline"
+              style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: 'white', textDecoration: 'none', background: exam.color }}>
+              Enroll Now →
+            </a>
+            <a href="tel:8507700177"
+              style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: '#0D1837', textDecoration: 'none', background: 'white', border: '1.5px solid #E9EEF2' }}>
+              📞 Free Call
+            </a>
+          </div>
+          {/* Other exams horizontal scroll */}
+          <div style={{ overflowX: 'auto', display: 'flex', gap: '10px', paddingTop: '12px', paddingBottom: '2px' }} className="scrollbar-none">
+            {otherExams.map((e) => (
+              <a key={e.slug} href={`/exams/${e.slug}`}
+                style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '99px', background: 'white', border: '1.5px solid #E9EEF2', textDecoration: 'none' }}>
+                <span style={{ fontSize: '16px' }}>{e.icon}</span>
+                <span style={{ fontSize: '12px', fontWeight: 700, color: '#0D1837' }}>{e.code}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-14">
           <div className="grid md:grid-cols-3 gap-8">
 
             {/* ── Main Content ──────────────────────────── */}
@@ -473,19 +497,19 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
               </section>
 
               {/* CTA Banner */}
-              <div className="rounded-2xl p-6 flex flex-col md:flex-row items-center gap-5"
+              <div className="rounded-2xl p-6 flex flex-col gap-4"
                 style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
-                <div className="flex-1 text-center md:text-left">
+                <div>
                   <h3 className="text-white font-black text-xl mb-1">Ready to Crack {exam.code} 2026?</h3>
-                  <p className="text-white/70 text-sm">Join 15,000+ students who trusted CLATians for their law entrance preparation.</p>
+                  <p className="text-white/70 text-sm">Join 15,000+ students who trusted CLATians.</p>
                 </div>
-                <div className="flex gap-3 flex-shrink-0">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <a href="/courses/offline"
-                    className="px-5 py-2.5 rounded-xl font-bold text-white text-sm bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap">
+                    className="flex-1 text-center px-5 py-2.5 rounded-xl font-bold text-white text-sm bg-white/20 border border-white/30">
                     Offline Course →
                   </a>
                   <a href="/courses/online"
-                    className="px-5 py-2.5 rounded-xl font-bold text-sm whitespace-nowrap"
+                    className="flex-1 text-center px-5 py-2.5 rounded-xl font-bold text-sm"
                     style={{ background: '#fff', color: '#08BD80' }}>
                     Online Course →
                   </a>

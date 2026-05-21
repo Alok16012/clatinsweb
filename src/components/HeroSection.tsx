@@ -297,89 +297,105 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ─── Mobile Hero ─────────────────────────────────────── */}
-      <div className="md:hidden relative overflow-hidden" style={{ background: '#0D1837', minHeight: '100svh' }}>
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10" style={{ background: '#08BD80', transform: 'translate(30%, -30%)' }} />
-        <div className="absolute bottom-20 left-0 w-48 h-48 rounded-full opacity-5" style={{ background: '#08BD80', transform: 'translate(-30%, 0)' }} />
+      {/* ─── Mobile Hero — App Style ─────────────────────────── */}
+      <div className="md:hidden" style={{ background: '#0D1837' }}>
+        {/* Gradient bg blobs */}
+        <div className="absolute top-14 right-0 w-56 h-56 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle,rgba(8,189,128,0.18) 0%,transparent 70%)', transform: 'translate(20%,-10%)' }} />
 
-        <div className="relative z-10 px-5 pt-8 pb-6 flex flex-col" style={{ minHeight: '100svh' }}>
+        <div className="relative z-10 px-4 pt-5 pb-5">
 
-          {/* Top badge */}
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-[11px] font-bold px-3 py-1.5 rounded-full"
-              style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}>
-              🏛️ {slide.pill} 2026
-            </span>
-            <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.45)' }}>{slide.tag}</span>
+          {/* Exam selector — horizontal scroll pills */}
+          <div className="flex gap-2 overflow-x-auto pb-1 mb-5" style={{ scrollbarWidth: 'none' }}>
+            {['CLAT', 'AILET', 'MH-CET', 'CUET', 'AIL-LET', 'LSAT'].map((exam) => (
+              <a key={exam} href={`/exams/${exam.toLowerCase().replace('-cet','-cet-law')}`}
+                className="flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all"
+                style={{
+                  background: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? '#08BD80' : 'rgba(255,255,255,0.1)',
+                  color: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? 'white' : 'rgba(255,255,255,0.65)',
+                  border: `1.5px solid ${exam === slide.pill ? 'rgba(8,189,128,0.6)' : 'rgba(255,255,255,0.08)'}`,
+                }}>
+                {exam}
+              </a>
+            ))}
           </div>
 
-          {/* Heading */}
-          <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
-            <h1 className="font-black text-white leading-tight" style={{ fontSize: '2rem', lineHeight: '1.15' }}>
+          {/* Hero card — slide content */}
+          <div className={`rounded-3xl p-5 mb-4 transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'}`}
+            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-bold px-2.5 py-1 rounded-full"
+                style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}>
+                {slide.tag}
+              </span>
+            </div>
+            <h1 className="font-black text-white leading-tight mb-2" style={{ fontSize: '1.7rem', lineHeight: '1.2' }}>
               {slide.heading}<br />
               <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
             </h1>
-            <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '85%' }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.55)' }}>
               {slide.sub}
             </p>
-          </div>
 
-          {/* CTA Buttons */}
-          <div className="flex gap-3 mt-6">
-            <a href={slide.ctaLink}
-              className="flex-1 text-center py-3.5 rounded-xl font-bold text-white text-sm shadow-lg"
-              style={{ background: '#08BD80' }}>
-              {slide.cta} →
-            </a>
-            <a href="tel:8507700177"
-              className="flex items-center gap-2 px-4 py-3.5 rounded-xl font-semibold text-sm"
-              style={{ color: 'white', border: '1px solid rgba(255,255,255,0.25)' }}>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call
-            </a>
+            {/* CTA row */}
+            <div className="flex gap-2.5">
+              <a href={slide.ctaLink}
+                className="flex-1 text-center py-3.5 rounded-2xl font-black text-white text-sm shadow-lg"
+                style={{ background: 'linear-gradient(135deg,#08BD80,#06a870)', boxShadow: '0 8px 20px rgba(8,189,128,0.4)' }}>
+                Start Prep →
+              </a>
+              <a href="/admission"
+                className="px-4 py-3.5 rounded-2xl font-bold text-sm flex items-center gap-1.5"
+                style={{ background: 'rgba(249,115,22,0.15)', color: '#f97316', border: '1.5px solid rgba(249,115,22,0.3)' }}>
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Enroll
+              </a>
+            </div>
           </div>
 
           {/* Stats strip */}
-          <div className="mt-6 grid grid-cols-4 gap-0 py-4 rounded-2xl"
-            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="grid grid-cols-4 rounded-2xl overflow-hidden mb-4"
+            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
             {heroStats.map((s, i) => (
-              <div key={s.label} className="flex items-center">
-                <div className="flex-1 text-center">
-                  <div className="text-base font-black text-white">{s.val}</div>
-                  <div className="text-[9px] mt-0.5 leading-tight" style={{ color: 'rgba(255,255,255,0.45)' }}>{s.label}</div>
+              <div key={s.label} className="flex items-stretch">
+                <div className="flex-1 flex flex-col items-center justify-center py-3.5">
+                  <div className="text-sm font-black text-white leading-tight">{s.val}</div>
+                  <div className="text-[9px] mt-0.5 text-center leading-tight font-medium" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.label}</div>
                 </div>
-                {i < heroStats.length - 1 && <div className="w-px h-7 flex-shrink-0" style={{ background: 'rgba(255,255,255,0.12)' }} />}
+                {i < heroStats.length - 1 && <div className="w-px my-3" style={{ background: 'rgba(255,255,255,0.1)' }} />}
               </div>
             ))}
           </div>
 
-          {/* Exam quick-pick cards */}
-          <div className="mt-6 flex-1">
-            <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Choose Your Exam</p>
-            <div className="grid grid-cols-3 gap-2">
-              {['CLAT', 'AILET', 'MH-CET', 'CUET', 'AIL-LET', 'LSAT'].map((exam) => (
-                <a key={exam} href={`/exams/${exam.toLowerCase().replace('-', '-')}`}
-                  className="flex items-center justify-center py-2.5 rounded-xl text-xs font-bold transition-all"
-                  style={{
-                    background: exam === slide.pill ? '#08BD80' : 'rgba(255,255,255,0.08)',
-                    color: exam === slide.pill ? 'white' : 'rgba(255,255,255,0.7)',
-                    border: `1px solid ${exam === slide.pill ? '#08BD80' : 'rgba(255,255,255,0.1)'}`,
-                  }}>
-                  {exam}
-                </a>
+          {/* Toppers strip */}
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <span className="text-xs font-bold text-white">🏆 Recent Toppers</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80' }}>CLAT 2024</span>
+            </div>
+            <div className="flex overflow-x-auto gap-3 px-4 py-3" style={{ scrollbarWidth: 'none' }}>
+              {[
+                { name: 'Aman Deep', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
+                { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR', avatar: 'PS', color: '#ec4899' },
+                { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi', avatar: 'RG', color: '#f59e0b' },
+                { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR', avatar: 'KR', color: '#f97316' },
+              ].map((t) => (
+                <div key={t.name} className="flex-shrink-0 flex flex-col items-center gap-1.5" style={{ width: '68px' }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[11px] font-black" style={{ background: t.color }}>{t.avatar}</div>
+                  <div className="text-[10px] font-bold text-white text-center leading-tight">{t.name}</div>
+                  <div className="text-[9px] font-black px-2 py-0.5 rounded-full" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}>{t.rank}</div>
+                </div>
               ))}
             </div>
           </div>
 
           {/* Slide dots */}
-          <div className="flex justify-center gap-1.5 mt-6">
+          <div className="flex justify-center gap-1.5 mt-4">
             {slides.map((_, i) => (
               <button key={i} onClick={() => goTo(i)}
                 className="rounded-full transition-all duration-300"
-                style={{ width: i === current ? '24px' : '6px', height: '6px', background: i === current ? '#08BD80' : 'rgba(255,255,255,0.25)' }} />
+                style={{ width: i === current ? '20px' : '6px', height: '6px', background: i === current ? '#08BD80' : 'rgba(255,255,255,0.2)', border: 'none' }} />
             ))}
           </div>
         </div>

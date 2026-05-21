@@ -334,7 +334,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
             style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px)', backgroundSize: '52px 52px' }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 py-14 md:py-20">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 py-10 md:py-20">
             <div className="flex items-center gap-2 text-white/40 text-xs mb-6">
               <a href="/" className="hover:text-white transition-colors">Home</a>
               <span>›</span>
@@ -348,7 +348,7 @@ export default function AboutPage() {
                   <span className="w-2 h-2 rounded-full dot-pulse" style={{ background: '#08BD80' }} />
                   <span className="text-xs font-bold" style={{ color: '#08BD80' }}>India&apos;s Most Trusted CLAT Institute</span>
                 </div>
-                <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4"
+                <h1 className="text-2xl md:text-6xl font-black text-white leading-tight mb-4"
                   style={{ animation: 'floatB 0.01s ease both' }}>
                   Born in Patna.<br />
                   Built for <span style={{
@@ -363,14 +363,14 @@ export default function AboutPage() {
                 <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg mb-8">
                   12 years. 5000+ NLU selections. One mission — turn every CLAT dream into a National Law University seat.
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <a href="/admission"
-                    className="px-7 py-3.5 rounded-xl font-black text-white text-sm btn-glow transition-all hover:scale-105"
+                    className="text-center px-7 py-3.5 rounded-xl font-black text-white text-sm btn-glow transition-all hover:scale-105"
                     style={{ background: '#08BD80', boxShadow: '0 4px 20px rgba(8,189,128,0.35)' }}>
                     Join CLATians →
                   </a>
                   <a href="tel:8507700177"
-                    className="px-7 py-3.5 rounded-xl font-bold text-white text-sm transition-all hover:bg-white/15"
+                    className="text-center px-7 py-3.5 rounded-xl font-bold text-white text-sm transition-all hover:bg-white/15"
                     style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}>
                     📞 Free Counselling
                   </a>
@@ -378,7 +378,7 @@ export default function AboutPage() {
               </div>
 
               {/* Stat tiles */}
-              <div className="md:col-span-2 grid grid-cols-3 gap-3">
+              <div className="hidden md:grid md:col-span-2 grid-cols-3 gap-3">
                 {stats.map((s, i) => (
                   <div key={s.label} className="rounded-2xl px-3 py-4 text-center card-lift"
                     style={{
@@ -396,6 +396,22 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Mobile: stats horizontal scroll strip */}
+        <div className="md:hidden overflow-x-auto scrollbar-none"
+          style={{ background: 'linear-gradient(135deg,#060d1f,#0D1837)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="flex gap-2.5 px-4 py-4" style={{ width: 'max-content' }}>
+            {stats.map((s) => (
+              <div key={s.label} style={{ flexShrink: 0, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '14px', padding: '10px 12px', textAlign: 'center', minWidth: '78px' }}>
+                <div style={{ fontSize: '16px', marginBottom: '4px' }}>{s.icon}</div>
+                <div style={{ color: 'white', fontWeight: 900, fontSize: '13px', lineHeight: 1 }}>
+                  <Counter target={s.val} suffix={s.suffix} display={s.display} isFloat={s.isFloat} />
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '9px', marginTop: '3px', lineHeight: 1.2 }}>{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -498,10 +514,10 @@ export default function AboutPage() {
                 <h2 className="text-2xl md:text-3xl font-black" style={{ color: '#0D1837' }}>Our Core Values</h2>
               </div>
             </Reveal>
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {values.map((v, i) => (
                 <Reveal key={v.title} delay={i * 0.1}>
-                  <div className="rounded-2xl p-5 flex flex-col h-full card-lift"
+                  <div className="rounded-2xl p-4 md:p-5 flex flex-col h-full card-lift"
                     style={{ background: v.bg, border: `1.5px solid ${v.color}33` }}>
                     <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 bg-white shadow-sm">{v.icon}</div>
                     <h3 className="font-black text-lg mb-2" style={{ color: '#0D1837' }}>{v.title}</h3>
@@ -521,7 +537,8 @@ export default function AboutPage() {
                 <h2 className="text-2xl md:text-3xl font-black" style={{ color: '#0D1837' }}>Our Leadership Team</h2>
               </div>
             </Reveal>
-            <div className="grid md:grid-cols-4 gap-4 mb-5">
+            {/* Desktop: grid */}
+            <div className="hidden md:grid grid-cols-4 gap-4 mb-5">
               {team.map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.1}>
                   <a href={`/faculty/${t.name.toLowerCase().replace(/[\s.]/g, '-').replace(/--+/g, '-').replace(/-$/, '')}`}
@@ -530,7 +547,7 @@ export default function AboutPage() {
                     <div className="h-1.5 transition-all group-hover:h-2.5"
                       style={{ background: `linear-gradient(90deg,${t.color},${t.color}88)` }} />
                     <div className="p-5">
-                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-3 transition-transform group-hover:scale-110"
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-3"
                         style={{ background: `linear-gradient(135deg,${t.color},${t.color}88)` }}>
                         {t.avatar}
                       </div>
@@ -544,6 +561,23 @@ export default function AboutPage() {
                   </a>
                 </Reveal>
               ))}
+            </div>
+            {/* Mobile: horizontal scroll */}
+            <div className="md:hidden -mx-4 mb-5">
+              <div className="flex gap-3 overflow-x-auto px-4 pb-3 scrollbar-none">
+                {team.map((t) => (
+                  <a key={t.name} href={`/faculty/${t.name.toLowerCase().replace(/[\s.]/g, '-').replace(/--+/g, '-').replace(/-$/, '')}`}
+                    style={{ flexShrink: 0, width: '150px', background: 'white', borderRadius: '20px', overflow: 'hidden', border: '1.5px solid #F0F0F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'block', textDecoration: 'none' }}>
+                    <div style={{ height: '4px', background: `linear-gradient(90deg,${t.color},${t.color}88)` }} />
+                    <div style={{ padding: '14px 12px', textAlign: 'center' }}>
+                      <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `linear-gradient(135deg,${t.color},${t.color}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 900, fontSize: '20px', margin: '0 auto 10px' }}>{t.avatar}</div>
+                      <div style={{ fontWeight: 800, fontSize: '12px', color: '#0D1837', marginBottom: '3px', lineHeight: 1.2 }}>{t.name}</div>
+                      <div style={{ fontSize: '10px', fontWeight: 700, color: t.color, marginBottom: '8px' }}>{t.role.split('&')[0].trim()}</div>
+                      <div style={{ fontSize: '9px', color: '#9CA3AF' }}>🎓 {t.college}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
             <div className="text-center">
               <a href="/#faculty"
@@ -562,14 +596,14 @@ export default function AboutPage() {
                 <div className="px-5 py-3" style={{ background: 'linear-gradient(135deg,#0f3460,#1a6b5c)' }}>
                   <h2 className="text-sm font-black text-white">⭐ What Makes CLATians Different</h2>
                 </div>
-                <div className="p-5 grid gap-3">
+                <div className="p-4 md:p-5 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-3">
                   {whyClatians.map((w, i) => (
-                    <div key={w.title} className="flex items-start gap-3 p-3 rounded-xl transition-all hover:bg-green-50 cursor-default"
+                    <div key={w.title} className="flex flex-col md:flex-row items-start gap-1.5 md:gap-3 p-2.5 md:p-3 rounded-xl transition-all hover:bg-green-50 cursor-default"
                       style={{ background: '#F8FAFC', border: '1px solid #E9EEF2', animationDelay: `${i * 0.08}s` }}>
-                      <span className="text-2xl flex-shrink-0">{w.icon}</span>
+                      <span className="text-xl md:text-2xl flex-shrink-0">{w.icon}</span>
                       <div>
-                        <h3 className="font-bold text-base" style={{ color: '#0D1837' }}>{w.title}</h3>
-                        <p className="text-sm text-gray-500 leading-relaxed">{w.desc}</p>
+                        <h3 className="font-bold text-xs md:text-base leading-tight" style={{ color: '#0D1837' }}>{w.title}</h3>
+                        <p className="hidden md:block text-sm text-gray-500 leading-relaxed">{w.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -642,14 +676,14 @@ export default function AboutPage() {
                 <p className="text-white/60 text-base mb-6 max-w-md mx-auto">
                   Join 1.25 lakh+ students who chose CLATians. Our experts are ready to guide you every step.
                 </p>
-                <div className="flex justify-center gap-3 flex-wrap">
+                <div className="flex flex-col sm:flex-row justify-center gap-3">
                   <a href="/admission"
-                    className="px-8 py-3.5 rounded-xl font-black text-white text-sm hover:scale-105 transition-all btn-glow"
+                    className="text-center px-8 py-3.5 rounded-xl font-black text-white text-sm hover:scale-105 transition-all btn-glow"
                     style={{ background: '#08BD80', boxShadow: '0 4px 20px rgba(8,189,128,0.4)' }}>
                     Start Your Journey →
                   </a>
                   <a href="tel:8507700177"
-                    className="px-8 py-3.5 rounded-xl font-bold text-white text-sm hover:bg-white/15 transition-colors"
+                    className="text-center px-8 py-3.5 rounded-xl font-bold text-white text-sm hover:bg-white/15 transition-colors"
                     style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}>
                     📞 Free Counselling
                   </a>

@@ -103,6 +103,50 @@ function CourseCard({ course: c, accent, catColor, idx }: { course: typeof cours
   );
 }
 
+function MobileCourseCard({ course: c, accent, catColor }: { course: typeof courses[number]; accent: string; catColor: string }) {
+  const courseBatches = allBatches.filter(b => b.courseSlug === c.slug);
+  const minFee = courseBatches.length > 0
+    ? courseBatches.reduce((min, b) => parseInt(b.fee.replace(/\D/g, '')) < parseInt(min.replace(/\D/g, '')) ? b.fee : min, courseBatches[0].fee)
+    : null;
+  const openSeats = courseBatches.reduce((sum, b) => sum + (b.seats < 999 ? b.seats - b.filled : 0), 0);
+
+  return (
+    <a href={`/courses?cat=${c.category}`} style={{ textDecoration: 'none', display: 'block' }}>
+      <div style={{
+        background: 'white', borderRadius: '20px', overflow: 'hidden',
+        border: '1.5px solid #F0F0F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+        display: 'flex', alignItems: 'stretch',
+      }}>
+        {/* Left color bar */}
+        <div style={{ width: '6px', flexShrink: 0, background: `linear-gradient(180deg,${catColor},${accent})` }} />
+        {/* Icon area */}
+        <div style={{ width: '56px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${catColor}0d` }}>
+          <span style={{ fontSize: '26px' }}>{c.icon}</span>
+        </div>
+        {/* Content */}
+        <div style={{ flex: 1, padding: '14px 12px 14px 10px' }}>
+          <div style={{ fontWeight: 800, fontSize: '14px', color: '#0D1837', marginBottom: '3px', lineHeight: 1.25 }}>{c.title}</div>
+          {minFee && (
+            <div style={{ fontSize: '13px', fontWeight: 700, color: catColor, marginBottom: '4px' }}>{minFee}</div>
+          )}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+            {c.includes?.slice(0, 2).map(inc => (
+              <span key={inc.label} style={{ fontSize: '10px', color: '#6B7280', background: '#F3F4F6', borderRadius: '6px', padding: '2px 6px', fontWeight: 600 }}>{inc.value}</span>
+            ))}
+            {openSeats > 0 && (
+              <span style={{ fontSize: '10px', color: '#166534', background: '#dcfce7', borderRadius: '6px', padding: '2px 6px', fontWeight: 700 }}>● {openSeats} seats</span>
+            )}
+          </div>
+        </div>
+        {/* Arrow */}
+        <div style={{ width: '36px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: `${catColor}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: catColor, fontSize: '14px', fontWeight: 700 }}>→</div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
 export default function CourseTabsSection() {
   const [activeTab, setActiveTab] = useState<CatKey>('offline');
   const { ref, visible } = useReveal(0.05);
@@ -112,8 +156,9 @@ export default function CourseTabsSection() {
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(28px)', transition: 'opacity .6s ease, transform .6s ease' }}>
-      {/* Tab bar */}
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+
+      {/* ── Desktop tab bar ── */}
+      <div className="hidden md:flex" style={{ gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
         {catTabs.map(t => {
           const isActive = t.key === activeTab;
           const count = getCourses(t.key).length;
@@ -138,15 +183,15 @@ export default function CourseTabsSection() {
         })}
       </div>
 
-      {/* Course grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+      {/* Desktop course grid */}
+      <div className="hidden md:grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
         {getCourses(activeTab).map((c, i) => (
           <CourseCard key={c.slug} course={c} accent={activeCat.accent} catColor={activeCat.color} idx={i} />
         ))}
       </div>
 
-      {/* View all */}
-      <div style={{ textAlign: 'center', marginTop: '24px' }}>
+      {/* Desktop view all */}
+      <div className="hidden md:block" style={{ textAlign: 'center', marginTop: '24px' }}>
         <a href={`/courses?cat=${activeTab}`}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '6px',
@@ -156,6 +201,50 @@ export default function CourseTabsSection() {
           }}>
           View All {activeCat.label} Batches →
         </a>
+      </div>
+
+      {/* ── Mobile app-style layout ── */}
+      <div className="md:hidden -mx-4">
+        {/* Horizontal scroll tabs */}
+        <div className="flex gap-2 overflow-x-auto px-4 pb-3 mb-2" style={{ scrollbarWidth: 'none' }}>
+          {catTabs.map(t => {
+            const isActive = t.key === activeTab;
+            return (
+              <button key={t.key} onClick={() => setActiveTab(t.key)}
+                className="flex-shrink-0"
+                style={{
+                  padding: '9px 18px', borderRadius: '99px', fontWeight: 700, fontSize: '13px',
+                  cursor: 'pointer', border: 'none', outline: 'none',
+                  background: isActive ? `linear-gradient(135deg, ${t.color}, ${t.accent})` : 'white',
+                  color: isActive ? 'white' : '#374151',
+                  boxShadow: isActive ? `0 4px 14px ${t.color}40` : '0 1px 6px rgba(0,0,0,0.1)',
+                  transition: 'all .2s ease',
+                }}>
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Course list */}
+        <div style={{ padding: '0 16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {getCourses(activeTab).map((c) => (
+            <MobileCourseCard key={c.slug} course={c} accent={activeCat.accent} catColor={activeCat.color} />
+          ))}
+        </div>
+
+        {/* View all button */}
+        <div style={{ padding: '16px 16px 0' }}>
+          <a href={`/courses?cat=${activeTab}`}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+              padding: '14px', borderRadius: '16px', fontWeight: 700, fontSize: '14px',
+              background: `${activeCat.color}10`, color: activeCat.color,
+              border: `1.5px solid ${activeCat.color}30`, textDecoration: 'none',
+            }}>
+            See All {activeCat.label} Batches →
+          </a>
+        </div>
       </div>
     </div>
   );

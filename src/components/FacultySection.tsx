@@ -149,26 +149,30 @@ function MobileCard({ f, idx }: { f: FacultyMember; idx: number }) {
   return (
     <a
       href={`/faculty/${f.slug}`}
-      className="flex-shrink-0 w-40 bg-white rounded-xl p-4 flex flex-col items-center text-center"
-      style={{ border: '1px solid #E9EEF2', textDecoration: 'none' }}
+      style={{ flexShrink: 0, width: '150px', textDecoration: 'none', display: 'block' }}
     >
-      {/* Avatar image */}
-      <img
-        src={f.photo}
-        alt={f.name}
-        className="w-16 h-16 rounded-full object-cover mb-2.5"
-        style={{ background: avatarBg }}
-      />
-      <div className="font-bold text-xs mb-0.5 leading-snug" style={{ color: '#3C4852' }}>
-        {f.name}
+      <div style={{ background: 'white', borderRadius: '20px', overflow: 'hidden', border: '1.5px solid #F0F0F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+        {/* Avatar header */}
+        <div style={{ background: avatarBg, padding: '18px 16px 14px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <img
+            src={f.photo}
+            alt={f.name}
+            style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '3px solid white', boxShadow: '0 4px 12px rgba(0,0,0,0.12)', marginBottom: '8px' }}
+          />
+          <StarRating rating={f.rating} />
+          <div style={{ color: '#7A8B94', fontSize: '10px', fontWeight: 600, marginTop: '3px' }}>👥 {f.students}</div>
+        </div>
+        {/* Info */}
+        <div style={{ padding: '12px 12px 14px' }}>
+          <div style={{ fontWeight: 800, fontSize: '12px', color: '#0D1837', marginBottom: '3px', lineHeight: 1.2 }}>{f.name}</div>
+          <div style={{ fontSize: '10px', fontWeight: 700, color: '#08BD80', marginBottom: '5px' }}>{f.designation}</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
+            {f.tags.slice(0, 2).map(tag => (
+              <span key={tag} style={{ fontSize: '9px', fontWeight: 700, padding: '2px 6px', borderRadius: '6px', background: '#F0FDF9', color: '#08BD80', border: '1px solid #D1FAE5' }}>{tag}</span>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="text-[10px] font-semibold mb-0.5" style={{ color: '#08BD80' }}>
-        {f.designation}
-      </div>
-      <div className="text-[9px] mb-2 leading-snug" style={{ color: '#9CA3AF' }}>
-        {f.subject}
-      </div>
-      <StarRating rating={f.rating} />
     </a>
   );
 }
@@ -202,9 +206,9 @@ export default function FacultySection() {
           ))}
         </div>
 
-        {/* Mobile: horizontal scroll of compact vertical cards */}
-        <div className="md:hidden -mx-4 px-4">
-          <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-none">
+        {/* Mobile: horizontal scroll of app-style cards */}
+        <div className="md:hidden -mx-4">
+          <div className="flex gap-3 overflow-x-auto px-4 pb-3 scrollbar-none">
             {faculty.map((f, idx) => (
               <MobileCard key={f.slug} f={f} idx={idx} />
             ))}

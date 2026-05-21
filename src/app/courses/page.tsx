@@ -272,6 +272,48 @@ function CoursePanels({ categoryKey }: { categoryKey: TabKey }) {
   );
 }
 
+// ─── Mobile Batch Card ─────────────────────────────────────────────────────
+function MobileBatchCard({ batch }: { batch: Batch }) {
+  const palette   = cardPalettes[batch.batchType] || { from: '#0D1837', to: '#374151', avatarBg: '#6B7280' };
+  const typeStyle = batchTypeColors[batch.batchType] || { bg: '#f3f4f6', color: '#374151' };
+  const { text: seatsText, urgent } = getSeatsInfo(batch);
+
+  return (
+    <a href={`/courses/${batch.courseSlug}/${batch.slug}`}
+      style={{ display: 'block', background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1.5px solid #F0F0F0', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', textDecoration: 'none', marginBottom: '12px' }}>
+      <div style={{ display: 'flex', alignItems: 'stretch' }}>
+        <div style={{ width: '5px', background: `linear-gradient(180deg, ${palette.from}, ${palette.to})`, flexShrink: 0 }} />
+        <div style={{ flex: 1, padding: '14px 12px' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', gap: '5px', marginBottom: '6px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: typeStyle.bg, color: typeStyle.color }}>{batch.batchType}</span>
+                <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: '#FEF9C3', color: '#92400E' }}>{batch.language}</span>
+                {batch.status === 'upcoming' && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#E6FAF4', color: '#08BD80' }}>✦ NEW</span>}
+                {batch.status === 'filling-fast' && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#FFF0E6', color: '#f97316' }}>🔥 HOT</span>}
+              </div>
+              <div style={{ fontWeight: 800, fontSize: '13px', color: '#0D1837', lineHeight: 1.3, marginBottom: '5px' }}>{batch.name}</div>
+              <div style={{ fontSize: '10px', color: '#9CA3AF', marginBottom: '6px' }}>📅 {batch.startDate} – {batch.endDate}</div>
+              <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                {batch.chips.slice(0, 3).map(chip => (
+                  <span key={chip} style={{ fontSize: '9px', fontWeight: 600, padding: '2px 6px', borderRadius: '6px', background: '#F0FDF9', color: '#0f766e', border: '1px solid #C6F3E4' }}>✓ {chip}</span>
+                ))}
+              </div>
+            </div>
+            <div style={{ textAlign: 'right', flexShrink: 0, minWidth: '70px' }}>
+              <div style={{ fontWeight: 900, fontSize: '15px', color: '#0D1837' }}>{batch.fee}</div>
+              {batch.originalFee && <div style={{ fontSize: '9px', textDecoration: 'line-through', color: '#9CA3AF' }}>{batch.originalFee}</div>}
+              <div style={{ marginTop: '8px', background: 'linear-gradient(135deg, #060d1f, #0D1837)', color: 'white', fontWeight: 800, fontSize: '11px', padding: '6px 10px', borderRadius: '10px', textAlign: 'center' }}>Enroll →</div>
+              <div style={{ marginTop: '5px', fontSize: '9px', fontWeight: 600, color: urgent ? '#c2410c' : '#08BD80' }}>{seatsText}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+// ─── Two-panel layout ──────────────────────────────────────────────────────
 // ─── Main Page ─────────────────────────────────────────────────────────────
 function CoursesPageInner() {
   const searchParams = useSearchParams();
@@ -289,35 +331,45 @@ function CoursesPageInner() {
     return courses.filter((c) => c.category === key).length;
   }
 
+  // Mobile course selector state
+  const mobileFiltered = courses.filter((c) => c.category === activeTab);
+  const [mobileSlug, setMobileSlug] = useState(mobileFiltered[0]?.slug ?? '');
+  useEffect(() => {
+    const first = courses.find((c) => c.category === activeTab);
+    if (first) setMobileSlug(first.slug);
+  }, [activeTab]);
+  const mobileCourse   = courses.find((c) => c.slug === mobileSlug);
+  const mobileBatches  = getBatchesForCourse(mobileSlug);
+
   return (
     <>
       <Navbar />
-      <main>
+      <main className="pb-20 md:pb-0">
 
         {/* ── Hero ──────────────────────────────────────────────── */}
-        <div className="relative overflow-hidden py-14 md:py-20"
+        <div className="relative overflow-hidden py-10 md:py-20"
           style={{ background: 'linear-gradient(135deg, #060d1f 0%, #0D1837 100%)' }}>
           <div className="absolute top-10 left-1/4 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ background: '#08BD80' }} />
           <div className="relative max-w-6xl mx-auto px-4 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-5"
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
               style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.3)' }}>
               ✦ India&apos;s Best Law Entrance Coaching
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white leading-tight">
+            <h1 className="text-2xl md:text-5xl font-black text-white leading-tight">
               All Courses &amp;{' '}
               <span style={{ background: 'linear-gradient(90deg, #08BD80, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 Programs
               </span>
             </h1>
-            <p className="text-white/60 mt-4 text-base max-w-xl mx-auto">
+            <p className="text-white/60 mt-3 text-sm md:text-base max-w-xl mx-auto">
               Classroom · Online · 1-on-1 Mentorship — pick the format that fits you.
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3 mt-6">
               {[{ v: '15,000+', l: 'Students' }, { v: '1,000+', l: 'NLU Selections' }, { v: '98%', l: 'Success Rate' }].map(s => (
-                <div key={s.l} className="px-5 py-2.5 rounded-2xl text-center"
+                <div key={s.l} className="px-4 md:px-5 py-2 md:py-2.5 rounded-2xl text-center"
                   style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div className="text-lg font-black" style={{ color: '#08BD80' }}>{s.v}</div>
-                  <div className="text-[11px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.l}</div>
+                  <div className="text-base md:text-lg font-black" style={{ color: '#08BD80' }}>{s.v}</div>
+                  <div className="text-[10px] md:text-[11px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.l}</div>
                 </div>
               ))}
             </div>
@@ -325,7 +377,7 @@ function CoursesPageInner() {
         </div>
 
         {/* ── Tab Bar ───────────────────────────────────────────── */}
-        <div className="sticky top-16 z-30"
+        <div className="sticky top-14 md:top-16 z-30"
           style={{ background: 'white', borderBottom: '2px solid #E9EEF2', boxShadow: '0 4px 12px rgba(0,0,0,0.06)' }}>
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-stretch overflow-x-auto scrollbar-none">
@@ -336,16 +388,17 @@ function CoursesPageInner() {
                   <button
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key)}
-                    className="flex items-center gap-2 px-6 py-4 text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 border-b-2 -mb-0.5"
+                    className="flex items-center gap-1.5 md:gap-2 px-4 md:px-6 py-3.5 md:py-4 text-xs md:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 border-b-2 -mb-0.5"
                     style={isActive
                       ? { color: '#08BD80', borderBottomColor: '#08BD80' }
                       : { color: '#6B7280', borderBottomColor: 'transparent' }}
                     onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#08BD80'; }}
                     onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#6B7280'; }}
                   >
-                    <span className="text-base">{tab.icon}</span>
-                    {tab.label}
-                    <span className="text-[10px] font-black px-1.5 py-0.5 rounded-full"
+                    <span className="text-sm md:text-base">{tab.icon}</span>
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
+                    <span className="text-[9px] md:text-[10px] font-black px-1.5 py-0.5 rounded-full"
                       style={isActive
                         ? { background: '#E6FAF4', color: '#08BD80' }
                         : { background: '#F3F4F6', color: '#9CA3AF' }}>
@@ -360,28 +413,86 @@ function CoursesPageInner() {
 
         {/* ── Content ───────────────────────────────────────────── */}
         <div style={{ background: '#F8FAFC', minHeight: '70vh' }}>
-          <div className="max-w-6xl mx-auto px-4 py-8 md:py-10">
+          <div className="max-w-6xl mx-auto px-4 py-6 md:py-10">
 
-            <CoursePanels categoryKey={activeTab} />
+            {/* Desktop: two-panel */}
+            <div className="hidden md:block">
+              <CoursePanels categoryKey={activeTab} />
+            </div>
+
+            {/* Mobile: horizontal course chips + compact batch list */}
+            <div className="md:hidden">
+              {/* Course chips */}
+              <div style={{ overflowX: 'auto', display: 'flex', gap: '10px', paddingBottom: '4px', marginBottom: '16px' }} className="scrollbar-none">
+                {mobileFiltered.length === 0 ? null : mobileFiltered.map((course) => {
+                  const isActive = course.slug === mobileSlug;
+                  return (
+                    <button key={course.slug} onClick={() => setMobileSlug(course.slug)}
+                      style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 14px', borderRadius: '99px', border: `1.5px solid ${isActive ? '#08BD80' : '#E9EEF2'}`, background: isActive ? '#E6FAF4' : 'white', cursor: 'pointer' }}>
+                      <span style={{ fontSize: '16px' }}>{course.icon}</span>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: isActive ? '#08BD80' : '#0D1837', whiteSpace: 'nowrap' }}>{course.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Selected course header */}
+              {mobileCourse && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px', padding: '12px', background: 'white', borderRadius: '14px', border: '1px solid #E9EEF2' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: mobileCourse.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{mobileCourse.icon}</div>
+                  <div>
+                    <div style={{ fontWeight: 800, fontSize: '14px', color: '#0D1837' }}>{mobileCourse.title}</div>
+                    <div style={{ fontSize: '11px', color: '#6B7280' }}>{mobileCourse.tagline}</div>
+                  </div>
+                </div>
+              )}
+
+              {/* Batch cards */}
+              {mobileFiltered.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '60px 16px' }}>
+                  <div style={{ fontSize: '48px', marginBottom: '12px' }}>📚</div>
+                  <p style={{ fontWeight: 700, color: '#0D1837' }}>Coming Soon</p>
+                </div>
+              ) : mobileBatches.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '40px 16px', background: '#F8FAFC', borderRadius: '16px', border: '1.5px dashed #E9EEF2' }}>
+                  <div style={{ fontSize: '32px', marginBottom: '8px' }}>🔜</div>
+                  <p style={{ fontWeight: 600, color: '#9CA3AF', fontSize: '13px' }}>Batches coming soon</p>
+                </div>
+              ) : (
+                <div>
+                  {mobileBatches.map((batch) => <MobileBatchCard key={batch.slug} batch={batch} />)}
+                </div>
+              )}
+
+              {/* Mobile counselling CTA */}
+              <div style={{ marginTop: '8px', padding: '16px', borderRadius: '16px', background: 'linear-gradient(135deg, #060d1f, #0D1837)', textAlign: 'center' }}>
+                <p style={{ color: 'white', fontSize: '13px', fontWeight: 700, marginBottom: '4px' }}>Need Help Choosing?</p>
+                <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px', marginBottom: '12px' }}>Talk to our expert counsellors — free!</p>
+                <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
+                  style={{ display: 'block', padding: '12px', borderRadius: '12px', background: '#25D366', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
+                  💬 Free Counselling
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* ── CTA ───────────────────────────────────────────────── */}
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="relative overflow-hidden rounded-3xl p-10 md:p-12 text-center"
+        <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+          <div className="relative overflow-hidden rounded-3xl p-6 md:p-12 text-center"
             style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
             <div className="absolute top-0 left-1/3 w-64 h-32 rounded-full opacity-20 blur-3xl" style={{ background: '#08BD80' }} />
             <div className="relative">
-              <h2 className="text-2xl md:text-3xl font-black text-white mb-3">Not Sure Which Course Is Right?</h2>
-              <p className="text-white/60 text-sm max-w-md mx-auto mb-7">
-                Talk to our counselling team — they&apos;ll help you pick the best program based on your goal, budget &amp; timeline.
+              <h2 className="text-xl md:text-3xl font-black text-white mb-2 md:mb-3">Not Sure Which Course Is Right?</h2>
+              <p className="text-white/60 text-sm max-w-md mx-auto mb-5 md:mb-7">
+                Talk to our counselling team — free counselling for CLAT 2026.
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
                 <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
-                  className="px-7 py-3 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-opacity"
+                  className="px-7 py-3 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-opacity text-center"
                   style={{ background: '#25D366' }}>💬 WhatsApp Us Free</a>
                 <a href="tel:8507700177"
-                  className="px-7 py-3 rounded-xl font-bold text-sm hover:bg-white/10 transition-colors"
+                  className="px-7 py-3 rounded-xl font-bold text-sm text-center"
                   style={{ color: 'white', border: '1.5px solid rgba(255,255,255,0.2)' }}>📞 8507700177</a>
               </div>
             </div>

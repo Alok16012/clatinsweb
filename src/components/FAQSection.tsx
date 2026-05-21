@@ -33,42 +33,47 @@ export default function FAQSection() {
 
   return (
     <section className="py-8 md:py-14" style={{ background: '#F7F9FB' }}>
-      <div className="max-w-3xl mx-auto px-4">
+      <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-10">
-          <p className="text-sm font-700 uppercase tracking-widest mb-2" style={{ color: '#08BD80' }}>FAQ</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold" style={{ color: '#3C4852' }}>
-            {"Frequently Asked Questions"}
+        <div className="text-center mb-8 px-4">
+          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full" style={{ background: 'rgba(8,189,128,0.1)', border: '1px solid rgba(8,189,128,0.2)' }}>
+            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#08BD80' }} />
+            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#08BD80' }}>FAQ</span>
+          </div>
+          <h2 className="text-2xl md:text-4xl font-extrabold mb-2" style={{ color: '#0D1837' }}>
+            Frequently Asked Questions
           </h2>
-          <p className="mt-3 text-base" style={{ color: '#7A8B94' }}>
-            Everything you need to know about CLAT preparation at CLATians.
+          <p className="text-sm" style={{ color: '#7A8B94' }}>
+            Everything about CLAT preparation at CLATians.
           </p>
         </div>
 
         {/* FAQ accordion */}
-        <div className="space-y-3">
+        <div className="px-4 space-y-2.5">
           {faqs.map((faq, i) => (
             <div key={i}
-              className="rounded-xl overflow-hidden border transition-all"
               style={{
-                borderColor: open === i ? '#08BD80' : '#E9EEF2',
+                borderRadius: '16px', overflow: 'hidden',
+                border: `1.5px solid ${open === i ? '#08BD80' : '#E9EEF2'}`,
                 background: 'white',
+                boxShadow: open === i ? '0 4px 16px rgba(8,189,128,0.1)' : '0 1px 4px rgba(0,0,0,0.04)',
+                transition: 'all .2s ease',
               }}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors"
-                style={{ background: open === i ? '#F0FDF9' : 'white' }}>
-                <span className="font-semibold text-sm md:text-base pr-4" style={{ color: '#3C4852' }}>
+                className="w-full flex items-center justify-between px-4 py-4 text-left"
+                style={{ background: open === i ? '#F0FDF9' : 'white', border: 'none', cursor: 'pointer' }}>
+                <span className="font-semibold text-sm pr-3 leading-snug" style={{ color: '#0D1837' }}>
                   {faq.q}
                 </span>
                 <span
-                  className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-lg font-bold transition-all"
-                  style={{ background: open === i ? '#08BD80' : '#E9EEF2', color: open === i ? 'white' : '#7A8B94' }}>
+                  className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-lg font-bold transition-all"
+                  style={{ background: open === i ? '#08BD80' : '#F3F4F6', color: open === i ? 'white' : '#9CA3AF', minWidth: '28px' }}>
                   {open === i ? '−' : '+'}
                 </span>
               </button>
               {open === i && (
-                <div className="px-5 pb-5 pt-2 text-sm md:text-base leading-relaxed border-t animate-fade-in"
+                <div className="px-4 pb-4 pt-1 text-sm leading-relaxed border-t animate-fade-in"
                   style={{ borderColor: '#E6FAF4', color: '#5a6a75', background: '#F0FDF9' }}>
                   {faq.a}
                 </div>
@@ -77,18 +82,25 @@ export default function FAQSection() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-10 rounded-2xl p-6 md:p-8 text-center" style={{ background: '#3C4852' }}>
+        {/* Bottom CTA — App-style */}
+        <div className="mx-4 mt-8 rounded-2xl p-5 text-center" style={{ background: 'linear-gradient(135deg,#0D1837,#1a2744)' }}>
           <div className="text-3xl mb-3">💬</div>
-          <h3 className="font-black text-xl text-white">Still have questions?</h3>
-          <p className="mt-2 text-sm" style={{ color: '#9CA3AF' }}>
-            Talk to our counsellors — free guidance for CLAT 2026 preparation.
+          <h3 className="font-black text-lg text-white mb-1">Still have questions?</h3>
+          <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            Free counselling for CLAT 2026 preparation.
           </p>
-          <a href="tel:8507700177"
-            className="mt-5 inline-block px-8 py-3 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90"
-            style={{ background: '#08BD80' }}>
-            📞 Call: 8507700177
-          </a>
+          <div className="flex gap-3">
+            <a href="tel:8507700177"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-white text-sm"
+              style={{ background: 'linear-gradient(135deg,#08BD80,#06a870)', boxShadow: '0 6px 16px rgba(8,189,128,0.35)' }}>
+              📞 Call Now
+            </a>
+            <a href="/admission"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-sm"
+              style={{ background: 'rgba(255,255,255,0.1)', color: 'white', border: '1.5px solid rgba(255,255,255,0.15)' }}>
+              📝 Enroll Free
+            </a>
+          </div>
         </div>
       </div>
     </section>

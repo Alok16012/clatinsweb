@@ -103,90 +103,73 @@ export default function ContactPage() {
 
         {/* Hero */}
         <div
-          className="relative overflow-hidden py-14 md:py-20"
+          className="relative overflow-hidden py-10 md:py-20"
           style={{ background: 'linear-gradient(135deg, #060d1f 0%, #0D1837 100%)' }}
         >
-          {/* Decorative circles */}
           <div
             className="absolute"
-            style={{
-              width: 300, height: 300, borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(8,189,128,0.12), transparent)',
-              top: -60, right: -60, pointerEvents: 'none',
-            }}
+            style={{ width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(8,189,128,0.12), transparent)', top: -60, right: -60, pointerEvents: 'none' }}
           />
           <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-4"
-              style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80' }}
-            >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-4"
+              style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80' }}>
               <span>📞</span> Free Counselling Available
             </div>
-            <h1 className="text-3xl md:text-5xl font-black text-white mb-3">Get in Touch</h1>
+            <h1 className="text-2xl md:text-5xl font-black text-white mb-3">Get in Touch</h1>
             <p className="text-white/60 max-w-xl mx-auto text-sm md:text-base">
               Have questions about CLAT preparation? Our experts are here to help.
-              Drop us a message and we&apos;ll call you back.
             </p>
+            {/* Mobile quick action buttons */}
+            <div className="md:hidden flex gap-3 mt-5 justify-center">
+              <a href="tel:8507700177"
+                style={{ flex: 1, maxWidth: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '16px', background: '#08BD80', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
+                📞 Call Now
+              </a>
+              <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
+                style={{ flex: 1, maxWidth: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '16px', background: '#25D366', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
+                💬 WhatsApp
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        {/* Mobile: horizontal scroll contact cards */}
+        <div className="md:hidden px-4 py-5" style={{ background: '#F8FAFC' }}>
+          <div style={{ overflowX: 'auto', display: 'flex', gap: '12px', paddingBottom: '4px' }} className="scrollbar-none">
+            {[
+              { icon: '📞', title: 'Call Us', sub: 'Mon–Sat 9AM–7PM', href: 'tel:8507700177', bg: '#E6FAF4', color: '#08BD80' },
+              { icon: '📍', title: 'Visit Us', sub: 'Boring Rd, Patna', href: 'https://maps.google.com/?q=Gangotri+Palace+Boring+Road+Patna', bg: '#EEF2FF', color: '#6366F1' },
+              { icon: '💬', title: 'WhatsApp', sub: '9AM–9PM', href: 'https://wa.me/918507700177', bg: '#F0FFF4', color: '#22C55E' },
+              { icon: '🌐', title: 'Social', sub: 'Daily updates', href: '#', bg: '#FFF7ED', color: '#F97316' },
+            ].map((c) => (
+              <a key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                style={{ flexShrink: 0, width: '120px', background: 'white', borderRadius: '16px', padding: '14px 12px', border: '1.5px solid #F0F0F0', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', textDecoration: 'none', display: 'block' }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', marginBottom: '8px' }}>{c.icon}</div>
+                <div style={{ fontWeight: 800, fontSize: '12px', color: '#0D1837', marginBottom: '2px' }}>{c.title}</div>
+                <div style={{ fontSize: '10px', color: '#9CA3AF' }}>{c.sub}</div>
+                <div style={{ marginTop: '8px', fontSize: '10px', fontWeight: 700, color: c.color }}>Tap →</div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-12">
           <div className="grid md:grid-cols-3 gap-8">
 
-            {/* Left Sidebar: Contact Info */}
-            <div className="space-y-4">
+            {/* Left Sidebar: Contact Info — desktop only */}
+            <div className="hidden md:block space-y-4">
               {[
-                {
-                  icon: '📞',
-                  title: 'Call Us',
-                  lines: ['8507700177', 'Mon–Sat: 9 AM – 7 PM'],
-                  href: 'tel:8507700177',
-                  cta: 'Call Now',
-                },
-                {
-                  icon: '📍',
-                  title: 'Visit Us',
-                  lines: ['2nd Floor, Gangotri Palace', 'Boring Rd, Patna, Bihar 800001'],
-                  href: 'https://maps.google.com/?q=Gangotri+Palace+Boring+Road+Patna',
-                  cta: 'Get Directions',
-                },
-                {
-                  icon: '💬',
-                  title: 'WhatsApp',
-                  lines: ['Quick response on WhatsApp', 'Available 9 AM – 9 PM'],
-                  href: 'https://wa.me/918507700177',
-                  cta: 'Chat on WhatsApp',
-                },
-                {
-                  icon: '🌐',
-                  title: 'Social Media',
-                  lines: ['Follow us for daily updates', 'GK, tips & success stories'],
-                  href: '#',
-                  cta: 'Follow CLATians',
-                },
+                { icon: '📞', title: 'Call Us', lines: ['8507700177', 'Mon–Sat: 9 AM – 7 PM'], href: 'tel:8507700177', cta: 'Call Now' },
+                { icon: '📍', title: 'Visit Us', lines: ['2nd Floor, Gangotri Palace', 'Boring Rd, Patna, Bihar 800001'], href: 'https://maps.google.com/?q=Gangotri+Palace+Boring+Road+Patna', cta: 'Get Directions' },
+                { icon: '💬', title: 'WhatsApp', lines: ['Quick response on WhatsApp', 'Available 9 AM – 9 PM'], href: 'https://wa.me/918507700177', cta: 'Chat on WhatsApp' },
+                { icon: '🌐', title: 'Social Media', lines: ['Follow us for daily updates', 'GK, tips & success stories'], href: '#', cta: 'Follow CLATians' },
               ].map((c) => (
-                <div
-                  key={c.title}
-                  className="bg-white rounded-2xl p-5"
-                  style={{ border: '1.5px solid #f0f0f0', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3"
-                    style={{ background: 'rgba(8,189,128,0.1)' }}
-                  >
-                    {c.icon}
-                  </div>
+                <div key={c.title} className="bg-white rounded-2xl p-5" style={{ border: '1.5px solid #f0f0f0', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3" style={{ background: 'rgba(8,189,128,0.1)' }}>{c.icon}</div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">{c.title}</h3>
-                  {c.lines.map((l, i) => (
-                    <p key={i} className="text-xs text-gray-500">{l}</p>
-                  ))}
-                  <a
-                    href={c.href}
-                    target={c.href.startsWith('http') ? '_blank' : undefined}
-                    rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="mt-3 inline-block text-xs font-semibold"
-                    style={{ color: '#08BD80' }}
-                  >
+                  {c.lines.map((l, i) => <p key={i} className="text-xs text-gray-500">{l}</p>)}
+                  <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="mt-3 inline-block text-xs font-semibold" style={{ color: '#08BD80' }}>
                     {c.cta} →
                   </a>
                 </div>
@@ -440,13 +423,18 @@ export default function ContactPage() {
                 Not sure which program is right for you? Our counsellors will assess your current
                 preparation level and recommend the best path forward.
               </p>
-              <a
-                href="tel:8507700177"
-                className="inline-block px-8 py-3.5 rounded-xl font-bold text-white text-sm"
-                style={{ background: '#08BD80' }}
-              >
-                📞 Call 8507700177 for Free Counselling
-              </a>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="tel:8507700177"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white text-sm text-center"
+                  style={{ background: '#08BD80' }}>
+                  📞 Call 8507700177
+                </a>
+                <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white text-sm text-center"
+                  style={{ background: '#25D366' }}>
+                  💬 WhatsApp Us
+                </a>
+              </div>
             </div>
           </div>
         </div>

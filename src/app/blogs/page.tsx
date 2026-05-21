@@ -18,7 +18,7 @@ export default function BlogsPage() {
       <main className="pb-20 md:pb-0">
 
         {/* Hero */}
-        <div className="relative overflow-hidden py-14 md:py-20"
+        <div className="relative overflow-hidden py-10 md:py-20"
           style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10" style={{ background: '#06b6d4' }} />
           <div className="max-w-7xl mx-auto px-4 text-center">
@@ -56,7 +56,7 @@ export default function BlogsPage() {
           <div className="mb-10">
             <a href={`/blogs/${blogs[0].slug}`}
               className="group grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-gray-100 bg-white card-hover">
-              <div className="p-8 md:p-10 flex flex-col justify-center">
+              <div className="p-5 md:p-10 flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
                     style={{ background: blogs[0].categoryColor }}>
@@ -95,44 +95,35 @@ export default function BlogsPage() {
           </div>
 
           {/* Blog grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {blogs.slice(1).map((blog) => (
               <a key={blog.slug} href={`/blogs/${blog.slug}`}
                 className="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover flex flex-col">
                 {/* Color top bar */}
                 <div className="h-1.5" style={{ background: blog.categoryColor }} />
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-full text-white"
+                <div className="p-3 md:p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <span className="text-[9px] md:text-xs font-bold px-2 py-0.5 rounded-full text-white"
                       style={{ background: blog.categoryColor }}>
                       {blog.category}
                     </span>
-                    <span className="text-xs text-gray-400">{blog.readTime}</span>
+                    <span className="text-[9px] md:text-xs text-gray-400 hidden sm:inline">{blog.readTime}</span>
                   </div>
-                  <h2 className="font-black text-gray-900 leading-snug group-hover:text-green-700 transition-colors">
+                  <h2 className="font-black text-xs md:text-base text-gray-900 leading-snug group-hover:text-green-700 transition-colors line-clamp-3">
                     {blog.title}
                   </h2>
-                  <p className="text-gray-500 text-sm mt-2 leading-relaxed flex-1 line-clamp-3">
+                  <p className="text-gray-500 text-xs mt-1 leading-relaxed flex-1 line-clamp-2 hidden md:block">
                     {blog.excerpt}
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mt-3">
-                    {blog.tags.slice(0, 2).map((t) => (
-                      <span key={t} className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
-                        style={{ background: blog.categoryColor + '15', color: blog.categoryColor }}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-50">
-                    <div className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-[10px]"
+                  <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-gray-50">
+                    <div className="w-5 h-5 md:w-7 md:h-7 rounded-full flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0"
                       style={{ background: blog.categoryColor }}>
                       {blog.authorAvatar}
                     </div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-xs text-gray-800">{blog.author}</div>
-                      <div className="text-[10px] text-gray-400">{blog.date}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author.split(' ').slice(-1)[0]}</div>
                     </div>
-                    <span className="text-xs font-semibold" style={{ color: blog.categoryColor }}>Read →</span>
+                    <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor }}>→</span>
                   </div>
                 </div>
               </a>

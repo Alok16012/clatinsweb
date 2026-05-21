@@ -172,10 +172,9 @@ export default function FeaturedServices() {
         @keyframes pulseRing{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.6);opacity:0}}
       `}</style>
 
-      <section style={{ background: '#F8FAFC', padding: '52px 0 48px' }}>
+      {/* ── Desktop section ── */}
+      <section className="hidden md:block" style={{ background: '#F8FAFC', padding: '52px 0 48px' }}>
         <div className="max-w-7xl mx-auto px-4 md:px-10">
-
-          {/* Header */}
           <div ref={cardsRef} style={{
             textAlign: 'center', marginBottom: '32px',
             opacity: cardsVisible ? 1 : 0, transform: cardsVisible ? 'none' : 'translateY(20px)',
@@ -192,8 +191,6 @@ export default function FeaturedServices() {
               Comprehensive tools built for every stage of your CLAT preparation.
             </p>
           </div>
-
-          {/* 3 cards */}
           <div style={{
             display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '18px',
             opacity: cardsVisible ? 1 : 0, transform: cardsVisible ? 'none' : 'translateY(24px)',
@@ -203,38 +200,22 @@ export default function FeaturedServices() {
               <ServiceCard key={s.title} s={s} idx={i} active={cardsVisible} />
             ))}
           </div>
-
-          {/* App Banner */}
           <div ref={appRef} style={{
-            marginTop: '24px',
-            borderRadius: '24px',
+            marginTop: '24px', borderRadius: '24px',
             background: 'linear-gradient(135deg, #0D1837 0%, #0f3460 50%, #0D1837 100%)',
             overflow: 'hidden', position: 'relative',
             opacity: appVisible ? 1 : 0, transform: appVisible ? 'none' : 'translateY(24px)',
             transition: 'opacity .7s ease, transform .7s ease',
           }}>
-            {/* BG orbs */}
             <div style={{ position: 'absolute', top: '-60px', right: '200px', width: '200px', height: '200px', borderRadius: '50%', background: '#08BD80', opacity: 0.06, filter: 'blur(50px)', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', bottom: '-40px', left: '100px', width: '160px', height: '160px', borderRadius: '50%', background: '#3b82f6', opacity: 0.07, filter: 'blur(40px)', pointerEvents: 'none' }} />
-
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
-              {/* Left content */}
               <div style={{ flex: 1, minWidth: '260px', padding: '36px 40px' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '12px', padding: '4px 12px', borderRadius: '99px', background: 'rgba(8,189,128,0.15)', border: '1px solid rgba(8,189,128,0.3)' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#08BD80', display: 'inline-block' }} />
-                  <span style={{ color: '#08BD80', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Online Preparation</span>
-                </div>
                 <h3 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(20px, 2.5vw, 30px)', lineHeight: 1.2, marginBottom: '16px' }}>
-                  Study anytime,<br />
-                  <span style={{ background: 'linear-gradient(90deg,#08BD80,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>anywhere</span>
+                  Study anytime, <span style={{ background: 'linear-gradient(90deg,#08BD80,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>anywhere</span>
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
                   {appFeatures.map((item, i) => (
-                    <div key={item} style={{
-                      display: 'flex', alignItems: 'center', gap: '10px',
-                      opacity: appVisible ? 1 : 0, transform: appVisible ? 'none' : 'translateX(-12px)',
-                      transition: `opacity .5s ease ${0.2 + i * 0.08}s, transform .5s ease ${0.2 + i * 0.08}s`,
-                    }}>
+                    <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#08BD80', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <span style={{ color: 'white', fontSize: '10px', fontWeight: 800 }}>✓</span>
                       </div>
@@ -242,66 +223,106 @@ export default function FeaturedServices() {
                     </div>
                   ))}
                 </div>
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <a href="/courses/online" style={{
-                    padding: '11px 22px', borderRadius: '12px', fontWeight: 700, fontSize: '13px',
-                    background: '#08BD80', color: 'white', textDecoration: 'none', transition: 'opacity .2s',
-                  }}>
-                    Start Online Course →
-                  </a>
-                  <a href="tel:8507700177" style={{
-                    padding: '11px 18px', borderRadius: '12px', fontWeight: 600, fontSize: '13px',
-                    border: '1.5px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.85)', textDecoration: 'none',
-                  }}>
-                    📞 Call Us
-                  </a>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <a href="/courses" style={{ padding: '11px 22px', borderRadius: '12px', fontWeight: 700, fontSize: '13px', background: '#08BD80', color: 'white', textDecoration: 'none' }}>Start Online Course →</a>
+                  <a href="tel:8507700177" style={{ padding: '11px 18px', borderRadius: '12px', fontWeight: 600, fontSize: '13px', border: '1.5px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>📞 Call Us</a>
                 </div>
               </div>
-
-              {/* Right: App card */}
               <div style={{ width: '260px', flexShrink: 0, padding: '32px 28px', display: 'flex', flexDirection: 'column', alignItems: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
-                {/* Phone mockup */}
                 <div style={{ position: 'relative', marginBottom: '16px' }}>
-                  <div style={{ width: '72px', height: '72px', borderRadius: '20px', background: 'linear-gradient(135deg,#08BD80,#065f46)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '36px', boxShadow: '0 12px 32px rgba(8,189,128,0.4)' }}>
-                    📱
-                  </div>
-                  {/* Pulse rings */}
+                  <div style={{ width: '72px', height: '72px', borderRadius: '20px', background: 'linear-gradient(135deg,#08BD80,#065f46)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '36px', boxShadow: '0 12px 32px rgba(8,189,128,0.4)' }}>📱</div>
                   <div style={{ position: 'absolute', inset: '-8px', borderRadius: '28px', border: '2px solid rgba(8,189,128,0.3)', animation: 'pulseRing 2s ease-out infinite' }} />
-                  <div style={{ position: 'absolute', inset: '-8px', borderRadius: '28px', border: '2px solid rgba(8,189,128,0.2)', animation: 'pulseRing 2s ease-out .5s infinite' }} />
                 </div>
                 <div style={{ color: 'white', fontWeight: 800, fontSize: '15px', marginBottom: '4px' }}>CLATians App</div>
                 <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px', marginBottom: '18px' }}>Download for iOS & Android</div>
-
-                {/* Rating badge */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 14px', borderRadius: '99px', background: 'rgba(8,189,128,0.15)', border: '1px solid rgba(8,189,128,0.3)', marginBottom: '16px' }}>
                   <span style={{ fontSize: '12px' }}>⭐</span>
                   <span style={{ color: '#08BD80', fontWeight: 800, fontSize: '13px' }}>4.9</span>
                   <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '11px' }}>/ 5 Rating</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-                  {[
-                    { icon: '🍎', label: 'App Store', sub: 'iOS' },
-                    { icon: '▶', label: 'Google Play', sub: 'Android' },
-                  ].map(btn => (
-                    <div key={btn.label} style={{
-                      display: 'flex', alignItems: 'center', gap: '10px',
-                      padding: '10px 14px', borderRadius: '12px',
-                      background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)',
-                      cursor: 'pointer',
-                    }}>
-                      <span style={{ fontSize: '16px' }}>{btn.icon}</span>
-                      <div>
-                        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '8px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{btn.sub}</div>
-                        <div style={{ color: 'white', fontSize: '12px', fontWeight: 700 }}>{btn.label}</div>
-                      </div>
-                    </div>
-                  ))}
+      {/* ── Mobile app-style services ── */}
+      <section className="md:hidden" style={{ background: '#F8FAFC', padding: '24px 0 28px' }}>
+        {/* Section header */}
+        <div style={{ padding: '0 16px', marginBottom: '16px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px', padding: '4px 12px', borderRadius: '99px', background: 'rgba(8,189,128,0.1)', border: '1px solid rgba(8,189,128,0.2)' }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#08BD80', display: 'inline-block' }} />
+            <span style={{ color: '#08BD80', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em' }}>What We Offer</span>
+          </div>
+          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: '20px', lineHeight: 1.25, margin: 0 }}>
+            Everything to <span style={{ color: '#08BD80' }}>Crack CLAT</span>
+          </h2>
+        </div>
+
+        {/* Service cards — vertical list */}
+        <div style={{ padding: '0 16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {services.map((s) => (
+            <a key={s.title} href={s.link} style={{ textDecoration: 'none' }}>
+              <div style={{
+                background: 'white', borderRadius: '18px', overflow: 'hidden',
+                border: '1.5px solid #F0F0F0', boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+                display: 'flex', alignItems: 'center', gap: '0',
+              }}>
+                {/* Color accent left */}
+                <div style={{ width: '5px', alignSelf: 'stretch', background: `linear-gradient(180deg,${s.color},${s.accent})`, flexShrink: 0 }} />
+                {/* Icon */}
+                <div style={{ width: '60px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 10px', background: `${s.accent}0d` }}>
+                  <span style={{ fontSize: '28px' }}>{s.icon}</span>
+                </div>
+                {/* Content */}
+                <div style={{ flex: 1, padding: '14px 12px' }}>
+                  <div style={{ fontWeight: 800, fontSize: '14px', color: '#0D1837', marginBottom: '3px' }}>{s.title}</div>
+                  <div style={{ fontSize: '22px', fontWeight: 900, color: s.accent, lineHeight: 1, marginBottom: '3px' }}>{s.stat}{s.statSuffix}</div>
+                  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                    {s.tags.map(t => (
+                      <span key={t} style={{ fontSize: '10px', color: s.accent, background: `${s.accent}15`, padding: '2px 7px', borderRadius: '6px', fontWeight: 700 }}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '0 14px', color: s.accent, fontSize: '18px', flexShrink: 0 }}>→</div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* App download banner */}
+        <div style={{ margin: '16px 16px 0', borderRadius: '20px', background: 'linear-gradient(135deg,#0D1837,#0f3460)', padding: '20px', overflow: 'hidden', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '-30px', right: '-30px', width: '120px', height: '120px', borderRadius: '50%', background: '#08BD80', opacity: 0.08, filter: 'blur(30px)' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', position: 'relative', zIndex: 1 }}>
+            <div style={{ position: 'relative', flexShrink: 0 }}>
+              <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'linear-gradient(135deg,#08BD80,#065f46)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', boxShadow: '0 8px 20px rgba(8,189,128,0.4)' }}>📱</div>
+              <div style={{ position: 'absolute', inset: '-5px', borderRadius: '21px', border: '2px solid rgba(8,189,128,0.3)', animation: 'pulseRing 2s ease-out infinite' }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ color: 'white', fontWeight: 800, fontSize: '15px', marginBottom: '2px' }}>CLATians App</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '8px' }}>
+                <span style={{ color: '#f59e0b', fontSize: '11px' }}>★★★★★</span>
+                <span style={{ color: '#08BD80', fontWeight: 700, fontSize: '11px' }}>4.9</span>
+                <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px' }}>· 10k+ downloads</span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 10px', borderRadius: '10px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer' }}>
+                  <span style={{ fontSize: '14px' }}>🍎</span>
+                  <div>
+                    <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '8px', fontWeight: 600 }}>IOS</div>
+                    <div style={{ color: 'white', fontSize: '11px', fontWeight: 700 }}>App Store</div>
+                  </div>
+                </div>
+                <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 10px', borderRadius: '10px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer' }}>
+                  <span style={{ fontSize: '14px' }}>▶</span>
+                  <div>
+                    <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '8px', fontWeight: 600 }}>ANDROID</div>
+                    <div style={{ color: 'white', fontSize: '11px', fontWeight: 700 }}>Google Play</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </>

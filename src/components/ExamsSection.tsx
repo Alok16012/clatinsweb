@@ -245,36 +245,84 @@ export default function ExamsSection() {
         </div>
       </section>
 
-      {/* ── MOBILE ──────────────────────────────────────────── */}
-      <section className="md:hidden" style={{ background: '#0D1837', padding: '32px 16px' }}>
-        <div style={{ marginBottom: '20px' }}>
-          <span style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', fontSize: '10px', fontWeight: 700, padding: '5px 12px', borderRadius: '99px', display: 'inline-block', marginBottom: '8px', border: '1px solid rgba(8,189,128,0.25)' }}>
+      {/* ── MOBILE — App horizontal scroll cards ──────────── */}
+      <section className="md:hidden" style={{ background: '#0D1837', padding: '24px 0 28px' }}>
+        {/* Header */}
+        <div style={{ padding: '0 16px', marginBottom: '18px' }}>
+          <span style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', fontSize: '10px', fontWeight: 700, padding: '5px 12px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px', border: '1px solid rgba(8,189,128,0.25)' }}>
             LAW ENTRANCE EXAMS
           </span>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-            <h2 style={{ color: 'white', fontWeight: 900, fontSize: '22px', lineHeight: 1.25 }}>Choose<br />Your Exam</h2>
-            <a href="/exams/clat" style={{ color: '#08BD80', fontWeight: 700, fontSize: '12px', textDecoration: 'none' }}>All Exams →</a>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <h2 style={{ color: 'white', fontWeight: 900, fontSize: '20px', lineHeight: 1.25, margin: 0 }}>Choose Your Exam</h2>
+            <a href="/exams/clat" style={{ color: '#08BD80', fontWeight: 700, fontSize: '12px', textDecoration: 'none', flexShrink: 0 }}>See All →</a>
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+        {/* Horizontal scroll exam cards */}
+        <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', padding: '4px 16px 8px', scrollbarWidth: 'none' }}>
           {exams.map((exam) => (
             <a key={exam.code} href={`/exams/${exam.slug}`}
               style={{
-                background: 'rgba(255,255,255,0.06)', borderRadius: '16px', padding: '14px 10px',
-                textDecoration: 'none', textAlign: 'center', border: `1px solid rgba(255,255,255,0.08)`,
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px',
+                flexShrink: 0, width: '160px', textDecoration: 'none',
+                background: `linear-gradient(160deg,${exam.color}ee,${exam.color}bb)`,
+                borderRadius: '20px', padding: '16px 14px',
+                border: `1.5px solid ${exam.accent}33`,
+                boxShadow: `0 8px 24px ${exam.color}55`,
+                display: 'flex', flexDirection: 'column', gap: '10px',
               }}>
-              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${exam.color}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
-                {exam.icon}
+              {/* Icon + code */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '14px', background: 'rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
+                  {exam.icon}
+                </div>
+                <span style={{ fontSize: '11px', fontWeight: 800, color: exam.accent, background: `${exam.accent}22`, padding: '3px 8px', borderRadius: '99px', border: `1px solid ${exam.accent}44` }}>{exam.code}</span>
               </div>
-              <div style={{ color: exam.accent, fontWeight: 800, fontSize: '13px' }}>{exam.code}</div>
-              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', lineHeight: 1.3 }}>{exam.tagline}</div>
-              <div style={{ background: exam.accent + '22', color: exam.accent, fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '99px', marginTop: '2px' }}>
-                {exam.seats} seats
+
+              {/* Name + tagline */}
+              <div>
+                <div style={{ color: 'white', fontWeight: 800, fontSize: '13px', lineHeight: 1.25, marginBottom: '3px' }}>{exam.name}</div>
+                <div style={{ color: exam.accent, fontWeight: 600, fontSize: '11px' }}>{exam.tagline}</div>
+              </div>
+
+              {/* Stats */}
+              <div style={{ display: 'flex', gap: '6px' }}>
+                <div style={{ flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '6px 8px', textAlign: 'center' }}>
+                  <div style={{ color: 'white', fontWeight: 800, fontSize: '12px' }}>{exam.seats}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', fontWeight: 600 }}>SEATS</div>
+                </div>
+                <div style={{ flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '6px 8px', textAlign: 'center' }}>
+                  <div style={{ color: 'white', fontWeight: 800, fontSize: '12px' }}>{exam.difficulty}%</div>
+                  <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', fontWeight: 600 }}>LEVEL</div>
+                </div>
+              </div>
+
+              {/* Difficulty bar */}
+              <div>
+                <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: '99px', height: '4px', overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${exam.difficulty}%`, background: exam.accent, borderRadius: '99px' }} />
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ color: exam.accent, fontWeight: 700, fontSize: '12px' }}>Prepare →</span>
+                <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px' }}>📅 {exam.date}</span>
               </div>
             </a>
           ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div style={{ padding: '12px 16px 0' }}>
+          <a href="/admission"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+              padding: '14px', borderRadius: '16px', fontWeight: 800, fontSize: '14px',
+              background: 'linear-gradient(135deg,#08BD80,#06a870)', color: 'white',
+              textDecoration: 'none', boxShadow: '0 8px 20px rgba(8,189,128,0.35)',
+            }}>
+            🚀 Start Free Counselling →
+          </a>
         </div>
       </section>
     </>

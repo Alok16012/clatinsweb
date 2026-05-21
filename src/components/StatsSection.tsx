@@ -123,22 +123,24 @@ export default function StatsSection() {
             ))}
           </div>
 
-          {/* Mobile — 2×2 grid */}
-          <div className="md:hidden grid grid-cols-2 gap-3">
+          {/* Mobile — App-style 2×2 grid */}
+          <div className="md:hidden grid grid-cols-2 gap-3 px-1">
             {stats.map((s, i) => (
               <div key={s.label} style={{
                 background: s.bg, border: `1.5px solid ${s.border}`,
-                borderRadius: '16px', padding: '16px 14px',
+                borderRadius: '20px', padding: '18px 16px',
                 opacity: visible ? 1 : 0,
                 animation: visible ? `popIn .45s ease ${i * 0.08}s both` : 'none',
                 position: 'relative', overflow: 'hidden',
+                boxShadow: `0 4px 16px ${s.color}14`,
               }}>
-                <div style={{ position: 'absolute', right: '-4px', bottom: '-4px', fontSize: '48px', opacity: 0.1, lineHeight: 1, pointerEvents: 'none' }}>{s.icon}</div>
-                <div style={{ fontSize: '22px', marginBottom: '8px' }}>{s.icon}</div>
-                <div style={{ fontSize: '28px', fontWeight: 900, lineHeight: 1, color: s.color, marginBottom: '4px' }}>
+                <div style={{ position: 'absolute', right: '-6px', bottom: '-6px', fontSize: '52px', opacity: 0.1, lineHeight: 1, pointerEvents: 'none' }}>{s.icon}</div>
+                {/* Icon badge */}
+                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', marginBottom: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>{s.icon}</div>
+                <div style={{ fontSize: '26px', fontWeight: 900, lineHeight: 1, color: s.color, marginBottom: '5px', fontVariantNumeric: 'tabular-nums' }}>
                   <AnimNum target={s.num} suffix={s.suffix} active={visible} isDecimal={s.isDecimal} />
                 </div>
-                <div style={{ color: '#374151', fontWeight: 700, fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{s.label}</div>
+                <div style={{ color: '#374151', fontWeight: 700, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{s.label}</div>
               </div>
             ))}
           </div>
