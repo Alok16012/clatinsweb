@@ -45,8 +45,8 @@ export default function CollegePredictorPage() {
       <main className="pb-20 md:pb-0">
 
         {/* Hero */}
-        <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+        <div className="relative overflow-hidden py-10 md:py-20"
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10" style={{ background: '#06b6d4' }} />
           <div className="max-w-4xl mx-auto px-4 text-center">
             <div className="text-5xl mb-4">🔮</div>
@@ -61,14 +61,14 @@ export default function CollegePredictorPage() {
 
           {/* Predictor tool */}
           <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-10 mb-10 shadow-sm">
-            <h2 className="text-2xl font-black mb-6" style={{ color: 'var(--navy)' }}>
+            <h2 className="text-2xl font-black mb-6" style={{ color: '#0D1837' }}>
               Predict Your NLU Admission Chances
             </h2>
 
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1.5">Expected CLAT Rank *</label>
-                <div className="flex items-center border border-gray-200 rounded-xl px-4 py-3 focus-within:border-cyan-400 transition-colors">
+                <div className="flex items-center border border-gray-200 rounded-xl px-4 py-3 focus-within:border-green-400 transition-colors">
                   <span className="text-gray-400 text-sm mr-2">#</span>
                   <input
                     type="number"
@@ -86,7 +86,7 @@ export default function CollegePredictorPage() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-cyan-400 transition-colors bg-white">
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-green-400 transition-colors bg-white">
                   {Object.keys(multipliers).map((c) => (
                     <option key={c}>{c}</option>
                   ))}
@@ -95,7 +95,7 @@ export default function CollegePredictorPage() {
               <div className="flex items-end">
                 <button onClick={predict}
                   className="w-full py-3 rounded-xl font-bold text-white text-sm transition-opacity hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, var(--navy), var(--cyan))' }}>
+                  style={{ background: 'linear-gradient(135deg, #0D1837, #08BD80)' }}>
                   🔍 Predict My Colleges
                 </button>
               </div>
@@ -177,12 +177,12 @@ export default function CollegePredictorPage() {
 
               {/* Counselling CTA */}
               <div className="rounded-2xl p-6 md:p-8"
-                style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
+                style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
                 <h3 className="font-black text-white text-xl mb-2">Need Expert College Guidance?</h3>
                 <p className="text-white/60 text-sm mb-4">
                   Our counsellors help you select the best NLU based on your rank, preferences, and career goals.
                 </p>
-                <a href="tel:8507700177" style={{ background: 'var(--cyan)' }}
+                <a href="tel:8507700177" style={{ background: '#08BD80' }}
                   className="inline-block px-6 py-3 rounded-xl font-bold text-white text-sm">
                   📞 Book Free Counselling
                 </a>

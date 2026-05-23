@@ -8,11 +8,9 @@ const slides = [
     heading: 'Crack CLAT with',
     highlight: 'Expert Coaching',
     sub: 'Your gateway to top National Law Universities. Join thousands of successful CLATians who secured their dream college.',
-    cta: 'Start Your Journey',
+    cta: 'Start Preparation',
     ctaLink: '#courses',
     secondaryCta: 'View Demo Class',
-    bg: 'from-[#071560] via-[#0a1e8a] to-[#0038c8]',
-    accent: '#0050e0',
     pill: 'CLAT 2026',
   },
   {
@@ -20,12 +18,10 @@ const slides = [
     tag: '⚖️ NLU Delhi Preparation',
     heading: 'Crack AILET with',
     highlight: 'Focused Mentorship',
-    sub: 'Your path to NLU Delhi — one of India\'s most prestigious law schools. Expert guidance from NLU Alumni.',
-    cta: 'Enroll Now',
+    sub: "Your path to NLU Delhi — one of India's most prestigious law schools. Expert guidance from NLU Alumni.",
+    cta: 'Start Preparation',
     ctaLink: '#courses',
-    secondaryCta: 'Free Mock Test',
-    bg: 'from-[#071560] via-[#0a1e8a] to-[#0038c8]',
-    accent: '#0050e0',
+    secondaryCta: 'View Demo Class',
     pill: 'AILET',
   },
   {
@@ -34,11 +30,9 @@ const slides = [
     heading: 'Ace MH-CET with',
     highlight: 'Proven Strategies',
     sub: 'Top law colleges in Maharashtra are within your reach. Our MH-CET specialists ensure comprehensive preparation.',
-    cta: 'Learn More',
+    cta: 'Start Preparation',
     ctaLink: '#courses',
-    secondaryCta: 'Check Colleges',
-    bg: 'from-[#071560] via-[#0a1e8a] to-[#0038c8]',
-    accent: '#0050e0',
+    secondaryCta: 'View Demo Class',
     pill: 'MH-CET',
   },
   {
@@ -47,16 +41,21 @@ const slides = [
     heading: 'Prepare for CUET with',
     highlight: 'Complete Guidance',
     sub: 'Gateway to top central universities across India. Comprehensive CUET Law preparation designed for success.',
-    cta: 'Know More',
+    cta: 'Start Preparation',
     ctaLink: '#courses',
-    secondaryCta: 'Download Syllabus',
-    bg: 'from-[#071560] via-[#0a1e8a] to-[#0038c8]',
-    accent: '#0050e0',
+    secondaryCta: 'View Demo Class',
     pill: 'CUET',
   },
 ];
 
 const examPills = ['CLAT', 'AILET', 'MH-CET Law', 'CUET', 'AIL-LET', 'LSAT'];
+
+const heroStats = [
+  { val: '15,000+', label: 'Students' },
+  { val: '1000+', label: 'NLU Selections' },
+  { val: '15+', label: 'Years Experience' },
+  { val: '25+', label: 'Expert Faculty' },
+];
 
 const mobileSlides = [
   {
@@ -64,10 +63,8 @@ const mobileSlides = [
     name: 'A.K. SINGH',
     title: 'Director, IEE CLATians',
     subtitle: 'Founder — "BHARAT that is INDIA"',
-    tagline: 'Empowering CLAT aspirants with legal knowledge, social awareness, and the skills needed for top NLU admissions.',
-    gradFrom: '#6366f1',
-    gradTo: '#06b6d4',
-    featureBg: '#eef2ff',
+    tagline:
+      'Empowering CLAT aspirants with legal knowledge, social awareness, and the skills needed for top NLU admissions.',
     features: [
       { icon: '🎯', text: 'Individual Mentorship' },
       { icon: '📊', text: 'Weekly Progress Reports' },
@@ -79,10 +76,8 @@ const mobileSlides = [
     name: 'CLAT 2026 BATCH',
     title: 'Now Enrolling — Limited Seats',
     subtitle: 'Offline · Online · Mentorship',
-    tagline: 'Join thousands of CLATians who cracked top NLUs. Expert faculty, comprehensive material, proven results.',
-    gradFrom: '#f97316',
-    gradTo: '#fb923c',
-    featureBg: '#fff7ed',
+    tagline:
+      'Join thousands of CLATians who cracked top NLUs. Expert faculty, comprehensive material, proven results.',
     features: [
       { icon: '🏛️', text: 'Top NLU Selections' },
       { icon: '👨‍🏫', text: '20+ Expert Faculty' },
@@ -94,10 +89,8 @@ const mobileSlides = [
     name: 'MOCK TEST SERIES',
     title: '150+ Full-Length Mock Tests',
     subtitle: 'CLAT · AILET · MH-CET · CUET',
-    tagline: 'AI-powered analytics, detailed solutions, and national rank predictions. The most comprehensive test series in India.',
-    gradFrom: '#10b981',
-    gradTo: '#06b6d4',
-    featureBg: '#ecfdf5',
+    tagline:
+      'AI-powered analytics, detailed solutions, and national rank predictions. The most comprehensive test series in India.',
     features: [
       { icon: '🤖', text: 'AI-Powered Analytics' },
       { icon: '📈', text: 'National Rank Predictor' },
@@ -109,10 +102,8 @@ const mobileSlides = [
     name: 'NLU COLLEGE PREDICTOR',
     title: 'Know Your Chances Now',
     subtitle: 'Free Tool — Try It Today',
-    tagline: 'Enter your expected CLAT rank and instantly see which of the 23 NLUs you are likely to get into.',
-    gradFrom: '#a855f7',
-    gradTo: '#6366f1',
-    featureBg: '#faf5ff',
+    tagline:
+      'Enter your expected CLAT rank and instantly see which of the 23 NLUs you are likely to get into.',
     features: [
       { icon: '🔮', text: 'Rank-Based Prediction' },
       { icon: '🪑', text: 'All 23 NLUs Covered' },
@@ -151,33 +142,42 @@ export default function HeroSection() {
     <section>
       {/* ─── Desktop Hero ─────────────────────────────────────── */}
       <div
-        className={`hidden md:block relative bg-gradient-to-br ${slide.bg} overflow-hidden`}
-        style={{ minHeight: '88vh' }}
+        className="hidden md:block relative overflow-hidden"
+        style={{ background: '#0D1837', minHeight: '88vh' }}
       >
-        {/* Background decoration */}
+        {/* Subtle background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
-            style={{ background: slide.accent }} />
-          <div className="absolute bottom-0 -left-20 w-72 h-72 rounded-full opacity-5"
-            style={{ background: slide.accent }} />
-          <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full opacity-5"
-            style={{ background: '#ffffff' }} />
-          {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-[0.03]"
+          <div
+            className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
+            style={{ background: '#08BD80' }}
+          />
+          <div
+            className="absolute bottom-0 -left-20 w-72 h-72 rounded-full opacity-5"
+            style={{ background: '#08BD80' }}
+          />
+          <div
+            className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full opacity-5"
+            style={{ background: '#ffffff' }}
+          />
+          {/* Subtle grid */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
             style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-              backgroundSize: '60px 60px'
-            }} />
+              backgroundImage:
+                'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
+          />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-20 flex items-center gap-16 relative z-10">
+        <div className="w-full px-8 md:px-16 py-20 flex items-center gap-10 relative z-10">
           {/* Left Content */}
-          <div className="flex-1 max-w-xl">
-            {/* Exam tag pill */}
+          <div className="flex-1">
+            {/* Exam pill */}
             <div className="inline-flex items-center gap-2 mb-6">
               <span
                 className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                style={{ background: slide.accent + '33', border: `1px solid ${slide.accent}55` }}
+                style={{ background: 'rgba(8,189,128,0.2)', border: '1px solid rgba(8,189,128,0.4)' }}
               >
                 {slide.pill}
               </span>
@@ -186,68 +186,95 @@ export default function HeroSection() {
 
             {/* Heading */}
             <h1
-              className={`text-5xl xl:text-6xl font-black text-white leading-tight transition-all duration-300 ${isAnimating ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'}`}
+              className={`font-extrabold text-white leading-tight transition-all duration-300 ${isAnimating ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'}`}
+              style={{ fontSize: '2.75rem' }}
             >
               {slide.heading}
               <br />
-              <span style={{ color: slide.accent }}>{slide.highlight}</span>
+              <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
             </h1>
 
-            <p className={`mt-6 text-white/75 text-lg leading-relaxed max-w-md transition-all duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+            <p
+              className={`mt-6 text-lg leading-relaxed max-w-md transition-all duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+              style={{ color: 'rgba(255,255,255,0.70)' }}
+            >
               {slide.sub}
             </p>
 
             {/* CTAs */}
             <div className="mt-8 flex items-center gap-4 flex-wrap">
-              <a href={slide.ctaLink}
-                className="px-7 py-3.5 rounded-xl font-bold text-white text-base shadow-lg hover:scale-105 transition-all duration-200"
-                style={{ background: slide.accent }}>
+              <a
+                href={slide.ctaLink}
+                className="px-7 py-3.5 rounded-xl font-bold text-white text-base shadow-lg hover:opacity-90 transition-all duration-200"
+                style={{ background: '#08BD80' }}
+              >
                 {slide.cta} →
               </a>
-              <a href="#demo"
-                className="px-6 py-3.5 rounded-xl font-semibold text-white/90 border border-white/20 hover:bg-white/10 transition-all text-base">
+              <a
+                href="#demo"
+                className="px-6 py-3.5 rounded-xl font-semibold text-base hover:bg-white/10 transition-all"
+                style={{ color: 'white', border: '1px solid rgba(255,255,255,0.35)' }}
+              >
                 {slide.secondaryCta}
               </a>
             </div>
 
-            {/* Quick stats under hero */}
-            <div className="mt-10 flex items-center gap-6 flex-wrap">
-              {[
-                { val: '5000+', label: 'Success Stories' },
-                { val: '20+', label: 'Expert Faculty' },
-                { val: '4.9★', label: 'Student Rating' },
-              ].map((s) => (
-                <div key={s.label} className="text-center">
-                  <div className="text-2xl font-black text-white">{s.val}</div>
-                  <div className="text-xs text-white/50 mt-0.5">{s.label}</div>
+            {/* Stats row */}
+            <div className="mt-10 flex items-center gap-0 flex-wrap">
+              {heroStats.map((s, i) => (
+                <div key={s.label} className="flex items-center">
+                  <div className="text-center px-5 first:pl-0">
+                    <div className="text-2xl font-black text-white">{s.val}</div>
+                    <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                      {s.label}
+                    </div>
+                  </div>
+                  {i < heroStats.length - 1 && (
+                    <div className="w-px h-8 mx-1" style={{ background: 'rgba(255,255,255,0.2)' }} />
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: Exam selector card */}
-          <div className="flex-1 max-w-sm">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-6">
-              <h3 className="text-white font-bold text-lg mb-4">Choose Your Exam</h3>
-              <div className="space-y-2.5">
-                {examPills.map((exam, i) => (
-                  <a key={exam} href="#exams"
-                    className="flex items-center justify-between px-4 py-3 rounded-xl cursor-pointer group transition-all hover:scale-[1.02]"
-                    style={{
-                      background: exam === slides[current].pill ? slide.accent : 'rgba(255,255,255,0.08)',
-                      border: `1px solid ${exam === slides[current].pill ? slide.accent : 'rgba(255,255,255,0.1)'}`,
-                    }}>
-                    <span className="text-white font-semibold text-sm">{exam}</span>
-                    <svg className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+          {/* Right: Topper Showcase + compact Exam Selector */}
+          <div className="w-[380px] flex-shrink-0 space-y-3">
+            {/* Topper Results Card */}
+            <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-white font-bold text-sm">🏆 Recent Toppers</h3>
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.3)' }}>CLAT 2024</span>
+              </div>
+              {[
+                { name: 'Aman Deep Singh', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
+                { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR', avatar: 'PS', color: '#ec4899' },
+                { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi (AILET)', avatar: 'RG', color: '#f59e0b' },
+                { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR', avatar: 'KR', color: '#f97316' },
+              ].map((t) => (
+                <div key={t.name} className="flex items-center gap-3 py-2.5 border-b last:border-0" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0" style={{ background: t.color }}>{t.avatar}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-white text-xs font-bold truncate">{t.name}</div>
+                    <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{t.college}</div>
+                  </div>
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded-full flex-shrink-0" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}>{t.rank}</span>
+                </div>
+              ))}
+            </div>
+            {/* Exam Selector compact */}
+            <div className="rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Prepare For</p>
+              <div className="grid grid-cols-3 gap-1.5">
+                {examPills.map((exam) => (
+                  <a key={exam} href={`/exams/${exam.toLowerCase().replace(' law','').replace('-law','')}`}
+                    className="text-center py-2 rounded-lg text-[11px] font-bold transition-all"
+                    style={{ background: exam === slides[current].pill ? '#08BD80' : 'rgba(255,255,255,0.08)', color: 'white', border: `1px solid ${exam === slides[current].pill ? '#08BD80' : 'rgba(255,255,255,0.1)'}` }}>
+                    {exam}
                   </a>
                 ))}
               </div>
-              <a href="#admission"
-                className="mt-4 block text-center py-3 rounded-xl font-bold text-white text-sm"
-                style={{ background: 'var(--cyan)' }}>
-                Get Free Counselling
+              <a href="/admission" className="mt-3 block text-center py-2.5 rounded-xl font-bold text-white text-xs hover:opacity-90 transition-all" style={{ background: '#08BD80' }}>
+                Get Free Counselling →
               </a>
             </div>
           </div>
@@ -256,80 +283,119 @@ export default function HeroSection() {
         {/* Slide dots */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {slides.map((_, i) => (
-            <button key={i} onClick={() => goTo(i)}
+            <button
+              key={i}
+              onClick={() => goTo(i)}
               className="rounded-full transition-all duration-300"
               style={{
                 width: i === current ? '28px' : '8px',
                 height: '8px',
-                background: i === current ? slide.accent : 'rgba(255,255,255,0.3)',
-              }} />
+                background: i === current ? '#08BD80' : 'rgba(255,255,255,0.3)',
+              }}
+            />
           ))}
         </div>
       </div>
 
-      {/* ─── Mobile Hero ─────────────────────────────────────── */}
-      <div className="md:hidden" style={{ background: '#f4f6fa' }}>
-        <div className="relative overflow-hidden mx-1 mt-2 rounded-2xl bg-white shadow-sm border border-gray-100">
-          <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-            <div className="px-4 pt-4 pb-0">
-              <div className="flex items-start gap-3">
-                {/* Avatar */}
-                <div className="flex-shrink-0">
-                  <div className="relative w-16 h-16">
-                    <div className="absolute inset-0 rounded-full p-[2.5px]"
-                      style={{ background: `linear-gradient(135deg, ${mobileSlides[current].gradFrom}, ${mobileSlides[current].gradTo})` }}>
-                      <div className="w-full h-full rounded-full flex items-center justify-center font-black text-lg text-white"
-                        style={{ background: `linear-gradient(135deg, ${mobileSlides[current].gradFrom}, ${mobileSlides[current].gradTo})` }}>
-                        {mobileSlides[current].initials}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      {/* ─── Mobile Hero — App Style ─────────────────────────── */}
+      <div className="md:hidden" style={{ background: '#0D1837' }}>
+        {/* Gradient bg blobs */}
+        <div className="absolute top-14 right-0 w-56 h-56 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle,rgba(8,189,128,0.18) 0%,transparent 70%)', transform: 'translate(20%,-10%)' }} />
 
-                {/* Name + subtitle */}
-                <div className="flex-1 min-w-0">
-                  <div className="font-black text-sm text-gray-900 tracking-wide">{mobileSlides[current].name}</div>
-                  <div className="text-[11px] text-gray-500 mt-0.5">{mobileSlides[current].title}</div>
-                  <div className="text-[11px] font-semibold mt-0.5" style={{ color: mobileSlides[current].gradFrom }}>
-                    {mobileSlides[current].subtitle}
-                  </div>
-                </div>
+        <div className="relative z-10 px-4 pt-5 pb-5">
 
-                {/* Features — right */}
-                <div className="flex-shrink-0 space-y-1.5">
-                  {mobileSlides[current].features.map((f, fi) => (
-                    <div key={fi} className="flex items-center gap-1.5">
-                      <div className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
-                        style={{ background: mobileSlides[current].featureBg }}>
-                        <span className="text-[11px]">{f.icon}</span>
-                      </div>
-                      <span className="text-[10px] font-semibold text-gray-700 whitespace-nowrap">{f.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          {/* Exam selector — horizontal scroll pills */}
+          <div className="flex gap-2 overflow-x-auto pb-1 mb-5" style={{ scrollbarWidth: 'none' }}>
+            {['CLAT', 'AILET', 'MH-CET', 'CUET', 'AIL-LET', 'LSAT'].map((exam) => (
+              <a key={exam} href={`/exams/${exam.toLowerCase().replace('-cet','-cet-law')}`}
+                className="flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all"
+                style={{
+                  background: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? '#08BD80' : 'rgba(255,255,255,0.1)',
+                  color: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? 'white' : 'rgba(255,255,255,0.65)',
+                  border: `1.5px solid ${exam === slide.pill ? 'rgba(8,189,128,0.6)' : 'rgba(255,255,255,0.08)'}`,
+                }}>
+                {exam}
+              </a>
+            ))}
+          </div>
 
-              {/* Tagline — 2 lines */}
-              <p className="text-[11px] text-gray-500 mt-2.5 leading-relaxed line-clamp-2 pb-3">
-                {mobileSlides[current].tagline}
-              </p>
+          {/* Hero card — slide content */}
+          <div className={`rounded-3xl p-5 mb-4 transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'}`}
+            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-bold px-2.5 py-1 rounded-full"
+                style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}>
+                {slide.tag}
+              </span>
             </div>
+            <h1 className="font-black text-white leading-tight mb-2" style={{ fontSize: '1.7rem', lineHeight: '1.2' }}>
+              {slide.heading}<br />
+              <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
+            </h1>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              {slide.sub}
+            </p>
 
-            {/* Gradient bar */}
-            <div className="h-1.5 w-full"
-              style={{ background: `linear-gradient(90deg, ${mobileSlides[current].gradFrom}, ${mobileSlides[current].gradTo})` }} />
+            {/* CTA row */}
+            <div className="flex gap-2.5">
+              <a href={slide.ctaLink}
+                className="flex-1 text-center py-3.5 rounded-2xl font-black text-white text-sm shadow-lg"
+                style={{ background: 'linear-gradient(135deg,#08BD80,#06a870)', boxShadow: '0 8px 20px rgba(8,189,128,0.4)' }}>
+                Start Prep →
+              </a>
+              <a href="/admission"
+                className="px-4 py-3.5 rounded-2xl font-bold text-sm flex items-center gap-1.5"
+                style={{ background: 'rgba(249,115,22,0.15)', color: '#f97316', border: '1.5px solid rgba(249,115,22,0.3)' }}>
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Enroll
+              </a>
+            </div>
+          </div>
+
+          {/* Stats strip */}
+          <div className="grid grid-cols-4 rounded-2xl overflow-hidden mb-4"
+            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            {heroStats.map((s, i) => (
+              <div key={s.label} className="flex items-stretch">
+                <div className="flex-1 flex flex-col items-center justify-center py-3.5">
+                  <div className="text-sm font-black text-white leading-tight">{s.val}</div>
+                  <div className="text-[9px] mt-0.5 text-center leading-tight font-medium" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.label}</div>
+                </div>
+                {i < heroStats.length - 1 && <div className="w-px my-3" style={{ background: 'rgba(255,255,255,0.1)' }} />}
+              </div>
+            ))}
+          </div>
+
+          {/* Toppers strip */}
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <span className="text-xs font-bold text-white">🏆 Recent Toppers</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80' }}>CLAT 2024</span>
+            </div>
+            <div className="flex overflow-x-auto gap-3 px-4 py-3" style={{ scrollbarWidth: 'none' }}>
+              {[
+                { name: 'Aman Deep', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
+                { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR', avatar: 'PS', color: '#ec4899' },
+                { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi', avatar: 'RG', color: '#f59e0b' },
+                { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR', avatar: 'KR', color: '#f97316' },
+              ].map((t) => (
+                <div key={t.name} className="flex-shrink-0 flex flex-col items-center gap-1.5" style={{ width: '68px' }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[11px] font-black" style={{ background: t.color }}>{t.avatar}</div>
+                  <div className="text-[10px] font-bold text-white text-center leading-tight">{t.name}</div>
+                  <div className="text-[9px] font-black px-2 py-0.5 rounded-full" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}>{t.rank}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Slide dots */}
-          <div className="flex justify-center gap-1.5 py-2 bg-white">
-            {mobileSlides.map((_, i) => (
+          <div className="flex justify-center gap-1.5 mt-4">
+            {slides.map((_, i) => (
               <button key={i} onClick={() => goTo(i)}
-                className="rounded-full transition-all"
-                style={{
-                  width: i === current ? '20px' : '6px',
-                  height: '6px',
-                  background: i === current ? mobileSlides[current].gradFrom : '#d1d5db',
-                }} />
+                className="rounded-full transition-all duration-300"
+                style={{ width: i === current ? '20px' : '6px', height: '6px', background: i === current ? '#08BD80' : 'rgba(255,255,255,0.2)', border: 'none' }} />
             ))}
           </div>
         </div>

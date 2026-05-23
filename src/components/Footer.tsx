@@ -1,135 +1,190 @@
-const quickLinks = ['Home', 'Courses', 'Admission', 'Student Zone', 'Law Entrance Exams', 'Gallery'];
-const resources = ['Previous Year Papers', 'Current Affairs', 'Quizzes', 'Online Resources'];
-const company = ['About Us', 'Careers', 'Faculty', 'Contact', 'Privacy Policy', 'Legal'];
-const courses = ['CLAT', 'CLAT+AILET', 'CUET (UG)', 'CUET (PG)', 'OLET', 'CLAT+OLET', 'Booster Course'];
+const courses = [
+  { label: 'Offline Course', href: '/courses?cat=offline' },
+  { label: 'Online Course', href: '/courses?cat=online' },
+  { label: 'OLET Program', href: '/courses?cat=mentorship' },
+  { label: 'Mock Tests', href: '/courses?cat=mock' },
+];
+
+const exams = [
+  { label: 'CLAT', href: '/exams/clat' },
+  { label: 'AILET', href: '/exams/ailet' },
+  { label: 'MH-CET Law', href: '/exams/mh-cet-law' },
+  { label: 'CUET', href: '/exams/cuet' },
+  { label: 'AIL-LET', href: '/exams/ail-let' },
+  { label: 'LSAT', href: '/exams/lsat' },
+];
+
+const quickLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Faculty', href: '/about' },
+  { label: 'Admission', href: '/admission' },
+  { label: 'Blogs', href: '/blogs' },
+  { label: 'College Predictor', href: '/college-predictor' },
+];
+
+const socials = [
+  { label: 'Facebook', icon: 'f', color: '#1877f2', bg: 'rgba(24,119,242,0.15)' },
+  { label: 'YouTube', icon: '▶', color: '#ff0000', bg: 'rgba(255,0,0,0.12)' },
+  { label: 'Instagram', icon: '📷', color: '#e1306c', bg: 'rgba(225,48,108,0.12)' },
+  { label: 'LinkedIn', icon: 'in', color: '#0a66c2', bg: 'rgba(10,102,194,0.15)' },
+];
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--navy-dark)' }} className="text-white">
-      {/* CTA Banner */}
-      <div style={{ background: 'var(--cyan)' }} className="py-6 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer style={{ background: '#111827' }} className="text-white">
+
+      {/* ── Desktop Main footer ─────────────────────────── */}
+      <div className="hidden md:block max-w-7xl mx-auto px-4 py-14">
+        <div className="grid grid-cols-4 gap-10">
           <div>
-            <h3 className="font-black text-xl text-white">Start Your CLAT Journey Today</h3>
-            <p className="text-white/80 text-sm mt-0.5">Join 1.25 Lakh+ students who chose CLATians.</p>
-          </div>
-          <div className="flex gap-3 flex-shrink-0">
-            <a href="tel:8507700177"
-              className="px-5 py-2.5 rounded-xl font-bold text-cyan-700 bg-white text-sm hover:bg-gray-50 transition-colors">
-              📞 Call Now
-            </a>
-            <a href="#admission"
-              className="px-5 py-2.5 rounded-xl font-bold text-white border border-white/30 text-sm hover:bg-white/10 transition-colors">
-              Apply Now →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          {/* Brand column */}
-          <div className="col-span-2 md:col-span-1">
-            {/* Logo */}
             <div className="mb-4">
-              <div className="bg-white rounded-xl px-3 py-1.5 inline-block">
-                <img src="/logo.png" alt="CLATians" className="h-10 w-auto object-contain" />
-              </div>
+              <img src="/logo.png" alt="CLATians" className="h-8 w-auto brightness-0 invert" />
             </div>
-            <p className="text-white/50 text-sm leading-relaxed">
-              Your trusted institute for CLAT, AILET, and other law entrance preparations. Expert guidance by NLU Alumni.
+            <p className="text-sm leading-relaxed mb-5" style={{ color: '#9CA3AF' }}>
+              Your trusted institute for CLAT, AILET, and all major law entrance exams. Expert guidance by NLU alumni and advocates.
             </p>
-
-            {/* Social Links */}
-            <div className="flex gap-3 mt-5">
-              {[
-                { icon: 'f', label: 'Facebook', color: '#1877f2' },
-                { icon: '📷', label: 'Instagram', color: '#e1306c' },
-                { icon: '▶', label: 'YouTube', color: '#ff0000' },
-                { icon: 'in', label: 'LinkedIn', color: '#0a66c2' },
-                { icon: '𝕏', label: 'Twitter', color: '#000' },
-              ].map((s) => (
+            <a href="tel:8507700177" className="flex items-center gap-2 text-sm mb-5" style={{ color: '#9CA3AF' }}>
+              <span>📞</span> 8507700177
+            </a>
+            <div className="flex gap-3">
+              {socials.map((s) => (
                 <a key={s.label} href="#" title={s.label}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-transform hover:scale-110"
-                  style={{ background: 'rgba(255,255,255,0.1)', color: 'white' }}>
+                  className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-opacity hover:opacity-80"
+                  style={{ background: s.bg, color: s.color }}>
                   {s.icon}
                 </a>
               ))}
             </div>
-
-            {/* Contact */}
-            <div className="mt-5 space-y-2">
-              <a href="tel:8507700177" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
-                <span>📞</span> 8507700177
-              </a>
-              <p className="text-xs text-white/40 leading-relaxed">
-                2nd Floor, Gangotri Palace, Boring Rd, Patna, Bihar 800001
-              </p>
-            </div>
           </div>
-
-          {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/80 uppercase tracking-wider">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">{link}</a>
+            <h4 className="font-bold text-sm mb-5 text-white">Courses</h4>
+            <ul className="space-y-3">
+              {courses.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-sm hover:text-white transition-colors" style={{ color: '#9CA3AF' }}>{item.label}</a>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Resources */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/80 uppercase tracking-wider">Resources</h4>
-            <ul className="space-y-2">
-              {resources.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">{link}</a>
+            <h4 className="font-bold text-sm mb-5 text-white">Exams</h4>
+            <ul className="space-y-3">
+              {exams.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-sm hover:text-white transition-colors" style={{ color: '#9CA3AF' }}>{item.label}</a>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Company */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/80 uppercase tracking-wider">Company</h4>
-            <ul className="space-y-2">
-              {company.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">{link}</a>
+            <h4 className="font-bold text-sm mb-5 text-white">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-sm hover:text-white transition-colors" style={{ color: '#9CA3AF' }}>{item.label}</a>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Courses */}
-          <div>
-            <h4 className="font-bold text-sm mb-4 text-white/80 uppercase tracking-wider">Courses</h4>
-            <ul className="space-y-2">
-              {courses.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">{link}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/30">© 2026 CLATians – All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="text-sm text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm text-white/30 hover:text-white/60 transition-colors">Legal</a>
           </div>
         </div>
       </div>
 
-      {/* Mobile bottom spacer (to avoid content hiding behind fixed bottom nav) */}
-      <div className="h-16 md:hidden" />
+      {/* ── Mobile footer ────────────────────────────────── */}
+      <div className="md:hidden px-4 pt-8 pb-28">
+
+        {/* Brand */}
+        <div className="flex items-center gap-3 mb-3">
+          <img src="/logo.png" alt="CLATians" className="h-8 w-auto brightness-0 invert" />
+        </div>
+        <p className="text-sm leading-relaxed mb-5" style={{ color: '#6B7280' }}>
+          India's #1 CLAT coaching — 1.25L+ students, 5000+ NLU selections since 2012.
+        </p>
+
+        {/* CTA row */}
+        <div className="flex gap-3 mb-7">
+          <a href="tel:8507700177"
+            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm"
+            style={{ background: '#08BD80', color: 'white' }}>
+            📞 Call Us
+          </a>
+          <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm"
+            style={{ background: 'rgba(37,211,102,0.15)', color: '#25D366', border: '1px solid rgba(37,211,102,0.25)' }}>
+            💬 WhatsApp
+          </a>
+        </div>
+
+        {/* Courses section */}
+        <div className="mb-5">
+          <p className="text-[10px] font-black uppercase tracking-widest mb-2.5" style={{ color: '#8b5cf6' }}>📚 Courses</p>
+          <div className="flex flex-wrap gap-2">
+            {courses.map((item) => (
+              <a key={item.label} href={item.href}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
+                style={{ background: 'rgba(139,92,246,0.12)', color: '#a78bfa', border: '1px solid rgba(139,92,246,0.2)' }}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Exams section */}
+        <div className="mb-5">
+          <p className="text-[10px] font-black uppercase tracking-widest mb-2.5" style={{ color: '#f59e0b' }}>⚖️ Exams</p>
+          <div className="flex flex-wrap gap-2">
+            {exams.map((item) => (
+              <a key={item.label} href={item.href}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
+                style={{ background: 'rgba(245,158,11,0.12)', color: '#fbbf24', border: '1px solid rgba(245,158,11,0.2)' }}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick links section */}
+        <div className="mb-6">
+          <p className="text-[10px] font-black uppercase tracking-widest mb-2.5" style={{ color: '#08BD80' }}>🔗 Quick Links</p>
+          <div className="flex flex-wrap gap-2">
+            {quickLinks.map((item) => (
+              <a key={item.label} href={item.href}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
+                style={{ background: 'rgba(8,189,128,0.1)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.2)' }}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Social row */}
+        <div className="flex gap-3 mb-5">
+          {socials.map((s) => (
+            <a key={s.label} href="#" title={s.label}
+              className="w-10 h-10 rounded-2xl flex items-center justify-center text-sm font-bold transition-opacity hover:opacity-80"
+              style={{ background: s.bg, color: s.color }}>
+              {s.icon}
+            </a>
+          ))}
+        </div>
+
+        <p className="text-xs text-center" style={{ color: '#374151' }}>© 2026 CLATians – All rights reserved.</p>
+      </div>
+
+      {/* ── Desktop bottom bar ───────────────────────── */}
+      <div className="hidden md:block" style={{ background: '#0d1117', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <p className="text-sm" style={{ color: '#6B7280' }}>© 2026 CLATians – All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            {socials.map((s) => (
+              <a key={s.label} href="#" title={s.label}
+                className="text-xs font-bold transition-opacity hover:opacity-80"
+                style={{ color: s.color }}>
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

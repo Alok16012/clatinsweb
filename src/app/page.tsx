@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import StatsSection from '@/components/StatsSection';
-import ProgramsSection from '@/components/ProgramsSection';
+import CourseTabsSection from '@/components/CourseTabsSection';
 import ExamsSection from '@/components/ExamsSection';
 import FeaturedServices from '@/components/FeaturedServices';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -14,28 +14,51 @@ export default function Home() {
   return (
     <main>
       <Navbar />
+      <HeroSection />
+      <StatsSection />
 
-      {/* ── Mobile first fold: clipped to exactly one screen ── */}
-      <div
-        className="md:hidden overflow-hidden"
-        style={{ maxHeight: 'calc(100svh - 60px - 56px)' }}
-      >
-        <HeroSection />
-        <StatsSection />
-        <ProgramsSection />
-      </div>
+      {/* Courses section */}
+      <section style={{ background: '#F8FAFC' }} className="py-6 md:py-12">
+        <div className="max-w-7xl mx-auto">
 
-      {/* ── Desktop: normal flow ── */}
-      <div className="hidden md:block">
-        <HeroSection />
-        <StatsSection />
-        <ProgramsSection />
-      </div>
+          {/* Desktop header */}
+          <div className="hidden md:block text-center mb-7 px-10">
+            <span style={{ background: '#E6FAF4', color: '#08BD80', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px' }}>
+              OUR PROGRAMS
+            </span>
+            <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 36px)', marginBottom: '8px' }}>
+              Courses for Every Aspirant
+            </h2>
+            <p style={{ color: '#6B7280', fontSize: '15px', maxWidth: '480px', margin: '0 auto' }}>
+              Offline, Online, Mentorship, or Mock Tests — find the right program for your CLAT journey.
+            </p>
+          </div>
+
+          {/* Mobile header */}
+          <div className="md:hidden flex items-center justify-between px-4 mb-2">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#08BD80' }} />
+                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#08BD80' }}>Our Programs</span>
+              </div>
+              <h2 className="font-black" style={{ color: '#0D1837', fontSize: '20px', lineHeight: 1.2 }}>Courses for You</h2>
+            </div>
+            <a href="/courses" className="text-xs font-bold" style={{ color: '#08BD80' }}>See All →</a>
+          </div>
+
+          <div className="md:px-10">
+            <CourseTabsSection />
+          </div>
+        </div>
+      </section>
 
       <ExamsSection />
       <FeaturedServices />
       <TestimonialsSection />
+
+      {/* Faculty section */}
       <FacultySection />
+
       <FAQSection />
       <CollegePredictorSection />
       <Footer />

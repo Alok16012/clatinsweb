@@ -396,6 +396,250 @@ Start your preparation with CLATians today. Your NLU journey begins here.`,
     readTime: '8 min read',
     tags: ['NLU Life', 'After CLAT', 'Law School', 'Career'],
   },
+  {
+    slug: 'top-nlu-colleges-india-ranking-2026',
+    title: 'Top 10 NLU Colleges in India: Complete Ranking & Cutoffs 2026',
+    excerpt: 'Complete guide to all 23 NLUs — rankings, cutoffs, placements, and which one is right for you.',
+    content: `India has 23 National Law Universities (NLUs) that accept CLAT scores. Choosing the right NLU is just as important as cracking CLAT. Here is the definitive ranking guide for 2026.
+
+## Tier 1 NLUs (AIR 1–200)
+
+**1. NLSIU Bengaluru (National Law School of India University)**
+Founded in 1987, NLSIU is the crown jewel of Indian legal education. Consistent #1 ranking for 35+ years. Expected CLAT cutoff: AIR 1–65. Average placement: ₹18–22 LPA.
+
+**2. NALSAR Hyderabad (National Academy of Legal Studies and Research)**
+NALSAR is famous for its student-led legal aid clinics and moot court culture. Expected cutoff: AIR 65–130. Average placement: ₹14–18 LPA.
+
+**3. NLU Delhi (National Law University, Delhi)**
+Conducts its own exam (AILET). Only 110 seats. Exceptional placement record — multiple students placed at Magic Circle law firms. AILET cutoff: AIR 1–110.
+
+**4. WBNUJS Kolkata (West Bengal National University of Juridical Sciences)**
+One of the oldest and most prestigious NLUs. Strong alumni network in corporate law. CLAT cutoff: AIR 130–250. Average placement: ₹12–16 LPA.
+
+**5. NLUJ Jodhpur (National Law University, Jodhpur)**
+Known for excellent infrastructure and strong placement record. CLAT cutoff: AIR 250–400. Average placement: ₹10–14 LPA.
+
+## Tier 2 NLUs (AIR 200–600)
+
+**6. GNLU Gandhinagar** — CLAT cutoff: AIR 400–650
+**7. RMLNLU Lucknow** — CLAT cutoff: AIR 500–750
+**8. HNLU Raipur** — CLAT cutoff: AIR 450–700
+**9. RGNUL Patiala** — CLAT cutoff: AIR 600–850
+**10. CNLU Patna** — CLAT cutoff: AIR 700–1000
+
+## How to Choose Your NLU
+
+When deciding which NLU to target, consider:
+- Your expected CLAT rank range
+- Location preference (city vs smaller town)
+- Specialization interest (Corporate, Criminal, Constitutional)
+- Placement record and alumni network
+- Fee structure and scholarship availability
+
+## CLATians Pro Tip
+
+At CLATians, we run specialized College Predictor sessions where A.K. Sir personally helps students identify their target NLUs based on their mock test performance. Join us today!`,
+    category: 'NLU Guide',
+    categoryColor: '#ec4899',
+    author: 'A.K. Singh',
+    authorAvatar: 'AK',
+    date: '15 May, 2026',
+    readTime: '10 min read',
+    tags: ['NLU Rankings', 'CLAT Cutoffs', 'NLU Guide', 'Law College'],
+  },
+  {
+    slug: 'legal-reasoning-tips-clat-2026',
+    title: 'Legal Reasoning for CLAT 2026: 10 Proven Tips to Score 30+/37',
+    excerpt: 'Master legal reasoning with these expert strategies from A.K. Singh. Score full marks in the highest-weightage section.',
+    content: `Legal Reasoning is the most important section of CLAT — carrying 37 marks and determining whether you crack a top NLU or not. Here are 10 proven strategies.
+
+## Why Legal Reasoning Matters Most
+
+Most students can improve their English and Logical Reasoning scores through practice. But Legal Reasoning requires a different kind of understanding — one that combines reading comprehension with legal thinking.
+
+## Tip 1: Read the Principle First, Facts Second
+
+Always read the legal principle stated in the passage BEFORE reading the facts. This primes your mind to apply the law correctly.
+
+## Tip 2: Never Use Outside Knowledge
+
+This is the biggest mistake. CLAT tests your ability to apply the GIVEN principle, not your pre-existing knowledge of law. Even if the principle stated in the passage is wrong in real law, apply it as given.
+
+## Tip 3: Master "Principle-Fact Application"
+
+The standard format is: Principle → Facts → Question asks you to apply principle to facts.
+Step 1: Identify what the principle says.
+Step 2: Check if the facts satisfy all conditions of the principle.
+Step 3: Apply logically.
+
+## Tip 4: Watch for Exception Clauses
+
+Most legal principles have exceptions. "Unless," "except," "provided that," "notwithstanding" — these words signal exceptions. Identify them carefully.
+
+## Tip 5: Understand Tortious Liability Basics
+
+- Negligence: Duty + Breach + Causation + Damage
+- Strict Liability: Dangerous activity + escape + damage
+- Vicarious Liability: Employer liable for employee acts
+
+## Tip 6: Contract Law Essentials
+
+- Offer + Acceptance + Consideration + Capacity = Valid Contract
+- Minor's agreement is void, not voidable
+- Free consent — coercion, undue influence, fraud, misrepresentation
+
+## Tip 7: Constitutional Law Patterns
+
+Fundamental Rights, DPSPs, their interplay — frequently tested.
+Know Article 14, 19, 21, 32, 226, 136 basics.
+
+## Tip 8: Practice 20 Passages Per Day
+
+From September onwards, attempt at least 20 legal reasoning passages daily from previous year CLATs and mock tests.
+
+## Tip 9: Maintain an Error Log
+
+Every wrong answer goes into an error log with: question, why you got it wrong, correct reasoning. Review weekly.
+
+## Tip 10: Join CLATians Legal Reasoning Classes
+
+A.K. Singh's specialized Legal Reasoning sessions at CLATians systematically cover all areas — Torts, Contracts, Constitutional Law, Criminal Law — with 500+ practice passages. Students consistently score 30+/37 after completing the course.`,
+    category: 'CLAT Prep',
+    categoryColor: '#08BD80',
+    author: 'A.K. Singh',
+    authorAvatar: 'AK',
+    date: '12 May, 2026',
+    readTime: '7 min read',
+    tags: ['Legal Reasoning', 'CLAT Strategy', 'CLAT 2026', 'Study Tips'],
+  },
+  {
+    slug: 'clat-vs-ailet-which-is-harder',
+    title: 'CLAT vs AILET 2026: Which is Harder? Complete Comparison',
+    excerpt: 'Detailed comparison of CLAT and AILET — difficulty level, pattern, cutoffs, and which exam you should prioritize.',
+    content: `Every law aspirant faces the CLAT vs AILET dilemma. Both lead to prestigious destinations — CLAT to 23 NLUs and AILET exclusively to NLU Delhi. Here is a complete comparison.
+
+## Basic Differences at a Glance
+
+**CLAT 2026:**
+- Conducted by: Consortium of NLUs
+- Duration: 2 Hours
+- Questions: 120
+- Marks: 120
+- Colleges: 23 NLUs
+- Negative marking: 0.25
+
+**AILET 2026:**
+- Conducted by: NLU Delhi
+- Duration: 90 Minutes
+- Questions: 100
+- Marks: 100
+- Colleges: Only NLU Delhi
+- Negative marking: 0.25
+
+## Which is Harder?
+
+Honestly, AILET is significantly harder than CLAT for most students. Here is why:
+
+### Competition Level
+AILET has only 110 seats (General category: ~65 seats). CLAT has 2700+ seats. The competition ratio is almost 300:1 for AILET vs 150:1 for CLAT.
+
+### Exam Pattern
+AILET has a more diverse pattern including Elementary Mathematics (not in CLAT). The English and GK sections in AILET tend to be more factual and less passage-based than CLAT.
+
+### Cutoffs
+AILET cutoff: typically 65–70/100 for General category.
+CLAT cutoff for NLSIU: typically 95–105/120.
+
+## Should You Attempt Both?
+
+Yes! Most CLATians coaching students prepare for both. The syllabi overlap significantly. Additional preparation needed for AILET:
+- Elementary Mathematics (basic level — 10 questions)
+- Slightly higher GK depth
+- More rote-based GK vs passage-based GK
+
+## CLATians Strategy for Both Exams
+
+At CLATians, we have a combined preparation program covering both CLAT and AILET. Students who join our Offline Batch typically attempt both exams and secure admissions in either NLU Delhi or NALSAR/NLSIU. Call us at 8507700177 to know more.`,
+    category: 'Exam Strategy',
+    categoryColor: '#14b8a6',
+    author: 'A.K. Singh',
+    authorAvatar: 'AK',
+    date: '8 May, 2026',
+    readTime: '6 min read',
+    tags: ['CLAT vs AILET', 'AILET 2026', 'Exam Comparison', 'Strategy'],
+  },
+  {
+    slug: 'current-affairs-clat-may-2026',
+    title: 'Current Affairs for CLAT – May 2026 Complete Capsule',
+    excerpt: 'All important current affairs events of May 2026 relevant for CLAT, AILET, and other law entrance exams.',
+    content: `Stay updated with the most important current affairs for CLAT 2026. This monthly capsule covers all key events relevant for law entrance exams.
+
+## National Affairs
+
+**Supreme Court Judgments:**
+- Key judgments on Article 21 (Right to Life) and privacy law
+- Important constitutional bench decisions
+
+**Parliament & Legislature:**
+- Bills passed in recent Parliament sessions
+- Constitutional amendments and their implications
+
+**Legal Developments:**
+- New laws affecting criminal procedure
+- Changes in contract and commercial law
+
+## International Affairs
+
+**India's Foreign Relations:**
+- Bilateral agreements signed
+- India's position in international organizations (UN, WTO, ICJ)
+- Key diplomatic developments
+
+**International Law Developments:**
+- ICJ rulings relevant for Indian law students
+- International treaties ratified by India
+
+## Legal GK Focus Areas for CLAT 2026
+
+**Important Supreme Court Judgments (Must Know):**
+1. Kesavananda Bharati Case — Basic Structure Doctrine
+2. Maneka Gandhi Case — Article 21 expanded
+3. Vishaka Guidelines — Sexual harassment at workplace
+4. Shreya Singhal Case — Section 66A struck down
+
+**Important Legal Appointments:**
+- Chief Justice of India appointments
+- Law Commission of India reports
+- NHRC, SEBI, and other regulatory body heads
+
+## Science & Technology
+
+- Space missions (ISRO updates)
+- AI regulation developments in India
+- Cybersecurity laws
+
+## Sports GK
+
+- Major sporting events and champions
+- Indian sports awards
+
+## CLATians Daily GK Programme
+
+At CLATians, we provide daily GK capsules to all enrolled students. Our GK program covers:
+- Daily newspaper analysis (The Hindu + Indian Express)
+- Weekly legal news summary
+- Monthly GK magazine
+- Emergency updates on breaking legal news
+
+Join CLATians today to never miss an important current affairs update for CLAT 2026!`,
+    category: 'Current Affairs',
+    categoryColor: '#f97316',
+    author: 'CLATians Faculty',
+    authorAvatar: 'CF',
+    date: '20 May, 2026',
+    readTime: '8 min read',
+    tags: ['Current Affairs', 'CLAT 2026', 'GK', 'Legal GK', 'Monthly Capsule'],
+  },
 ];
 
 export function getBlogBySlug(slug: string): Blog | undefined {

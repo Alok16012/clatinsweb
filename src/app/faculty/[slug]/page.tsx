@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { facultyMembers, getFacultyBySlug } from '@/data/faculty';
+import { facultyMembers } from '@/data/faculty';
+import { getFacultyBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -31,8 +32,8 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
       <main className="pb-20 md:pb-0">
 
         {/* ── Hero ──────────────────────────────────── */}
-        <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+        <div className="relative overflow-hidden py-10 md:py-20"
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-10"
             style={{ background: f.color }} />
           <div className="max-w-7xl mx-auto px-4">
@@ -82,7 +83,32 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
+        {/* Mobile: quick-action strip + other faculty scroll */}
+        <div className="md:hidden px-4 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E9EEF2' }}>
+          <div className="flex gap-3 mb-3">
+            <a href="tel:8507700177"
+              style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: 'white', textDecoration: 'none', background: f.color }}>
+              📞 Book Session
+            </a>
+            <a href="/courses/mentorship"
+              style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: f.color, textDecoration: 'none', background: 'white', border: `1.5px solid ${f.color}` }}>
+              Mentorship →
+            </a>
+          </div>
+          {otherFaculty.length > 0 && (
+            <div style={{ overflowX: 'auto', display: 'flex', gap: '10px', paddingBottom: '2px' }} className="scrollbar-none">
+              {otherFaculty.map((m) => (
+                <a key={m.slug} href={`/faculty/${m.slug}`}
+                  style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '99px', background: 'white', border: '1.5px solid #E9EEF2', textDecoration: 'none' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '8px', background: m.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '10px', fontWeight: 800 }}>{m.avatar}</div>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#0D1837', whiteSpace: 'nowrap' }}>{m.name.split(' ').slice(-1)[0]}</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-14">
           <div className="grid md:grid-cols-3 gap-8">
 
             {/* ── Main ─────────────────────────────── */}
@@ -90,13 +116,13 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Bio */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>About {f.name}</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>About {f.name}</h2>
                 <p className="text-gray-600 leading-relaxed">{f.bio}</p>
               </section>
 
               {/* Education */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Education</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Education</h2>
                 <div className="space-y-3">
                   {f.education.map((e, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -109,7 +135,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Expertise */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Areas of Expertise</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Areas of Expertise</h2>
                 <div className="space-y-4">
                   {f.expertise.map((e) => (
                     <div key={e.area} className="bg-white border border-gray-100 rounded-xl p-4">
@@ -128,7 +154,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Achievements */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Key Achievements</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Key Achievements</h2>
                 <div className="space-y-3">
                   {f.achievements.map((a, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -144,7 +170,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Courses */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Teaches In</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Teaches In</h2>
                 <div className="flex flex-wrap gap-3">
                   {f.courses.map((c) => (
                     <a key={c} href={`/courses/${c.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`}
@@ -157,8 +183,8 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
               </section>
             </div>
 
-            {/* ── Sidebar ──────────────────────────── */}
-            <aside>
+            {/* ── Sidebar — desktop only ───────────── */}
+            <aside className="hidden md:block">
               <div className="sticky top-20 space-y-5">
 
                 {/* Book Session */}
@@ -167,7 +193,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
                     style={{ background: f.color }}>
                     {f.avatar}
                   </div>
-                  <h3 className="font-black text-base" style={{ color: 'var(--navy)' }}>Book a Session</h3>
+                  <h3 className="font-black text-base" style={{ color: '#0D1837' }}>Book a Session</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4">
                     Get personalized guidance from {f.name}.
                   </p>
@@ -200,7 +226,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
                 {/* Other Faculty */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                  <h3 className="font-bold text-sm mb-3" style={{ color: 'var(--navy)' }}>Other Faculty</h3>
+                  <h3 className="font-bold text-sm mb-3" style={{ color: '#0D1837' }}>Other Faculty</h3>
                   <div className="space-y-3">
                     {otherFaculty.map((m) => (
                       <a key={m.slug} href={`/faculty/${m.slug}`}

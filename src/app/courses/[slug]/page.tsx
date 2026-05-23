@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation';
-import { courses, getCourseBySlug } from '@/data/courses';
-import { getBatchesByCourse } from '@/data/batches';
+import { getCourses, getCourseBySlug, getBatchesByCourse } from '@/lib/getData';
+import { courses as staticCourses } from '@/data/courses';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
-  return courses.map((c) => ({ slug: c.slug }));
+  return staticCourses.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -24,7 +24,8 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   const course = getCourseBySlug(slug);
   if (!course) notFound();
 
-  const otherCourses = courses.filter((c) => c.slug !== slug);
+  const allCourses = getCourses();
+  const otherCourses = allCourses.filter((c) => c.slug !== slug);
   const courseBatches = getBatchesByCourse(slug);
 
   return (
@@ -34,7 +35,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
         {/* ── Hero ──────────────────────────────────── */}
         <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10"
             style={{ background: course.color }} />
           <div className="max-w-7xl mx-auto px-4">
@@ -99,13 +100,13 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Overview */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Course Overview</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Course Overview</h2>
                 <p className="text-gray-600 leading-relaxed">{course.overview}</p>
               </section>
 
               {/* Features */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>What You Get</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>What You Get</h2>
                 <div className="grid md:grid-cols-2 gap-3">
                   {course.features.map((f, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -121,7 +122,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Curriculum */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Curriculum</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Curriculum</h2>
                 <div className="space-y-4">
                   {course.curriculum.map((mod, i) => (
                     <details key={i} className="bg-white border border-gray-100 rounded-xl overflow-hidden group" open={i === 0}>
@@ -152,7 +153,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Who is this for */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Who Is This For?</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Who Is This For?</h2>
                 <div className="space-y-2">
                   {course.whoFor.map((w, i) => (
                     <div key={i} className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -165,9 +166,9 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Student Testimonial */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Student Success Story</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Student Success Story</h2>
                 <div className="rounded-2xl p-6 md:p-8"
-                  style={{ background: `linear-gradient(135deg, var(--navy), var(--navy-light))` }}>
+                  style={{ background: `linear-gradient(135deg, #0D1837, #1f3160)` }}>
                   <p className="text-white text-lg md:text-xl font-semibold leading-relaxed">
                     &ldquo;{course.testimonial.quote}&rdquo;
                   </p>
@@ -192,7 +193,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                 {/* Batches card */}
                 <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                   <div className="px-5 py-4 border-b border-gray-50 flex items-center justify-between"
-                    style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+                    style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
                     <div>
                       <h3 className="font-black text-white text-base">Available Batches</h3>
                       <p className="text-white/60 text-xs mt-0.5">{courseBatches.length} batches · {course.title}</p>
@@ -209,7 +210,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                           className="flex flex-col gap-2 p-4 hover:bg-gray-50 transition-colors group">
                           <div className="flex items-start justify-between gap-2">
                             <div className="flex-1 min-w-0">
-                              <div className="font-bold text-sm text-gray-900 group-hover:text-cyan-700 transition-colors leading-tight">
+                              <div className="font-bold text-sm text-gray-900 group-hover:text-green-700 transition-colors leading-tight">
                                 {batch.name}
                               </div>
                               <div className="text-[11px] text-gray-400 mt-0.5">{batch.schedule}</div>
@@ -262,7 +263,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
                 {/* Other Courses */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                  <h3 className="font-bold text-sm mb-3" style={{ color: 'var(--navy)' }}>Other Programs</h3>
+                  <h3 className="font-bold text-sm mb-3" style={{ color: '#0D1837' }}>Other Programs</h3>
                   <div className="space-y-2">
                     {otherCourses.map((c) => (
                       <a key={c.slug} href={`/courses/${c.slug}`}
@@ -284,6 +285,31 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           </div>
         </div>
       </main>
+
+      {/* ── Mobile Sticky Enroll Bar ──────────────── */}
+      <div className="md:hidden fixed bottom-16 left-0 right-0 z-40 px-4 pb-2">
+        <div className="rounded-2xl shadow-2xl overflow-hidden flex items-center gap-3 px-4 py-3"
+          style={{ background: '#0D1837', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="flex-1 min-w-0">
+            <div className="text-white font-black text-base leading-none">{course.fee}</div>
+            <div className="text-[11px] mt-0.5" style={{ color: 'rgba(255,255,255,0.55)' }}>EMI: {course.emi}</div>
+          </div>
+          <a href="tel:8507700177"
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold"
+            style={{ background: 'rgba(255,255,255,0.12)', color: 'white' }}>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call
+          </a>
+          <a href="#enroll"
+            className="px-5 py-2.5 rounded-xl text-sm font-bold text-white"
+            style={{ background: '#08BD80' }}>
+            Enroll Now →
+          </a>
+        </div>
+      </div>
+
       <Footer />
     </>
   );
