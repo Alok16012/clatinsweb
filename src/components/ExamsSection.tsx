@@ -254,7 +254,6 @@ export default function ExamsSection() {
           </span>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <h2 style={{ color: 'white', fontWeight: 900, fontSize: '20px', lineHeight: 1.25, margin: 0 }}>Choose Your Exam</h2>
-            <a href="/exams/clat" style={{ color: '#08BD80', fontWeight: 700, fontSize: '12px', textDecoration: 'none', flexShrink: 0 }}>See All →</a>
           </div>
         </div>
 
@@ -312,18 +311,6 @@ export default function ExamsSection() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div style={{ padding: '12px 16px 0' }}>
-          <a href="/admission"
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-              padding: '14px', borderRadius: '16px', fontWeight: 800, fontSize: '14px',
-              background: 'linear-gradient(135deg,#08BD80,#06a870)', color: 'white',
-              textDecoration: 'none', boxShadow: '0 8px 20px rgba(8,189,128,0.35)',
-            }}>
-            🚀 Start Free Counselling →
-          </a>
-        </div>
       </section>
     </>
   );

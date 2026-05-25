@@ -3,7 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import StatsSection from '@/components/StatsSection';
 import CourseTabsSection from '@/components/CourseTabsSection';
 import ExamsSection from '@/components/ExamsSection';
-import FeaturedServices from '@/components/FeaturedServices';
+import BlogsScrollSection from '@/components/BlogsScrollSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FacultySection from '@/components/FacultySection';
 import FAQSection from '@/components/FAQSection';
@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       <ExamsSection />
-      <FeaturedServices />
+      <BlogsScrollSection />
       <TestimonialsSection />
 
       {/* Faculty section */}
