@@ -1,3 +1,5 @@
+'use client';
+
 const avatarColors = [
   '#FFF0F0',
   '#F0F8FF',
@@ -178,43 +180,65 @@ function MobileCard({ f, idx }: { f: FacultyMember; idx: number }) {
 }
 
 export default function FacultySection() {
+  // Duplicate for seamless infinite loop
+  const items = [...faculty, ...faculty];
+
   return (
-    <section className="py-8 md:py-14 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Section Header */}
-        <div className="flex items-end justify-between mb-8">
+    <section className="py-8 md:py-14 bg-white overflow-hidden">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 mb-6">
+        <div className="flex items-center justify-between">
           <div>
-            <h2
-              className="text-2xl md:text-3xl"
-              style={{ color: '#3C4852', fontWeight: 800 }}
-            >
+            <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full"
+              style={{ background: '#F0FDF9', color: '#08BD80' }}>
+              Our Faculty
+            </span>
+            <h2 className="mt-2 font-black text-xl md:text-3xl" style={{ color: '#0D1837' }}>
               Meet Our Expert Faculty
             </h2>
             <p className="text-sm mt-1" style={{ color: '#7A8B94' }}>
               Advocates, NLU alumni &amp; toppers — handpicked for your selection.
             </p>
           </div>
-          <a href="/faculty" className="see-all flex items-center gap-1 flex-shrink-0 mb-1 text-sm font-bold" style={{ color: '#08BD80' }}>
-            SEE ALL →
+          <a href="/faculty" className="text-sm font-bold flex-shrink-0" style={{ color: '#08BD80' }}>
+            See All →
           </a>
         </div>
+      </div>
 
-        {/* Desktop: 2-column grid of horizontal cards */}
-        <div className="hidden md:grid grid-cols-2 gap-4">
-          {faculty.map((f, idx) => (
-            <DesktopCard key={f.slug} f={f} idx={idx} />
+      {/* Auto-scrolling track */}
+      <div className="relative">
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, white, transparent)' }} />
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-12 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, white, transparent)' }} />
+
+        <div
+          className="flex gap-4 faculty-scroll-track"
+          style={{ width: 'max-content', paddingLeft: '16px', paddingRight: '16px' }}
+        >
+          {items.map((f, idx) => (
+            <div key={`${f.slug}-${idx}`} style={{ flexShrink: 0 }}>
+              <MobileCard f={f} idx={idx % faculty.length} />
+            </div>
           ))}
         </div>
-
-        {/* Mobile: horizontal scroll of app-style cards */}
-        <div className="md:hidden -mx-4">
-          <div className="flex gap-3 overflow-x-auto px-4 pb-3 scrollbar-none">
-            {faculty.map((f, idx) => (
-              <MobileCard key={f.slug} f={f} idx={idx} />
-            ))}
-          </div>
-        </div>
       </div>
+
+      <style jsx>{`
+        .faculty-scroll-track {
+          animation: facultyScroll 28s linear infinite;
+        }
+        .faculty-scroll-track:hover {
+          animation-play-state: paused;
+        }
+        @keyframes facultyScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }
