@@ -94,7 +94,6 @@ function MarqueeRow({ cards, reverse }: { cards: typeof testimonials; reverse?: 
 
 export default function TestimonialsSection() {
   const { ref, visible } = useReveal(0.1);
-  const [active, setActive] = useState(0);
 
   return (
     <>
@@ -142,57 +141,15 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Desktop marquee */}
+        {/* Desktop: two marquee rows */}
         <div className="hidden md:flex flex-col gap-4">
           <MarqueeRow cards={row1} />
           <MarqueeRow cards={row2} reverse />
         </div>
 
-        {/* Mobile — App-style review cards */}
-        <div className="md:hidden">
-          {/* Horizontal scroll cards */}
-          <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', padding: '4px 16px 16px', scrollbarWidth: 'none' }}>
-            {testimonials.map((t, i) => (
-              <div key={t.name}
-                onClick={() => setActive(i)}
-                style={{
-                  flexShrink: 0, width: '260px',
-                  background: 'white', borderRadius: '20px', padding: '18px',
-                  border: `2px solid ${active === i ? t.color + '55' : '#F0F0F0'}`,
-                  boxShadow: active === i ? `0 8px 24px ${t.color}22` : '0 2px 12px rgba(0,0,0,0.06)',
-                  transition: 'all .25s ease',
-                  position: 'relative', overflow: 'hidden', cursor: 'pointer',
-                }}>
-                {/* Accent bar */}
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg,${t.color},${t.color}66)` }} />
-
-                {/* Top */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', marginTop: '4px' }}>
-                  <div style={{ color: '#f59e0b', fontSize: '13px' }}>{'★'.repeat(t.stars)}</div>
-                  <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '99px', background: t.color + '18', color: t.color }}>{t.college}</span>
-                </div>
-
-                {/* Quote */}
-                <p style={{ color: '#374151', fontSize: '12px', lineHeight: 1.6, marginBottom: '14px' }}>{t.quote.length > 110 ? t.quote.slice(0, 110) + '...' : t.quote}</p>
-
-                {/* Footer */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderTop: '1px solid #F3F4F6', paddingTop: '12px' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: '12px', flexShrink: 0 }}>{t.avatar}</div>
-                  <div>
-                    <div style={{ color: '#0D1837', fontWeight: 700, fontSize: '12px' }}>{t.name}</div>
-                    <div style={{ color: t.color, fontWeight: 700, fontSize: '10px' }}>{t.rank} · {t.year}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Dot indicators */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '4px' }}>
-            {testimonials.map((_, i) => (
-              <button key={i} onClick={() => setActive(i)} style={{ width: i === active ? '20px' : '6px', height: '6px', borderRadius: '99px', background: i === active ? '#08BD80' : 'rgba(255,255,255,0.3)', border: 'none', cursor: 'pointer', transition: 'all .2s', padding: 0 }} />
-            ))}
-          </div>
+        {/* Mobile: single auto-scroll row */}
+        <div className="md:hidden flex flex-col gap-4">
+          <MarqueeRow cards={testimonials} />
         </div>
 
         {/* Stats bar */}
