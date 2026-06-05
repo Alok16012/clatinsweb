@@ -148,8 +148,33 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
             <FieldGroup label="Title">
               <TextInput value={data.title} onChange={(v) => set('title', v)} placeholder="e.g. CLAT 2026: Complete Guide..." required />
             </FieldGroup>
-            <FieldGroup label="Slug">
-              <TextInput value={data.slug} onChange={(v) => set('slug', v)} placeholder="e.g. clat-2026-complete-guide" required />
+            {/* Slug — auto-generated from title; editable on existing posts */}
+            <FieldGroup label={isNew ? 'Slug (auto-generated)' : 'Slug'}>
+              <div className="flex gap-2 items-center">
+                <div className="flex-1 relative">
+                  <input
+                    type="text"
+                    value={data.slug}
+                    onChange={(e) => set('slug', e.target.value as Blog['slug'])}
+                    placeholder="auto-generated from title"
+                    readOnly={isNew}
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono outline-none"
+                    style={{ background: isNew ? '#f9fafb' : '#fff', color: '#374151', cursor: isNew ? 'default' : 'text' }}
+                  />
+                </div>
+                {!isNew && (
+                  <button
+                    type="button"
+                    onClick={() => set('slug', sanitizeSlug(data.title) as Blog['slug'])}
+                    className="flex-shrink-0 px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap"
+                  >
+                    🔄 Regenerate
+                  </button>
+                )}
+              </div>
+              {isNew && (
+                <p className="text-xs text-gray-400 mt-1">URL: /blogs/<span className="font-mono text-gray-600">{data.slug || '…'}</span></p>
+              )}
             </FieldGroup>
             <FieldGroup label="Excerpt">
               <TextareaInput value={data.excerpt} onChange={(v) => set('excerpt', v)} rows={2} placeholder="Short summary shown in blog listing..." />
