@@ -152,14 +152,16 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               </div>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-6">
-                {blog.tags.map((t) => (
-                  <span key={t} className="px-3 py-1.5 rounded-full text-xs font-semibold"
-                    style={{ background: blog.categoryColor + '15', color: blog.categoryColor }}>
-                    #{t}
-                  </span>
-                ))}
-              </div>
+              {(blog.tags?.length ?? 0) > 0 && (
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {(blog.tags ?? []).map((t) => (
+                    <span key={t} className="px-3 py-1.5 rounded-full text-xs font-semibold"
+                      style={{ background: (blog.categoryColor || '#08BD80') + '15', color: blog.categoryColor || '#08BD80' }}>
+                      #{t}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {/* Share */}
               <BlogShare title={blog.title} slug={blog.slug} />
@@ -222,7 +224,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                         className="block group">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-white"
-                            style={{ background: rb.categoryColor }}>
+                            style={{ background: rb.categoryColor || '#08BD80' }}>
                             {rb.category}
                           </span>
                           <span className="text-[10px] text-gray-400">{rb.readTime}</span>
