@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify build cache
+.netlify/
+
 # runtime lead captures (contains personal data)
 /src/data/db/leads.json
 
