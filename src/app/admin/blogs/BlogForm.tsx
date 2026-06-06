@@ -19,6 +19,8 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
   const [preview, setPreview] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
+  // For new posts: slug auto-fills from title until user unlocks it
+  const [slugLocked, setSlugLocked] = useState(isNew);
 
   useEffect(() => {
     adminFetch('/api/admin/categories')
@@ -44,19 +46,32 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
       .replace(/-+/g, '-');            // collapse multiple hyphens
   }
 
+  function calcReadTime(html: string): string {
+    const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const wordCount = text ? text.split(' ').length : 0;
+    const mins = Math.max(1, Math.ceil(wordCount / 200));
+    return `${mins} min read`;
+  }
+
   function set<K extends keyof Blog>(key: K, val: Blog[K]) {
-    // When title changes on a NEW blog and slug is still empty/title-derived, auto-fill slug
-    if (key === 'title' && isNew) {
+    // When title changes on a new blog with locked slug, auto-fill slug
+    if (key === 'title') {
       setData((d) => ({
         ...d,
         title: val as string,
-        slug: sanitizeSlug(val as string),
+        ...(slugLocked ? { slug: sanitizeSlug(val as string) } : {}),
       }));
       return;
     }
     // When slug is manually edited, sanitize it
     if (key === 'slug') {
       setData((d) => ({ ...d, slug: sanitizeSlug(val as string) }));
+      return;
+    }
+    // Auto-calculate read time from content
+    if (key === 'content') {
+      const rt = calcReadTime(val as string);
+      setData((d) => ({ ...d, content: val as string, readTime: rt }));
       return;
     }
     setData((d) => ({ ...d, [key]: val }));
@@ -158,8 +173,8 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
             <FieldGroup label="Title">
               <TextInput value={data.title} onChange={(v) => set('title', v)} placeholder="e.g. CLAT 2026: Complete Guide..." required />
             </FieldGroup>
-            {/* Slug — auto-generated from title; editable on existing posts */}
-            <FieldGroup label={isNew ? 'Slug (auto-generated)' : 'Slug'}>
+            {/* Slug — auto-generated from title; always editable */}
+            <FieldGroup label="Slug (URL)">
               <div className="flex gap-2 items-center">
                 <div className="flex-1 relative">
                   <input
@@ -167,24 +182,35 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
                     value={data.slug}
                     onChange={(e) => set('slug', e.target.value as Blog['slug'])}
                     placeholder="auto-generated from title"
-                    readOnly={isNew}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono outline-none"
-                    style={{ background: isNew ? '#f9fafb' : '#fff', color: '#374151', cursor: isNew ? 'default' : 'text' }}
+                    readOnly={slugLocked}
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono outline-none transition-colors"
+                    style={{ background: slugLocked ? '#f9fafb' : '#fff', color: '#374151', cursor: slugLocked ? 'default' : 'text' }}
                   />
                 </div>
-                {!isNew && (
+                {slugLocked ? (
                   <button
                     type="button"
-                    onClick={() => set('slug', sanitizeSlug(data.title) as Blog['slug'])}
+                    onClick={() => setSlugLocked(false)}
                     className="flex-shrink-0 px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap"
+                    title="Edit slug manually"
                   >
-                    🔄 Regenerate
+                    ✏️ Edit
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => { set('slug', sanitizeSlug(data.title) as Blog['slug']); if (isNew) setSlugLocked(true); }}
+                    className="flex-shrink-0 px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap"
+                    title="Reset to auto-generated slug"
+                  >
+                    🔄 Reset
                   </button>
                 )}
               </div>
-              {isNew && (
-                <p className="text-xs text-gray-400 mt-1">URL: /blogs/<span className="font-mono text-gray-600">{data.slug || '…'}</span></p>
-              )}
+              <p className="text-xs text-gray-400 mt-1">
+                URL: /blogs/<span className="font-mono text-gray-600">{data.slug || '…'}</span>
+                {slugLocked && isNew && <span className="ml-2 text-gray-400">(auto · click ✏️ Edit to customise)</span>}
+              </p>
             </FieldGroup>
             <FieldGroup label="Excerpt">
               <TextareaInput value={data.excerpt} onChange={(v) => set('excerpt', v)} rows={2} placeholder="Short summary shown in blog listing..." />
@@ -196,8 +222,8 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
               <FieldGroup label="Author">
                 <TextInput value={data.author} onChange={(v) => set('author', v)} placeholder="e.g. A.K. Singh" />
               </FieldGroup>
-              <FieldGroup label="Read Time">
-                <TextInput value={data.readTime} onChange={(v) => set('readTime', v)} placeholder="e.g. 8 min read" />
+              <FieldGroup label="Read Time (auto)">
+                <TextInput value={data.readTime} onChange={(v) => set('readTime', v)} placeholder="auto-calculated from content" />
               </FieldGroup>
             </div>
           </SectionCard>

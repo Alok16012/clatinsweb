@@ -238,7 +238,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
 
   return (
     <div className="rte-wrap">
-      <div className="flex flex-wrap items-center gap-1 p-2 border border-gray-200 rounded-t-xl bg-gray-50 sticky top-0 z-20 shadow-sm">
+      <div className="flex flex-wrap items-center gap-1 p-2 border border-gray-200 rounded-t-xl bg-gray-50 sticky top-14 z-20 shadow-sm">
         {/* Block format */}
         <select
           title="Text style"
