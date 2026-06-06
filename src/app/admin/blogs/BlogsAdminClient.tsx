@@ -53,12 +53,17 @@ export default function BlogsAdminClient({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newCatName.trim(), color: newCatColor }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        alert(`Failed to add category (${res.status}): ${err.error || 'Unknown error'}`);
+        setAddingCat(false);
+        return;
+      }
       const cat = await res.json();
       setCategories((prev) => [...prev, cat]);
       setNewCatName('');
-    } catch {
-      alert('Failed to add category (might already exist).');
+    } catch (e) {
+      alert(`Failed to add category: ${e instanceof Error ? e.message : 'Network error'}`);
     }
     setAddingCat(false);
   }

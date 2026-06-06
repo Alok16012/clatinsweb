@@ -67,6 +67,8 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
   const savedRange = useRef<Range | null>(null);
   const [uploading, setUploading] = useState(false);
   const [words, setWords] = useState(0);
+  const [tablePickerOpen, setTablePickerOpen] = useState(false);
+  const [tableHover, setTableHover] = useState({ r: 0, c: 0 });
 
   // Seed the editor once on mount (uncontrolled to keep the caret stable).
   useEffect(() => {
@@ -77,6 +79,17 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
     try { document.execCommand('styleWithCSS', false, 'true'); } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Close table picker when clicking outside
+  useEffect(() => {
+    if (!tablePickerOpen) return;
+    function onDown(e: MouseEvent) {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.rte-table-picker')) setTablePickerOpen(false);
+    }
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [tablePickerOpen]);
 
   // Remember the last selection inside the editor so toolbar controls that steal
   // focus (e.g. the native colour picker) can still apply to the right text.
@@ -133,6 +146,23 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
     else if (key === 'z' && e.shiftKey) { e.preventDefault(); exec('redo'); }
     else if (key === 'y') { e.preventDefault(); exec('redo'); }
     else if (key === 'k') { e.preventDefault(); addLink(); }
+  }
+
+  function insertTable(rows: number, cols: number) {
+    setTablePickerOpen(false);
+    ref.current?.focus();
+    restoreSelection();
+    const headerRow = `<tr>${Array(cols).fill(0).map((_, ci) =>
+      `<th style="border:1.5px solid #d1d5db;padding:8px 12px;background:#f3f4f6;font-weight:700;text-align:left;">Header ${ci + 1}</th>`
+    ).join('')}</tr>`;
+    const bodyRows = Array(rows - 1).fill(0).map(() =>
+      `<tr>${Array(cols).fill(0).map(() =>
+        `<td style="border:1.5px solid #d1d5db;padding:8px 12px;">&#8203;</td>`
+      ).join('')}</tr>`
+    ).join('');
+    const tableHtml = `<table style="border-collapse:collapse;width:100%;margin:1rem 0;"><thead>${headerRow}</thead><tbody>${bodyRows}</tbody></table><p><br></p>`;
+    document.execCommand('insertHTML', false, tableHtml);
+    emit();
   }
 
   function insertImage(url: string) {
@@ -295,6 +325,48 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
             if (fileRef.current) fileRef.current.value = '';
           }}
         />
+
+        {/* Table picker */}
+        <span className="w-px h-6 bg-gray-200 mx-0.5" />
+        <div className="relative rte-table-picker">
+          <button
+            type="button"
+            title="Insert table"
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => setTablePickerOpen((v) => !v)}
+            className="px-3 py-1.5 rounded-lg text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-white hover:shadow-sm transition-all"
+          >
+            ⊞ Table
+          </button>
+          {tablePickerOpen && (
+            <div
+              className="absolute left-0 top-full mt-1 z-50 bg-white border border-gray-200 rounded-xl shadow-xl p-3"
+              onMouseLeave={() => setTableHover({ r: 0, c: 0 })}
+            >
+              <p className="text-[11px] text-gray-400 mb-2 text-center">
+                {tableHover.r > 0 && tableHover.c > 0
+                  ? `${tableHover.r} × ${tableHover.c} table`
+                  : 'Hover to select size'}
+              </p>
+              <div className="grid gap-0.5" style={{ gridTemplateColumns: `repeat(6, 1.5rem)` }}>
+                {Array(6).fill(0).map((_, ri) =>
+                  Array(6).fill(0).map((_, ci) => (
+                    <div
+                      key={`${ri}-${ci}`}
+                      onMouseEnter={() => setTableHover({ r: ri + 1, c: ci + 1 })}
+                      onClick={() => insertTable(ri + 1, ci + 1)}
+                      className="w-6 h-6 rounded cursor-pointer border transition-colors"
+                      style={{
+                        background: ri < tableHover.r && ci < tableHover.c ? '#E6FAF4' : '#f9fafb',
+                        borderColor: ri < tableHover.r && ci < tableHover.c ? '#08BD80' : '#e5e7eb',
+                      }}
+                    />
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <div
@@ -335,6 +407,11 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
         .rte-content img { max-width: 100%; border-radius: 0.75rem; margin: 1rem 0; }
         .rte-content strong { font-weight: 700; }
         .rte-content s, .rte-content strike { text-decoration: line-through; }
+        .rte-content table { border-collapse: collapse; width: 100%; margin: 1rem 0; border-radius: 0.5rem; overflow: hidden; }
+        .rte-content th { background: #f3f4f6; font-weight: 700; text-align: left; padding: 8px 12px; border: 1.5px solid #d1d5db; color: #0d1837; }
+        .rte-content td { padding: 8px 12px; border: 1.5px solid #d1d5db; color: #374151; vertical-align: top; }
+        .rte-content tr:nth-child(even) td { background: #f9fafb; }
+        .rte-content tr:hover td { background: #f0fdf8; }
       `}</style>
     </div>
   );

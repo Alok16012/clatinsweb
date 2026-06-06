@@ -19,7 +19,7 @@ export default function BlogsScrollSection() {
           <div>
             <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full"
               style={{ background: '#E6FAF4', color: '#08BD80' }}>
-              Latest Blogs
+              The CLATians Journal
             </span>
             <h2 className="mt-2 font-black text-xl md:text-3xl" style={{ color: '#0D1837' }}>
               Read &amp; Learn

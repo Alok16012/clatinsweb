@@ -18,7 +18,7 @@ const quickLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Faculty', href: '/about' },
   { label: 'Admission', href: '/admission' },
-  { label: 'Blogs', href: '/blogs' },
+  { label: 'The CLATians Journal', href: '/blogs' },
   { label: 'College Predictor', href: '/college-predictor' },
 ];
 

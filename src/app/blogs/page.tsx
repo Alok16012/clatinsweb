@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'CLAT Preparation Blogs & Study Tips | CLATians',
+  title: 'The CLATians Journal | Expert CLAT Prep Insights',
   description: 'Expert articles on CLAT, AILET, MH-CET preparation strategy, NLU cutoffs, legal reasoning tips and more from CLATians faculty.',
 };
 
@@ -38,7 +38,7 @@ export default async function BlogsPage() {
           <div className="max-w-7xl mx-auto px-4 text-center">
             <span className="inline-block text-xs font-bold px-3 py-1.5 rounded-full text-white mb-4"
               style={{ background: 'rgba(6,182,212,0.3)', border: '1px solid rgba(6,182,212,0.5)' }}>
-              📝 Blog & Resources
+              ✍️ The CLATians Journal
             </span>
             <h1 className="text-3xl md:text-5xl font-black text-white">
               CLAT Prep Insights

@@ -24,7 +24,7 @@ const navLinks = [
     ],
   },
   { label: 'Admission', href: '/admission' },
-  { label: 'Blogs', href: '/blogs' },
+  { label: 'The CLATians Journal', href: '/blogs' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -33,7 +33,7 @@ const mobileMenuLinks = [
   { label: 'Courses', href: '/courses', icon: '📚' },
   { label: 'Exams', href: '/exams/clat', icon: '🏛️' },
   { label: 'Admission', href: '/admission', icon: '🎓' },
-  { label: 'Blogs', href: '/blogs', icon: '✍️' },
+  { label: 'The CLATians Journal', href: '/blogs', icon: '✍️' },
   { label: 'About', href: '/about', icon: '👥' },
   { label: 'Contact', href: '/contact', icon: '📞' },
 ];
