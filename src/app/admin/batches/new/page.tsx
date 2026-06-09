@@ -30,6 +30,17 @@ const emptyBatch: Batch = {
   highlights: [''],
   syllabus: [''],
   description: '',
+  details: {
+    plans: [],
+    aboutDuration: '',
+    aboutStrategy: '',
+    aboutFeaturesLabel: '',
+    aboutFeatures: [],
+    strategyHeading: '',
+    strategySections: [],
+    moreDetails: [],
+    faqs: [],
+  },
 };
 
 export default async function NewBatchPage() {

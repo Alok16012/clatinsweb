@@ -1,3 +1,38 @@
+// ── Rich content shapes (stored in the `details` jsonb column) ──────────────
+export interface BatchPlan {
+  name: string;
+  price: string;
+  features: string[];
+}
+
+export interface BatchStrategySection {
+  title: string;
+  subtitle?: string;
+  items: string[];
+}
+
+export interface BatchFeatureCard {
+  title: string;
+  subtitle: string;
+}
+
+export interface BatchFaq {
+  question: string;
+  answer: string;
+}
+
+export interface BatchDetails {
+  plans?: BatchPlan[];
+  aboutDuration?: string;
+  aboutStrategy?: string;
+  aboutFeaturesLabel?: string;
+  aboutFeatures?: BatchFeatureCard[];
+  strategyHeading?: string;
+  strategySections?: BatchStrategySection[];
+  moreDetails?: string[];
+  faqs?: BatchFaq[];
+}
+
 export interface Batch {
   slug: string;
   courseSlug: string;
@@ -26,6 +61,7 @@ export interface Batch {
   highlights: string[];
   syllabus: string[];
   description: string;
+  details?: BatchDetails;
 }
 
 export const batches: Batch[] = [
@@ -74,6 +110,130 @@ export const batches: Batch[] = [
       'CLAT Mock Test Practice & Analysis',
     ],
     description: 'Our 2-year Foundation Batch for students targeting CLAT 2028. Ideal for students in Class 11 who want to build a strong foundation over 30 months.',
+    details: {
+      plans: [
+        {
+          name: 'Foundation Batch for CLAT-2028',
+          price: '1,53,000',
+          features: [
+            'Classroom Lectures',
+            'Books, Notes & DPD',
+            'Monthly Magazine',
+            'Sectional & Topic-wise Test',
+            'Mock Test Series',
+            'CLAT Question Banks',
+            'Library Access',
+          ],
+        },
+        {
+          name: 'Foundation Batch for CLAT-2028 Pro Batch',
+          price: '1,66,500',
+          features: [
+            'Classroom Lectures',
+            'Online Resources Access',
+            'Books, Notes & DPD',
+            'Monthly Magazine',
+            'Personal Mentorship',
+            'Special English Batch',
+            'Sectional & Topic-wise Test',
+            'Mock Test Series',
+            'CLAT Question Banks',
+            'Library Access',
+          ],
+        },
+      ],
+      aboutDuration: 'From Admission – CLAT 2028 Exam',
+      aboutStrategy: 'Basic Syllabus → Advance Syllabus → Mock Test Series',
+      aboutFeaturesLabel: 'Online Resources Access',
+      aboutFeatures: [
+        { title: 'Monthly Magazine', subtitle: 'Current Affairs & Legal Affairs' },
+        { title: 'Study Material', subtitle: 'Comprehensive study materials, Books, DPDs & more' },
+        { title: 'Personal Mentorship', subtitle: 'A Personal Mentor Assign for Better Preparation' },
+        { title: 'Special Class', subtitle: 'Special English Batch' },
+        { title: 'Doubt Resolution', subtitle: '24/7 doubt solving support (Online)' },
+        { title: 'Performance Tracking', subtitle: 'Regular progress monitoring and analysis' },
+      ],
+      strategyHeading: 'Subject Covering',
+      strategySections: [
+        {
+          title: 'Basic Syllabus',
+          items: [
+            'Topic wise Classes',
+            'Questions Practice Session including Solution Classes (From covered Topic)',
+            'Additional Doubt Session (From covered Topic)',
+            'Unit Tests (From covered Topic)',
+          ],
+        },
+        {
+          title: 'Advance Syllabus',
+          items: [
+            'Advance Level Question Practice Session',
+            'Doubt Session',
+            'Weekly Tests (i.e. Mock Test)',
+          ],
+        },
+        {
+          title: 'Mock Test Series & Revision Classes',
+          subtitle: 'Till CLAT Examinations',
+          items: [
+            'Mock Test — Weekly, 1st 60 Days',
+            'Solution Classes — 1 Subject per Day',
+          ],
+        },
+        {
+          title: 'Regular Mock Test',
+          subtitle: 'After 60 Days (Till Exam)',
+          items: [
+            'Mock Test',
+            'Solution Classes',
+            'Revision Classes',
+          ],
+        },
+      ],
+      moreDetails: [
+        'Comprehensive Preparation Method & Syllabus Coverage of CLAT 2027.',
+        'Preparation Strategy Guide for Students: with a detailed & structured approach that will maximize your chances of success. This comprehensive plan divides your journey into three phases, each with specific goals and activities.',
+        'Well Qualified & cooperative Faculties.',
+        '25000+ Questions Practice with Solution.',
+        'More than 200 Comprehensive Tests with Solution.',
+        'Monthly Magazines (including Current Affairs & Legal Reasoning).',
+        'Total 500+ Daily Practice Drills (DPDs) with detailed solutions.',
+        'Small Batch: The "20 Students Batch" ensures personalized attention and focused learning. With a smaller class size, students receive better interaction with instructors, enabling tailored support in key areas. This setup enhances the quality of CLAT preparation, helping students excel and secure top NLUs.',
+        'The "Personal Mentorship" feature: one-on-one guidance from expert mentors. Tailored to individual needs, this personalized support helps students enhance their strengths, address weaknesses, and stay focused on their CLAT preparation. With regular progress reviews and customized strategies, students are equipped to excel in the CLAT exam and secure top NLU admissions.',
+        'Our "Performance Analysis" feature in this batch includes offline tests and detailed report cards to pinpoint weak areas. This helps students focus on improvement, enhancing skills in legal aptitude, reasoning, and general knowledge, ensuring steady progress and better chances of excelling in the CLAT exam and securing top NLU admissions.',
+        'Our "Bilingual Teaching" feature ensures that classes are taught in Hinglish (Hindi & English both), making complex concepts easier to understand. This approach helps students grasp key topics more effectively, improving their CLAT preparation and boosting their chances of securing top NLUs.',
+        'For any queries & concerns, please reach out to us on 8507700177.',
+        'Non-Refundable Fees: Fees for study materials, tax and registration are not refundable.',
+        'The registration fee is included in the price of the batch which is showing on the website. The breakup of registration fee will be mentioned on invoice. The exact details might change from one batch to another.',
+        'T&C Applicable.',
+      ],
+      faqs: [
+        {
+          question: 'How does CLATians Foundation Batch differ from other CLAT coaching programs?',
+          answer: 'CLATians Foundation Batch stands out with its small batch size of only 20 students, ensuring personalized attention. We offer a three-phase preparation strategy (Basic Syllabus → Advanced Syllabus → Mock Test Series), personal mentorship, bilingual teaching in Hinglish, and comprehensive performance tracking. With over 25,000 practice questions and 200+ tests, our program delivers more value than standard coaching options.',
+        },
+        {
+          question: 'What study materials are provided in the CLATians Foundation program?',
+          answer: 'Students receive comprehensive study materials including specially designed books, notes, 500+ Daily Practice Drills (DPDs) with detailed solutions, and monthly magazines covering Current Affairs and Legal Reasoning. These resources are tailored specifically for CLAT preparation.',
+        },
+        {
+          question: 'What is the batch size policy at CLATians?',
+          answer: 'We strictly maintain a "20 Students Batch" policy to ensure personalized attention and focused learning. This small batch size facilitates better interaction with instructors and allows for tailored support in key areas of difficulty.',
+        },
+        {
+          question: 'How does CLATians help with Current Affairs preparation?',
+          answer: 'We provide monthly magazines focused on Current Affairs and Legal Affairs. These resources are regularly updated to include the latest developments relevant to the CLAT exam, helping students stay informed about important national and international events.',
+        },
+        {
+          question: 'Is CLATians suitable for students from non-English medium backgrounds?',
+          answer: 'Absolutely! CLATians Foundation Batch is designed to be inclusive for all students, including those from non-English medium backgrounds. Our bilingual Hinglish teaching methodology makes complex concepts accessible to everyone. We also offer a Special English Batch in the Foundation PRO program to help students strengthen their English language skills, which is crucial for CLAT success.',
+        },
+        {
+          question: 'How do the solution classes work after mock tests?',
+          answer: 'After each mock test, we conduct detailed solution classes where faculty members explain the correct approaches to questions, common mistakes to avoid, and time-saving techniques. These classes are subject-wise (one subject per day) to ensure thorough analysis and learning. Students receive personalized feedback on their performance to identify areas of improvement.',
+        },
+      ],
+    },
   },
   {
     slug: 'clat-2027-target',

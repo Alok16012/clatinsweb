@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import type { Course } from '@/data/courses';
 import { adminFetch } from '@/lib/adminFetch';
 import {
-  FieldGroup, TextInput, TextareaInput, StringArrayEditor,
+  FieldGroup, TextInput, TextareaInput,
   SectionCard, FormActions, Toast,
 } from '@/components/admin/AdminFormHelpers';
 
@@ -118,135 +118,6 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
               </div>
             </FieldGroup>
           </div>
-        </SectionCard>
-
-        {/* Pricing & Details */}
-        <SectionCard title="Pricing & Details">
-          <div className="grid md:grid-cols-2 gap-4">
-            <FieldGroup label="Duration">
-              <TextInput value={data.duration} onChange={(v) => set('duration', v)} placeholder="e.g. 12–24 Months" />
-            </FieldGroup>
-            <FieldGroup label="Batch Size">
-              <TextInput value={data.batchSize} onChange={(v) => set('batchSize', v)} placeholder="e.g. 20–30 Students" />
-            </FieldGroup>
-            <FieldGroup label="Fee">
-              <TextInput value={data.fee} onChange={(v) => set('fee', v)} placeholder="e.g. ₹95,000" />
-            </FieldGroup>
-            <FieldGroup label="EMI">
-              <TextInput value={data.emi} onChange={(v) => set('emi', v)} placeholder="e.g. ₹8,000/month" />
-            </FieldGroup>
-          </div>
-        </SectionCard>
-
-        {/* Features */}
-        <SectionCard title="Features (What You Get)">
-          <StringArrayEditor
-            label="Feature list"
-            items={data.features}
-            onChange={(v) => set('features', v)}
-            placeholder="e.g. Daily live classroom sessions"
-          />
-        </SectionCard>
-
-        {/* Course Includes */}
-        <SectionCard title="Course Includes (Stats Cards)">
-          <div className="space-y-3">
-            {data.includes.map((inc, i) => (
-              <div key={i} className="grid grid-cols-4 gap-2 items-center">
-                <input value={inc.icon} onChange={(e) => {
-                  const next = [...data.includes]; next[i] = { ...next[i], icon: e.target.value }; set('includes', next);
-                }} placeholder="Icon" className="px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none" />
-                <input value={inc.value} onChange={(e) => {
-                  const next = [...data.includes]; next[i] = { ...next[i], value: e.target.value }; set('includes', next);
-                }} placeholder="Value" className="px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none" />
-                <input value={inc.label} onChange={(e) => {
-                  const next = [...data.includes]; next[i] = { ...next[i], label: e.target.value }; set('includes', next);
-                }} placeholder="Label" className="px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none" />
-                <button type="button" onClick={() => set('includes', data.includes.filter((_, idx) => idx !== i))}
-                  className="text-red-400 hover:text-red-600 font-bold text-xl">×</button>
-              </div>
-            ))}
-            <button type="button"
-              onClick={() => set('includes', [...data.includes, { icon: '', value: '', label: '' }])}
-              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
-              + Add Include
-            </button>
-          </div>
-        </SectionCard>
-
-        {/* Curriculum */}
-        <SectionCard title="Curriculum">
-          <div className="space-y-4">
-            {data.curriculum.map((mod, i) => (
-              <div key={i} className="border border-gray-100 rounded-xl p-4">
-                <div className="flex gap-2 mb-3">
-                  <input value={mod.module} onChange={(e) => {
-                    const next = [...data.curriculum]; next[i] = { ...next[i], module: e.target.value }; set('curriculum', next);
-                  }} placeholder="Module name" className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold" />
-                  <button type="button" onClick={() => set('curriculum', data.curriculum.filter((_, idx) => idx !== i))}
-                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
-                </div>
-                <div className="space-y-2 pl-3">
-                  {mod.topics.map((t, j) => (
-                    <div key={j} className="flex gap-2">
-                      <input value={t} onChange={(e) => {
-                        const next = [...data.curriculum];
-                        const topics = [...next[i].topics]; topics[j] = e.target.value;
-                        next[i] = { ...next[i], topics }; set('curriculum', next);
-                      }} placeholder="Topic" className="flex-1 px-3 py-1.5 border border-gray-100 rounded-lg text-sm" />
-                      <button type="button" onClick={() => {
-                        const next = [...data.curriculum];
-                        next[i] = { ...next[i], topics: mod.topics.filter((_, ti) => ti !== j) };
-                        set('curriculum', next);
-                      }} className="text-red-300 hover:text-red-500 font-bold">×</button>
-                    </div>
-                  ))}
-                  <button type="button" onClick={() => {
-                    const next = [...data.curriculum];
-                    next[i] = { ...next[i], topics: [...mod.topics, ''] }; set('curriculum', next);
-                  }} className="text-xs font-semibold" style={{ color: '#08BD80' }}>+ Add topic</button>
-                </div>
-              </div>
-            ))}
-            <button type="button"
-              onClick={() => set('curriculum', [...data.curriculum, { module: '', topics: [''] }])}
-              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
-              + Add Module
-            </button>
-          </div>
-        </SectionCard>
-
-        {/* Who Is This For */}
-        <SectionCard title="Who Is This For?">
-          <StringArrayEditor
-            label=""
-            items={data.whoFor}
-            onChange={(v) => set('whoFor', v)}
-            placeholder="e.g. Students targeting top NLUs"
-          />
-        </SectionCard>
-
-        {/* Testimonial */}
-        <SectionCard title="Student Testimonial">
-          <div className="grid md:grid-cols-2 gap-4">
-            <FieldGroup label="Student Name">
-              <TextInput value={data.testimonial.name} onChange={(v) => set('testimonial', { ...data.testimonial, name: v })} placeholder="e.g. Aman Deep Singh" />
-            </FieldGroup>
-            <FieldGroup label="Rank / Achievement">
-              <TextInput value={data.testimonial.rank} onChange={(v) => set('testimonial', { ...data.testimonial, rank: v })} placeholder="e.g. AIR 23, CLAT 2024" />
-            </FieldGroup>
-            <FieldGroup label="College">
-              <TextInput value={data.testimonial.college} onChange={(v) => set('testimonial', { ...data.testimonial, college: v })} placeholder="e.g. NLU Delhi" />
-            </FieldGroup>
-            <FieldGroup label="Avatar (initials)">
-              <TextInput value={data.testimonial.avatar} onChange={(v) => set('testimonial', { ...data.testimonial, avatar: v })} placeholder="e.g. AD" />
-            </FieldGroup>
-          </div>
-          <FieldGroup label="Quote">
-            <TextareaInput value={data.testimonial.quote} onChange={(v) => set('testimonial', { ...data.testimonial, quote: v })} placeholder="Student's testimonial quote..." rows={3} />
-          </FieldGroup>
         </SectionCard>
 
         <FormActions loading={loading} onCancel={() => router.push('/admin/courses')} saveLabel={isNew ? 'Create Course' : 'Save Changes'} />

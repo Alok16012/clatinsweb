@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { Batch } from '@/data/batches';
+import type { Batch, BatchDetails, BatchPlan, BatchStrategySection, BatchFeatureCard, BatchFaq } from '@/data/batches';
 import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, NumberInput, TextareaInput, SelectInput,
@@ -17,6 +17,17 @@ export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boole
   function set<K extends keyof Batch>(key: K, val: Batch[K]) {
     setData((d) => ({ ...d, [key]: val }));
   }
+
+  // Rich content stored under data.details (jsonb column)
+  const details: BatchDetails = data.details ?? {};
+  function setDetail<K extends keyof BatchDetails>(key: K, val: BatchDetails[K]) {
+    setData((d) => ({ ...d, details: { ...(d.details ?? {}), [key]: val } }));
+  }
+
+  const plans: BatchPlan[] = details.plans ?? [];
+  const aboutFeatures: BatchFeatureCard[] = details.aboutFeatures ?? [];
+  const strategySections: BatchStrategySection[] = details.strategySections ?? [];
+  const faqs: BatchFaq[] = details.faqs ?? [];
 
   function showToast(msg: string, type: 'success' | 'error') {
     setToast({ msg, type });
@@ -138,9 +149,175 @@ export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boole
           <FieldGroup label="Description">
             <TextareaInput value={data.description} onChange={(v) => set('description', v)} rows={4} placeholder="Batch description..." />
           </FieldGroup>
-          <StringArrayEditor label="Highlights" items={data.highlights} onChange={(v) => set('highlights', v)} placeholder="e.g. Daily classroom sessions" />
+          <StringArrayEditor label="Highlights (hero — What's Included)" items={data.highlights} onChange={(v) => set('highlights', v)} placeholder="e.g. Daily classroom sessions" />
+          <StringArrayEditor label="Batch Includes (chips)" items={data.chips} onChange={(v) => set('chips', v)} placeholder="e.g. Offline Classes" />
           <StringArrayEditor label="Syllabus" items={data.syllabus} onChange={(v) => set('syllabus', v)} placeholder="e.g. English Language" />
           <StringArrayEditor label="Faculty" items={data.faculty} onChange={(v) => set('faculty', v)} placeholder="e.g. A.K. Singh" />
+        </SectionCard>
+
+        {/* About & Strategy */}
+        <SectionCard title="About the Batch & Strategy">
+          <div className="grid md:grid-cols-2 gap-4">
+            <FieldGroup label="Duration (about)">
+              <TextInput value={details.aboutDuration ?? ''} onChange={(v) => setDetail('aboutDuration', v)} placeholder="e.g. From Admission – CLAT 2028 Exam" />
+            </FieldGroup>
+            <FieldGroup label="Batch Strategy">
+              <TextInput value={details.aboutStrategy ?? ''} onChange={(v) => setDetail('aboutStrategy', v)} placeholder="e.g. Basic Syllabus → Advance Syllabus → Mock Test Series" />
+            </FieldGroup>
+          </div>
+          {/* About feature cards */}
+          <div className="space-y-4">
+            <FieldGroup label="Feature List Label (heading above the feature cards)">
+              <TextInput value={details.aboutFeaturesLabel ?? ''} onChange={(v) => setDetail('aboutFeaturesLabel', v)} placeholder="e.g. Online Resources Access" />
+            </FieldGroup>
+            <label className="block text-sm font-semibold text-gray-700">Feature Cards (title + subtitle)</label>
+            {aboutFeatures.map((f, i) => (
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-2">
+                <div className="flex gap-2">
+                  <input
+                    value={f.title}
+                    onChange={(e) => setDetail('aboutFeatures', aboutFeatures.map((x, idx) => idx === i ? { ...x, title: e.target.value } : x))}
+                    placeholder="Card title e.g. Monthly Magazine"
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
+                  />
+                  <button type="button" onClick={() => setDetail('aboutFeatures', aboutFeatures.filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
+                </div>
+                <input
+                  value={f.subtitle}
+                  onChange={(e) => setDetail('aboutFeatures', aboutFeatures.map((x, idx) => idx === i ? { ...x, subtitle: e.target.value } : x))}
+                  placeholder="Subtitle e.g. Current Affairs & Legal Affairs"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none"
+                />
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => setDetail('aboutFeatures', [...aboutFeatures, { title: '', subtitle: '' }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              + Add Feature Card
+            </button>
+          </div>
+
+          {/* Batch Strategy phases */}
+          <div className="space-y-4 pt-4 border-t border-gray-100">
+            <FieldGroup label="Strategy Heading (e.g. Subject Covering)">
+              <TextInput value={details.strategyHeading ?? ''} onChange={(v) => setDetail('strategyHeading', v)} placeholder="e.g. Subject Covering" />
+            </FieldGroup>
+            <label className="block text-sm font-semibold text-gray-700">Strategy Phases</label>
+            {strategySections.map((sec, i) => (
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    value={sec.title}
+                    onChange={(e) => setDetail('strategySections', strategySections.map((s, idx) => idx === i ? { ...s, title: e.target.value } : s))}
+                    placeholder="Phase title e.g. Basic Syllabus"
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
+                  />
+                  <button type="button" onClick={() => setDetail('strategySections', strategySections.filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
+                </div>
+                <input
+                  value={sec.subtitle ?? ''}
+                  onChange={(e) => setDetail('strategySections', strategySections.map((s, idx) => idx === i ? { ...s, subtitle: e.target.value } : s))}
+                  placeholder="Subtitle (optional) e.g. Till CLAT Examinations"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none"
+                />
+                <StringArrayEditor
+                  label="Items"
+                  items={sec.items}
+                  onChange={(v) => setDetail('strategySections', strategySections.map((s, idx) => idx === i ? { ...s, items: v } : s))}
+                  placeholder="e.g. Topic wise Classes"
+                />
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => setDetail('strategySections', [...strategySections, { title: '', subtitle: '', items: [''] }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              + Add Strategy Phase
+            </button>
+          </div>
+        </SectionCard>
+
+        {/* Pricing Plans */}
+        <SectionCard title="Pricing Plans (Choose Your Plan)">
+          <div className="space-y-4">
+            {plans.map((plan, i) => (
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    value={plan.name}
+                    onChange={(e) => setDetail('plans', plans.map((p, idx) => idx === i ? { ...p, name: e.target.value } : p))}
+                    placeholder="Plan name e.g. Foundation Pro Batch"
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
+                  />
+                  <button type="button" onClick={() => setDetail('plans', plans.filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
+                </div>
+                <input
+                  value={plan.price}
+                  onChange={(e) => setDetail('plans', plans.map((p, idx) => idx === i ? { ...p, price: e.target.value } : p))}
+                  placeholder="Price e.g. ₹1,53,000"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none"
+                />
+                <StringArrayEditor
+                  label="Plan features"
+                  items={plan.features}
+                  onChange={(v) => setDetail('plans', plans.map((p, idx) => idx === i ? { ...p, features: v } : p))}
+                  placeholder="e.g. Classroom Lectures"
+                />
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => setDetail('plans', [...plans, { name: '', price: '', features: [''] }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              + Add Plan
+            </button>
+          </div>
+        </SectionCard>
+
+        {/* More Details */}
+        <SectionCard title="More Details (numbered points)">
+          <StringArrayEditor
+            label="Detail points (shown as 01, 02, 03 …)"
+            items={details.moreDetails ?? []}
+            onChange={(v) => setDetail('moreDetails', v)}
+            placeholder="e.g. Comprehensive Preparation Method & Syllabus Coverage"
+          />
+        </SectionCard>
+
+        {/* FAQs */}
+        <SectionCard title="FAQs">
+          <div className="space-y-4">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    value={faq.question}
+                    onChange={(e) => setDetail('faqs', faqs.map((f, idx) => idx === i ? { ...f, question: e.target.value } : f))}
+                    placeholder="Question"
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
+                  />
+                  <button type="button" onClick={() => setDetail('faqs', faqs.filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
+                </div>
+                <TextareaInput
+                  value={faq.answer}
+                  onChange={(v) => setDetail('faqs', faqs.map((f, idx) => idx === i ? { ...f, answer: v } : f))}
+                  rows={3}
+                  placeholder="Answer"
+                />
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => setDetail('faqs', [...faqs, { question: '', answer: '' }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              + Add FAQ
+            </button>
+          </div>
         </SectionCard>
 
         <FormActions loading={loading} onCancel={() => router.push('/admin/batches')} saveLabel={isNew ? 'Create Batch' : 'Save Changes'} />

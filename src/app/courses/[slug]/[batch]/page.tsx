@@ -209,6 +209,80 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 </div>
               </div>
 
+              {/* About the Batch */}
+              {(batch.details?.aboutDuration || batch.details?.aboutStrategy || (batch.details?.aboutFeatures?.length ?? 0) > 0) && (
+                <div className="bg-white rounded-2xl p-5"
+                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>About the Batch</h2>
+                  <div className="space-y-3">
+                    {batch.details?.aboutDuration && (
+                      <p className="text-sm leading-relaxed">
+                        <span className="font-bold" style={{ color: '#0D1837' }}>Duration: </span>
+                        <span style={{ color: '#6B7280' }}>{batch.details.aboutDuration}</span>
+                      </p>
+                    )}
+                    {batch.details?.aboutStrategy && (
+                      <p className="text-sm leading-relaxed">
+                        <span className="font-bold" style={{ color: '#0D1837' }}>Batch Strategy: </span>
+                        <span style={{ color: '#6B7280' }}>{batch.details.aboutStrategy}</span>
+                      </p>
+                    )}
+                  </div>
+                  {(batch.details?.aboutFeatures?.length ?? 0) > 0 && (
+                    <div className="mt-4 pt-4 border-t" style={{ borderColor: '#F3F4F6' }}>
+                      {batch.details?.aboutFeaturesLabel && (
+                        <p className="font-bold text-sm mb-2.5" style={{ color: '#0D1837' }}>{batch.details.aboutFeaturesLabel}</p>
+                      )}
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {batch.details!.aboutFeatures!.map((f, i) => (
+                          <div key={i} className="rounded-xl p-3.5"
+                            style={{ background: '#F8FAFC', border: '1px solid #E9EEF2' }}>
+                            <div className="flex items-start gap-2.5">
+                              <span className="w-5 h-5 rounded-lg flex items-center justify-center text-white text-[10px] font-black flex-shrink-0 mt-0.5"
+                                style={{ background: palette.accent }}>✓</span>
+                              <div>
+                                <p className="font-bold text-sm leading-tight" style={{ color: '#0D1837' }}>{f.title}</p>
+                                {f.subtitle && <p className="text-xs mt-0.5 leading-snug" style={{ color: '#6B7280' }}>{f.subtitle}</p>}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Batch Strategy — phased */}
+              {(batch.details?.strategySections?.length ?? 0) > 0 && (
+                <div className="bg-white rounded-2xl p-5"
+                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                  <h2 className="text-sm font-black mb-1 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Batch Strategy</h2>
+                  {batch.details?.strategyHeading && (
+                    <p className="text-base font-black mb-3" style={{ color: '#0D1837' }}>{batch.details.strategyHeading}</p>
+                  )}
+                  <div className="space-y-3">
+                    {batch.details!.strategySections!.map((sec, i) => (
+                      <div key={i} className="rounded-xl p-4"
+                        style={{ background: '#F8FAFC', borderLeft: `4px solid ${palette.accent}`, border: '1px solid #E9EEF2' }}>
+                        <p className="font-black text-sm" style={{ color: '#0D1837' }}>{sec.title}</p>
+                        {sec.subtitle && (
+                          <p className="text-xs font-semibold mb-2" style={{ color: palette.accent }}>{sec.subtitle}</p>
+                        )}
+                        <ul className="space-y-1.5 mt-2">
+                          {sec.items.map((it, j) => (
+                            <li key={j} className="flex items-start gap-2 text-sm" style={{ color: '#374151' }}>
+                              <span className="font-black flex-shrink-0" style={{ color: palette.accent }}>•</span>
+                              <span className="leading-snug">{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Includes + Syllabus side by side */}
               <div className="grid md:grid-cols-2 gap-4">
                 {/* Includes */}
@@ -244,37 +318,55 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 </div>
               </div>
 
-              {/* Batch Details Table — compact */}
-              <div className="bg-white rounded-2xl overflow-hidden"
-                style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                <div className="px-5 py-3 flex items-center justify-between"
-                  style={{ background: `linear-gradient(135deg, ${palette.from}, ${palette.to})` }}>
-                  <h2 className="text-sm font-black text-white">Batch Details</h2>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-white/70"
-                    style={{ background: 'rgba(255,255,255,0.15)' }}>{batch.batchCode}</span>
+              {/* Pricing Plans */}
+              {(batch.details?.plans?.length ?? 0) > 0 && (
+                <div>
+                  <h2 className="text-lg font-black mb-1" style={{ color: '#0D1837' }}>Choose Your Plan</h2>
+                  <p className="text-sm mb-3" style={{ color: '#6B7280' }}>Pick the plan that fits your preparation needs.</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {batch.details!.plans!.map((plan, i) => (
+                      <div key={i} className="bg-white rounded-2xl p-5 flex flex-col"
+                        style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                        <h3 className="font-black text-base mb-1" style={{ color: '#0D1837' }}>{plan.name}</h3>
+                        <div className="text-2xl font-black mb-3" style={{ color: palette.accent }}>
+                          {plan.price && !plan.price.trim().startsWith('₹') ? `₹${plan.price}` : plan.price}
+                        </div>
+                        <div className="space-y-2 mb-4 flex-1">
+                          {plan.features.map((f, j) => (
+                            <div key={j} className="flex items-start gap-2">
+                              <span className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0 mt-0.5"
+                                style={{ background: palette.accent }}>✓</span>
+                              <span className="text-sm text-gray-700 leading-snug">{f}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <a href="tel:8507700177"
+                          className="block text-center py-2.5 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-opacity"
+                          style={{ background: `linear-gradient(135deg, ${palette.from}, ${palette.to})` }}>
+                          Select Plan
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="divide-y divide-gray-50">
-                  {[
-                    { label: 'Exam Targeted', val: batch.exam },
-                    { label: 'Start Date',    val: batch.startDate },
-                    { label: 'End Date',      val: batch.endDate },
-                    { label: 'Duration',      val: batch.duration },
-                    { label: 'Schedule',      val: batch.schedule },
-                    { label: 'Mode',          val: batch.mode },
-                    { label: 'Language',      val: batch.language },
-                    { label: 'Seats',         val: batch.seats >= 999 ? 'Open Enrollment' : `${batch.seats - batch.filled} left of ${batch.seats}` },
-                    { label: 'Fee',           val: batch.fee },
-                    { label: 'EMI',           val: batch.emi },
-                  ].map((row, i) => (
-                    <div key={row.label}
-                      className="flex items-center justify-between px-5 py-3 text-sm"
-                      style={{ background: i % 2 === 0 ? '#FAFAFA' : 'white' }}>
-                      <span className="font-medium text-base" style={{ color: '#6B7280' }}>{row.label}</span>
-                      <span className="font-bold text-base text-right max-w-[55%]" style={{ color: '#0D1837' }}>{row.val}</span>
-                    </div>
-                  ))}
+              )}
+
+              {/* More Details — numbered points */}
+              {(batch.details?.moreDetails?.length ?? 0) > 0 && (
+                <div className="bg-white rounded-2xl p-5"
+                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>More Details</h2>
+                  <div className="space-y-3">
+                    {batch.details!.moreDetails!.map((d, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="w-6 h-6 rounded-lg flex items-center justify-center text-white text-[11px] font-black flex-shrink-0"
+                          style={{ background: palette.accent }}>{String(i + 1).padStart(2, '0')}</span>
+                        <span className="text-sm text-gray-700 leading-relaxed">{d}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Student Reviews — 2 col compact */}
               <div>
@@ -297,6 +389,25 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                   ))}
                 </div>
               </div>
+
+              {/* FAQs */}
+              {(batch.details?.faqs?.length ?? 0) > 0 && (
+                <div>
+                  <h2 className="text-lg font-black mb-3" style={{ color: '#0D1837' }}>Frequently Asked Questions</h2>
+                  <div className="space-y-2.5">
+                    {batch.details!.faqs!.map((faq, i) => (
+                      <details key={i} className="bg-white rounded-2xl p-4 group"
+                        style={{ border: '1.5px solid #E9EEF2' }}>
+                        <summary className="flex items-center justify-between cursor-pointer list-none font-bold text-sm" style={{ color: '#0D1837' }}>
+                          <span>{faq.question}</span>
+                          <span className="ml-3 text-lg transition-transform group-open:rotate-45 flex-shrink-0" style={{ color: palette.accent }}>+</span>
+                        </summary>
+                        <p className="mt-2.5 text-sm leading-relaxed" style={{ color: '#6B7280' }}>{faq.answer}</p>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* CTA Banner */}
               <div className="rounded-2xl p-5 md:p-6"

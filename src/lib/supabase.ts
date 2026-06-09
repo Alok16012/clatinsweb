@@ -52,7 +52,7 @@ export function isSupabaseConfigured(): boolean {
 
 export const COURSE_COLUMNS = 'slug, title, category, icon, color, bg, tagline, overview, duration, batchSize:batch_size, mode, fee, emi, features, includes, curriculum, whoFor:who_for, testimonial';
 
-export const BATCH_COLUMNS = 'slug, courseSlug:course_slug, category, name, exam, batchCode:batch_code, startDate:start_date, endDate:end_date, duration, schedule, mode, seats, filled, fee, originalFee:original_fee, emi, offer, color, bg, status, language, batchType:batch_type, chips, faculty, highlights, syllabus, description';
+export const BATCH_COLUMNS = 'slug, courseSlug:course_slug, category, name, exam, batchCode:batch_code, startDate:start_date, endDate:end_date, duration, schedule, mode, seats, filled, fee, originalFee:original_fee, emi, offer, color, bg, status, language, batchType:batch_type, chips, faculty, highlights, syllabus, description, details';
 
 export function courseToRow(c: Record<string, unknown>) {
   return {
@@ -106,5 +106,6 @@ export function batchToRow(b: Record<string, unknown>) {
     highlights: b.highlights ?? [],
     syllabus: b.syllabus ?? [],
     description: b.description ?? '',
+    details: b.details ?? {},
   };
 }
