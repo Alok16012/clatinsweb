@@ -1,12 +1,13 @@
 export const dynamic = "force-dynamic";
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
+import { getCourses } from '@/lib/getData';
 import BatchForm from '../BatchForm';
 import type { Batch } from '@/data/batches';
 
 const emptyBatch: Batch = {
   slug: '',
-  courseSlug: 'clat',
+  courseSlug: '',
   category: 'offline',
   name: '',
   exam: 'CLAT',
@@ -45,5 +46,9 @@ const emptyBatch: Batch = {
 
 export default async function NewBatchPage() {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  return <BatchForm batch={emptyBatch} isNew={true} />;
+  const courses = await getCourses();
+  const courseOptions = courses.map((c) => ({ slug: c.slug, title: c.title, category: c.category }));
+  // Pre-select the first course so a new batch links to a real course by default.
+  const initial: Batch = { ...emptyBatch, courseSlug: courseOptions[0]?.slug ?? '' };
+  return <BatchForm batch={initial} isNew={true} courses={courseOptions} />;
 }

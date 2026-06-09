@@ -8,7 +8,9 @@ import {
   StringArrayEditor, SectionCard, FormActions, Toast,
 } from '@/components/admin/AdminFormHelpers';
 
-export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boolean }) {
+type CourseOption = { slug: string; title: string; category: string };
+
+export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch; isNew: boolean; courses?: CourseOption[] }) {
   const router = useRouter();
   const [data, setData] = useState<Batch>({ ...batch });
   const [loading, setLoading] = useState(false);
@@ -45,11 +47,20 @@ export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boole
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error('Failed');
+      if (!res.ok) {
+        let msg = 'Error saving batch';
+        try {
+          const err = await res.json();
+          if (err?.error) msg = err.error;
+        } catch { /* non-JSON response */ }
+        showToast(msg, 'error');
+        setLoading(false);
+        return;
+      }
       showToast(isNew ? 'Batch created!' : 'Batch saved!', 'success');
       setTimeout(() => router.push('/admin/batches'), 1000);
     } catch {
-      showToast('Error saving batch', 'error');
+      showToast('Network error — could not reach the server.', 'error');
     }
     setLoading(false);
   }
@@ -61,12 +72,17 @@ export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boole
     router.push('/admin/batches');
   }
 
-  const courseOptions = [
-    { value: 'offline', label: 'Offline Course' },
-    { value: 'online', label: 'Online Course' },
-    { value: 'mentorship', label: 'OLET Program' },
-    { value: 'mock-tests', label: 'Mock Tests' },
-  ];
+  // Build the Course dropdown from the real courses in the DB so the batch's
+  // courseSlug matches an actual course — that's what links it to the course
+  // page (/courses/<courseSlug>/<batchSlug>). Falls back to whatever is already
+  // saved on the batch so an existing value is never silently dropped.
+  const courseOptions = (courses.length
+    ? courses.map((c) => ({ value: c.slug, label: `${c.title} (${c.category})` }))
+    : [{ value: data.courseSlug, label: data.courseSlug || '— no courses found —' }]
+  );
+  if (data.courseSlug && !courseOptions.some((o) => o.value === data.courseSlug)) {
+    courseOptions.unshift({ value: data.courseSlug, label: `${data.courseSlug} (current)` });
+  }
 
   const statusOptions = [
     { value: 'upcoming', label: '🕐 Upcoming' },
