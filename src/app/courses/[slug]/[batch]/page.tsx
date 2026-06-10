@@ -59,12 +59,24 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
   const palette      = cardPalettes[batch.batchType] || { from: '#060d1f', to: '#0D1837', accent: '#08BD80' };
   const typeStyle    = batchTypeColors[batch.batchType] || { bg: '#f3f4f6', color: '#374151' };
 
-  const reviews = [
-    { name: 'Sumit Kumar',  badge: 'AIR 34',  avatar: 'SK', color: '#6366f1', text: 'This batch completely transformed my preparation. Small batch size means A.K. Sir knows every student personally. Highly recommend!' },
-    { name: 'Pooja Singh',  badge: 'AIR 78',  avatar: 'PS', color: '#ec4899', text: 'The schedule is intense but absolutely worth it. Mock tests every week kept me sharp. Cleared in the first attempt.' },
-    { name: 'Rahul Jha',    badge: 'AIR 112', avatar: 'RJ', color: '#f59e0b', text: 'Faculty is extremely supportive. Doubt sessions are very productive. Materials are comprehensive and exam-focused.' },
-    { name: 'Ananya Das',   badge: 'AIR 55',  avatar: 'AD', color: '#14b8a6', text: 'I traveled from Kolkata for offline classes — worth every bit. The peer group is amazing, we all cleared together.' },
+  const sampleReviews = [
+    { name: 'Sumit Kumar',  badge: 'AIR 34',  text: 'This batch completely transformed my preparation. Small batch size means A.K. Sir knows every student personally. Highly recommend!' },
+    { name: 'Pooja Singh',  badge: 'AIR 78',  text: 'The schedule is intense but absolutely worth it. Mock tests every week kept me sharp. Cleared in the first attempt.' },
+    { name: 'Rahul Jha',    badge: 'AIR 112', text: 'Faculty is extremely supportive. Doubt sessions are very productive. Materials are comprehensive and exam-focused.' },
+    { name: 'Ananya Das',   badge: 'AIR 55',  text: 'I traveled from Kolkata for offline classes — worth every bit. The peer group is amazing, we all cleared together.' },
   ];
+  // Use admin-added reviews when present; otherwise fall back to the sample set.
+  const reviewPalette = ['#6366f1', '#ec4899', '#f59e0b', '#14b8a6', '#0ea5e9', '#a855f7'];
+  const initials = (name: string) =>
+    name.trim().split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase() || '★';
+  const sourceReviews = (batch.details?.reviews?.filter((r) => r.name?.trim() && r.text?.trim()) ?? []);
+  const reviews = (sourceReviews.length > 0 ? sourceReviews : sampleReviews).map((r, i) => ({
+    name: r.name,
+    badge: r.badge,
+    text: r.text,
+    avatar: initials(r.name),
+    color: reviewPalette[i % reviewPalette.length],
+  }));
 
   return (
     <>

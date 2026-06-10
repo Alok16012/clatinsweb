@@ -21,6 +21,12 @@ export interface BatchFaq {
   answer: string;
 }
 
+export interface BatchReview {
+  name: string;
+  badge: string;   // e.g. "AIR 34" — shown as "AIR 34 · CLAT"
+  text: string;
+}
+
 export interface BatchDetails {
   plans?: BatchPlan[];
   aboutDuration?: string;
@@ -30,6 +36,7 @@ export interface BatchDetails {
   strategySections?: BatchStrategySection[];
   moreDetails?: string[];
   faqs?: BatchFaq[];
+  reviews?: BatchReview[];
 }
 
 export interface Batch {

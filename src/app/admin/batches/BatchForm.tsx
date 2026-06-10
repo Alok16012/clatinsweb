@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { Batch, BatchDetails, BatchPlan, BatchStrategySection, BatchFeatureCard, BatchFaq } from '@/data/batches';
+import type { Batch, BatchDetails, BatchPlan, BatchStrategySection, BatchFeatureCard, BatchFaq, BatchReview } from '@/data/batches';
 import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, NumberInput, TextareaInput, SelectInput,
@@ -30,6 +30,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
   const aboutFeatures: BatchFeatureCard[] = details.aboutFeatures ?? [];
   const strategySections: BatchStrategySection[] = details.strategySections ?? [];
   const faqs: BatchFaq[] = details.faqs ?? [];
+  const reviews: BatchReview[] = details.reviews ?? [];
 
   function showToast(msg: string, type: 'success' | 'error') {
     setToast({ msg, type });
@@ -364,6 +365,48 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
               style={{ borderColor: '#08BD80', color: '#08BD80' }}>
               + Add FAQ
+            </button>
+          </div>
+        </SectionCard>
+
+        {/* Student Reviews */}
+        <SectionCard title="Student Reviews">
+          <p className="text-xs text-gray-400 mb-3">
+            Leave empty to show the default sample reviews. Add your own to replace them.
+            The avatar (initials) and colour are generated automatically.
+          </p>
+          <div className="space-y-4">
+            {reviews.map((rev, i) => (
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    value={rev.name}
+                    onChange={(e) => setDetail('reviews', reviews.map((r, idx) => idx === i ? { ...r, name: e.target.value } : r))}
+                    placeholder="Student name (e.g. Sumit Kumar)"
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
+                  />
+                  <input
+                    value={rev.badge}
+                    onChange={(e) => setDetail('reviews', reviews.map((r, idx) => idx === i ? { ...r, badge: e.target.value } : r))}
+                    placeholder="Badge (e.g. AIR 34)"
+                    className="w-40 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
+                  />
+                  <button type="button" onClick={() => setDetail('reviews', reviews.filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
+                </div>
+                <TextareaInput
+                  value={rev.text}
+                  onChange={(v) => setDetail('reviews', reviews.map((r, idx) => idx === i ? { ...r, text: v } : r))}
+                  rows={3}
+                  placeholder="Review text"
+                />
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => setDetail('reviews', [...reviews, { name: '', badge: '', text: '' }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              + Add Review
             </button>
           </div>
         </SectionCard>
