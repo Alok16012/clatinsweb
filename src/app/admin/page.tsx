@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { readJSON } from '@/lib/dataStore';
 import { getCourses, getBatches, getBlogs } from '@/lib/getData';
 import { exams as defaultExams } from '@/data/exams';
-import { facultyMembers as defaultFaculty } from '@/data/faculty';
+import type { FacultyMember } from '@/data/faculty';
 
 export default async function AdminDashboard() {
   if (!(await isAuthenticated())) redirect('/admin/login');
@@ -13,14 +13,14 @@ export default async function AdminDashboard() {
   const courses = await getCourses();
   const batches = await getBatches();
   const exams = readJSON('exams.json', defaultExams);
-  const faculty = readJSON('faculty.json', defaultFaculty);
+  const faculty = readJSON<FacultyMember[]>('faculty.json', []);
   const blogs = await getBlogs();
 
   const stats = [
     { label: 'Courses', value: courses.length, icon: '📚', href: '/admin/courses', color: '#08BD80' },
     { label: 'Batches', value: batches.length, icon: '📅', href: '/admin/batches', color: '#6366f1' },
     { label: 'Exams', value: (exams as typeof defaultExams).length, icon: '🏛️', href: '/admin/exams', color: '#f59e0b' },
-    { label: 'Faculty', value: (faculty as typeof defaultFaculty).length, icon: '👨‍🏫', href: '/admin/faculty', color: '#ec4899' },
+    { label: 'Faculty', value: faculty.length, icon: '👨‍🏫', href: '/admin/faculty', color: '#ec4899' },
     { label: 'Blogs', value: blogs.length, icon: '✍️', href: '/admin/blogs', color: '#14b8a6' },
   ];
 

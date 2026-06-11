@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import StatsSection from '@/components/StatsSection';
@@ -9,8 +10,13 @@ import FacultySection from '@/components/FacultySection';
 import FAQSection from '@/components/FAQSection';
 import CollegePredictorSection from '@/components/CollegePredictorSection';
 import Footer from '@/components/Footer';
+import { getFaculty } from '@/lib/getData';
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
+  const faculty = getFaculty();
+
   return (
     <main>
       <Navbar />
@@ -43,7 +49,7 @@ export default function Home() {
               </div>
               <h2 className="font-black" style={{ color: '#0D1837', fontSize: '20px', lineHeight: 1.2 }}>Courses for You</h2>
             </div>
-            <a href="/courses" className="text-xs font-bold" style={{ color: '#08BD80' }}>See All →</a>
+            <Link href="/courses" className="text-xs font-bold" style={{ color: '#08BD80' }}>See All →</Link>
           </div>
 
           <div className="md:px-10">
@@ -57,7 +63,7 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* Faculty section */}
-      <FacultySection />
+      <FacultySection faculty={faculty} />
 
       <FAQSection />
       <CollegePredictorSection />

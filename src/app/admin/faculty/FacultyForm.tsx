@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { FacultyMember } from '@/data/faculty';
 import { adminFetch } from '@/lib/adminFetch';
@@ -12,7 +12,9 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
   const router = useRouter();
   const [data, setData] = useState<FacultyMember>({ ...member });
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   function set<K extends keyof FacultyMember>(key: K, val: FacultyMember[K]) {
     setData((d) => ({ ...d, [key]: val }));
@@ -43,6 +45,33 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
     if (!confirm('Delete this faculty member?')) return;
     await adminFetch(`/api/admin/faculty/${member.slug}`, { method: 'DELETE' });
     router.push('/admin/faculty');
+  }
+
+  async function handlePhotoUpload(file: File) {
+    if (!file.type.startsWith('image/')) {
+      showToast('Only image files allowed', 'error');
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const form = new FormData();
+      form.append('file', file);
+      const res = await adminFetch('/api/admin/media', { method: 'POST', body: form });
+      if (!res.ok) throw new Error('Upload failed');
+      const uploaded = await res.json();
+      set('photo', uploaded.url || '');
+      showToast('Faculty photo uploaded!', 'success');
+    } catch {
+      showToast('Photo upload failed', 'error');
+    }
+    setUploading(false);
+  }
+
+  async function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) await handlePhotoUpload(file);
+    if (fileRef.current) fileRef.current.value = '';
   }
 
   return (
@@ -78,6 +107,41 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
             </FieldGroup>
             <FieldGroup label="Avatar (initials)">
               <TextInput value={data.avatar} onChange={(v) => set('avatar', v)} placeholder="e.g. AK" />
+            </FieldGroup>
+            <FieldGroup label="Faculty Photo">
+              <div className="flex gap-3 items-start">
+                <div className="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 overflow-hidden flex items-center justify-center text-gray-400 text-xs font-bold flex-shrink-0">
+                  {data.photo ? (
+                    <img src={data.photo} alt={data.name || 'Faculty'} className="w-full h-full object-cover" />
+                  ) : (
+                    data.avatar || 'IMG'
+                  )}
+                </div>
+                <div className="flex-1 space-y-2">
+                  <TextInput value={data.photo ?? ''} onChange={(v) => set('photo', v)} placeholder="Upload or paste image URL" />
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => fileRef.current?.click()}
+                      disabled={uploading}
+                      className="px-3 py-2 rounded-lg text-xs font-bold text-white disabled:opacity-60"
+                      style={{ background: '#08BD80' }}
+                    >
+                      {uploading ? 'Uploading...' : 'Upload Image'}
+                    </button>
+                    {data.photo && (
+                      <button
+                        type="button"
+                        onClick={() => set('photo', '')}
+                        className="px-3 py-2 rounded-lg text-xs font-bold text-red-500 border border-red-200 hover:bg-red-50"
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                  <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handlePhotoChange} />
+                </div>
+              </div>
             </FieldGroup>
             <FieldGroup label="Experience">
               <TextInput value={data.experience} onChange={(v) => set('experience', v)} placeholder="e.g. 15+ Years" />

@@ -1,13 +1,11 @@
 import { notFound } from 'next/navigation';
-import { facultyMembers } from '@/data/faculty';
-import { getFacultyBySlug } from '@/lib/getData';
+import Link from 'next/link';
+import { getFaculty, getFacultyBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
-export function generateStaticParams() {
-  return facultyMembers.map((f) => ({ slug: f.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -24,7 +22,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
   const f = getFacultyBySlug(slug);
   if (!f) notFound();
 
-  const otherFaculty = facultyMembers.filter((m) => m.slug !== slug).slice(0, 4);
+  const otherFaculty = getFaculty().filter((m) => m.slug !== slug).slice(0, 4);
 
   return (
     <>
@@ -37,14 +35,18 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-10"
             style={{ background: f.color }} />
           <div className="max-w-7xl mx-auto px-4">
-            <a href="/" className="inline-flex items-center gap-1 text-white/50 text-sm mb-6 hover:text-white transition-colors">
+            <Link href="/" className="inline-flex items-center gap-1 text-white/50 text-sm mb-6 hover:text-white transition-colors">
               ← Back to Home
-            </a>
+            </Link>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
               {/* Avatar */}
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-3xl flex items-center justify-center text-white font-black text-4xl md:text-5xl flex-shrink-0"
-                style={{ background: `linear-gradient(135deg, ${f.color}, ${f.color}aa)` }}>
-                {f.avatar}
+                style={{ background: `linear-gradient(135deg, ${f.color}, ${f.color}aa)`, overflow: 'hidden' }}>
+                {f.photo ? (
+                  <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
+                ) : (
+                  f.avatar
+                )}
               </div>
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -90,17 +92,19 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
               style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: 'white', textDecoration: 'none', background: f.color }}>
               📞 Book Session
             </a>
-            <a href="/courses/mentorship"
+            <Link href="/courses/mentorship"
               style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: f.color, textDecoration: 'none', background: 'white', border: `1.5px solid ${f.color}` }}>
               Mentorship →
-            </a>
+            </Link>
           </div>
           {otherFaculty.length > 0 && (
             <div style={{ overflowX: 'auto', display: 'flex', gap: '10px', paddingBottom: '2px' }} className="scrollbar-none">
               {otherFaculty.map((m) => (
                 <a key={m.slug} href={`/faculty/${m.slug}`}
                   style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '99px', background: 'white', border: '1.5px solid #E9EEF2', textDecoration: 'none' }}>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '8px', background: m.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '10px', fontWeight: 800 }}>{m.avatar}</div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '8px', background: m.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '10px', fontWeight: 800, overflow: 'hidden' }}>
+                    {m.photo ? <img src={m.photo} alt={m.name} className="w-full h-full object-cover" /> : m.avatar}
+                  </div>
                   <span style={{ fontSize: '11px', fontWeight: 700, color: '#0D1837', whiteSpace: 'nowrap' }}>{m.name.split(' ').slice(-1)[0]}</span>
                 </a>
               ))}
@@ -190,8 +194,8 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
                 {/* Book Session */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-xl mb-4"
-                    style={{ background: f.color }}>
-                    {f.avatar}
+                    style={{ background: f.color, overflow: 'hidden' }}>
+                    {f.photo ? <img src={f.photo} alt={f.name} className="w-full h-full object-cover" /> : f.avatar}
                   </div>
                   <h3 className="font-black text-base" style={{ color: '#0D1837' }}>Book a Session</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4">
@@ -202,11 +206,11 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
                     style={{ background: f.color }}>
                     📞 Call to Book
                   </a>
-                  <a href="/courses/mentorship"
+                  <Link href="/courses/mentorship"
                     className="block text-center py-3 rounded-xl font-bold text-sm border-2"
                     style={{ borderColor: f.color, color: f.color }}>
                     Mentorship Program
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Stats */}
@@ -232,8 +236,8 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
                       <a key={m.slug} href={`/faculty/${m.slug}`}
                         className="flex items-center gap-3 hover:bg-gray-50 rounded-xl p-2 transition-colors">
                         <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-xs font-black flex-shrink-0"
-                          style={{ background: m.color }}>
-                          {m.avatar}
+                          style={{ background: m.color, overflow: 'hidden' }}>
+                          {m.photo ? <img src={m.photo} alt={m.name} className="w-full h-full object-cover" /> : m.avatar}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-semibold text-xs text-gray-900 truncate">{m.name}</div>

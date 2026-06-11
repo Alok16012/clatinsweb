@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticatedRequest } from '@/lib/auth';
 import { readJSON, writeJSON, generateSlug } from '@/lib/dataStore';
-import { facultyMembers as defaultFaculty } from '@/data/faculty';
 import type { FacultyMember } from '@/data/faculty';
 
 function getData(): FacultyMember[] {
-  return readJSON<FacultyMember[]>('faculty.json', defaultFaculty);
+  return readJSON<FacultyMember[]>('faculty.json', []);
 }
 
 export async function GET(req: NextRequest) {

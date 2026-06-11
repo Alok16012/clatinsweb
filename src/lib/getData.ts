@@ -8,7 +8,6 @@ import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, isSupabaseC
 import { courses as defaultCourses } from '@/data/courses';
 import { batches as defaultBatches } from '@/data/batches';
 import { exams as defaultExams } from '@/data/exams';
-import { facultyMembers as defaultFaculty } from '@/data/faculty';
 import { blogs as defaultBlogs } from '@/data/blogs';
 
 import type { Course } from '@/data/courses';
@@ -67,7 +66,7 @@ export function getExamBySlug(slug: string): Exam | undefined {
 }
 
 export function getFaculty(): FacultyMember[] {
-  return readJSON<FacultyMember[]>('faculty.json', defaultFaculty);
+  return readJSON<FacultyMember[]>('faculty.json', []);
 }
 
 export function getFacultyBySlug(slug: string): FacultyMember | undefined {

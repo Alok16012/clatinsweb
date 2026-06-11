@@ -8,6 +8,7 @@ export interface FacultyMember {
   students: string;
   experience: string;
   avatar: string;
+  photo?: string;
   color: string;
   bg: string;
   tags: string[];
