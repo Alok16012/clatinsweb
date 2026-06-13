@@ -157,8 +157,29 @@ function BatchSummary({ course, batches }: { course: Course; batches: Batch[] })
   );
 }
 
-export default function ClatNavigatorPageContent({ course, batches = [] }: { course?: Course; batches?: Batch[] }) {
+export default function ClatNavigatorPageContent({ course, batch, batches = [] }: { course?: Course; batch?: Batch; batches?: Batch[] }) {
+  const isBatchDetail = Boolean(batch);
   const pageCourse = course ?? defaultCourse;
+  const batchOverview = batch?.description?.trim();
+  const batchHighlights = (batch?.highlights || []).map((item) => item.trim()).filter(Boolean);
+  const batchBenefits = (batch?.details?.aboutFeatures || []).filter((item) => item.title?.trim() || item.subtitle?.trim());
+  const batchRoadmap = (batch?.details?.strategySections || [])
+    .map((item, index) => ({
+      phase: item.title?.trim() || `Stage ${index + 1}`,
+      time: item.subtitle?.trim() || `Stage ${index + 1}`,
+      items: (item.items || []).map((topic) => topic.trim()).filter(Boolean),
+    }))
+    .filter((item) => item.phase || item.items.length > 0);
+  const batchFaqs = (batch?.details?.faqs || []).filter((item) => item.question?.trim() && item.answer?.trim());
+  const batchExtraDetails = (batch?.details?.moreDetails || []).map((item) => item.trim()).filter(Boolean).slice(0, 4);
+  const batchPlans = (batch?.details?.plans || [])
+    .map((plan) => ({
+      name: plan.name?.trim(),
+      price: plan.price?.trim(),
+      features: (plan.features || []).map((feature) => feature.trim()).filter(Boolean).slice(0, 5),
+    }))
+    .filter((plan) => plan.name || plan.price || plan.features.length > 0)
+    .slice(0, 2);
   const adminHighlights = (course?.features || []).map((item) => item.trim()).filter(Boolean);
   const adminAudience = (course?.whoFor || []).map((item) => item.trim()).filter(Boolean);
   const adminBenefits = (course?.includes || []).filter((item) => item.label?.trim() || item.value?.trim());
@@ -170,25 +191,42 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
     }))
     .filter((item) => item.phase || item.items.length > 0);
 
-  const pageHighlights = adminHighlights.length > 0 ? adminHighlights : highlights;
+  const pageTitle = batch?.name || pageCourse.title;
+  const pageTagline = batch?.exam && batch?.mode
+    ? `${defaultCourse.tagline} ${batch.exam} · ${batch.mode}`
+    : (pageCourse.tagline || defaultCourse.tagline);
+  const pageOverview = batchOverview || pageCourse.overview || defaultCourse.overview;
+  const pageHighlights = batchHighlights.length > 0 ? batchHighlights : adminHighlights.length > 0 ? adminHighlights : highlights;
   const pageAudience = adminAudience.length > 0
     ? adminAudience.map((item) => [item, 'Personal mentorship support designed around this need.'])
     : audience;
-  const pageBenefits = adminBenefits.length > 0
+  const pageBenefits = batchBenefits.length > 0
+    ? batchBenefits.map((item) => [item.title || 'Program Benefit', item.subtitle || 'Included'])
+    : adminBenefits.length > 0
     ? adminBenefits.map((item) => [item.label || 'Program Benefit', item.value || 'Included'])
     : benefits;
-  const pageRoadmap = adminRoadmap.length > 0
+  const pageRoadmap = batchRoadmap.length > 0
+    ? batchRoadmap.map((item) => [item.phase, item.time, item.items.length > 0 ? item.items : ['Personal mentor guidance']])
+    : adminRoadmap.length > 0
     ? adminRoadmap.map((item) => [item.phase, item.time, item.items.length > 0 ? item.items : ['Personal mentor guidance']])
     : roadmap;
+  const pageFaqs = batchFaqs.length > 0
+    ? batchFaqs.map((item) => [item.question, item.answer])
+    : faqs;
+  const visibleHighlights = isBatchDetail ? pageHighlights.slice(0, 6) : pageHighlights;
+  const visibleBenefits = isBatchDetail ? pageBenefits.slice(0, 6) : pageBenefits;
+  const visibleFaqs = isBatchDetail ? pageFaqs.slice(0, 4) : pageFaqs;
+  const visibleTracking = isBatchDetail ? tracking.slice(0, 4) : tracking;
+  const visibleSupport = isBatchDetail ? support.slice(0, 4) : support;
   const programDetails = [
     ['Program Type', 'Personal Mentorship'],
     ['Eligibility', 'Class 12 Students, Self-Study Aspirants & Droppers'],
-    ['Duration', pageCourse.duration || defaultCourse.duration],
-    ['Mode', pageCourse.mode || defaultCourse.mode],
+    ['Duration', batch?.duration || pageCourse.duration || defaultCourse.duration],
+    ['Mode', batch?.mode || pageCourse.mode || defaultCourse.mode],
     ['Mentor Access', 'Dedicated Mentor'],
     ['Parent Updates', 'Included'],
-    ['Seats', pageCourse.batchSize || defaultCourse.batchSize],
-    ['Fee', pageCourse.fee || defaultCourse.fee],
+    ['Seats', batch ? (batch.seats >= 999 ? 'Open Enrollment' : `${Math.max(batch.seats - batch.filled, 0)} of ${batch.seats} Seats Left`) : pageCourse.batchSize || defaultCourse.batchSize],
+    ['Fee', batch?.fee || pageCourse.fee || defaultCourse.fee],
   ];
 
   return (
@@ -204,9 +242,9 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
             <div>
               <Link href="/courses?cat=mentorship" className="mb-6 inline-flex text-sm font-semibold text-white/50 hover:text-white">← Back to Mentorship Programs</Link>
               <span className="inline-flex rounded-full px-3 py-1 text-xs font-black uppercase tracking-wider" style={{ background: 'rgba(8,189,128,0.18)', color: '#5DE2B2', border: '1px solid rgba(93,226,178,0.28)' }}>Personal Mentorship</span>
-              <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">{pageCourse.title}</h1>
-              <p className="mt-3 text-xl font-bold text-white/85 md:text-2xl">{pageCourse.tagline || defaultCourse.tagline}</p>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/62">{pageCourse.overview || defaultCourse.overview}</p>
+              <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">{pageTitle}</h1>
+              <p className="mt-3 text-xl font-bold text-white/85 md:text-2xl">{pageTagline}</p>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/62">{pageOverview}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="#lead-form" className="rounded-xl px-6 py-3 text-sm font-black text-white" style={{ background: '#08BD80' }}>Book Free Counselling</a>
                 <a href="tel:8507700177" className="rounded-xl border border-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">Talk to a Mentor</a>
@@ -227,15 +265,15 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
           </div>
         </section>
 
-        {course && <BatchSummary course={course} batches={batches} />}
+        {course && !batch && <BatchSummary course={course} batches={batches} />}
 
         <section className="mx-auto max-w-7xl px-4 py-10 md:py-14">
           <div className="mb-6">
             <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Quick Highlights</span>
             <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Why Students Choose CLAT Navigator™</h2>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {pageHighlights.map((item) => <CheckItem key={item} text={item} />)}
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleHighlights.map((item) => <CheckItem key={item} text={item} />)}
           </div>
         </section>
 
@@ -263,24 +301,28 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-10 md:py-14">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>The Problems We Solve</span>
-              <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Common Challenges Faced by CLAT Aspirants</h2>
-              <div className="mt-6 space-y-3">
-                {problems.map(([title, desc]) => (
-                  <div key={title} className="rounded-2xl border border-gray-100 bg-white p-5">
-                    <h3 className="font-black" style={{ color: '#0D1837' }}>{title}</h3>
-                    <p className="mt-1 text-sm text-gray-500">{desc}</p>
-                  </div>
-                ))}
+          <div className={`grid gap-8 ${isBatchDetail ? '' : 'lg:grid-cols-2'}`}>
+            {!isBatchDetail && (
+              <div>
+                <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>The Problems We Solve</span>
+                <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Common Challenges Faced by CLAT Aspirants</h2>
+                <div className="mt-6 space-y-3">
+                  {problems.map(([title, desc]) => (
+                    <div key={title} className="rounded-2xl border border-gray-100 bg-white p-5">
+                      <h3 className="font-black" style={{ color: '#0D1837' }}>{title}</h3>
+                      <p className="mt-1 text-sm text-gray-500">{desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>What You Will Get</span>
-              <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Personalised Mentorship Benefits</h2>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {pageBenefits.map(([title, desc]) => (
+              <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>
+                {isBatchDetail ? 'Mentorship That Keeps You Moving' : 'Personalised Mentorship Benefits'}
+              </h2>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {visibleBenefits.map(([title, desc]) => (
                   <div key={title} className="rounded-2xl border border-gray-100 bg-white p-4">
                     <h3 className="text-sm font-black" style={{ color: '#0D1837' }}>{title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-gray-500">{desc}</p>
@@ -302,7 +344,7 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
                   <h3 className="text-sm font-black" style={{ color: '#0D1837' }}>{phase as string}</h3>
                   <p className="mt-1 text-xs font-bold" style={{ color: '#08BD80' }}>{time as string}</p>
                   <ul className="mt-4 space-y-2">
-                    {(items as string[]).map((item) => <li key={item} className="text-xs leading-relaxed text-gray-600">✓ {item}</li>)}
+                    {(items as string[]).slice(0, isBatchDetail ? 3 : undefined).map((item) => <li key={item} className="text-xs leading-relaxed text-gray-600">✓ {item}</li>)}
                   </ul>
                 </div>
               ))}
@@ -315,13 +357,13 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
             <h2 className="text-2xl font-black">Study Smarter with Data-Driven Insights</h2>
             <p className="mt-3 text-sm leading-relaxed text-white/65">Our AI-supported systems help you understand your preparation better.</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {tracking.map((item) => <div key={item} className="rounded-xl bg-white/10 px-4 py-3 text-sm font-bold">✓ {item}</div>)}
+              {visibleTracking.map((item) => <div key={item} className="rounded-xl bg-white/10 px-4 py-3 text-sm font-bold">✓ {item}</div>)}
             </div>
           </div>
           <div className="rounded-2xl border border-gray-100 bg-white p-6">
             <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Continuous Guidance Throughout Your Journey</h2>
             <div className="mt-5 divide-y divide-gray-100">
-              {support.map(([label, value]) => (
+              {visibleSupport.map(([label, value]) => (
                 <div key={label} className="flex justify-between gap-4 py-3">
                   <span className="text-sm text-gray-500">{label}</span>
                   <span className="text-sm font-black" style={{ color: '#0D1837' }}>{value}</span>
@@ -331,34 +373,83 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
           </div>
         </section>
 
-        <section className="bg-white py-10 md:py-14">
-          <div className="mx-auto grid max-w-7xl gap-6 px-4 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Parent Partnership</span>
-              <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Keeping Parents Informed</h2>
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                Parents often wish to support their children but do not know how. CLAT Navigator™ includes structured communication so families understand preparation progress, strengths and weaknesses, areas requiring support, and realistic expectations.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {differentiators.map((item) => <CheckItem key={item} text={item} />)}
-            </div>
-          </div>
-        </section>
+        {isBatchDetail && (batchExtraDetails.length > 0 || batchPlans.length > 0) && (
+          <section className="bg-white py-10 md:py-14">
+            <div className={`mx-auto grid max-w-7xl gap-6 px-4 ${batchPlans.length > 0 ? 'lg:grid-cols-[1fr_0.85fr]' : ''}`}>
+              {batchExtraDetails.length > 0 && (
+                <div>
+                  <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Program Notes</span>
+                  <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Extra Guidance Built Into This Program</h2>
+                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {batchExtraDetails.map((item, index) => (
+                      <div key={item} className="rounded-2xl border border-gray-100 p-5" style={{ background: '#F8FAFC' }}>
+                        <p className="text-xs font-black" style={{ color: '#08BD80' }}>{String(index + 1).padStart(2, '0')}</p>
+                        <p className="mt-2 text-sm font-semibold leading-relaxed text-gray-600">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-        <section className="mx-auto max-w-7xl px-4 py-10 md:py-14">
-          <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Student Journey</span>
-          <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>From Confusion to Confidence</h2>
-          <div className="mt-7 grid gap-3 md:grid-cols-6">
-            {journey.map(([title, desc], idx) => (
-              <div key={title} className="rounded-2xl border border-gray-100 bg-white p-4">
-                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-xl text-xs font-black text-white" style={{ background: '#08BD80' }}>{idx + 1}</div>
-                <h3 className="font-black" style={{ color: '#0D1837' }}>{title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-gray-500">{desc}</p>
+              {batchPlans.length > 0 && (
+                <div>
+                  <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Plans</span>
+                  <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Choose Your Mentorship Plan</h2>
+                  <div className="mt-6 space-y-3">
+                    {batchPlans.map((plan, index) => (
+                      <div key={plan.name || plan.price || `plan-${index}`} className="rounded-2xl border border-gray-100 p-5" style={{ background: '#F8FAFC' }}>
+                        <div className="flex items-start justify-between gap-3">
+                          <h3 className="font-black" style={{ color: '#0D1837' }}>{plan.name || pageTitle}</h3>
+                          {plan.price && <span className="font-black" style={{ color: '#08BD80' }}>{plan.price}</span>}
+                        </div>
+                        {plan.features.length > 0 && (
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {plan.features.map((feature) => (
+                              <span key={feature} className="rounded-full px-3 py-1.5 text-xs font-bold" style={{ background: '#E6FAF4', color: '#087F5B' }}>{feature}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {!isBatchDetail && (
+          <>
+            <section className="bg-white py-10 md:py-14">
+              <div className="mx-auto grid max-w-7xl gap-6 px-4 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Parent Partnership</span>
+                  <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Keeping Parents Informed</h2>
+                  <p className="mt-4 text-gray-600 leading-relaxed">
+                    Parents often wish to support their children but do not know how. CLAT Navigator™ includes structured communication so families understand preparation progress, strengths and weaknesses, areas requiring support, and realistic expectations.
+                  </p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {differentiators.map((item) => <CheckItem key={item} text={item} />)}
+                </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
+
+            <section className="mx-auto max-w-7xl px-4 py-10 md:py-14">
+              <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>Student Journey</span>
+              <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>From Confusion to Confidence</h2>
+              <div className="mt-7 grid gap-3 md:grid-cols-6">
+                {journey.map(([title, desc], idx) => (
+                  <div key={title} className="rounded-2xl border border-gray-100 bg-white p-4">
+                    <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-xl text-xs font-black text-white" style={{ background: '#08BD80' }}>{idx + 1}</div>
+                    <h3 className="font-black" style={{ color: '#0D1837' }}>{title}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-gray-500">{desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
 
         <section className="bg-white py-10 md:py-14">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1fr_0.85fr]">
@@ -366,7 +457,7 @@ export default function ClatNavigatorPageContent({ course, batches = [] }: { cou
               <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#08BD80' }}>FAQs</span>
               <h2 className="mt-2 text-2xl font-black md:text-3xl" style={{ color: '#0D1837' }}>Frequently Asked Questions</h2>
               <div className="mt-6 space-y-3">
-                {faqs.map(([q, a], idx) => (
+                {visibleFaqs.map(([q, a], idx) => (
                   <details key={q} className="rounded-2xl border border-gray-100 bg-white p-5" open={idx === 0}>
                     <summary className="cursor-pointer select-none font-black" style={{ color: '#0D1837' }}>{q}</summary>
                     <p className="mt-3 text-sm leading-relaxed text-gray-500">{a}</p>

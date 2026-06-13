@@ -8,7 +8,7 @@ const navLinks = [
     sub: [
       { label: '🏫 Offline Course', href: '/courses?cat=offline' },
       { label: '💻 Online Course', href: '/courses?cat=online' },
-      { label: '🎯 Mentorship', href: '/mentorship-programs/clat-navigator' },
+      { label: '🎯 Mentorship', href: '/courses?cat=mentorship' },
       { label: '📝 Mock Tests', href: '/courses?cat=mock' },
     ],
   },

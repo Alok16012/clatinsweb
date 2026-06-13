@@ -29,7 +29,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   if (isSupabaseConfigured()) {
     try {
       const row = batchToRow(body);
-      const { data, error } = await supabaseAdmin().from('batches').update(row).eq('slug', slug).select(BATCH_COLUMNS).single();
+      let { data, error } = await supabaseAdmin().from('batches').update(row).eq('slug', slug).select(BATCH_COLUMNS).single();
+      if (error && (error.code === 'PGRST116' || /0 rows|JSON object requested|not found/i.test(error.message))) {
+        const inserted = await supabaseAdmin().from('batches').insert(row).select(BATCH_COLUMNS).single();
+        data = inserted.data;
+        error = inserted.error;
+      }
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
       return NextResponse.json(data);
     } catch (e) {
@@ -38,7 +43,11 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   }
   const data = readJSON<Batch[]>('batches.json', defaultBatches);
   const idx = data.findIndex((b) => b.slug === slug);
-  if (idx === -1) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  if (idx === -1) {
+    data.push(body as Batch);
+    writeJSON('batches.json', data);
+    return NextResponse.json(body);
+  }
   data[idx] = { ...data[idx], ...body };
   writeJSON('batches.json', data);
   return NextResponse.json(data[idx]);

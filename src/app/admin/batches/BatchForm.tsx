@@ -94,6 +94,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
   const categoryOptions = [
     { value: 'offline', label: 'Offline' },
     { value: 'online', label: 'Online' },
+    { value: 'mentorship', label: 'Mentorship' },
     { value: 'mock', label: 'Mock Test' },
   ];
 
@@ -102,6 +103,37 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
     { value: 'English', label: 'English' },
     { value: 'Bilingual', label: 'Bilingual' },
   ];
+
+  const isMentorship = data.category === 'mentorship';
+  const isMock = data.category === 'mock';
+  const accent = isMock ? '#3B82F6' : '#08BD80';
+  const pageNote = isMentorship
+    ? 'Mentorship detail page uses: description, highlights, chips, feature cards, roadmap/stages, more detail points, plans and FAQs.'
+    : isMock
+    ? 'Mock detail page uses: description, highlights, included chips, test coverage, analytics cards, practice flow, more detail points, plans and FAQs.'
+    : '';
+  const labels = {
+    description: isMentorship ? 'Hero overview / mentorship description' : isMock ? 'Hero overview / mock pack description' : 'Description',
+    highlights: isMentorship ? 'Hero highlights / mentorship promises' : isMock ? 'What You Get (hero checklist)' : "Highlights (hero — What's Included)",
+    chips: isMentorship ? 'Included tags / support modes' : isMock ? 'Included tags (shown as chips)' : 'Batch Includes (chips)',
+    syllabus: isMentorship ? 'Coverage / focus areas' : isMock ? 'Test Coverage' : 'Syllabus',
+    faculty: isMentorship ? 'Mentor / team names' : isMock ? 'Mock team / faculty names' : 'Faculty',
+    aboutTitle: isMentorship ? 'Mentorship Benefits' : isMock ? 'Mock Analytics Cards' : 'About the Batch',
+    aboutDuration: isMentorship ? 'Program duration label' : isMock ? 'Access duration label' : 'Duration (about)',
+    aboutStrategy: isMentorship ? 'Mentorship strategy summary' : isMock ? 'Mock practice summary' : 'Strategy summary (one-line, inside About box)',
+    aboutFeaturesLabel: isMentorship ? 'Benefits section label' : isMock ? 'Analytics section label' : 'Feature List Label (heading above the feature cards)',
+    featureCards: isMentorship ? 'Benefit Cards (title + subtitle)' : isMock ? 'Analytics / Feature Cards (title + subtitle)' : 'Feature Cards (title + subtitle)',
+    strategyTitle: isMentorship ? 'Roadmap / Mentorship Stages' : isMock ? 'Practice Flow / Steps' : 'Batch Strategy (expandable cards)',
+    strategyCards: isMentorship ? 'Roadmap cards (stage + details)' : isMock ? 'Practice flow cards (step + details)' : 'Batch Strategy Cards (heading + details)',
+    strategyHint: isMentorship
+      ? 'Each card becomes one roadmap stage on the mentorship detail page.'
+      : isMock
+      ? 'Each card becomes one practice-flow step on the mock detail page.'
+      : 'Each card shows as an expandable accordion on the batch page — heading on top, detail points inside. Add as many as you need (e.g. Subject Covering, Mock Test Series).',
+    plansTitle: isMentorship ? 'Mentorship Plans / Packages' : isMock ? 'Mock Pack Plans' : 'Pricing Plans (Choose Your Plan)',
+    moreDetailsTitle: isMentorship ? 'Extra Mentorship Details' : isMock ? 'Why This Mock Pack Works' : 'More Details (numbered points)',
+    moreDetails: isMentorship ? 'Extra points shown on the mentorship detail page' : isMock ? 'Extra points shown on the mock detail page' : 'Detail points (shown as 01, 02, 03 …)',
+  };
 
   return (
     <div>
@@ -117,6 +149,15 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
+        {pageNote && (
+          <div className="rounded-2xl border bg-white px-5 py-4 text-sm font-semibold text-gray-700" style={{ borderColor: `${accent}33`, boxShadow: `0 10px 30px ${accent}12` }}>
+            <span className="mr-2 rounded-full px-2 py-1 text-xs font-black text-white" style={{ background: accent }}>
+              {isMock ? 'MOCK' : 'MENTORSHIP'}
+            </span>
+            {pageNote}
+          </div>
+        )}
+
         <SectionCard title="Batch Identity">
           <div className="grid md:grid-cols-2 gap-4">
             <FieldGroup label="Batch Name">
@@ -193,31 +234,31 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
         </SectionCard>
 
         <SectionCard title="Content">
-          <FieldGroup label="Description">
+          <FieldGroup label={labels.description}>
             <TextareaInput value={data.description} onChange={(v) => set('description', v)} rows={4} placeholder="Batch description..." />
           </FieldGroup>
-          <StringArrayEditor label="Highlights (hero — What's Included)" items={data.highlights} onChange={(v) => set('highlights', v)} placeholder="e.g. Daily classroom sessions" />
-          <StringArrayEditor label="Batch Includes (chips)" items={data.chips} onChange={(v) => set('chips', v)} placeholder="e.g. Offline Classes" />
-          <StringArrayEditor label="Syllabus" items={data.syllabus} onChange={(v) => set('syllabus', v)} placeholder="e.g. English Language" />
-          <StringArrayEditor label="Faculty" items={data.faculty} onChange={(v) => set('faculty', v)} placeholder="e.g. A.K. Singh" />
+          <StringArrayEditor label={labels.highlights} items={data.highlights} onChange={(v) => set('highlights', v)} placeholder={isMock ? 'e.g. Full-length CLAT mock with detailed solutions' : 'e.g. Weekly personal mentor review'} />
+          <StringArrayEditor label={labels.chips} items={data.chips} onChange={(v) => set('chips', v)} placeholder={isMock ? 'e.g. Online Test Access' : 'e.g. Personal Mentorship'} />
+          <StringArrayEditor label={labels.syllabus} items={data.syllabus} onChange={(v) => set('syllabus', v)} placeholder={isMock ? 'e.g. Legal Reasoning' : 'e.g. Mock analysis and weekly planning'} />
+          <StringArrayEditor label={labels.faculty} items={data.faculty} onChange={(v) => set('faculty', v)} placeholder="e.g. A.K. Singh" />
         </SectionCard>
 
         {/* About the Batch */}
-        <SectionCard title="About the Batch">
+        <SectionCard title={labels.aboutTitle}>
           <div className="grid md:grid-cols-2 gap-4">
-            <FieldGroup label="Duration (about)">
+            <FieldGroup label={labels.aboutDuration}>
               <TextInput value={details.aboutDuration ?? ''} onChange={(v) => setDetail('aboutDuration', v)} placeholder="e.g. From Admission – CLAT 2028 Exam" />
             </FieldGroup>
-            <FieldGroup label="Strategy summary (one-line, inside About box)">
+            <FieldGroup label={labels.aboutStrategy}>
               <TextInput value={details.aboutStrategy ?? ''} onChange={(v) => setDetail('aboutStrategy', v)} placeholder="e.g. Basic Syllabus → Advance Syllabus → Mock Test Series" />
             </FieldGroup>
           </div>
           {/* About feature cards */}
           <div className="space-y-4">
-            <FieldGroup label="Feature List Label (heading above the feature cards)">
+            <FieldGroup label={labels.aboutFeaturesLabel}>
               <TextInput value={details.aboutFeaturesLabel ?? ''} onChange={(v) => setDetail('aboutFeaturesLabel', v)} placeholder="e.g. Online Resources Access" />
             </FieldGroup>
-            <label className="block text-sm font-semibold text-gray-700">Feature Cards (title + subtitle)</label>
+            <label className="block text-sm font-semibold text-gray-700">{labels.featureCards}</label>
             {aboutFeatures.map((f, i) => (
               <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-2">
                 <div className="flex gap-2">
@@ -248,11 +289,11 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
         </SectionCard>
 
         {/* Batch Strategy (expandable cards) */}
-        <SectionCard title="Batch Strategy (expandable cards)">
+        <SectionCard title={labels.strategyTitle}>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700">Batch Strategy Cards (heading + details)</label>
-              <p className="text-xs text-gray-400 mt-0.5">Each card shows as an expandable accordion on the batch page — heading on top, detail points inside. Add as many as you need (e.g. Subject Covering, Mock Test Series).</p>
+              <label className="block text-sm font-semibold text-gray-700">{labels.strategyCards}</label>
+              <p className="text-xs text-gray-400 mt-0.5">{labels.strategyHint}</p>
             </div>
             {strategySections.map((sec, i) => (
               <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
@@ -290,7 +331,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
         </SectionCard>
 
         {/* Pricing Plans */}
-        <SectionCard title="Pricing Plans (Choose Your Plan)">
+        <SectionCard title={labels.plansTitle}>
           <div className="space-y-4">
             {plans.map((plan, i) => (
               <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
@@ -328,9 +369,9 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
         </SectionCard>
 
         {/* More Details */}
-        <SectionCard title="More Details (numbered points)">
+        <SectionCard title={labels.moreDetailsTitle}>
           <StringArrayEditor
-            label="Detail points (shown as 01, 02, 03 …)"
+            label={labels.moreDetails}
             items={details.moreDetails ?? []}
             onChange={(v) => setDetail('moreDetails', v)}
             placeholder="e.g. Comprehensive Preparation Method & Syllabus Coverage"

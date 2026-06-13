@@ -42,7 +42,7 @@ export interface BatchDetails {
 export interface Batch {
   slug: string;
   courseSlug: string;
-  category: 'offline' | 'online' | 'mock';
+  category: 'offline' | 'online' | 'mentorship' | 'mock';
   name: string;
   exam: string;
   batchCode: string;

@@ -1,7 +1,7 @@
 const courses = [
   { label: 'Offline Course', href: '/courses?cat=offline' },
   { label: 'Online Course', href: '/courses?cat=online' },
-  { label: 'CLAT Navigator™', href: '/mentorship-programs/clat-navigator' },
+  { label: 'CLAT Navigator™', href: '/courses/clat-mentorship-program/clat-navigator' },
   { label: 'Mock Tests', href: '/courses?cat=mock' },
 ];
 

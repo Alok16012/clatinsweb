@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { getCourses, getCourseBySlug, getBatchesByCourse } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ClatNavigatorPageContent, { clatNavigatorFaqSchema } from '@/components/ClatNavigatorPageContent';
 import type { Metadata } from 'next';
 
 // Always render fresh so admin edits to courses/batches show immediately.
@@ -26,15 +25,6 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   const allCourses = await getCourses();
   const otherCourses = allCourses.filter((c) => c.slug !== slug);
   const courseBatches = await getBatchesByCourse(slug);
-
-  if (course.category === 'mentorship') {
-    return (
-      <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clatNavigatorFaqSchema) }} />
-        <ClatNavigatorPageContent course={course} batches={courseBatches} />
-      </>
-    );
-  }
 
   return (
     <>
@@ -212,7 +202,8 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                   <div className="divide-y divide-gray-50">
                     {courseBatches.map((batch) => {
                       const seatsLeft = batch.seats - batch.filled;
-                      const pct = Math.round((batch.filled / batch.seats) * 100);
+                      const isOpenEnrollment = batch.seats >= 999;
+                      const pct = isOpenEnrollment ? 0 : Math.round((batch.filled / batch.seats) * 100);
                       return (
                         <a key={batch.slug} href={`/courses/${slug}/${batch.slug}`}
                           className="flex flex-col gap-2 p-4 hover:bg-gray-50 transition-colors group">
@@ -243,13 +234,15 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                           {/* Seat fill bar */}
                           <div>
                             <div className="flex justify-between text-[10px] text-gray-400 mb-1">
-                              <span>{seatsLeft} seats left</span>
-                              <span>{pct}% filled</span>
+                              <span>{isOpenEnrollment ? 'Open Enrollment' : `${seatsLeft} seats left`}</span>
+                              {!isOpenEnrollment && <span>{pct}% filled</span>}
                             </div>
-                            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                              <div className="h-full rounded-full transition-all"
-                                style={{ width: `${pct}%`, background: pct > 80 ? '#ef4444' : pct > 50 ? '#f59e0b' : course.color }} />
-                            </div>
+                            {!isOpenEnrollment && (
+                              <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div className="h-full rounded-full transition-all"
+                                  style={{ width: `${pct}%`, background: pct > 80 ? '#ef4444' : pct > 50 ? '#f59e0b' : course.color }} />
+                              </div>
+                            )}
                           </div>
 
                           <div className="text-[10px] font-semibold flex items-center gap-1" style={{ color: course.color }}>
