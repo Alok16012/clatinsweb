@@ -81,11 +81,11 @@ export default function BatchesListClient({ initialBatches }: { initialBatches: 
                       <button
                         onClick={() => handleDelete(b.slug, b.name)}
                         disabled={deletingSlug === b.slug}
-                        className="text-xs font-semibold px-2.5 py-1.5 rounded-lg border transition-colors disabled:opacity-50"
+                        className="text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-50"
                         style={{ borderColor: '#fecaca', color: '#dc2626', background: '#fff5f5' }}
                         title="Delete batch"
                       >
-                        {deletingSlug === b.slug ? '…' : '🗑'}
+                        {deletingSlug === b.slug ? 'Deleting...' : 'Delete'}
                       </button>
                     </div>
                   </td>

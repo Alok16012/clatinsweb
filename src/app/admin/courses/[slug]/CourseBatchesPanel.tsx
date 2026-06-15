@@ -1,5 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import type { Batch } from '@/data/batches';
+import { adminFetch } from '@/lib/adminFetch';
 
 const statusConfig: Record<string, { bg: string; color: string; label: string }> = {
   'ongoing':      { bg: '#dcfce7', color: '#166534', label: '✅ Open' },
@@ -16,12 +20,28 @@ export default function CourseBatchesPanel({
   courseTitle: string;
   batches: Batch[];
 }) {
+  const [items, setItems] = useState<Batch[]>(batches);
+  const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
+
+  async function handleDelete(slug: string, name: string) {
+    if (!confirm(`Delete "${name}"?`)) return;
+    setDeletingSlug(slug);
+    try {
+      const res = await adminFetch(`/api/admin/batches/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+      if (res.ok) setItems((prev) => prev.filter((batch) => batch.slug !== slug));
+      else alert('Delete failed. Please try again.');
+    } catch {
+      alert('Delete failed — network error.');
+    }
+    setDeletingSlug(null);
+  }
+
   return (
     <div id="batches" className="mt-10 max-w-4xl">
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-lg font-black text-gray-900">Batches for this Course</h2>
-          <p className="text-sm text-gray-400 mt-0.5">{batches.length} batch{batches.length !== 1 ? 'es' : ''} under {courseTitle}</p>
+          <p className="text-sm text-gray-400 mt-0.5">{items.length} batch{items.length !== 1 ? 'es' : ''} under {courseTitle}</p>
         </div>
         <Link
           href={`/admin/batches/new?courseSlug=${courseSlug}`}
@@ -31,7 +51,7 @@ export default function CourseBatchesPanel({
         </Link>
       </div>
 
-      {batches.length === 0 ? (
+      {items.length === 0 ? (
         <div className="bg-white rounded-2xl border border-dashed border-gray-200 p-10 text-center">
           <div className="text-3xl mb-2">📦</div>
           <div className="font-bold text-gray-400 mb-1">No batches yet</div>
@@ -53,7 +73,7 @@ export default function CourseBatchesPanel({
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {batches.map(b => {
+              {items.map(b => {
                 const pct = Math.round((b.filled / b.seats) * 100);
                 const st = statusConfig[b.status] || statusConfig.upcoming;
                 return (
@@ -73,11 +93,22 @@ export default function CourseBatchesPanel({
                       <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ background: st.bg, color: st.color }}>{st.label}</span>
                     </td>
                     <td className="px-4 py-4">
-                      <Link href={`/admin/batches/${b.slug}`}
-                        className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                        style={{ background: '#E6FAF4', color: '#08BD80' }}>
-                        Edit
-                      </Link>
+                      <div className="flex items-center gap-2">
+                        <Link href={`/admin/batches/${b.slug}`}
+                          className="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                          style={{ background: '#E6FAF4', color: '#08BD80' }}>
+                          Edit
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => handleDelete(b.slug, b.name)}
+                          disabled={deletingSlug === b.slug}
+                          className="text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-50"
+                          style={{ borderColor: '#fecaca', color: '#dc2626', background: '#fff5f5' }}
+                        >
+                          {deletingSlug === b.slug ? 'Deleting...' : 'Delete'}
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 );

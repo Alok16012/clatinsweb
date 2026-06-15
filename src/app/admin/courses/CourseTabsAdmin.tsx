@@ -158,11 +158,11 @@ export default function CourseTabsAdmin({ courses: initialCourses, batches }: { 
                   <button
                     onClick={() => handleDelete(c.slug, c.title)}
                     disabled={deletingSlug === c.slug}
-                    className="text-xs font-bold px-2.5 py-2 rounded-xl border transition-colors disabled:opacity-50"
+                    className="text-xs font-bold px-3 py-2 rounded-xl border transition-colors disabled:opacity-50"
                     style={{ borderColor: '#fecaca', color: '#dc2626', background: '#fff5f5' }}
                     title="Delete course"
                   >
-                    {deletingSlug === c.slug ? '…' : '🗑'}
+                    {deletingSlug === c.slug ? 'Deleting...' : 'Delete'}
                   </button>
                 </div>
               </div>
