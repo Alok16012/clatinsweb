@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { defaultHomeContent, type HomeTestimonial, type HomeTestimonialsContent } from '@/data/homeContent';
 
 const testimonials = [
   { name: 'Aman Deep Singh', rank: 'AIR 23', college: 'NLU Delhi', year: 'CLAT 2024', avatar: 'AD', color: '#6366f1', quote: "CLATians gave me the structure, mentors, and mock tests I needed. A.K. Sir's teaching of legal reasoning is absolutely unmatched.", stars: 5 },
@@ -33,7 +34,7 @@ function useReveal(threshold = 0.1) {
   return { ref, visible };
 }
 
-function TestiCard({ t }: { t: typeof testimonials[number] }) {
+function TestiCard({ t }: { t: HomeTestimonial }) {
   const [hov, setHov] = useState(false);
   return (
     <div
@@ -77,7 +78,7 @@ function TestiCard({ t }: { t: typeof testimonials[number] }) {
   );
 }
 
-function MarqueeRow({ cards, reverse }: { cards: typeof testimonials; reverse?: boolean }) {
+function MarqueeRow({ cards, reverse }: { cards: HomeTestimonial[]; reverse?: boolean }) {
   const doubled = [...cards, ...cards];
   return (
     <div style={{ overflow: 'hidden', maskImage: 'linear-gradient(90deg,transparent,black 80px,black calc(100% - 80px),transparent)', WebkitMaskImage: 'linear-gradient(90deg,transparent,black 80px,black calc(100% - 80px),transparent)' }}>
@@ -92,7 +93,12 @@ function MarqueeRow({ cards, reverse }: { cards: typeof testimonials; reverse?: 
   );
 }
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ content = defaultHomeContent.testimonials }: { content?: HomeTestimonialsContent }) {
+  const testimonials = content.testimonials?.length ? content.testimonials : defaultHomeContent.testimonials.testimonials;
+  const row1 = testimonials.slice(0, Math.ceil(testimonials.length / 2));
+  const row2 = testimonials.slice(Math.ceil(testimonials.length / 2));
+  const badges = content.badges?.length ? content.badges : defaultHomeContent.testimonials.badges;
+  const statsBar = content.statsBar?.length ? content.statsBar : defaultHomeContent.testimonials.statsBar;
   const { ref, visible } = useReveal(0.1);
 
   return (
@@ -111,17 +117,17 @@ export default function TestimonialsSection() {
         }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '12px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(247,116,32,0.1)', border: '1px solid rgba(247,116,32,0.25)' }}>
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f77420', display: 'inline-block' }} />
-            <span style={{ color: '#f77420', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Student Success</span>
+            <span style={{ color: '#f77420', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{content.eyebrow}</span>
           </div>
           <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px,3vw,40px)', lineHeight: 1.15, marginBottom: '8px' }}>
-            15,000+ Students<br />
-            <span style={{ background: 'linear-gradient(90deg,#f77420,#ffad75)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Trust CLATians</span>
+            {content.titleLine1}<br />
+            <span style={{ background: 'linear-gradient(90deg,#f77420,#ffad75)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{content.titleLine2}</span>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', marginBottom: '20px' }}>Real students, real NLU selections. Their success is our greatest achievement.</p>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', marginBottom: '20px' }}>{content.subtitle}</p>
 
           {/* Rank badges */}
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}>
-            {rankBadges.map((b, i) => (
+            {badges.map((b, i) => (
               <div key={b.label} style={{
                 display: 'flex', alignItems: 'center', gap: '8px',
                 padding: '8px 16px', borderRadius: '99px',
@@ -144,7 +150,7 @@ export default function TestimonialsSection() {
         {/* Desktop: two marquee rows */}
         <div className="hidden md:flex flex-col gap-4">
           <MarqueeRow cards={row1} />
-          <MarqueeRow cards={row2} reverse />
+          <MarqueeRow cards={row2.length ? row2 : row1} reverse />
         </div>
 
         {/* Mobile: single auto-scroll row */}
@@ -155,7 +161,7 @@ export default function TestimonialsSection() {
         {/* Stats bar */}
         <div className="max-w-7xl mx-auto px-4 md:px-10 mt-10">
           <div style={{ background: 'linear-gradient(90deg,#d95f18,#f77420)', borderRadius: '16px', padding: '16px 28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
-            {['1000+ NLU Selections', '23+ NLUs Covered', '15+ Years Track Record'].map((stat, i, arr) => (
+            {statsBar.map((stat, i, arr) => (
               <div key={stat} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 <span style={{ color: 'white', fontWeight: 700, fontSize: '14px' }}>{stat}</span>
                 {i < arr.length - 1 && <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '18px' }}>|</span>}

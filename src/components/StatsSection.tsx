@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { defaultHomeContent, type HomeStatCard } from '@/data/homeContent';
 
 const stats = [
   {
@@ -57,7 +58,8 @@ function AnimNum({ target, suffix, active, isDecimal }: { target: number; suffix
   return <>{isDecimal ? val.toFixed(1) : val.toLocaleString()}{suffix}</>;
 }
 
-export default function StatsSection() {
+export default function StatsSection({ stats = defaultHomeContent.stats }: { stats?: HomeStatCard[] }) {
+  const cards = stats.length ? stats : defaultHomeContent.stats;
   const { ref, visible } = useReveal(0.15);
 
   return (
@@ -72,7 +74,7 @@ export default function StatsSection() {
 
           {/* Desktop — 4 horizontal cards */}
           <div className="hidden md:grid" style={{ gridTemplateColumns: 'repeat(4,1fr)', gap: '14px' }}>
-            {stats.map((s, i) => (
+            {cards.map((s, i) => (
               <div key={s.label} style={{
                 background: s.bg,
                 border: `1.5px solid ${s.border}`,
@@ -125,7 +127,7 @@ export default function StatsSection() {
 
           {/* Mobile — App-style 2×2 grid */}
           <div className="md:hidden grid grid-cols-2 gap-3 px-1">
-            {stats.map((s, i) => (
+            {cards.map((s, i) => (
               <div key={s.label} style={{
                 background: s.bg, border: `1.5px solid ${s.border}`,
                 borderRadius: '20px', padding: '18px 16px',

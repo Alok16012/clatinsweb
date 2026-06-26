@@ -1,4 +1,6 @@
-export default function CollegePredictorSection() {
+import { defaultHomeContent, type HomePredictorContent } from '@/data/homeContent';
+
+export default function CollegePredictorSection({ content = defaultHomeContent.predictor }: { content?: HomePredictorContent }) {
   return (
     <section id="predictor" className="py-8 md:py-14" style={{ background: '#FCFCFC' }}>
       <div className="max-w-7xl mx-auto px-4">
@@ -8,24 +10,20 @@ export default function CollegePredictorSection() {
           style={{ background: 'white', borderColor: '#E9EEF2' }}>
           <div>
             <h2 className="text-2xl md:text-3xl font-extrabold leading-tight" style={{ color: '#3C4852' }}>
-              Start your CLAT 2026<br className="hidden md:block" /> preparation today
+              {content.bannerTitle}
             </h2>
             <div className="flex flex-wrap gap-5 mt-4">
-              {[
-                'Best for full-syllabus preparation',
-                'Live & recorded online classes',
-                'Curated by expert faculty',
-              ].map(f => (
+              {content.bannerFeatures.map(f => (
                 <span key={f} className="flex items-center gap-1.5 text-sm" style={{ color: '#7A8B94' }}>
                   <span style={{ color: '#f77420' }}>✓</span> {f}
                 </span>
               ))}
             </div>
           </div>
-          <a href="/courses/offline"
+          <a href={content.bannerCtaLink}
             className="flex-shrink-0 px-7 py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90 whitespace-nowrap"
             style={{ background: '#f77420' }}>
-            View All Courses →
+            {content.bannerCtaLabel}
           </a>
         </div>
 
@@ -33,20 +31,15 @@ export default function CollegePredictorSection() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Left */}
           <div>
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#f77420' }}>AI-Powered Tool</p>
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#f77420' }}>{content.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: '#3C4852' }}>
-              NLU College Predictor
+              {content.title}
             </h2>
             <p className="text-base leading-relaxed mb-6" style={{ color: '#7A8B94' }}>
-              Enter your expected CLAT rank and get instant admission chances across all 23 NLUs. Based on previous year cutoffs and category-wise seat data.
+              {content.description}
             </p>
             <ul className="space-y-3 mb-8">
-              {[
-                'Predict chances for all 23 NLUs',
-                'Category-wise seat availability',
-                'Previous year cutoff analysis',
-                'Updated with CLAT 2025 data',
-              ].map((item) => (
+              {content.features.map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#5a6a75' }}>
                   <span className="w-5 h-5 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0"
                     style={{ background: '#f77420' }}>✓</span>
@@ -54,10 +47,10 @@ export default function CollegePredictorSection() {
                 </li>
               ))}
             </ul>
-            <a href="/college-predictor"
+            <a href={content.ctaLink}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90"
               style={{ background: '#f77420' }}>
-              🔮 Try Predictor Free →
+              {content.ctaLabel}
             </a>
           </div>
 
@@ -65,47 +58,43 @@ export default function CollegePredictorSection() {
           <div className="rounded-2xl border p-6 shadow-sm" style={{ background: 'white', borderColor: '#E9EEF2' }}>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
-                style={{ background: '#fff1e8' }}>🔮</div>
-              <h3 className="font-bold" style={{ color: '#3C4852' }}>College Predictor</h3>
+                style={{ background: '#fff1e8' }}>{content.cardIcon}</div>
+              <h3 className="font-bold" style={{ color: '#3C4852' }}>{content.cardTitle}</h3>
               <span className="ml-auto text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                style={{ background: '#f77420' }}>AI-Powered</span>
+                style={{ background: '#f77420' }}>{content.cardBadge}</span>
             </div>
 
             <div className="space-y-4">
               <div>
                 <label className="text-xs font-semibold block mb-1.5" style={{ color: '#7A8B94' }}>
-                  Expected CLAT Rank
+                  {content.rankLabel}
                 </label>
                 <div className="flex items-center border rounded-lg px-4 py-3 transition-colors"
                   style={{ borderColor: '#E9EEF2' }}>
                   <span className="text-sm mr-2" style={{ color: '#7A8B94' }}>#</span>
-                  <input type="number" placeholder="e.g. 500" readOnly
+                  <input type="number" placeholder={content.rankPlaceholder} readOnly
                     className="flex-1 outline-none text-sm font-semibold bg-transparent"
                     style={{ color: '#3C4852' }} />
                 </div>
               </div>
               <div>
                 <label className="text-xs font-semibold block mb-1.5" style={{ color: '#7A8B94' }}>
-                  Category
+                  {content.categoryLabel}
                 </label>
                 <select className="w-full border rounded-lg px-4 py-3 text-sm outline-none bg-white"
                   style={{ borderColor: '#E9EEF2', color: '#3C4852' }}>
-                  <option>General</option>
-                  <option>SC</option>
-                  <option>ST</option>
-                  <option>OBC</option>
-                  <option>PWD</option>
+                  {content.categories.map((category) => <option key={category}>{category}</option>)}
                 </select>
               </div>
-              <a href="/college-predictor"
+              <a href={content.cardButtonLink}
                 className="block text-center py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90"
                 style={{ background: '#3C4852' }}>
-                🔍 Predict My College
+                {content.cardButtonLabel}
               </a>
             </div>
 
             <p className="text-xs text-center mt-4" style={{ color: '#7A8B94' }}>
-              Based on CLAT 2024 & 2025 cutoff data — 23 NLUs covered
+              {content.footnote}
             </p>
           </div>
         </div>

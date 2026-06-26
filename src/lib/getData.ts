@@ -11,6 +11,7 @@ import { batches as defaultBatches } from '@/data/batches';
 import { exams as defaultExams } from '@/data/exams';
 import { blogs as defaultBlogs } from '@/data/blogs';
 import { defaultCourseCategories } from '@/data/courseCategories';
+import { defaultHomeContent } from '@/data/homeContent';
 
 import type { Course } from '@/data/courses';
 import type { Batch } from '@/data/batches';
@@ -18,6 +19,7 @@ import type { Exam } from '@/data/exams';
 import type { FacultyMember } from '@/data/faculty';
 import type { Blog } from '@/data/blogs';
 import type { CourseCategory } from '@/data/courseCategories';
+import type { HomeContent } from '@/data/homeContent';
 
 export async function getCourseCategories(): Promise<CourseCategory[]> {
   if (isSupabaseConfigured()) {
@@ -259,6 +261,38 @@ export async function getBlogs(): Promise<Blog[]> {
   }
   return defaultBlogs;
 }
+
+function mergeHomeContent(content: Partial<HomeContent> | null | undefined): HomeContent {
+  if (!content) return defaultHomeContent;
+  return {
+    ...defaultHomeContent,
+    ...content,
+    hero: { ...defaultHomeContent.hero, ...(content.hero || {}) },
+    courses: { ...defaultHomeContent.courses, ...(content.courses || {}) },
+    testimonials: { ...defaultHomeContent.testimonials, ...(content.testimonials || {}) },
+    faq: { ...defaultHomeContent.faq, ...(content.faq || {}) },
+    predictor: { ...defaultHomeContent.predictor, ...(content.predictor || {}) },
+  };
+}
+
+export async function getHomeContent(): Promise<HomeContent> {
+  if (isSupabaseConfigured()) {
+    try {
+      const { data, error } = await supabaseAdmin()
+        .from('home_content')
+        .select('content')
+        .eq('id', 'main')
+        .maybeSingle();
+      if (error) throw error;
+      if (data?.content) return mergeHomeContent(data.content as Partial<HomeContent>);
+    } catch {
+      // table missing or unreachable — fall back to local/default data
+    }
+  }
+  return mergeHomeContent(readJSON<Partial<HomeContent>>('home-content.json', defaultHomeContent));
+}
+
+export { mergeHomeContent };
 
 export async function getBlogBySlug(slug: string): Promise<Blog | undefined> {
   const decoded = decodeURIComponent(slug);

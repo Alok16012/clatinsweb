@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { defaultHomeContent, type HomeFaqContent } from '@/data/homeContent';
 
 const faqs = [
   {
@@ -28,7 +29,8 @@ const faqs = [
   },
 ];
 
-export default function FAQSection() {
+export default function FAQSection({ content = defaultHomeContent.faq }: { content?: HomeFaqContent }) {
+  const faqs = content.items?.length ? content.items : defaultHomeContent.faq.items;
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -38,13 +40,13 @@ export default function FAQSection() {
         <div className="text-center mb-8 px-4">
           <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full" style={{ background: 'rgba(247,116,32,0.1)', border: '1px solid rgba(247,116,32,0.2)' }}>
             <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#f77420' }} />
-            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#f77420' }}>FAQ</span>
+            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#f77420' }}>{content.eyebrow}</span>
           </div>
           <h2 className="text-2xl md:text-4xl font-extrabold mb-2" style={{ color: '#0D1837' }}>
-            Frequently Asked Questions
+            {content.title}
           </h2>
           <p className="text-sm" style={{ color: '#7A8B94' }}>
-            Everything about CLAT preparation at CLATians.
+            {content.subtitle}
           </p>
         </div>
 
@@ -84,21 +86,21 @@ export default function FAQSection() {
 
         {/* Bottom CTA — App-style */}
         <div className="mx-4 mt-8 rounded-2xl p-5 text-center" style={{ background: 'linear-gradient(135deg,#0D1837,#1a2744)' }}>
-          <div className="text-3xl mb-3">💬</div>
-          <h3 className="font-black text-lg text-white mb-1">Still have questions?</h3>
+          <div className="text-3xl mb-3">{content.ctaIcon}</div>
+          <h3 className="font-black text-lg text-white mb-1">{content.ctaTitle}</h3>
           <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
-            Free counselling for CLAT 2026 preparation.
+            {content.ctaText}
           </p>
           <div className="flex gap-3">
-            <a href="tel:8507700177"
+            <a href={content.primaryLink}
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-white text-sm"
               style={{ background: 'linear-gradient(135deg,#f77420,#d95f18)', boxShadow: '0 6px 16px rgba(247,116,32,0.35)' }}>
-              📞 Call Now
+              {content.primaryLabel}
             </a>
-            <a href="/admission"
+            <a href={content.secondaryLink}
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-sm"
               style={{ background: 'rgba(255,255,255,0.1)', color: 'white', border: '1.5px solid rgba(255,255,255,0.15)' }}>
-              📝 Enroll Free
+              {content.secondaryLabel}
             </a>
           </div>
         </div>

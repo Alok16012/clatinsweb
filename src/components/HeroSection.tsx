@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { defaultHomeContent, type HomeHeroContent } from '@/data/homeContent';
 
 const slides = [
   {
@@ -112,7 +113,13 @@ const mobileSlides = [
   },
 ];
 
-export default function HeroSection() {
+export default function HeroSection({ content = defaultHomeContent.hero }: { content?: HomeHeroContent }) {
+  const slides = content.slides?.length ? content.slides : defaultHomeContent.hero.slides;
+  const examPills = content.examPills?.length ? content.examPills : defaultHomeContent.hero.examPills;
+  const mobileExamPills = content.mobileExamPills?.length ? content.mobileExamPills : defaultHomeContent.hero.mobileExamPills;
+  const heroStats = content.stats?.length ? content.stats : defaultHomeContent.hero.stats;
+  const toppers = content.toppers?.length ? content.toppers : defaultHomeContent.hero.toppers;
+  const mobileToppers = content.mobileToppers?.length ? content.mobileToppers : defaultHomeContent.hero.mobileToppers;
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -211,7 +218,7 @@ export default function HeroSection() {
                 {slide.cta} →
               </a>
               <a
-                href="#demo"
+                href={slide.secondaryCtaLink || '#demo'}
                 className="px-6 py-3.5 rounded-xl font-semibold text-base hover:bg-white/10 transition-all"
                 style={{ color: 'white', border: '1px solid rgba(255,255,255,0.35)' }}
               >
@@ -242,15 +249,10 @@ export default function HeroSection() {
             {/* Topper Results Card */}
             <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-white font-bold text-sm">🏆 Recent Toppers</h3>
-                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420', border: '1px solid rgba(247,116,32,0.3)' }}>CLAT 2024</span>
+                <h3 className="text-white font-bold text-sm">{content.toppersTitle}</h3>
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420', border: '1px solid rgba(247,116,32,0.3)' }}>{content.toppersYear}</span>
               </div>
-              {[
-                { name: 'Aman Deep Singh', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
-                { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR', avatar: 'PS', color: '#ec4899' },
-                { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi (AILET)', avatar: 'RG', color: '#f59e0b' },
-                { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR', avatar: 'KR', color: '#f97316' },
-              ].map((t) => (
+              {toppers.map((t) => (
                 <div key={t.name} className="flex items-center gap-3 py-2.5 border-b last:border-0" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0" style={{ background: t.color }}>{t.avatar}</div>
                   <div className="flex-1 min-w-0">
@@ -263,7 +265,7 @@ export default function HeroSection() {
             </div>
             {/* Exam Selector compact */}
             <div className="rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
-              <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Prepare For</p>
+              <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{content.prepareForLabel}</p>
               <div className="grid grid-cols-3 gap-1.5">
                 {examPills.map((exam) => (
                   <a key={exam} href={`/exams/${exam.toLowerCase().replace(' law','').replace('-law','')}`}
@@ -273,8 +275,8 @@ export default function HeroSection() {
                   </a>
                 ))}
               </div>
-              <a href="/admission" className="mt-3 block text-center py-2.5 rounded-xl font-bold text-white text-xs hover:opacity-90 transition-all" style={{ background: '#f77420' }}>
-                Get Free Counselling →
+              <a href={content.counsellingLink} className="mt-3 block text-center py-2.5 rounded-xl font-bold text-white text-xs hover:opacity-90 transition-all" style={{ background: '#f77420' }}>
+                {content.counsellingLabel} →
               </a>
             </div>
           </div>
@@ -306,7 +308,7 @@ export default function HeroSection() {
 
           {/* Exam selector — all 6 in one row */}
           <div className="grid grid-cols-6 gap-1 mb-5">
-            {['CLAT', 'AILET', 'MH-CET', 'CUET', 'AIL-LET', 'LSAT'].map((exam) => (
+            {mobileExamPills.map((exam) => (
               <a key={exam} href={`/exams/${exam.toLowerCase().replace('-cet','-cet-law')}`}
                 className="text-center py-2 rounded-lg transition-all"
                 style={{
@@ -343,15 +345,15 @@ export default function HeroSection() {
               <a href={slide.ctaLink}
                 className="flex-1 text-center py-3.5 rounded-2xl font-black text-white text-sm shadow-lg"
                 style={{ background: 'linear-gradient(135deg,#f77420,#d95f18)', boxShadow: '0 8px 20px rgba(247,116,32,0.4)' }}>
-                Start Prep →
+                {slide.cta} →
               </a>
-              <a href="/admission"
+              <a href={content.counsellingLink}
                 className="px-4 py-3.5 rounded-2xl font-bold text-sm flex items-center gap-1.5"
                 style={{ background: 'rgba(249,115,22,0.15)', color: '#f97316', border: '1.5px solid rgba(249,115,22,0.3)' }}>
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
-                Enroll
+                {content.counsellingLabel.replace('Get Free ', '').replace('Free ', '')}
               </a>
             </div>
           </div>
@@ -373,16 +375,11 @@ export default function HeroSection() {
           {/* Toppers strip */}
           <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-              <span className="text-xs font-bold text-white">🏆 Recent Toppers</span>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420' }}>CLAT 2024</span>
+              <span className="text-xs font-bold text-white">{content.toppersTitle}</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420' }}>{content.toppersYear}</span>
             </div>
             <div className="flex overflow-x-auto gap-3 px-4 py-3" style={{ scrollbarWidth: 'none' }}>
-              {[
-                { name: 'Aman Deep', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
-                { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR', avatar: 'PS', color: '#ec4899' },
-                { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi', avatar: 'RG', color: '#f59e0b' },
-                { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR', avatar: 'KR', color: '#f97316' },
-              ].map((t) => (
+              {mobileToppers.map((t) => (
                 <div key={t.name} className="flex-shrink-0 flex flex-col items-center gap-1.5" style={{ width: '68px' }}>
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[11px] font-black" style={{ background: t.color }}>{t.avatar}</div>
                   <div className="text-[10px] font-bold text-white text-center leading-tight">{t.name}</div>

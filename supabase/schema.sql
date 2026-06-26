@@ -80,6 +80,13 @@ create table if not exists public.course_categories (
   created_at timestamptz not null default now()
 );
 
+-- Homepage content (managed from admin → Home Page).
+create table if not exists public.home_content (
+  id text primary key default 'main',
+  content jsonb not null default '{}',
+  updated_at timestamptz not null default now()
+);
+
 -- The server talks to these tables with the service-role key, which bypasses
 -- RLS. Enabling RLS with no public policies keeps the anon key locked out.
 alter table public.leads enable row level security;
@@ -87,6 +94,7 @@ alter table public.blogs enable row level security;
 alter table public.blog_categories enable row level security;
 alter table public.exams enable row level security;
 alter table public.course_categories enable row level security;
+alter table public.home_content enable row level security;
 
 -- ── Migrations (safe to re-run) ──────────────────────────────────────────────
 -- Track which form submitted the lead (contact / admission).
@@ -105,3 +113,7 @@ insert into public.course_categories (key, label, icon, color, accent, bg) value
   ('mentorship', 'Mentorship', '🎯', '#7a3412', '#ffad75', '#ffd4ba'),
   ('mock', 'Mock Tests', '📝', '#92400e', '#f59e0b', '#fef3c7')
 on conflict (key) do nothing;
+
+insert into public.home_content (id, content)
+values ('main', '{}')
+on conflict (id) do nothing;

@@ -16,6 +16,7 @@ export default async function AdminDashboard() {
   const blogs = await getBlogs();
 
   const stats = [
+    { label: 'Home', value: 1, icon: '🏠', href: '/admin/home', color: '#f77420' },
     { label: 'Courses', value: courses.length, icon: '📚', href: '/admin/courses', color: '#f77420' },
     { label: 'Batches', value: batches.length, icon: '📅', href: '/admin/batches', color: '#6366f1' },
     { label: 'Exams', value: (exams as typeof defaultExams).length, icon: '🏛️', href: '/admin/exams', color: '#f59e0b' },
@@ -24,6 +25,7 @@ export default async function AdminDashboard() {
   ];
 
   const quickLinks = [
+    { label: 'Edit Home Page', href: '/admin/home', icon: '🏠', desc: 'Update homepage sections' },
     { label: 'New Course', href: '/admin/courses/new', icon: '📚', desc: 'Add a new course program' },
     { label: 'New Batch', href: '/admin/batches/new', icon: '📅', desc: 'Create a new batch' },
     { label: 'New Exam', href: '/admin/exams/new', icon: '🏛️', desc: 'Add exam information' },
@@ -40,7 +42,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
         {stats.map((s) => (
           <Link
             key={s.label}
