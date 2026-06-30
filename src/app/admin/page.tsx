@@ -2,30 +2,32 @@ export const dynamic = "force-dynamic";
 import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { readJSON } from '@/lib/dataStore';
-import { getCourses, getBatches, getBlogs, getFaculty } from '@/lib/getData';
-import { exams as defaultExams } from '@/data/exams';
+import { getCourses, getBatches, getBlogs, getFaculty, getExams } from '@/lib/getData';
 
 export default async function AdminDashboard() {
   if (!(await isAuthenticated())) redirect('/admin/login');
 
   const courses = await getCourses();
   const batches = await getBatches();
-  const exams = readJSON('exams.json', defaultExams);
+  const exams = await getExams();
   const faculty = await getFaculty();
   const blogs = await getBlogs();
 
   const stats = [
     { label: 'Home', value: 1, icon: '🏠', href: '/admin/home', color: '#f77420' },
+    { label: 'Admission', value: 1, icon: '🎓', href: '/admin/admission', color: '#f77420' },
+    { label: 'Footer', value: 1, icon: '🧭', href: '/admin/footer', color: '#0D1837' },
     { label: 'Courses', value: courses.length, icon: '📚', href: '/admin/courses', color: '#f77420' },
     { label: 'Batches', value: batches.length, icon: '📅', href: '/admin/batches', color: '#6366f1' },
-    { label: 'Exams', value: (exams as typeof defaultExams).length, icon: '🏛️', href: '/admin/exams', color: '#f59e0b' },
+    { label: 'Exams', value: exams.length, icon: '🏛️', href: '/admin/exams', color: '#f59e0b' },
     { label: 'Faculty', value: faculty.length, icon: '👨‍🏫', href: '/admin/faculty', color: '#ec4899' },
     { label: 'Blogs', value: blogs.length, icon: '✍️', href: '/admin/blogs', color: '#14b8a6' },
   ];
 
   const quickLinks = [
     { label: 'Edit Home Page', href: '/admin/home', icon: '🏠', desc: 'Update homepage sections' },
+    { label: 'Edit Admission Page', href: '/admin/admission', icon: '🎓', desc: 'Update admission page sections' },
+    { label: 'Edit Footer & Navbar', href: '/admin/footer', icon: '🧭', desc: 'Update global website links' },
     { label: 'New Course', href: '/admin/courses/new', icon: '📚', desc: 'Add a new course program' },
     { label: 'New Batch', href: '/admin/batches/new', icon: '📅', desc: 'Create a new batch' },
     { label: 'New Exam', href: '/admin/exams/new', icon: '🏛️', desc: 'Add exam information' },

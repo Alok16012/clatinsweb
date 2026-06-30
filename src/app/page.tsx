@@ -10,12 +10,12 @@ import FacultySection from '@/components/FacultySection';
 import FAQSection from '@/components/FAQSection';
 import CollegePredictorSection from '@/components/CollegePredictorSection';
 import Footer from '@/components/Footer';
-import { getFaculty, getHomeContent } from '@/lib/getData';
+import { getExams, getFaculty, getHomeContent } from '@/lib/getData';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const [faculty, homeContent] = await Promise.all([getFaculty(), getHomeContent()]);
+  const [faculty, homeContent, exams] = await Promise.all([getFaculty(), getHomeContent(), getExams()]);
 
   return (
     <main>
@@ -58,7 +58,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <ExamsSection />
+      <ExamsSection exams={exams} />
       <BlogsScrollSection />
       <TestimonialsSection content={homeContent.testimonials} />
 

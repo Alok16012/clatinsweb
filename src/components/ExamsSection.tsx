@@ -1,92 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-
-const exams = [
-  {
-    code: 'CLAT',
-    slug: 'clat',
-    name: 'Common Law Admission Test',
-    tagline: 'Gateway to top 23 NLUs',
-    icon: '🏛️',
-    color: '#0f3460',
-    accent: '#f77420',
-    seats: '2,700+',
-    colleges: '23 NLUs',
-    difficulty: 85,
-    applicants: '70,000+',
-    date: 'Dec 2025',
-  },
-  {
-    code: 'AILET',
-    slug: 'ailet',
-    name: 'All India Law Entrance Test',
-    tagline: 'Path to NLU Delhi',
-    icon: '⚖️',
-    color: '#7c2d12',
-    accent: '#f97316',
-    seats: '110',
-    colleges: 'NLU Delhi',
-    difficulty: 95,
-    applicants: '25,000+',
-    date: 'Dec 2025',
-  },
-  {
-    code: 'MH-CET',
-    slug: 'mh-cet-law',
-    name: 'Maharashtra CET Law',
-    tagline: 'Top MH law colleges',
-    icon: '📍',
-    color: '#7c1d2c',
-    accent: '#ec4899',
-    seats: '5,000+',
-    colleges: '25+ Colleges',
-    difficulty: 65,
-    applicants: '40,000+',
-    date: 'Mar 2026',
-  },
-  {
-    code: 'CUET',
-    slug: 'cuet',
-    name: 'Common University Entrance',
-    tagline: '200+ universities',
-    icon: '🎓',
-    color: '#7a3412',
-    accent: '#ffad75',
-    seats: '3,000+',
-    colleges: 'Central Univs.',
-    difficulty: 70,
-    applicants: '14 lakh+',
-    date: 'May 2026',
-  },
-  {
-    code: 'AIL-LET',
-    slug: 'ail-let',
-    name: 'Army Institute of Law Entrance',
-    tagline: 'Army Institute of Law',
-    icon: '🎖️',
-    color: '#1e3a5f',
-    accent: '#3b82f6',
-    seats: '120',
-    colleges: 'AIL Mohali',
-    difficulty: 80,
-    applicants: '8,000+',
-    date: 'Jan 2026',
-  },
-  {
-    code: 'LSAT',
-    slug: 'lsat',
-    name: 'Law School Admission Test',
-    tagline: '85+ private law schools',
-    icon: '🌐',
-    color: '#4c1d95',
-    accent: '#8b5cf6',
-    seats: '2,000+',
-    colleges: '85+ Colleges',
-    difficulty: 75,
-    applicants: '30,000+',
-    date: 'Jan 2026',
-  },
-];
+import type { Exam } from '@/data/exams';
 
 function useReveal(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -118,9 +32,10 @@ function DifficultyBar({ pct, color }: { pct: number; color: string }) {
   );
 }
 
-export default function ExamsSection() {
+export default function ExamsSection({ exams }: { exams: Exam[] }) {
   const [hovered, setHovered] = useState<string | null>(null);
   const { ref, visible } = useReveal(0.1);
+  const visibleExams = exams.slice(0, 6);
 
   return (
     <>
@@ -159,8 +74,12 @@ export default function ExamsSection() {
 
           {/* Exam cards grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-            {exams.map((exam, i) => {
+            {visibleExams.map((exam, i) => {
               const isHov = hovered === exam.code;
+              const color = exam.color || '#f77420';
+              const accent = '#ffad75';
+              const examDate = getExamDate(exam);
+              const level = getCompetitionLevel(exam);
               return (
                 <a
                   key={exam.code}
@@ -169,11 +88,11 @@ export default function ExamsSection() {
                   onMouseLeave={() => setHovered(null)}
                   style={{
                     display: 'block', textDecoration: 'none',
-                    background: isHov ? `linear-gradient(135deg, ${exam.color}ee, ${exam.color}aa)` : 'rgba(255,255,255,0.05)',
-                    border: `1.5px solid ${isHov ? exam.accent + '66' : 'rgba(255,255,255,0.08)'}`,
+                    background: isHov ? `linear-gradient(135deg, ${color}ee, ${color}aa)` : 'rgba(255,255,255,0.05)',
+                    border: `1.5px solid ${isHov ? accent + '66' : 'rgba(255,255,255,0.08)'}`,
                     borderRadius: '18px', padding: '20px',
                     transition: 'all .25s ease',
-                    boxShadow: isHov ? `0 8px 32px ${exam.color}55` : 'none',
+                    boxShadow: isHov ? `0 8px 32px ${color}55` : 'none',
                     transform: isHov ? 'translateY(-4px)' : 'none',
                     opacity: visible ? 1 : 0,
                     animationDelay: `${i * 0.08}s`,
@@ -191,24 +110,24 @@ export default function ExamsSection() {
                       {exam.icon}
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ background: isHov ? exam.accent : 'rgba(255,255,255,0.1)', color: isHov ? 'white' : 'rgba(255,255,255,0.7)', fontSize: '11px', fontWeight: 800, padding: '4px 10px', borderRadius: '99px', display: 'inline-block', transition: 'all .2s' }}>
+                      <div style={{ background: isHov ? accent : 'rgba(255,255,255,0.1)', color: isHov ? 'white' : 'rgba(255,255,255,0.7)', fontSize: '11px', fontWeight: 800, padding: '4px 10px', borderRadius: '99px', display: 'inline-block', transition: 'all .2s' }}>
                         {exam.code}
                       </div>
-                      <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', marginTop: '4px' }}>📅 {exam.date}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', marginTop: '4px' }}>📅 {examDate}</div>
                     </div>
                   </div>
 
                   {/* Name */}
-                  <div style={{ color: 'white', fontWeight: 800, fontSize: '15px', lineHeight: 1.3, marginBottom: '4px' }}>{exam.name}</div>
-                  <div style={{ color: exam.accent, fontWeight: 600, fontSize: '12px', marginBottom: '14px' }}>{exam.tagline}</div>
+                  <div style={{ color: 'white', fontWeight: 800, fontSize: '15px', lineHeight: 1.3, marginBottom: '4px' }}>{exam.fullName || exam.name}</div>
+                  <div style={{ color: accent, fontWeight: 600, fontSize: '12px', marginBottom: '14px' }}>{exam.tagline}</div>
 
                   {/* Infographic stats */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '14px' }}>
                     {[
                       { label: 'Seats', val: exam.seats, icon: '🪑' },
                       { label: 'Colleges', val: exam.colleges, icon: '🏛️' },
-                      { label: 'Applicants', val: exam.applicants, icon: '👥' },
-                      { label: 'Difficulty', val: `${exam.difficulty}%`, icon: '📊' },
+                      { label: 'Questions', val: String(exam.questions), icon: '❓' },
+                      { label: 'Duration', val: exam.duration, icon: '⏱️' },
                     ].map(s => (
                       <div key={s.label} style={{ background: 'rgba(255,255,255,0.06)', borderRadius: '10px', padding: '8px 10px' }}>
                         <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '2px' }}>{s.icon} {s.label}</div>
@@ -221,17 +140,17 @@ export default function ExamsSection() {
                   <div style={{ marginBottom: '14px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                       <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', fontWeight: 600 }}>Competition Level</span>
-                      <span style={{ color: exam.accent, fontSize: '10px', fontWeight: 700 }}>{exam.difficulty}%</span>
+                      <span style={{ color: accent, fontSize: '10px', fontWeight: 700 }}>{level}%</span>
                     </div>
-                    <DifficultyBar pct={exam.difficulty} color={exam.accent} />
+                    <DifficultyBar pct={level} color={accent} />
                   </div>
 
                   {/* CTA */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ color: exam.accent, fontWeight: 700, fontSize: '13px' }}>Prepare Now</span>
+                    <span style={{ color: accent, fontWeight: 700, fontSize: '13px' }}>Prepare Now</span>
                     <div style={{
                       width: '28px', height: '28px', borderRadius: '50%',
-                      background: isHov ? exam.accent : 'rgba(255,255,255,0.08)',
+                      background: isHov ? accent : 'rgba(255,255,255,0.08)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       color: 'white', fontSize: '13px', fontWeight: 700,
                       transition: 'all .2s',
@@ -259,14 +178,18 @@ export default function ExamsSection() {
 
         {/* Horizontal scroll exam cards */}
         <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', padding: '4px 16px 8px', scrollbarWidth: 'none' }}>
-          {exams.map((exam) => (
+          {visibleExams.map((exam) => {
+            const color = exam.color || '#f77420';
+            const accent = '#ffad75';
+            const level = getCompetitionLevel(exam);
+            return (
             <a key={exam.code} href={`/exams/${exam.slug}`}
               style={{
                 flexShrink: 0, width: '160px', textDecoration: 'none',
-                background: `linear-gradient(160deg,${exam.color}ee,${exam.color}bb)`,
+                background: `linear-gradient(160deg,${color}ee,${color}bb)`,
                 borderRadius: '20px', padding: '16px 14px',
-                border: `1.5px solid ${exam.accent}33`,
-                boxShadow: `0 8px 24px ${exam.color}55`,
+                border: `1.5px solid ${accent}33`,
+                boxShadow: `0 8px 24px ${color}55`,
                 display: 'flex', flexDirection: 'column', gap: '10px',
               }}>
               {/* Icon + code */}
@@ -274,13 +197,13 @@ export default function ExamsSection() {
                 <div style={{ width: '44px', height: '44px', borderRadius: '14px', background: 'rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
                   {exam.icon}
                 </div>
-                <span style={{ fontSize: '11px', fontWeight: 800, color: exam.accent, background: `${exam.accent}22`, padding: '3px 8px', borderRadius: '99px', border: `1px solid ${exam.accent}44` }}>{exam.code}</span>
+                <span style={{ fontSize: '11px', fontWeight: 800, color: accent, background: `${accent}22`, padding: '3px 8px', borderRadius: '99px', border: `1px solid ${accent}44` }}>{exam.code}</span>
               </div>
 
               {/* Name + tagline */}
               <div>
                 <div style={{ color: 'white', fontWeight: 800, fontSize: '13px', lineHeight: 1.25, marginBottom: '3px' }}>{exam.name}</div>
-                <div style={{ color: exam.accent, fontWeight: 600, fontSize: '11px' }}>{exam.tagline}</div>
+                <div style={{ color: accent, fontWeight: 600, fontSize: '11px' }}>{exam.tagline}</div>
               </div>
 
               {/* Stats */}
@@ -290,28 +213,41 @@ export default function ExamsSection() {
                   <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', fontWeight: 600 }}>SEATS</div>
                 </div>
                 <div style={{ flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '6px 8px', textAlign: 'center' }}>
-                  <div style={{ color: 'white', fontWeight: 800, fontSize: '12px' }}>{exam.difficulty}%</div>
-                  <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', fontWeight: 600 }}>LEVEL</div>
+                  <div style={{ color: 'white', fontWeight: 800, fontSize: '12px' }}>{exam.questions}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '9px', fontWeight: 600 }}>QUESTIONS</div>
                 </div>
               </div>
 
               {/* Difficulty bar */}
               <div>
                 <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: '99px', height: '4px', overflow: 'hidden' }}>
-                  <div style={{ height: '100%', width: `${exam.difficulty}%`, background: exam.accent, borderRadius: '99px' }} />
+                  <div style={{ height: '100%', width: `${level}%`, background: accent, borderRadius: '99px' }} />
                 </div>
               </div>
 
               {/* CTA */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ color: exam.accent, fontWeight: 700, fontSize: '12px' }}>Prepare →</span>
-                <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px' }}>📅 {exam.date}</span>
+                <span style={{ color: accent, fontWeight: 700, fontSize: '12px' }}>Prepare →</span>
+                <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px' }}>📅 {getExamDate(exam)}</span>
               </div>
             </a>
-          ))}
+            );
+          })}
         </div>
 
       </section>
     </>
   );
+}
+
+function getExamDate(exam: Exam) {
+  const examDate = exam.importantDates?.find((item) => /exam date|exam/i.test(item.event));
+  return examDate?.date || exam.importantDates?.[0]?.date || exam.duration;
+}
+
+function getCompetitionLevel(exam: Exam) {
+  if (exam.questions >= 150) return 85;
+  if (exam.questions >= 120) return 78;
+  if (exam.questions >= 100) return 72;
+  return 65;
 }

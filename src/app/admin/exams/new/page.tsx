@@ -10,6 +10,7 @@ const emptyExam: Exam = {
   questions: 0, marks: 0, negativeMark: '0.25', conductedBy: '', mode: 'Computer Based Test (CBT)',
   overview: '', eligibility: [''], examPattern: [],
   syllabus: [], importantDates: [], preparationTips: [''], faqs: [],
+  applicationFee: [], nluList: [], latestUpdates: [], applicationProcess: [''],
 };
 
 export default async function NewExamPage() {

@@ -7,6 +7,7 @@ import {
   FieldGroup, TextInput, NumberInput, TextareaInput,
   StringArrayEditor, SectionCard, FormActions, Toast,
 } from '@/components/admin/AdminFormHelpers';
+import { ColorInput } from '@/components/admin/ContentEditors';
 
 export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }) {
   const router = useRouter();
@@ -76,6 +77,12 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
             <FieldGroup label="Icon (emoji)">
               <TextInput value={data.icon} onChange={(v) => set('icon', v)} placeholder="🏛️" />
             </FieldGroup>
+            <FieldGroup label="Theme Color">
+              <ColorInput value={data.color} onChange={(v) => set('color', v)} />
+            </FieldGroup>
+            <FieldGroup label="Background Color">
+              <ColorInput value={data.bg} onChange={(v) => set('bg', v)} />
+            </FieldGroup>
             <FieldGroup label="Tagline">
               <TextInput value={data.tagline} onChange={(v) => set('tagline', v)} placeholder="Short description..." />
             </FieldGroup>
@@ -141,6 +148,31 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
           </div>
         </SectionCard>
 
+        <SectionCard title="Syllabus">
+          <div className="space-y-3">
+            {(data.syllabus || []).map((subject, i) => (
+              <div key={i} className="rounded-xl border border-gray-100 p-4 space-y-3">
+                <div className="flex gap-2">
+                  <input value={subject.subject} onChange={(e) => {
+                    const next = [...(data.syllabus || [])]; next[i] = { ...next[i], subject: e.target.value }; set('syllabus', next);
+                  }} placeholder="Subject name" className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold" />
+                  <button type="button" onClick={() => set('syllabus', (data.syllabus || []).filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 font-bold text-xl px-2">×</button>
+                </div>
+                <StringArrayEditor label="Topics" items={subject.topics || []} onChange={(topics) => {
+                  const next = [...(data.syllabus || [])]; next[i] = { ...next[i], topics }; set('syllabus', next);
+                }} placeholder="Topic" />
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => set('syllabus', [...(data.syllabus || []), { subject: '', topics: [''] }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              + Add Subject
+            </button>
+          </div>
+        </SectionCard>
+
         <SectionCard title="Important Dates">
           <div className="space-y-3">
             {(data.importantDates || []).map((d, i) => (
@@ -166,6 +198,82 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
 
         <SectionCard title="Preparation Tips">
           <StringArrayEditor label="" items={data.preparationTips} onChange={(v) => set('preparationTips', v)} placeholder="e.g. Read newspaper daily" />
+        </SectionCard>
+
+        <SectionCard title="Application Fees">
+          <div className="space-y-3">
+            {(data.applicationFee || []).map((fee, i) => (
+              <div key={i} className="grid md:grid-cols-[2fr_1fr_auto] gap-2 items-center">
+                <input value={fee.category} onChange={(e) => {
+                  const next = [...(data.applicationFee || [])]; next[i] = { ...next[i], category: e.target.value }; set('applicationFee', next);
+                }} placeholder="Category" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <input value={fee.fee} onChange={(e) => {
+                  const next = [...(data.applicationFee || [])]; next[i] = { ...next[i], fee: e.target.value }; set('applicationFee', next);
+                }} placeholder="Fee" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <button type="button" onClick={() => set('applicationFee', (data.applicationFee || []).filter((_, idx) => idx !== i))}
+                  className="text-red-400 hover:text-red-600 font-bold text-xl text-center">×</button>
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => set('applicationFee', [...(data.applicationFee || []), { category: '', fee: '' }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              + Add Fee
+            </button>
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Application Process">
+          <StringArrayEditor label="" items={data.applicationProcess || []} onChange={(v) => set('applicationProcess', v)} placeholder="Application step" />
+        </SectionCard>
+
+        <SectionCard title="Latest Updates">
+          <div className="space-y-3">
+            {(data.latestUpdates || []).map((item, i) => (
+              <div key={i} className="grid md:grid-cols-[1fr_3fr_auto] gap-2 items-center">
+                <input value={item.date} onChange={(e) => {
+                  const next = [...(data.latestUpdates || [])]; next[i] = { ...next[i], date: e.target.value }; set('latestUpdates', next);
+                }} placeholder="Date" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <input value={item.update} onChange={(e) => {
+                  const next = [...(data.latestUpdates || [])]; next[i] = { ...next[i], update: e.target.value }; set('latestUpdates', next);
+                }} placeholder="Update" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <button type="button" onClick={() => set('latestUpdates', (data.latestUpdates || []).filter((_, idx) => idx !== i))}
+                  className="text-red-400 hover:text-red-600 font-bold text-xl text-center">×</button>
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => set('latestUpdates', [...(data.latestUpdates || []), { date: '', update: '' }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              + Add Update
+            </button>
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Colleges / NLU List">
+          <div className="space-y-3">
+            {(data.nluList || []).map((college, i) => (
+              <div key={i} className="grid md:grid-cols-[2fr_2fr_1fr_auto] gap-2 items-center">
+                <input value={college.name} onChange={(e) => {
+                  const next = [...(data.nluList || [])]; next[i] = { ...next[i], name: e.target.value }; set('nluList', next);
+                }} placeholder="College name" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <input value={college.location} onChange={(e) => {
+                  const next = [...(data.nluList || [])]; next[i] = { ...next[i], location: e.target.value }; set('nluList', next);
+                }} placeholder="Location" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <input type="number" value={college.established} onChange={(e) => {
+                  const next = [...(data.nluList || [])]; next[i] = { ...next[i], established: Number(e.target.value) }; set('nluList', next);
+                }} placeholder="Year" className="px-3 py-2 border border-gray-200 rounded-xl text-sm" />
+                <button type="button" onClick={() => set('nluList', (data.nluList || []).filter((_, idx) => idx !== i))}
+                  className="text-red-400 hover:text-red-600 font-bold text-xl text-center">×</button>
+              </div>
+            ))}
+            <button type="button"
+              onClick={() => set('nluList', [...(data.nluList || []), { name: '', location: '', established: new Date().getFullYear() }])}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              + Add College
+            </button>
+          </div>
         </SectionCard>
 
         <SectionCard title="FAQs">
