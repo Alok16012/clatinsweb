@@ -72,7 +72,7 @@ const programs = [
     seats: 8,
     totalSeats: 30,
     color: '#0f3460',
-    accent: '#f77420',
+    accent: '#08BD80',
     badge: '🔥 Almost Full',
     features: ['Personal mentorship', 'Daily classes 4hrs', 'Study material', '150+ mocks', 'Doubt sessions'],
   },
@@ -97,8 +97,8 @@ const programs = [
     emi: '₹10,000/mo',
     seats: 3,
     totalSeats: 10,
-    color: '#7a3412',
-    accent: '#ffad75',
+    color: '#065f46',
+    accent: '#34d399',
     badge: '👑 Premium',
     features: ['1-on-1 sessions', 'Personalized plan', 'All materials', 'Priority doubt', 'NLU counselling'],
   },
@@ -160,7 +160,7 @@ const testimonials = [
     college: 'GNLU Gandhinagar',
     year: 'CLAT 2024',
     avatar: 'VM',
-    color: '#f77420',
+    color: '#08BD80',
     quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156 and GNLU confirmed.",
     stars: 5,
   },
@@ -234,7 +234,7 @@ function EnrollmentToast({ enrollments }: { enrollments: AdmissionContent['enrol
       <div style={{ position: 'relative', flexShrink: 0 }}>
         <div style={{
           width: '36px', height: '36px', borderRadius: '50%',
-          background: 'linear-gradient(135deg, #f77420, #d95f18)',
+          background: 'linear-gradient(135deg, #08BD80, #06a865)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           color: 'white', fontWeight: 700, fontSize: '13px',
         }}>
@@ -243,7 +243,7 @@ function EnrollmentToast({ enrollments }: { enrollments: AdmissionContent['enrol
         <div style={{
           position: 'absolute', bottom: '1px', right: '1px',
           width: '10px', height: '10px', borderRadius: '50%',
-          background: '#f77420', border: '2px solid white',
+          background: '#22c55e', border: '2px solid white',
         }} />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -344,7 +344,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
         }}
       >
         {/* Animated orbs */}
-        <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(247,116,32,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(8,189,128,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(109,40,217,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', top: '30%', left: '30%', width: '200px', height: '200px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
@@ -361,11 +361,11 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
           <div className="md:col-span-3">
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              background: 'rgba(247,116,32,0.15)', border: '1px solid rgba(247,116,32,0.3)',
+              background: 'rgba(8,189,128,0.15)', border: '1px solid rgba(8,189,128,0.3)',
               borderRadius: '99px', padding: '6px 14px', marginBottom: '20px',
             }}>
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f77420', animation: 'pulse 2s infinite' }} />
-              <span style={{ color: '#f77420', fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#08BD80', animation: 'pulse 2s infinite' }} />
+              <span style={{ color: '#08BD80', fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em' }}>
                 {content.hero.eyebrow}
               </span>
             </div>
@@ -375,7 +375,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
               lineHeight: 1.15, marginBottom: '16px',
             }}>
               {content.hero.title}<br />
-              <span style={{ color: '#f77420' }}>{content.hero.highlight}</span>
+              <span style={{ color: '#08BD80' }}>{content.hero.highlight}</span>
             </h1>
 
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', marginBottom: '28px', lineHeight: 1.6 }}>
@@ -399,7 +399,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
               <a href={content.hero.primaryHref}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#f77420', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px 24px', borderRadius: '12px', textDecoration: 'none', boxShadow: '0 4px 20px rgba(247,116,32,0.4)' }}>
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px 24px', borderRadius: '12px', textDecoration: 'none', boxShadow: '0 4px 20px rgba(8,189,128,0.4)' }}>
                 {content.hero.primaryCta}
               </a>
               <a href={content.hero.secondaryHref} target="_blank" rel="noopener noreferrer"
@@ -421,9 +421,9 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f77420' }} />
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#08BD80' }} />
               <span style={{ color: 'white', fontWeight: 700, fontSize: '13px' }}>{content.hero.cardTitle}</span>
-              <span style={{ marginLeft: 'auto', background: 'rgba(247,116,32,0.2)', color: '#f77420', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '99px' }}>
+              <span style={{ marginLeft: 'auto', background: 'rgba(8,189,128,0.2)', color: '#08BD80', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '99px' }}>
                 {content.hero.cardBadge}
               </span>
             </div>
@@ -452,7 +452,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
 
             <div style={{ marginTop: '14px', textAlign: 'center' }}>
               <a href={content.hero.cardButtonHref} style={{
-                display: 'block', background: '#f77420', color: 'white',
+                display: 'block', background: '#08BD80', color: 'white',
                 fontWeight: 700, fontSize: '13px', padding: '10px',
                 borderRadius: '10px', textDecoration: 'none',
               }}>
@@ -467,7 +467,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
       <div
         ref={urgencyReveal.ref}
         style={{
-          background: 'linear-gradient(90deg, #7a3412, #f77420, #7a3412)',
+          background: 'linear-gradient(90deg, #065f46, #08BD80, #065f46)',
           padding: '12px 0',
           overflow: 'hidden',
           opacity: urgencyReveal.visible ? 1 : 0,
@@ -491,7 +491,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
       <section style={{ background: '#F8FAFC', padding: '60px 0' }}>
         <div className="max-w-7xl mx-auto px-4 md:px-10">
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <span style={{ background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px' }}>
+            <span style={{ background: '#e6faf4', color: '#08BD80', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px' }}>
               {content.batchSection.eyebrow}
             </span>
             <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>
@@ -595,7 +595,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
             {/* Form */}
             <div>
               <span style={{
-                background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700,
+                background: '#E6FAF4', color: '#08BD80', fontSize: '12px', fontWeight: 700,
                 padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '16px',
               }}>
                 {content.formSection.eyebrow}
@@ -609,7 +609,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
 
               {submitted ? (
                 <div style={{
-                  background: '#fff1e8', border: '2px solid #f77420',
+                  background: '#E6FAF4', border: '2px solid #08BD80',
                   borderRadius: '16px', padding: '32px', textAlign: 'center',
                 }}>
                   <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div>
@@ -641,7 +641,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     />
                   </div>
@@ -666,7 +666,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     />
                   </div>
@@ -689,7 +689,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     />
                   </div>
@@ -712,7 +712,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     />
                   </div>
@@ -734,7 +734,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     >
                       <option value="">Select program</option>
@@ -760,7 +760,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     >
                       <option value="">Select</option>
@@ -789,7 +789,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                         boxSizing: 'border-box',
                         transition: 'border-color .2s ease',
                       }}
-                      onFocus={e => (e.target.style.borderColor = '#f77420')}
+                      onFocus={e => (e.target.style.borderColor = '#08BD80')}
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     />
                   </div>
@@ -805,29 +805,29 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                     disabled={submitting}
                     style={{
                       width: '100%', padding: '14px',
-                      background: 'linear-gradient(135deg, #f77420, #d95f18)',
+                      background: 'linear-gradient(135deg, #08BD80, #06a865)',
                       color: 'white', fontWeight: 800, fontSize: '15px',
                       borderRadius: '12px', border: 'none',
                       cursor: submitting ? 'not-allowed' : 'pointer',
                       opacity: submitting ? 0.7 : 1,
-                      boxShadow: '0 4px 20px rgba(247,116,32,0.35)',
+                      boxShadow: '0 4px 20px rgba(8,189,128,0.35)',
                       transition: 'transform .2s ease, box-shadow .2s ease',
                     }}
                     onMouseEnter={e => {
                       if (submitting) return;
                       (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
-                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 28px rgba(247,116,32,0.45)';
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 28px rgba(8,189,128,0.45)';
                     }}
                     onMouseLeave={e => {
                       (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
-                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 20px rgba(247,116,32,0.35)';
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 20px rgba(8,189,128,0.35)';
                     }}
                   >
                     {submitting ? content.formSection.submittingLabel : content.formSection.submitLabel}
                   </button>
 
                   <p style={{ textAlign: 'center', fontSize: '12px', color: '#6B7280', marginTop: '4px' }}>
-                    {content.formSection.directCallText} <a href={content.trustSection.callHref} style={{ color: '#f77420', fontWeight: 700, textDecoration: 'none' }}>{content.trustSection.callHref.replace('tel:', '')}</a>
+                    {content.formSection.directCallText} <a href={content.trustSection.callHref} style={{ color: '#08BD80', fontWeight: 700, textDecoration: 'none' }}>{content.trustSection.callHref.replace('tel:', '')}</a>
                     <span style={{ margin: '0 6px', color: '#D1D5DB' }}>·</span>
                     {content.formSection.responseText}
                   </p>
@@ -891,7 +891,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                           <div style={{ fontSize: '10px', color: '#6B7280' }}>{t.college}</div>
                         </div>
                         <span style={{
-                          background: '#fff1e8', color: '#7a3412',
+                          background: '#E6FAF4', color: '#065f46',
                           fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '99px', flexShrink: 0,
                         }}>
                           {t.air}
@@ -917,10 +917,10 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
                   href={content.trustSection.callHref}
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                    background: 'linear-gradient(135deg, #f77420, #d95f18)',
+                    background: 'linear-gradient(135deg, #08BD80, #06a865)',
                     color: 'white', fontWeight: 700, fontSize: '14px',
                     padding: '12px', borderRadius: '12px', textDecoration: 'none',
-                    boxShadow: '0 3px 12px rgba(247,116,32,0.3)',
+                    boxShadow: '0 3px 12px rgba(8,189,128,0.3)',
                   }}
                 >
                   {content.trustSection.callLabel}
@@ -988,7 +988,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}
       >
-        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(247,116,32,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(8,189,128,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '-60px', left: '-40px', width: '280px', height: '280px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(109,40,217,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="max-w-7xl mx-auto px-4 md:px-10" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
@@ -1014,9 +1014,9 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
               href={content.finalCta.primaryHref}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
-                background: '#f77420', color: 'white', fontWeight: 700, fontSize: '15px',
+                background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '15px',
                 padding: '14px 32px', borderRadius: '12px', textDecoration: 'none',
-                boxShadow: '0 4px 20px rgba(247,116,32,0.4)',
+                boxShadow: '0 4px 20px rgba(8,189,128,0.4)',
               }}
             >
               {content.finalCta.primaryLabel}
@@ -1054,7 +1054,7 @@ export default function AdmissionPage({ content = defaultHomeContent.admission }
           href={content.stickyBar.callHref}
           style={{
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-            background: '#f77420', color: 'white', fontWeight: 700, fontSize: '14px',
+            background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '14px',
             padding: '14px', textDecoration: 'none',
           }}
         >
@@ -1113,7 +1113,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
       </div>
 
       {/* Quote mark */}
-      <div style={{ fontSize: '48px', fontWeight: 900, color: '#f77420', lineHeight: 1, marginBottom: '4px', marginTop: '-6px' }}>
+      <div style={{ fontSize: '48px', fontWeight: 900, color: '#08BD80', lineHeight: 1, marginBottom: '4px', marginTop: '-6px' }}>
         &ldquo;
       </div>
 
@@ -1138,7 +1138,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         </div>
         <div>
           <div style={{ fontWeight: 700, fontSize: '13px', color: '#0D1837' }}>{t.name}</div>
-          <div style={{ fontSize: '11px', color: '#f77420', fontWeight: 600 }}>{t.air} · {t.year}</div>
+          <div style={{ fontSize: '11px', color: '#08BD80', fontWeight: 600 }}>{t.air} · {t.year}</div>
         </div>
       </div>
     </div>
@@ -1148,12 +1148,12 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 /* ─── CSAT 2026 Scholarship Section ─────────────────── */
 const scholarshipSlabs = [
   { marks: '49–50', discount: '100%', bg: '#fef3c7', color: '#92400e', badge: '🏆 Full Scholarship' },
-  { marks: '46–48', discount: '70%',  bg: '#fff1e8', color: '#c95516', badge: '🥇 Gold' },
+  { marks: '46–48', discount: '70%',  bg: '#dcfce7', color: '#166534', badge: '🥇 Gold' },
   { marks: '41–45', discount: '50%',  bg: '#dbeafe', color: '#1d4ed8', badge: '🥈 Silver' },
   { marks: '36–40', discount: '40%',  bg: '#ede9fe', color: '#6d28d9', badge: '🥉 Bronze' },
   { marks: '31–35', discount: '35%',  bg: '#fce7f3', color: '#be185d', badge: '' },
   { marks: '26–30', discount: '30%',  bg: '#ffedd5', color: '#c2410c', badge: '' },
-  { marks: '21–25', discount: '25%',  bg: '#f0fdf4', color: '#c95516', badge: '' },
+  { marks: '21–25', discount: '25%',  bg: '#f0fdf4', color: '#15803d', badge: '' },
   { marks: '16–20', discount: '20%',  bg: '#f0f9ff', color: '#0369a1', badge: '' },
   { marks: 'Up to 15', discount: '15%', bg: '#fafafa', color: '#374151', badge: '' },
 ];
@@ -1164,7 +1164,7 @@ function CsatSection({ scholarship }: { scholarship: AdmissionContent['scholarsh
 
   return (
     <section style={{ background: 'linear-gradient(135deg, #0D1837 0%, #0f3460 100%)', padding: '60px 0', overflow: 'hidden', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: '-100px', right: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(247,116,32,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '-100px', right: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(8,189,128,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="max-w-7xl mx-auto px-4 md:px-10" style={{ position: 'relative', zIndex: 1 }}>
@@ -1232,7 +1232,7 @@ function CsatSection({ scholarship }: { scholarship: AdmissionContent['scholarsh
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
               {scholarship.cardPoints.map(pt => (
                 <div key={pt} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#f77420', fontWeight: 700 }}>✓</span>
+                  <span style={{ color: '#08BD80', fontWeight: 700 }}>✓</span>
                   <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px' }}>{pt}</span>
                 </div>
               ))}
@@ -1255,7 +1255,7 @@ function CsatSection({ scholarship }: { scholarship: AdmissionContent['scholarsh
 const freeResources = [
   { icon: '📚', title: 'Free CLAT Study Material', desc: 'Comprehensive notes covering all 5 sections of CLAT — English, GK, Legal, Logical & Quant. Updated for CLAT 2026.', cta: 'Download Free', href: 'https://wa.me/918507700177?text=I want free CLAT study material', color: '#6366f1', bg: '#eef2ff' },
   { icon: '📝', title: 'Free Mock Test', desc: 'Experience the real CLAT exam interface. Full 120-question mock with detailed solutions and rank predictor.', cta: 'Attempt Free Mock', href: 'https://wa.me/918507700177?text=I want to attempt a free mock test', color: '#0891b2', bg: '#e0f2fe' },
-  { icon: '🤝', title: 'Free Strategy Session', desc: '1-on-1 session with our expert mentors. Get a personalised study plan based on your current level and target NLU.', cta: 'Book Free Session', href: 'https://wa.me/918507700177?text=I want a free strategy session', color: '#f77420', bg: '#fff1e8' },
+  { icon: '🤝', title: 'Free Strategy Session', desc: '1-on-1 session with our expert mentors. Get a personalised study plan based on your current level and target NLU.', cta: 'Book Free Session', href: 'https://wa.me/918507700177?text=I want a free strategy session', color: '#08BD80', bg: '#E6FAF4' },
 ];
 
 function FreeResourcesSection({ resources }: { resources: AdmissionContent['freeResources'] }) {
@@ -1263,7 +1263,7 @@ function FreeResourcesSection({ resources }: { resources: AdmissionContent['free
     <section style={{ background: '#F8FAFC', padding: '60px 0' }}>
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span style={{ background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>{resources.eyebrow}</span>
+          <span style={{ background: '#e6faf4', color: '#08BD80', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>{resources.eyebrow}</span>
           <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>{resources.title}</h2>
           <p style={{ color: '#6B7280', fontSize: '15px', maxWidth: '440px', margin: '0 auto' }}>{resources.subtitle}</p>
         </div>
@@ -1311,11 +1311,11 @@ function FaqSection({ faq }: { faq: AdmissionContent['faq'] }) {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {faq.items.map((item, i) => (
-            <div key={item.q} style={{ background: open === i ? '#fff7ed' : 'white', border: `1.5px solid ${open === i ? '#f77420' : '#E9EEF2'}`, borderRadius: '16px', overflow: 'hidden', transition: 'all .2s ease' }}>
+            <div key={item.q} style={{ background: open === i ? '#fff7ed' : 'white', border: `1.5px solid ${open === i ? '#08BD80' : '#E9EEF2'}`, borderRadius: '16px', overflow: 'hidden', transition: 'all .2s ease' }}>
               <button onClick={() => setOpen(open === i ? null : i)}
                 style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '18px 20px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
-                <span style={{ fontWeight: 700, fontSize: '14px', color: open === i ? '#f77420' : '#0D1837', lineHeight: 1.4 }}>{item.q}</span>
-                <span style={{ color: open === i ? '#f77420' : '#9CA3AF', fontSize: '20px', flexShrink: 0, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform .2s ease', lineHeight: 1 }}>+</span>
+                <span style={{ fontWeight: 700, fontSize: '14px', color: open === i ? '#08BD80' : '#0D1837', lineHeight: 1.4 }}>{item.q}</span>
+                <span style={{ color: open === i ? '#08BD80' : '#9CA3AF', fontSize: '20px', flexShrink: 0, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform .2s ease', lineHeight: 1 }}>+</span>
               </button>
               {open === i && (
                 <div style={{ padding: '0 20px 18px', color: '#374151', fontSize: '13px', lineHeight: 1.7, borderTop: '1px solid #ffd4ba' }}>{item.a}</div>
@@ -1326,7 +1326,7 @@ function FaqSection({ faq }: { faq: AdmissionContent['faq'] }) {
         <div style={{ marginTop: '32px', textAlign: 'center', padding: '24px', background: '#F8FAFC', borderRadius: '16px', border: '1.5px solid #E9EEF2' }}>
           <p style={{ color: '#374151', fontWeight: 600, fontSize: '14px', marginBottom: '12px' }}>{faq.bottomText}</p>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={faq.primaryHref} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f77420', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>{faq.primaryLabel}</a>
+            <a href={faq.primaryHref} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>{faq.primaryLabel}</a>
             <a href={faq.secondaryHref} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#075E54', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>{faq.secondaryLabel}</a>
           </div>
         </div>

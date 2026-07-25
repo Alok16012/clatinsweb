@@ -142,7 +142,7 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
             <button type="button"
               onClick={() => set('examPattern', [...data.examPattern, { section: '', questions: 0, marks: 0 }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
               + Add Section
             </button>
           </div>
@@ -190,7 +190,7 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
             <button type="button"
               onClick={() => set('importantDates', [...(data.importantDates || []), { event: '', date: '' }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
               + Add Date
             </button>
           </div>
@@ -296,7 +296,7 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
             <button type="button"
               onClick={() => set('faqs', [...data.faqs, { q: '', a: '' }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#f77420', color: '#f77420' }}>
+              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
               + Add FAQ
             </button>
           </div>

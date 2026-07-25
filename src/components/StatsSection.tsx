@@ -15,7 +15,7 @@ const stats = [
   },
   {
     num: 25, suffix: '+', label: 'Expert Faculty',
-    icon: '👨‍🏫', color: '#f77420', bg: 'linear-gradient(135deg,#f0fdf4,#ffd4ba)',
+    icon: '👨‍🏫', color: '#16a34a', bg: 'linear-gradient(135deg,#f0fdf4,#bbf7d0)',
     border: '#86efac',
   },
   {

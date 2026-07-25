@@ -15,14 +15,14 @@ export default function CollegePredictorSection({ content = defaultHomeContent.p
             <div className="flex flex-wrap gap-5 mt-4">
               {content.bannerFeatures.map(f => (
                 <span key={f} className="flex items-center gap-1.5 text-sm" style={{ color: '#7A8B94' }}>
-                  <span style={{ color: '#f77420' }}>✓</span> {f}
+                  <span style={{ color: '#08BD80' }}>✓</span> {f}
                 </span>
               ))}
             </div>
           </div>
           <a href={content.bannerCtaLink}
             className="flex-shrink-0 px-7 py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90 whitespace-nowrap"
-            style={{ background: '#f77420' }}>
+            style={{ background: '#08BD80' }}>
             {content.bannerCtaLabel}
           </a>
         </div>
@@ -31,7 +31,7 @@ export default function CollegePredictorSection({ content = defaultHomeContent.p
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Left */}
           <div>
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#f77420' }}>{content.eyebrow}</p>
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#08BD80' }}>{content.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: '#3C4852' }}>
               {content.title}
             </h2>
@@ -42,14 +42,14 @@ export default function CollegePredictorSection({ content = defaultHomeContent.p
               {content.features.map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#5a6a75' }}>
                   <span className="w-5 h-5 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0"
-                    style={{ background: '#f77420' }}>✓</span>
+                    style={{ background: '#08BD80' }}>✓</span>
                   {item}
                 </li>
               ))}
             </ul>
             <a href={content.ctaLink}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90"
-              style={{ background: '#f77420' }}>
+              style={{ background: '#08BD80' }}>
               {content.ctaLabel}
             </a>
           </div>
@@ -58,10 +58,10 @@ export default function CollegePredictorSection({ content = defaultHomeContent.p
           <div className="rounded-2xl border p-6 shadow-sm" style={{ background: 'white', borderColor: '#E9EEF2' }}>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
-                style={{ background: '#fff1e8' }}>{content.cardIcon}</div>
+                style={{ background: '#e6faf4' }}>{content.cardIcon}</div>
               <h3 className="font-bold" style={{ color: '#3C4852' }}>{content.cardTitle}</h3>
               <span className="ml-auto text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                style={{ background: '#f77420' }}>{content.cardBadge}</span>
+                style={{ background: '#08BD80' }}>{content.cardBadge}</span>
             </div>
 
             <div className="space-y-4">

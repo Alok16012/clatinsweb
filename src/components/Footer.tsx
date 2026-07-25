@@ -79,12 +79,12 @@ export default function Footer() {
         <div className="flex gap-3 mb-7">
           <a href={`tel:${settings.phone}`}
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm"
-            style={{ background: '#f77420', color: 'white' }}>
+            style={{ background: '#08BD80', color: 'white' }}>
             📞 Call Us
           </a>
           <a href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm"
-            style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420', border: '1px solid rgba(247,116,32,0.25)' }}>
+            style={{ background: 'rgba(37,211,102,0.15)', color: '#25D366', border: '1px solid rgba(37,211,102,0.25)' }}>
             💬 WhatsApp
           </a>
         </div>
@@ -119,12 +119,12 @@ export default function Footer() {
 
         {/* Quick links section */}
         <div className="mb-6">
-          <p className="text-[10px] font-black uppercase tracking-widest mb-2.5" style={{ color: '#f77420' }}>🔗 {settings.footerQuickLinksTitle}</p>
+          <p className="text-[10px] font-black uppercase tracking-widest mb-2.5" style={{ color: '#08BD80' }}>🔗 {settings.footerQuickLinksTitle}</p>
           <div className="flex flex-wrap gap-2">
             {settings.footerQuickLinks.map((item) => (
               <a key={item.label} href={item.href}
                 className="text-xs font-semibold px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
-                style={{ background: 'rgba(247,116,32,0.1)', color: '#f77420', border: '1px solid rgba(247,116,32,0.2)' }}>
+                style={{ background: 'rgba(8,189,128,0.1)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.2)' }}>
                 {item.label}
               </a>
             ))}

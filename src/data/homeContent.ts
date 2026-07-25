@@ -581,7 +581,7 @@ export const defaultHomeContent: HomeContent = {
       testimonials: [
         { name: 'Aman Deep Singh', air: 'AIR 23', college: 'NLU Delhi', year: 'CLAT 2024', avatar: 'AD', color: '#6366f1', quote: "CLATians gave me the structure, mentors, and mock tests I needed. The legal reasoning coaching is absolutely unmatched. Couldn't have cracked NLU Delhi without this team.", stars: 5 },
         { name: 'Priya Sharma', air: 'AIR 47', college: 'NALSAR Hyderabad', year: 'CLAT 2024', avatar: 'PS', color: '#ec4899', quote: 'The online program was incredibly flexible. I got personalized mentorship while studying from home. Mock analytics helped me improve 40+ ranks in final weeks.', stars: 5 },
-        { name: 'Vikram Mishra', air: 'AIR 156', college: 'GNLU Gandhinagar', year: 'CLAT 2024', avatar: 'VM', color: '#f77420', quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156 and GNLU confirmed.", stars: 5 },
+        { name: 'Vikram Mishra', air: 'AIR 156', college: 'GNLU Gandhinagar', year: 'CLAT 2024', avatar: 'VM', color: '#08BD80', quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156 and GNLU confirmed.", stars: 5 },
       ],
     },
     scholarship: {
@@ -595,7 +595,7 @@ export const defaultHomeContent: HomeContent = {
       slabsTitle: '📊 Scholarship Slabs',
       slabs: [
         { marks: '49–50', discount: '100%', bg: '#fef3c7', color: '#92400e', badge: '🏆 Full Scholarship' },
-        { marks: '46–48', discount: '70%', bg: '#fff1e8', color: '#c95516', badge: '🥇 Gold' },
+        { marks: '46–48', discount: '70%', bg: '#e6faf4', color: '#c95516', badge: '🥇 Gold' },
         { marks: '41–45', discount: '50%', bg: '#dbeafe', color: '#1d4ed8', badge: '🥈 Silver' },
         { marks: '36–40', discount: '40%', bg: '#ede9fe', color: '#6d28d9', badge: '🥉 Bronze' },
         { marks: '31–35', discount: '35%', bg: '#fce7f3', color: '#be185d', badge: '' },
@@ -621,7 +621,7 @@ export const defaultHomeContent: HomeContent = {
       items: [
         { icon: '📚', title: 'Free CLAT Study Material', desc: 'Comprehensive notes covering all 5 sections of CLAT — English, GK, Legal, Logical & Quant. Updated for CLAT 2026.', cta: 'Download Free', href: 'https://wa.me/918507700177?text=I want free CLAT study material', color: '#6366f1', bg: '#eef2ff' },
         { icon: '📝', title: 'Free Mock Test', desc: 'Experience the real CLAT exam interface. Full 120-question mock with detailed solutions and rank predictor.', cta: 'Attempt Free Mock', href: 'https://wa.me/918507700177?text=I want to attempt a free mock test', color: '#0891b2', bg: '#e0f2fe' },
-        { icon: '🤝', title: 'Free Strategy Session', desc: '1-on-1 session with our expert mentors. Get a personalised study plan based on your current level and target NLU.', cta: 'Book Free Session', href: 'https://wa.me/918507700177?text=I want a free strategy session', color: '#f77420', bg: '#fff1e8' },
+        { icon: '🤝', title: 'Free Strategy Session', desc: '1-on-1 session with our expert mentors. Get a personalised study plan based on your current level and target NLU.', cta: 'Book Free Session', href: 'https://wa.me/918507700177?text=I want a free strategy session', color: '#08BD80', bg: '#e6faf4' },
       ],
     },
     faq: {
@@ -760,7 +760,7 @@ export const defaultHomeContent: HomeContent = {
       suffix: '+',
       label: 'Expert Faculty',
       icon: '👨‍🏫',
-      color: '#f77420',
+      color: '#08BD80',
       bg: 'linear-gradient(135deg,#fff7ed,#ffd4ba)',
       border: '#fdba74',
     },
@@ -791,7 +791,7 @@ export const defaultHomeContent: HomeContent = {
     subtitle: 'Real students, real NLU selections. Their success is our greatest achievement.',
     badges: [
       { label: 'AIR 1–50', count: '47 students', bg: '#fef3c7', color: '#92400e', icon: '🥇' },
-      { label: 'AIR 51–100', count: '112 students', bg: '#fff1e8', color: '#c95516', icon: '🥈' },
+      { label: 'AIR 51–100', count: '112 students', bg: '#e6faf4', color: '#c95516', icon: '🥈' },
       { label: 'AIR 101–500', count: '389 students', bg: '#e0f2fe', color: '#0369a1', icon: '🥉' },
       { label: 'NLU Selections', count: '1,000+', bg: '#ede9fe', color: '#5b21b6', icon: '🏛️' },
     ],
@@ -800,7 +800,7 @@ export const defaultHomeContent: HomeContent = {
       { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR Hyderabad', year: 'CLAT 2024', avatar: 'PS', color: '#ec4899', quote: 'The online program was incredibly flexible. I could study from home while still getting personalized mentorship. Mock test analytics helped me improve 40 ranks.', stars: 5 },
       { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi', year: 'AILET 2024', avatar: 'RG', color: '#f59e0b', quote: 'AILET preparation at CLATians is top-notch. The specialized legal reasoning classes and focused GK sessions made all the difference.', stars: 5 },
       { name: 'Sneha Patel', rank: 'AIR 89', college: 'NLIU Bhopal', year: 'CLAT 2024', avatar: 'SP', color: '#14b8a6', quote: 'From a small town in Bihar to NLIU Bhopal — CLATians made my dream possible. The faculty is truly dedicated to every student.', stars: 5 },
-      { name: 'Vikram Mishra', rank: 'AIR 156', college: 'GNLU Gandhinagar', year: 'CLAT 2024', avatar: 'VM', color: '#f77420', quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156.", stars: 5 },
+      { name: 'Vikram Mishra', rank: 'AIR 156', college: 'GNLU Gandhinagar', year: 'CLAT 2024', avatar: 'VM', color: '#08BD80', quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156.", stars: 5 },
       { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR Hyderabad', year: 'CLAT 2025', avatar: 'KR', color: '#f97316', quote: 'The study material quality is exceptional. 8 volumes covering every topic in depth. Combined with daily GK sessions, I scored 98/120 in current affairs.', stars: 5 },
       { name: 'Arjun Tiwari', rank: 'AIR 67', college: 'RMLNLU Lucknow', year: 'CLAT 2024', avatar: 'AT', color: '#8b5cf6', quote: "Joined CLATians in Class 11. Two years of consistent preparation with A.K. Sir's guidance. Best decision of my life.", stars: 5 },
       { name: 'Riya Bose', rank: 'AIR 203', college: 'CNLU Patna', year: 'CLAT 2024', avatar: 'RB', color: '#ef4444', quote: 'As a girl from a small family, fees were a concern. CLATians offered scholarship which made it possible. Extremely grateful for the support.', stars: 5 },
