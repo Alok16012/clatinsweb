@@ -59,6 +59,11 @@ export default function Footer() {
                   <a href={item.href} className="text-sm hover:text-white transition-colors" style={{ color: '#9CA3AF' }}>{item.label}</a>
                 </li>
               ))}
+              {!settings.footerQuickLinks.some((item) => item.href === '/privacy-policy') && (
+                <li>
+                  <a href="/privacy-policy" className="text-sm hover:text-white transition-colors" style={{ color: '#9CA3AF' }}>Privacy Policy</a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -128,6 +133,13 @@ export default function Footer() {
                 {item.label}
               </a>
             ))}
+            {!settings.footerQuickLinks.some((item) => item.href === '/privacy-policy') && (
+              <a href="/privacy-policy"
+                className="text-xs font-semibold px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
+                style={{ background: 'rgba(8,189,128,0.1)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.2)' }}>
+                Privacy Policy
+              </a>
+            )}
           </div>
         </div>
 
