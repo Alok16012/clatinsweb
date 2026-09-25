@@ -458,6 +458,7 @@ export const defaultHomeContent: HomeContent = {
       { label: 'Admission', href: '/admission' },
       { label: 'The CLATians Journal', href: '/blogs' },
       { label: 'College Predictor', href: '/college-predictor' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
     ],
     socials: [
       { label: 'Facebook', href: '#', icon: 'f', color: '#1877f2', bg: 'rgba(24,119,242,0.15)' },
